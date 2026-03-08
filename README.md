@@ -22,7 +22,9 @@
 
 ---
 
-## DEMO
+## INSPIRATION
+
+The UI design of this library is directly inspired by the iconic NERV/MAGI computer interfaces from Neon Genesis Evangelion:
 
 https://github.com/MattLoyeD/neon-genesis-evangelion/raw/master/docs/ui.mp4
 
