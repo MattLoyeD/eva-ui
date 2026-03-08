@@ -1,0 +1,180 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+
+export interface TerminalDisplayProps {
+  /** Lines of text to display */
+  lines: string[];
+  /** Enable typewriter effect */
+  typewriter?: boolean;
+  /** Typing speed in ms per character */
+  typeSpeed?: number;
+  /** Delay between lines in ms */
+  lineDelay?: number;
+  /** Text color variant */
+  color?: "green" | "orange" | "cyan" | "red";
+  /** Show the blinking cursor */
+  showCursor?: boolean;
+  /** Terminal title/label */
+  title?: string;
+  /** Max height with scroll */
+  maxHeight?: string;
+  /** Optional className */
+  className?: string;
+  /** Show line numbers */
+  showLineNumbers?: boolean;
+  /** Prefix each line with a prompt symbol */
+  prompt?: string;
+}
+
+const colorMap = {
+  green: "text-eva-green",
+  orange: "text-eva-orange",
+  cyan: "text-eva-cyan",
+  red: "text-eva-red",
+};
+
+const glowMap = {
+  green: "eva-text-shadow-green",
+  orange: "eva-text-shadow-orange",
+  cyan: "eva-text-shadow-cyan",
+  red: "eva-text-shadow-red",
+};
+
+export function TerminalDisplay({
+  lines,
+  typewriter = false,
+  typeSpeed = 30,
+  lineDelay = 200,
+  color = "green",
+  showCursor = true,
+  title,
+  maxHeight = "400px",
+  className = "",
+  showLineNumbers = false,
+  prompt,
+}: TerminalDisplayProps) {
+  const [displayedLines, setDisplayedLines] = useState<string[]>(
+    typewriter ? [] : lines
+  );
+  const [currentLine, setCurrentLine] = useState(0);
+  const [currentChar, setCurrentChar] = useState(0);
+  const [isTyping, setIsTyping] = useState(typewriter);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Typewriter effect
+  useEffect(() => {
+    if (!typewriter || currentLine >= lines.length) {
+      setIsTyping(false);
+      return;
+    }
+
+    const line = lines[currentLine];
+
+    if (currentChar === 0) {
+      // Start new line
+      setDisplayedLines((prev) => [...prev, ""]);
+    }
+
+    if (currentChar < line.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedLines((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = line.substring(0, currentChar + 1);
+          return updated;
+        });
+        setCurrentChar((c) => c + 1);
+      }, typeSpeed);
+      return () => clearTimeout(timeout);
+    } else {
+      // Line complete, move to next
+      const timeout = setTimeout(() => {
+        setCurrentLine((l) => l + 1);
+        setCurrentChar(0);
+      }, lineDelay);
+      return () => clearTimeout(timeout);
+    }
+  }, [typewriter, currentLine, currentChar, lines, typeSpeed, lineDelay]);
+
+  // Auto-scroll to bottom
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [displayedLines]);
+
+  const textColor = colorMap[color];
+  const glowClass = glowMap[color];
+
+  return (
+    <div className={`relative bg-eva-black border border-eva-mid-gray ${className}`}>
+      {/* Terminal header */}
+      {title && (
+        <div className="flex items-center gap-2 px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
+          <div className="flex gap-1.5">
+            <div className="w-2 h-2 bg-eva-red" />
+            <div className="w-2 h-2 bg-eva-orange" />
+            <div className="w-2 h-2 bg-eva-green" />
+          </div>
+          <span
+            className="text-xs uppercase tracking-[0.2em] text-eva-orange font-bold ml-2"
+            style={{ fontFamily: "var(--font-eva-display)" }}
+          >
+            {title}
+          </span>
+          <div className="ml-auto text-[10px] text-eva-mid-gray font-mono">
+            MAGI_SYS
+          </div>
+        </div>
+      )}
+
+      {/* Terminal body */}
+      <div
+        ref={containerRef}
+        className="p-4 overflow-y-auto font-mono text-sm leading-relaxed"
+        style={{ maxHeight, fontFamily: "var(--font-eva-mono)" }}
+      >
+        {displayedLines.map((line, i) => (
+          <motion.div
+            key={i}
+            initial={typewriter ? { opacity: 0 } : false}
+            animate={{ opacity: 1 }}
+            className={`${textColor} ${glowClass} whitespace-pre-wrap`}
+          >
+            {showLineNumbers && (
+              <span className="inline-block w-10 text-right mr-3 text-eva-mid-gray select-none">
+                {String(i + 1).padStart(3, "0")}
+              </span>
+            )}
+            {prompt && (
+              <span className="text-eva-orange mr-1 select-none">{prompt}</span>
+            )}
+            {line}
+            {/* Cursor on current typing line */}
+            {showCursor && isTyping && i === displayedLines.length - 1 && (
+              <span
+                className="inline-block w-2.5 h-4 ml-0.5 align-middle bg-current"
+                style={{ animation: "cursor-blink 1s step-end infinite" }}
+              />
+            )}
+          </motion.div>
+        ))}
+
+        {/* Resting cursor when typing is done */}
+        {showCursor && !isTyping && (
+          <span
+            className={`inline-block w-2.5 h-4 ml-0.5 align-middle ${textColor.replace("text-", "bg-")}`}
+            style={{ animation: "cursor-blink 1s step-end infinite" }}
+          />
+        )}
+      </div>
+
+      {/* Bottom status bar */}
+      <div className="flex items-center justify-between px-3 py-1 border-t border-eva-mid-gray bg-eva-dark-gray text-[10px] font-mono text-eva-mid-gray">
+        <span>LINES: {displayedLines.length}</span>
+        <span>{isTyping ? "TRANSMITTING..." : "READY"}</span>
+      </div>
+    </div>
+  );
+}

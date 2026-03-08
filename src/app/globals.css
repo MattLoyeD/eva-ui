@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+/* ============================================
+   NERV DESIGN SYSTEM — DESIGN TOKENS
+   Neon Genesis Evangelion UI
+   ============================================ */
+
+@theme {
+  /* Core EVA Colors */
+  --color-eva-black: #000000;
+  --color-eva-red: #FF0000;
+  --color-eva-orange: #FF9900;
+  --color-eva-green: #00FF00;
+  --color-eva-cyan: #00FFFF;
+  --color-eva-amber: #FFAA00;
+  --color-eva-white: #E0E0E0;
+  --color-eva-dark-gray: #1A1A1A;
+  --color-eva-mid-gray: #333333;
+  --color-eva-panel: #0A0A0A;
+  --color-eva-purple: #9933FF;
+
+  /* Semantic aliases */
+  --color-bg-base: #000000;
+  --color-alert-red: #FF0000;
+  --color-text-orange: #FF9900;
+  --color-grid-green: #00FF00;
+  --color-data-blue: #00FFFF;
+
+  /* Fonts */
+  --font-eva-display: "EVA-Display", "Oswald", "Impact", "Arial Narrow", system-ui, sans-serif;
+  --font-eva-mono: "Fira Code", "JetBrains Mono", "Courier New", monospace;
+  --font-eva-body: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+}
+
+/* Fonts loaded via <link> in layout.tsx */
+
+/* ============================================
+   GLOBAL RESETS
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #000000;
+  color: #FF9900;
+  font-family: var(--font-eva-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #000000;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Force all angles to 0 — brutalist industrial */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* ============================================
+   SCANLINE OVERLAY (Global CRT effect)
+   ============================================ */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* ============================================
+   SELECTION STYLES
+   ============================================ */
+::selection {
+  background: #FF9900;
+  color: #000000;
+}
+
+/* ============================================
+   SCROLLBAR — NERV STYLE
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+  border-left: 1px solid #333333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF9900;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF0000;
+}
+
+/* ============================================
+   HAZARD STRIPES — Reusable pattern
+   ============================================ */
+.hazard-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    #FF0000 10px,
+    #FF0000 20px
+  );
+  background-size: 28.28px 28.28px;
+  animation: hazard-scroll 0.5s linear infinite;
+}
+
+.hazard-stripes-black {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #000000,
+    #000000 10px,
+    #FF0000 10px,
+    #FF0000 20px
+  );
+  background-size: 28.28px 28.28px;
+  animation: hazard-scroll 0.5s linear infinite;
+}
+
+@keyframes hazard-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 28.28px 0; }
+}
+
+/* ============================================
+   FLICKER / BLINK ANIMATIONS
+   ============================================ */
+@keyframes eva-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+  52% { opacity: 0.4; }
+  54% { opacity: 0.9; }
+  56% { opacity: 0.3; }
+  58% { opacity: 1; }
+}
+
+@keyframes eva-blink-hard {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes eva-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes eva-glow {
+  0%, 100% {
+    text-shadow: 0 0 4px currentColor, 0 0 8px currentColor;
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow: 0 0 8px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes typewriter-cursor {
+  0%, 50% { border-color: currentColor; }
+  51%, 100% { border-color: transparent; }
+}
+
+@keyframes data-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* ============================================
+   REDUCED MOTION — Accessibility
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  body::after {
+    display: none;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.eva-text-shadow-orange {
+  text-shadow: 0 0 4px #FF9900, 0 0 8px rgba(255, 153, 0, 0.3);
+}
+
+.eva-text-shadow-red {
+  text-shadow: 0 0 4px #FF0000, 0 0 8px rgba(255, 0, 0, 0.3);
+}
+
+.eva-text-shadow-green {
+  text-shadow: 0 0 4px #00FF00, 0 0 8px rgba(0, 255, 0, 0.3);
+}
+
+.eva-text-shadow-cyan {
+  text-shadow: 0 0 4px #00FFFF, 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+.eva-border-glow-orange {
+  box-shadow: 0 0 4px rgba(255, 153, 0, 0.3), inset 0 0 4px rgba(255, 153, 0, 0.1);
+}
+
+.eva-border-glow-red {
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.4), inset 0 0 4px rgba(255, 0, 0, 0.1);
+}
