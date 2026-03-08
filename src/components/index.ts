@@ -33,3 +33,22 @@ export type { SystemDialogProps } from "./SystemDialog";
 
 export { NavigationTabs } from "./NavigationTabs";
 export type { NavigationTabsProps, NavigationTab } from "./NavigationTabs";
+
+// Phase 2 — Advanced Components
+export { EvaTitleScreen } from "./EvaTitleScreen";
+export type { EvaTitleScreenProps, TitleFragment } from "./EvaTitleScreen";
+
+export { MagiSystemPanel } from "./MagiSystemPanel";
+export type { MagiSystemPanelProps, MagiStatus } from "./MagiSystemPanel";
+
+export { SyncRatioChart } from "./SyncRatioChart";
+export type { SyncRatioChartProps } from "./SyncRatioChart";
+
+export { CountdownTimer } from "./CountdownTimer";
+export type { CountdownTimerProps } from "./CountdownTimer";
+
+export { SeeleMonolith } from "./SeeleMonolith";
+export type { SeeleMonolithProps } from "./SeeleMonolith";
+
+export { ClassifiedOverlay } from "./ClassifiedOverlay";
+export type { ClassifiedOverlayProps } from "./ClassifiedOverlay";

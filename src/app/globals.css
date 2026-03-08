@@ -18,6 +18,8 @@
   --color-eva-mid-gray: #333333;
   --color-eva-panel: #0A0A0A;
   --color-eva-purple: #9933FF;
+  --color-eva-magenta: #FF00FF;
+  --color-eva-lcd-green: #39FF14;
 
   /* Semantic aliases */
   --color-bg-base: #000000;
@@ -25,11 +27,14 @@
   --color-text-orange: #FF9900;
   --color-grid-green: #00FF00;
   --color-data-blue: #00FFFF;
+  --color-magenta-wave: #FF00FF;
+  --color-lcd-green: #39FF14;
 
   /* Fonts */
   --font-eva-display: "EVA-Display", "Oswald", "Impact", "Arial Narrow", system-ui, sans-serif;
   --font-eva-mono: "Fira Code", "JetBrains Mono", "Courier New", monospace;
   --font-eva-body: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-eva-title: "Noto Serif JP", "Playfair Display", "Georgia", "Times New Roman", serif;
 }
 
 /* Fonts loaded via <link> in layout.tsx */

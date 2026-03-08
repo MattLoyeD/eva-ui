@@ -68,6 +68,12 @@ EvaUI is a React component library that faithfully recreates the aesthetic of th
 | `<DataGrid />` | Surveillance-style data table with auto-scroll |
 | `<SystemDialog />` | Modal with hex overlay and hazard stripe framing |
 | `<NavigationTabs />` | Military-classified folder tabs |
+| `<EvaTitleScreen />` | Cinematic title card with serif typography and staggered animation |
+| `<MagiSystemPanel />` | 3-column MAGI supercomputer with idle/computing/accepted/rejected states |
+| `<SyncRatioChart />` | Pure SVG waveform chart with dual sinusoidal waves |
+| `<CountdownTimer />` | LCD countdown with MM:SS:MS format and urgency color transitions |
+| `<SeeleMonolith />` | SOUND ONLY monolith block with optional audio wave animation |
+| `<ClassifiedOverlay />` | TOP SECRET overlay with diagonal stripes and unlock mechanism |
 
 ## QUICK START
 
@@ -132,11 +138,14 @@ import {
 --color-eva-orange:    #FF9900   /* Primary text & accents */
 --color-eva-green:     #00FF00   /* Terminal & grid */
 --color-eva-cyan:      #00FFFF   /* Data & secondary info */
+--color-eva-magenta:   #FF00FF   /* Waveform & accents */
+--color-eva-lcd-green: #39FF14   /* LCD displays */
 
 /* Typography */
 --font-eva-display:    Oswald, Impact, system-ui
 --font-eva-mono:       Fira Code, Courier New, monospace
 --font-eva-body:       Barlow Condensed, Arial Narrow, system-ui
+--font-eva-title:      Noto Serif JP, Playfair Display, Georgia, serif
 ```
 
 ## PROJECT STRUCTURE
@@ -159,6 +168,12 @@ src/
 │   ├── DataGrid/
 │   ├── SystemDialog/
 │   ├── NavigationTabs/
+│   ├── EvaTitleScreen/
+│   ├── MagiSystemPanel/
+│   ├── SyncRatioChart/
+│   ├── CountdownTimer/
+│   ├── SeeleMonolith/
+│   ├── ClassifiedOverlay/
 │   └── index.ts             # Barrel exports
 └── lib/
     └── mock-data.ts         # Demo dashboard data

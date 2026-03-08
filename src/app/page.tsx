@@ -13,6 +13,11 @@ import { SyncProgressBar } from "@/components/SyncProgressBar";
 import { DataGrid } from "@/components/DataGrid";
 import { SystemDialog } from "@/components/SystemDialog";
 import { NavigationTabs } from "@/components/NavigationTabs";
+import { MagiSystemPanel } from "@/components/MagiSystemPanel";
+import { SyncRatioChart } from "@/components/SyncRatioChart";
+import { CountdownTimer } from "@/components/CountdownTimer";
+import { SeeleMonolith } from "@/components/SeeleMonolith";
+import { ClassifiedOverlay } from "@/components/ClassifiedOverlay";
 import { systemLogs, terminalLines, pilotSyncData } from "@/lib/mock-data";
 
 // Navigation tabs for the sidebar
@@ -59,6 +64,10 @@ export default function NervCommandCenter() {
   const [atFieldStrength, setAtFieldStrength] = useState(78);
   const [syncRate, setSyncRate] = useState(55.2);
   const [lcl, setLcl] = useState(23);
+  const [magiMelchior, setMagiMelchior] = useState<"idle" | "computing" | "accepted" | "rejected">("idle");
+  const [magiBalthasar, setMagiBalthasar] = useState<"idle" | "computing" | "accepted" | "rejected">("idle");
+  const [magiCasper, setMagiCasper] = useState<"idle" | "computing" | "accepted" | "rejected">("idle");
+  const [classifiedUnlocked, setClassifiedUnlocked] = useState(false);
 
   // Live clock
   useEffect(() => {
@@ -91,6 +100,21 @@ export default function NervCommandCenter() {
   const triggerEmergency = useCallback(() => {
     setShowEmergency(true);
     setTimeout(() => setShowEmergency(false), 4000);
+  }, []);
+
+  // MAGI voting simulation
+  const triggerMagiVote = useCallback(() => {
+    setMagiMelchior("computing");
+    setMagiBalthasar("computing");
+    setMagiCasper("computing");
+    setTimeout(() => setMagiMelchior("accepted"), 1500);
+    setTimeout(() => setMagiBalthasar("accepted"), 2800);
+    setTimeout(() => setMagiCasper("rejected"), 3500);
+    setTimeout(() => {
+      setMagiMelchior("idle");
+      setMagiBalthasar("idle");
+      setMagiCasper("idle");
+    }, 7000);
   }, []);
 
   const isEmergencyMode = alertLevel === "emergency" || alertLevel === "critical";
@@ -286,14 +310,32 @@ export default function NervCommandCenter() {
                     />
                   </div>
 
-                  {/* Row 3: Pilot sync data */}
-                  <DataGrid
-                    title="EVANGELION PILOT SYNCHRONIZATION"
-                    columns={pilotColumns}
-                    data={pilotSyncData}
-                    color="cyan"
-                    maxHeight="200px"
-                  />
+                  {/* Row 3: Sync Ratio Waveform */}
+                  <TargetingContainer label="HARMONIC WAVEFORM ANALYSIS" color="cyan">
+                    <SyncRatioChart
+                      height={140}
+                      showGrid
+                      animated
+                    />
+                  </TargetingContainer>
+
+                  {/* Row 4: Pilot sync data (classified) */}
+                  <ClassifiedOverlay
+                    visible={!classifiedUnlocked}
+                    level="CLASSIFIED"
+                    subtitle="PILOT BIOMETRIC DATA — CLEARANCE LEVEL 4"
+                    unlockable
+                    unlockCode="NERV"
+                    onUnlock={() => setClassifiedUnlocked(true)}
+                  >
+                    <DataGrid
+                      title="EVANGELION PILOT SYNCHRONIZATION"
+                      columns={pilotColumns}
+                      data={pilotSyncData}
+                      color="cyan"
+                      maxHeight="200px"
+                    />
+                  </ClassifiedOverlay>
                 </div>
 
                 {/* ═══ RIGHT COLUMN (4 cols) ═══ */}
@@ -343,7 +385,10 @@ export default function NervCommandCenter() {
                         <Button
                           variant="danger"
                           size="sm"
-                          onClick={() => setShowDialog(true)}
+                          onClick={() => {
+                            setShowDialog(true);
+                            triggerMagiVote();
+                          }}
                         >
                           OVERRIDE
                         </Button>
@@ -355,47 +400,45 @@ export default function NervCommandCenter() {
                     </div>
                   </TargetingContainer>
 
-                  {/* MAGI Voting panel */}
+                  {/* MAGI System Panel */}
+                  <MagiSystemPanel
+                    melchior={magiMelchior}
+                    balthasar={magiBalthasar}
+                    casper={magiCasper}
+                  />
+
+                  {/* Countdown Timer */}
                   <div className="border border-eva-mid-gray bg-eva-panel p-4">
                     <h3
                       className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange mb-3"
                       style={{ fontFamily: "var(--font-eva-display)" }}
                     >
-                      MAGI DECISION ENGINE
+                      OPERATION TIMER
                     </h3>
-                    <div className="space-y-2">
-                      {[
-                        { name: "MELCHIOR", vote: "APPROVE", color: "text-eva-green" },
-                        { name: "BALTHASAR", vote: "APPROVE", color: "text-eva-green" },
-                        { name: "CASPER", vote: "PENDING", color: "text-eva-orange" },
-                      ].map((m) => (
-                        <div
-                          key={m.name}
-                          className="flex items-center justify-between py-1.5 px-2 border border-eva-mid-gray/30 bg-eva-black"
-                        >
-                          <span className="text-xs font-mono text-eva-cyan">
-                            {m.name}
-                          </span>
-                          <motion.span
-                            className={`text-xs font-mono font-bold ${m.color}`}
-                            animate={
-                              m.vote === "PENDING"
-                                ? { opacity: [1, 0.4, 1] }
-                                : {}
-                            }
-                            transition={
-                              m.vote === "PENDING"
-                                ? { duration: 1.5, repeat: Infinity }
-                                : {}
-                            }
-                          >
-                            [{m.vote}]
-                          </motion.span>
-                        </div>
+                    <CountdownTimer
+                      duration={300}
+                      label="UNTIL CONTACT"
+                      running
+                    />
+                  </div>
+
+                  {/* SEELE Council */}
+                  <div className="border border-eva-mid-gray bg-eva-panel p-3">
+                    <h3
+                      className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange mb-3"
+                      style={{ fontFamily: "var(--font-eva-display)" }}
+                    >
+                      SEELE COUNCIL
+                    </h3>
+                    <div className="grid grid-cols-3 gap-2">
+                      {["01", "02", "03", "04", "05", "06"].map((n, i) => (
+                        <SeeleMonolith
+                          key={n}
+                          label={n}
+                          isSpeaking={i === 0 || i === 2}
+                          className="min-h-[80px]"
+                        />
                       ))}
-                    </div>
-                    <div className="mt-3 text-[10px] font-mono text-eva-mid-gray text-center">
-                      CONSENSUS: 2/3 — AWAITING CASPER
                     </div>
                   </div>
                 </div>
