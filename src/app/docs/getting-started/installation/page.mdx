@@ -2,27 +2,30 @@ import { Callout } from "@/components/docs";
 
 # Installation
 
-EvaUI is a React component library built with Next.js, Tailwind CSS 4, and Framer Motion. Follow these steps to integrate the NERV design system into your project.
+EvaUI is a React component library inspired by the NERV/MAGI interfaces from Neon Genesis Evangelion. Built with Tailwind CSS, Framer Motion, and fully typed in TypeScript.
 
-## Prerequisites
+## Install the Package
 
-<Callout type="info" title="REQUIREMENTS">
-  EvaUI requires React 19+, Tailwind CSS 4+, and Framer Motion 12+. The components use the `"use client"` directive and are designed for the Next.js App Router.
+```bash
+npm install @mattloyed/eva-ui
+```
+
+<Callout type="info" title="PEER DEPENDENCIES">
+  EvaUI requires **React 18+**, **Framer Motion 11+**, and optionally **Tailwind CSS 3.4+** (or 4+). Install any missing peer dependencies:
 </Callout>
-
-## Install Dependencies
 
 ```bash
 npm install react react-dom framer-motion
-npm install -D tailwindcss @tailwindcss/postcss
+npm install -D tailwindcss
 ```
 
-## Tailwind CSS Configuration
+## Setup — Tailwind CSS 4
 
-EvaUI uses Tailwind CSS 4's `@theme` block for all design tokens. Add the following to your `globals.css`:
+If you use **Tailwind CSS 4**, add the EvaUI CSS theme tokens directly in your stylesheet:
 
 ```css
 @import "tailwindcss";
+@import "@mattloyed/eva-ui/styles.css";
 
 @theme {
   /* Core EVA Colors */
@@ -57,9 +60,24 @@ EvaUI uses Tailwind CSS 4's `@theme` block for all design tokens. Add the follow
 }
 ```
 
+## Setup — Tailwind CSS 3
+
+If you use **Tailwind CSS 3**, use the included preset:
+
+```js
+// tailwind.config.js
+module.exports = {
+  presets: [require("@mattloyed/eva-ui/tailwind.preset")],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@mattloyed/eva-ui/dist/**/*.{js,mjs}",
+  ],
+};
+```
+
 ## Font Loading
 
-Add the Google Fonts link to your `layout.tsx` `<head>`:
+Add the Google Fonts link to your `layout.tsx` or `<head>`:
 
 ```tsx
 <link
@@ -68,7 +86,7 @@ Add the Google Fonts link to your `layout.tsx` `<head>`:
 />
 ```
 
-## Global Styles
+## Global Styles (Optional)
 
 For the full NERV experience, add these global rules to enforce the brutalist aesthetic:
 
@@ -105,15 +123,21 @@ body::after {
 
 ## Basic Usage
 
-Once configured, import components from the library:
+Import components directly from the package:
 
 ```tsx
-import { EmergencyBanner, Button, TerminalDisplay } from "@/components";
+import {
+  EmergencyBanner,
+  Button,
+  TerminalDisplay,
+  DataGrid,
+  EvaGauge,
+} from "@mattloyed/eva-ui";
 
 export default function MyPage() {
   return (
     <div className="bg-eva-black min-h-screen p-8">
-      <EmergencyBanner text="ALERT" severity="warning" />
+      <EmergencyBanner text="ALERT" severity="warning" visible />
       <Button variant="danger" size="lg">
         INITIATE OVERRIDE
       </Button>
@@ -122,6 +146,28 @@ export default function MyPage() {
 }
 ```
 
-<Callout type="warning" title="IMPORTANT">
-  All components use the `"use client"` directive. Make sure your bundler supports React Client Components (Next.js App Router recommended).
+## Available Components
+
+EvaUI ships **24 components** covering layout, data display, forms, overlays, and charts:
+
+| Category | Components |
+|----------|-----------|
+| **Layout** | `TargetingContainer`, `HexGridBackground`, `EvaCard`, `EvaAccordion` |
+| **Data Display** | `TerminalDisplay`, `DataGrid`, `SyncProgressBar`, `SyncRatioChart` |
+| **Charts** | `EvaBarChart`, `EvaGauge`, `EvaPieChart` |
+| **Navigation** | `NavigationTabs`, `EmergencyBanner` |
+| **Forms** | `Button`, `InputField`, `SelectMenu` |
+| **Overlays** | `SystemDialog`, `ClassifiedOverlay`, `EvaTitleScreen`, `EvaToastProvider` |
+| **Special** | `MagiSystemPanel`, `CountdownTimer`, `SeeleMonolith`, `WireframeLoader` |
+
+<Callout type="warning" title="CLIENT COMPONENTS">
+  All components use the `"use client"` directive. They are designed for React Client Components (Next.js App Router, Vite, Create React App, etc.).
 </Callout>
+
+## TypeScript
+
+EvaUI is fully typed. All prop interfaces are exported alongside their components:
+
+```tsx
+import type { ButtonProps, DataGridColumn } from "@mattloyed/eva-ui";
+```

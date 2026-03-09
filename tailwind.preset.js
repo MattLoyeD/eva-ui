@@ -5,16 +5,16 @@
  * Usage (Tailwind v3):
  *   // tailwind.config.js
  *   module.exports = {
- *     presets: [require('neon-genesis-evangelion-ui/tailwind.preset')],
+ *     presets: [require('@mattloyed/eva-ui/tailwind.preset')],
  *     content: [
- *       './node_modules/neon-genesis-evangelion-ui/dist/**/*.{js,mjs}',
+ *       './node_modules/@mattloyed/eva-ui/dist/**/*.{js,mjs}',
  *       // ... your own content paths
  *     ],
  *   }
  *
  * Usage (Tailwind v4):
  *   Import the CSS tokens directly in your main stylesheet:
- *   @import "neon-genesis-evangelion-ui/styles";
+ *   @import "@mattloyed/eva-ui/styles.css";
  */
 
 /** @type {import('tailwindcss').Config} */
