@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <rect width="1280" height="640" fill="#000000"/>
+
+  <!-- Subtle scanline effect -->
+  <defs>
+    <pattern id="scanlines" patternUnits="userSpaceOnUse" width="1280" height="4">
+      <rect width="1280" height="2" fill="transparent"/>
+      <rect y="2" width="1280" height="2" fill="rgba(255,255,255,0.015)"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="640" fill="url(#scanlines)"/>
+
+  <!-- Top label -->
+  <text x="640" y="155" text-anchor="middle" fill="#F5F0E8" font-family="'Oswald', 'Impact', sans-serif" font-size="32" font-weight="400" letter-spacing="0.35em" opacity="0.85">UI COMPONENTS</text>
+
+  <!-- Main title EVA UI -->
+  <text x="640" y="320" text-anchor="middle" fill="#F5F0E8" font-family="'Playfair Display', 'Noto Serif JP', 'Georgia', serif" font-size="180" font-weight="900" letter-spacing="0.04em">EVA UI</text>
+
+  <!-- Repo path -->
+  <text x="640" y="395" text-anchor="middle" fill="#F5F0E8" font-family="'Oswald', 'Impact', sans-serif" font-size="30" font-weight="500" letter-spacing="0.25em" opacity="0.8">MATLOYED/EVA-UI</text>
+
+  <!-- Japanese subtitle -->
+  <text x="640" y="500" text-anchor="middle" fill="#F5F0E8" font-family="'Noto Serif JP', 'Yu Mincho', serif" font-size="52" font-weight="700" letter-spacing="0.05em" opacity="0.9">&#x4E16;&#x754C;&#x306E;&#x4E2D;&#x5FC3;&#x3067;&#x30A2;&#x30A4;&#x3092;&#x53EB;&#x3093;&#x3060;&#x3051;&#x3082;&#x306E;</text>
+</svg>

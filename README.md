@@ -4,21 +4,9 @@
   <img src="https://img.shields.io/badge/A.T._FIELD-DEPLOYED-00FFFF?style=for-the-badge&labelColor=000000" alt="A.T. Field" />
 </p>
 
-```
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║     ███████╗██╗   ██╗ █████╗       ██╗   ██╗██╗                 ║
-║     ██╔════╝██║   ██║██╔══██╗      ██║   ██║██║                 ║
-║     █████╗  ██║   ██║███████║█████╗██║   ██║██║                 ║
-║     ██╔══╝  ╚██╗ ██╔╝██╔══██║╚════╝██║   ██║██║                ║
-║     ███████╗ ╚████╔╝ ██║  ██║      ╚██████╔╝██║                ║
-║     ╚══════╝  ╚═══╝  ╚═╝  ╚═╝       ╚═════╝ ╚═╝                ║
-║                                                                  ║
-║     NEON GENESIS EVANGELION DESIGN SYSTEM                        ║
-║     React component library — NERV/MAGI interface aesthetic      ║
-║                                                                  ║
-╚══════════════════════════════════════════════════════════════════╝
-```
+<p align="center">
+  <img src="docs/banner.svg" alt="EVA UI — Neon Genesis Evangelion Design System" width="100%" />
+</p>
 
 <p align="center">
   <strong>Brutalist. Industrial. Zero border-radius. Maximum impact.</strong><br/>
