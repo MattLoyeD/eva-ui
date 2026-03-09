@@ -1,0 +1,80 @@
+import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+
+# System Dialog
+
+Modal dialog with hex grid background overlay. Severity levels add red borders, blinking warning icons, and hazard stripes. Uses `AnimatePresence` for smooth enter/exit transitions.
+
+```tsx
+import { SystemDialog } from "@/components";
+```
+
+## Severity Levels
+
+<Callout type="warning" title="INTERACTIVE COMPONENT">
+  SystemDialog is a controlled modal that requires `open` state and callback handlers. The previews below show the dialog content styling without the full overlay behavior.
+</Callout>
+
+### Normal
+
+```tsx
+<SystemDialog
+  open={isOpen}
+  title="SYSTEM NOTIFICATION"
+  severity="normal"
+  onAccept={() => setOpen(false)}
+  onDecline={() => setOpen(false)}
+>
+  <p>Routine maintenance scheduled for 0300 hours.</p>
+</SystemDialog>
+```
+
+### Warning
+
+```tsx
+<SystemDialog
+  open={isOpen}
+  title="OVERRIDE REQUEST"
+  severity="warning"
+  acceptText="AUTHORIZE"
+  declineText="ABORT"
+  onAccept={handleOverride}
+  onDecline={handleCancel}
+>
+  <p>MAGI authorization required for Unit-01 activation.</p>
+</SystemDialog>
+```
+
+### Critical
+
+```tsx
+<SystemDialog
+  open={isOpen}
+  title="SELF-DESTRUCT CONFIRMATION"
+  severity="critical"
+  acceptText="CONFIRM"
+  declineText="ABORT"
+  onAccept={handleConfirm}
+  onClose={handleClose}
+  showHazardStripes
+>
+  <p>This action is irreversible. All personnel must evacuate.</p>
+</SystemDialog>
+```
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "open", type: "boolean", required: true, description: "Dialog visibility state" },
+    { name: "title", type: "string", default: '"SYSTEM NOTIFICATION"', description: "Dialog title text" },
+    { name: "children", type: "ReactNode", description: "Dialog body content" },
+    { name: "severity", type: '"normal" | "warning" | "critical"', default: '"normal"', description: "Visual severity level" },
+    { name: "acceptText", type: "string", default: '"ACCEPT"', description: "Accept button label" },
+    { name: "declineText", type: "string", default: '"DECLINE"', description: "Decline button label" },
+    { name: "onAccept", type: "() => void", description: "Accept button callback" },
+    { name: "onDecline", type: "() => void", description: "Decline button callback" },
+    { name: "onClose", type: "() => void", description: "Overlay click callback" },
+    { name: "showHazardStripes", type: "boolean", description: "Force hazard stripe border display" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>

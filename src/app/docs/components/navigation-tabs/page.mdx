@@ -1,0 +1,53 @@
+import { ComponentPreview, PropsTable } from "@/components/docs";
+
+# Navigation Tabs
+
+Military-classified folder tabs with animated indicator bar. Supports horizontal and vertical orientations. Numbered badges and optional icons.
+
+```tsx
+import { NavigationTabs } from "@/components";
+```
+
+## Horizontal
+
+```tsx
+<NavigationTabs
+  tabs={[
+    { id: "ops", label: "OPERATIONS" },
+    { id: "intel", label: "INTELLIGENCE" },
+    { id: "magi", label: "MAGI SYSTEM", icon: "◆" },
+  ]}
+  activeTab="ops"
+  onTabChange={setActiveTab}
+  color="orange"
+/>
+```
+
+## Vertical
+
+```tsx
+<NavigationTabs
+  tabs={[
+    { id: "status", label: "STATUS" },
+    { id: "sync", label: "SYNC DATA" },
+    { id: "comms", label: "COMMUNICATIONS" },
+  ]}
+  activeTab="status"
+  onTabChange={setActiveTab}
+  direction="vertical"
+  color="green"
+/>
+```
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "tabs", type: "NavigationTab[]", required: true, description: "Array of { id, label, icon?, disabled? }" },
+    { name: "activeTab", type: "string", required: true, description: "Currently active tab ID" },
+    { name: "onTabChange", type: "(tabId: string) => void", required: true, description: "Tab change callback" },
+    { name: "direction", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Tab layout direction" },
+    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>

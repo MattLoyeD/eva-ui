@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { EmergencyBanner } from "@/components/EmergencyBanner";
 import { EvaTitleScreen } from "@/components/EvaTitleScreen";
 import { Button } from "@/components/Button";
@@ -401,6 +402,13 @@ export default function NervCommandCenter() {
             EvaUI —{" "}
             <span className="text-eva-orange">DESIGN SYSTEM</span>
           </span>
+          <span className="text-eva-mid-gray/30">|</span>
+          <Link
+            href="/docs"
+            className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider"
+          >
+            DOCUMENTATION &rarr;
+          </Link>
         </div>
         <div className="flex items-center gap-3">
           <span>MAGI: {magiVotes.every((v) => v.status === "idle") ? "STANDBY" : "ACTIVE"}</span>

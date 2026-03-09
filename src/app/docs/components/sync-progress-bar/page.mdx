@@ -1,0 +1,74 @@
+import { SyncProgressBar } from "@/components";
+import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+
+# Sync Progress Bar
+
+Block-based LCD progress bar with dynamic color thresholds. Blocks fill left-to-right with color transitions based on value. Used for pilot synchronization rates and system metrics.
+
+```tsx
+import { SyncProgressBar } from "@/components";
+```
+
+## Basic Usage
+
+<ComponentPreview
+  title="DEFAULT"
+  code={`<SyncProgressBar value={72} label="SYNC RATE" />`}
+>
+  <SyncProgressBar value={72} label="SYNC RATE" />
+</ComponentPreview>
+
+## Color Thresholds
+
+The bar automatically changes color based on the value:
+
+<ComponentPreview
+  title="THRESHOLDS"
+  code={`<div className="space-y-4">
+  <SyncProgressBar value={35} label="CYAN (0-50%)" />
+  <SyncProgressBar value={65} label="GREEN (50-80%)" />
+  <SyncProgressBar value={88} label="ORANGE (80-95%)" />
+  <SyncProgressBar value={97} label="RED + BLINK (95%+)" />
+</div>`}
+>
+  <div className="space-y-4">
+    <SyncProgressBar value={35} label="CYAN (0-50%)" />
+    <SyncProgressBar value={65} label="GREEN (50-80%)" />
+    <SyncProgressBar value={88} label="ORANGE (80-95%)" />
+    <SyncProgressBar value={97} label="RED + BLINK (95%+)" />
+  </div>
+</ComponentPreview>
+
+## Custom Block Count
+
+<ComponentPreview
+  title="BLOCKS"
+  code={`<div className="space-y-4">
+  <SyncProgressBar value={60} label="10 BLOCKS" blocks={10} />
+  <SyncProgressBar value={60} label="20 BLOCKS" blocks={20} />
+  <SyncProgressBar value={60} label="30 BLOCKS" blocks={30} />
+</div>`}
+>
+  <div className="space-y-4">
+    <SyncProgressBar value={60} label="10 BLOCKS" blocks={10} />
+    <SyncProgressBar value={60} label="20 BLOCKS" blocks={20} />
+    <SyncProgressBar value={60} label="30 BLOCKS" blocks={30} />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "value", type: "number", required: true, description: "Progress value (0-100)" },
+    { name: "label", type: "string", description: "Label text displayed above the bar" },
+    { name: "showPercentage", type: "boolean", default: "true", description: "Show percentage readout" },
+    { name: "blocks", type: "number", default: "20", description: "Number of LCD blocks in the bar" },
+    { name: "blockHeight", type: "number", default: "16", description: "Block height in pixels" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>
+
+<Callout type="info" title="COLOR LOGIC">
+  Color thresholds: 0–50% cyan, 50–80% green, 80–95% orange, 95%+ red with blinking animation.
+</Callout>

@@ -1,0 +1,88 @@
+import { MagiSystemPanel } from "@/components";
+import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+
+# MAGI System Panel
+
+Three-column MAGI supercomputer voting panel. Each column represents a MAGI brain (MELCHIOR, BALTHASAR, CASPER) with independent status states.
+
+```tsx
+import { MagiSystemPanel } from "@/components";
+import type { MagiVote } from "@/components";
+```
+
+## Idle State
+
+<ComponentPreview
+  title="IDLE"
+  code={`<MagiSystemPanel
+  votes={[
+    { name: "MELCHIOR 1", status: "idle" },
+    { name: "BALTHASAR 2", status: "idle" },
+    { name: "CASPER 3", status: "idle" },
+  ]}
+/>`}
+>
+  <MagiSystemPanel
+    votes={[
+      { name: "MELCHIOR 1", status: "idle" },
+      { name: "BALTHASAR 2", status: "idle" },
+      { name: "CASPER 3", status: "idle" },
+    ]}
+  />
+</ComponentPreview>
+
+## Voting Result
+
+<ComponentPreview
+  title="CONSENSUS"
+  code={`<MagiSystemPanel
+  votes={[
+    { name: "MELCHIOR 1", status: "accepted" },
+    { name: "BALTHASAR 2", status: "accepted" },
+    { name: "CASPER 3", status: "rejected" },
+  ]}
+/>`}
+>
+  <MagiSystemPanel
+    votes={[
+      { name: "MELCHIOR 1", status: "accepted" },
+      { name: "BALTHASAR 2", status: "accepted" },
+      { name: "CASPER 3", status: "rejected" },
+    ]}
+  />
+</ComponentPreview>
+
+## Computing State
+
+<ComponentPreview
+  title="COMPUTING"
+  code={`<MagiSystemPanel
+  votes={[
+    { name: "MELCHIOR 1", status: "computing" },
+    { name: "BALTHASAR 2", status: "computing" },
+    { name: "CASPER 3", status: "computing" },
+  ]}
+/>`}
+>
+  <MagiSystemPanel
+    votes={[
+      { name: "MELCHIOR 1", status: "computing" },
+      { name: "BALTHASAR 2", status: "computing" },
+      { name: "CASPER 3", status: "computing" },
+    ]}
+  />
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "votes", type: "MagiVote[]", required: true, description: 'Array of { name: string, status: MagiStatus }' },
+    { name: "title", type: "string", default: '"MAGI SUPER COMPUTER SYSTEM"', description: "Panel header title" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>
+
+<Callout type="info" title="MAGI STATUS TYPES">
+  **idle** — Gray, "STANDBY". **computing** — Scrolling hex data with cyan scan bar. **accepted** — Orange fill with "ACCEPTED". **rejected** — Red fill with blinking "REJECTED".
+</Callout>

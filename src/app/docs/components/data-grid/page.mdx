@@ -1,0 +1,106 @@
+import { DataGrid } from "@/components";
+import { ComponentPreview, PropsTable } from "@/components/docs";
+
+# Data Grid
+
+Surveillance-style data table with sticky header, auto-scroll capability, and motion-animated row entry. Pauses auto-scroll on hover.
+
+```tsx
+import { DataGrid } from "@/components";
+```
+
+## Basic Usage
+
+<ComponentPreview
+  title="DEFAULT"
+  code={`<DataGrid
+  columns={[
+    { key: "unit", header: "UNIT", width: "100px" },
+    { key: "pilot", header: "PILOT" },
+    { key: "status", header: "STATUS", align: "center" },
+    { key: "sync", header: "SYNC %", align: "right" },
+  ]}
+  data={[
+    { unit: "EVA-00", pilot: "AYANAMI REI", status: "ACTIVE", sync: "68.2" },
+    { unit: "EVA-01", pilot: "IKARI SHINJI", status: "STANDBY", sync: "41.5" },
+    { unit: "EVA-02", pilot: "SORYU ASUKA", status: "ACTIVE", sync: "92.1" },
+    { unit: "EVA-03", pilot: "SUZUHARA TOJI", status: "OFFLINE", sync: "0.0" },
+  ]}
+  color="green"
+  title="UNIT REGISTRY"
+  maxHeight="300px"
+/>`}
+>
+  <DataGrid
+    columns={[
+      { key: "unit", header: "UNIT", width: "100px" },
+      { key: "pilot", header: "PILOT" },
+      { key: "status", header: "STATUS", align: "center" },
+      { key: "sync", header: "SYNC %", align: "right" },
+    ]}
+    data={[
+      { unit: "EVA-00", pilot: "AYANAMI REI", status: "ACTIVE", sync: "68.2" },
+      { unit: "EVA-01", pilot: "IKARI SHINJI", status: "STANDBY", sync: "41.5" },
+      { unit: "EVA-02", pilot: "SORYU ASUKA", status: "ACTIVE", sync: "92.1" },
+      { unit: "EVA-03", pilot: "SUZUHARA TOJI", status: "OFFLINE", sync: "0.0" },
+    ]}
+    color="green"
+    title="UNIT REGISTRY"
+    maxHeight="300px"
+  />
+</ComponentPreview>
+
+## With Row Index
+
+<ComponentPreview
+  title="INDEXED"
+  code={`<DataGrid
+  columns={[
+    { key: "timestamp", header: "TIMESTAMP", width: "140px" },
+    { key: "event", header: "EVENT" },
+    { key: "level", header: "LEVEL", align: "center" },
+  ]}
+  data={[
+    { timestamp: "14:32:01.221", event: "PATTERN BLUE DETECTED", level: "CRITICAL" },
+    { timestamp: "14:32:01.445", event: "A.T. FIELD ANALYSIS BEGIN", level: "INFO" },
+    { timestamp: "14:32:02.102", event: "MAGI CONSENSUS REQUESTED", level: "INFO" },
+    { timestamp: "14:32:04.887", event: "EVANGELION UNIT-01 LAUNCH", level: "WARNING" },
+  ]}
+  color="cyan"
+  title="EVENT LOG"
+  showIndex
+/>`}
+>
+  <DataGrid
+    columns={[
+      { key: "timestamp", header: "TIMESTAMP", width: "140px" },
+      { key: "event", header: "EVENT" },
+      { key: "level", header: "LEVEL", align: "center" },
+    ]}
+    data={[
+      { timestamp: "14:32:01.221", event: "PATTERN BLUE DETECTED", level: "CRITICAL" },
+      { timestamp: "14:32:01.445", event: "A.T. FIELD ANALYSIS BEGIN", level: "INFO" },
+      { timestamp: "14:32:02.102", event: "MAGI CONSENSUS REQUESTED", level: "INFO" },
+      { timestamp: "14:32:04.887", event: "EVANGELION UNIT-01 LAUNCH", level: "WARNING" },
+    ]}
+    color="cyan"
+    title="EVENT LOG"
+    showIndex
+  />
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "columns", type: "DataGridColumn[]", required: true, description: "Column definitions: { key, header, width?, align? }" },
+    { name: "data", type: "Record<string, string | number>[]", required: true, description: "Row data array" },
+    { name: "color", type: '"orange" | "green" | "cyan"', default: '"green"', description: "Table color theme" },
+    { name: "autoScroll", type: "boolean", default: "false", description: "Enable continuous scroll (pauses on hover)" },
+    { name: "scrollSpeed", type: "number", default: "30", description: "Scroll speed in pixels/second" },
+    { name: "maxHeight", type: "string", default: '"400px"', description: "Container max height" },
+    { name: "title", type: "string", description: "Title bar text" },
+    { name: "showIndex", type: "boolean", default: "false", description: "Show row index column" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>

@@ -1,0 +1,84 @@
+import { SyncRatioChart } from "@/components";
+import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+
+# Sync Ratio Chart
+
+Pure SVG dual sinusoidal waveform chart. Zero external charting dependencies. Uses a precise `generateSineWavePath` function with 100 sample points per wave.
+
+```tsx
+import { SyncRatioChart } from "@/components";
+```
+
+## Basic Usage
+
+<ComponentPreview
+  title="DEFAULT"
+  code={`<div style={{ height: "250px" }}>
+  <SyncRatioChart showGrid animated />
+</div>`}
+>
+  <div style={{ height: "250px" }}>
+    <SyncRatioChart showGrid animated />
+  </div>
+</ComponentPreview>
+
+## Custom Frequencies
+
+<ComponentPreview
+  title="HIGH FREQ"
+  code={`<div style={{ height: "200px" }}>
+  <SyncRatioChart
+    frequencyA={0.08}
+    frequencyB={0.12}
+    amplitudeA={40}
+    amplitudeB={30}
+    showGrid
+    animated
+  />
+</div>`}
+>
+  <div style={{ height: "200px" }}>
+    <SyncRatioChart
+      frequencyA={0.08}
+      frequencyB={0.12}
+      amplitudeA={40}
+      amplitudeB={30}
+      showGrid
+      animated
+    />
+  </div>
+</ComponentPreview>
+
+## Without Grid
+
+<ComponentPreview
+  title="NO GRID"
+  code={`<div style={{ height: "200px" }}>
+  <SyncRatioChart showGrid={false} animated />
+</div>`}
+>
+  <div style={{ height: "200px" }}>
+    <SyncRatioChart showGrid={false} animated />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "frequencyA", type: "number", default: "0.04", description: "Wave A frequency" },
+    { name: "frequencyB", type: "number", default: "0.055", description: "Wave B frequency" },
+    { name: "amplitudeA", type: "number", default: "50", description: "Wave A amplitude in pixels" },
+    { name: "amplitudeB", type: "number", default: "40", description: "Wave B amplitude in pixels" },
+    { name: "phaseA", type: "number", default: "0", description: "Wave A phase offset in radians" },
+    { name: "phaseB", type: "number", default: "1.2", description: "Wave B phase offset in radians" },
+    { name: "showGrid", type: "boolean", default: "true", description: "Show green grid background" },
+    { name: "title", type: "string", description: "Chart title" },
+    { name: "animated", type: "boolean", default: "true", description: "Animate path drawing on mount" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>
+
+<Callout type="info" title="WAVEFORM MATH">
+  Each wave is computed as: `y = centerY + amplitude * Math.sin(x * frequency + phase)` across 100 evenly-spaced sample points. Wave A renders in cyan, Wave B in magenta.
+</Callout>

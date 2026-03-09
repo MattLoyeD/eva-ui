@@ -1,0 +1,98 @@
+import { Button } from "@/components";
+import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+
+# Button
+
+Multi-variant industrial button with corner decorations, loading state animation, and hover color inversion. The backbone of all user interactions in the NERV interface.
+
+```tsx
+import { Button } from "@/components";
+```
+
+## Variants
+
+### Primary
+
+<ComponentPreview
+  title="PRIMARY"
+  code={`<Button variant="primary" size="lg">CONFIRM OPERATION</Button>`}
+>
+  <Button variant="primary" size="lg">CONFIRM OPERATION</Button>
+</ComponentPreview>
+
+### Danger
+
+<ComponentPreview
+  title="DANGER"
+  code={`<Button variant="danger" size="lg">INITIATE OVERRIDE</Button>`}
+>
+  <Button variant="danger" size="lg">INITIATE OVERRIDE</Button>
+</ComponentPreview>
+
+### Ghost
+
+<ComponentPreview
+  title="GHOST"
+  code={`<Button variant="ghost" size="lg">CANCEL</Button>`}
+>
+  <Button variant="ghost" size="lg">CANCEL</Button>
+</ComponentPreview>
+
+### Terminal
+
+<ComponentPreview
+  title="TERMINAL"
+  code={`<Button variant="terminal" size="lg">EXECUTE COMMAND</Button>`}
+>
+  <Button variant="terminal" size="lg">EXECUTE COMMAND</Button>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview
+  title="SIZES"
+  code={`<div className="flex items-center gap-4">
+  <Button size="sm">SMALL</Button>
+  <Button size="md">MEDIUM</Button>
+  <Button size="lg">LARGE</Button>
+</div>`}
+>
+  <div className="flex items-center gap-4">
+    <Button size="sm">SMALL</Button>
+    <Button size="md">MEDIUM</Button>
+    <Button size="lg">LARGE</Button>
+  </div>
+</ComponentPreview>
+
+## Loading State
+
+<ComponentPreview
+  title="LOADING"
+  code={`<Button variant="primary" loading>PROCESSING...</Button>`}
+>
+  <Button variant="primary" loading>PROCESSING...</Button>
+</ComponentPreview>
+
+## Full Width
+
+<ComponentPreview
+  title="FULL WIDTH"
+  code={`<Button variant="danger" fullWidth>SYSTEM OVERRIDE — FULL WIDTH</Button>`}
+>
+  <Button variant="danger" fullWidth>SYSTEM OVERRIDE — FULL WIDTH</Button>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "variant", type: '"primary" | "danger" | "ghost" | "terminal"', default: '"primary"', description: "Visual variant and color scheme" },
+    { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Button size" },
+    { name: "loading", type: "boolean", default: "false", description: "Show animated loading dots" },
+    { name: "fullWidth", type: "boolean", default: "false", description: "Stretch to fill container width" },
+    { name: "disabled", type: "boolean", default: "false", description: "Disabled state with reduced opacity" },
+    { name: "type", type: '"button" | "submit" | "reset"', default: '"button"', description: "HTML button type attribute" },
+    { name: "onClick", type: "MouseEventHandler", description: "Click event handler" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>

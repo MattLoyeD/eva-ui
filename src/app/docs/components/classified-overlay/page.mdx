@@ -1,0 +1,88 @@
+import { ClassifiedOverlay } from "@/components";
+import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+
+# Classified Overlay
+
+TOP SECRET overlay with diagonal red/black hazard stripes. Slides away violently when unlocked to reveal children content beneath. Used to gate sensitive information.
+
+```tsx
+import { ClassifiedOverlay } from "@/components";
+```
+
+## Locked State
+
+<ComponentPreview
+  title="LOCKED"
+  code={`<div className="relative h-48">
+  <ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
+    <div className="p-6 text-eva-green font-mono text-sm">
+      CLASSIFIED DATA — EYES ONLY
+    </div>
+  </ClassifiedOverlay>
+</div>`}
+>
+  <div className="relative h-48">
+    <ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
+      <div className="p-6 text-eva-green font-mono text-sm">
+        CLASSIFIED DATA — EYES ONLY
+      </div>
+    </ClassifiedOverlay>
+  </div>
+</ComponentPreview>
+
+## Unlocked State
+
+<ComponentPreview
+  title="UNLOCKED"
+  code={`<div className="relative h-48">
+  <ClassifiedOverlay text="TOP SECRET" isUnlocked={true}>
+    <div className="p-6 text-eva-green font-mono text-sm">
+      CLASSIFIED DATA — EYES ONLY<br/>
+      CLEARANCE: LEVEL 7<br/>
+      DEAD SEA SCROLLS LOCATION: [REDACTED]
+    </div>
+  </ClassifiedOverlay>
+</div>`}
+>
+  <div className="relative h-48">
+    <ClassifiedOverlay text="TOP SECRET" isUnlocked={true}>
+      <div className="p-6 text-eva-green font-mono text-sm">
+        CLASSIFIED DATA — EYES ONLY<br/>
+        CLEARANCE: LEVEL 7<br/>
+        DEAD SEA SCROLLS LOCATION: [REDACTED]
+      </div>
+    </ClassifiedOverlay>
+  </div>
+</ComponentPreview>
+
+## Custom Text
+
+<ComponentPreview
+  title="CUSTOM"
+  code={`<div className="relative h-48">
+  <ClassifiedOverlay text="CLASSIFIED" isUnlocked={false}>
+    <div className="p-6">Hidden content</div>
+  </ClassifiedOverlay>
+</div>`}
+>
+  <div className="relative h-48">
+    <ClassifiedOverlay text="CLASSIFIED" isUnlocked={false}>
+      <div className="p-6">Hidden content</div>
+    </ClassifiedOverlay>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "text", type: "string", default: '"CLASSIFIED"', description: "Overlay text displayed in red" },
+    { name: "isUnlocked", type: "boolean", default: "false", description: "When true, overlay slides away to reveal children" },
+    { name: "children", type: "ReactNode", description: "Content revealed when unlocked" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>
+
+<Callout type="info" title="EXIT ANIMATION">
+  When unlocked, the overlay slides upward with `y: "-100%"` over 0.2 seconds using `easeIn` easing — a violent, satisfying reveal.
+</Callout>

@@ -1,0 +1,63 @@
+import { TargetingContainer, Button } from "@/components";
+import { ComponentPreview, PropsTable } from "@/components/docs";
+
+# Targeting Container
+
+Wrapper component with corner L-brackets and optional crosshair grid background. Gives any content a targeting reticle aesthetic.
+
+```tsx
+import { TargetingContainer } from "@/components";
+```
+
+## Basic Usage
+
+<ComponentPreview
+  title="DEFAULT"
+  code={`<TargetingContainer label="TARGET-A" color="orange">
+  <div className="p-8 text-center text-eva-orange font-mono text-sm">
+    CONTENT AREA — LOCKED ON TARGET
+  </div>
+</TargetingContainer>`}
+>
+  <TargetingContainer label="TARGET-A" color="orange">
+    <div className="p-8 text-center text-eva-orange font-mono text-sm">
+      CONTENT AREA — LOCKED ON TARGET
+    </div>
+  </TargetingContainer>
+</ComponentPreview>
+
+## Color Variants
+
+<ComponentPreview
+  title="COLORS"
+  code={`<div className="grid grid-cols-2 gap-4">
+  <TargetingContainer label="GREEN" color="green">
+    <div className="p-6 text-center text-eva-green font-mono text-xs">NOMINAL</div>
+  </TargetingContainer>
+  <TargetingContainer label="RED" color="red">
+    <div className="p-6 text-center text-eva-red font-mono text-xs">ALERT</div>
+  </TargetingContainer>
+</div>`}
+>
+  <div className="grid grid-cols-2 gap-4">
+    <TargetingContainer label="GREEN" color="green">
+      <div className="p-6 text-center text-eva-green font-mono text-xs">NOMINAL</div>
+    </TargetingContainer>
+    <TargetingContainer label="RED" color="red">
+      <div className="p-6 text-center text-eva-red font-mono text-xs">ALERT</div>
+    </TargetingContainer>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "children", type: "ReactNode", required: true, description: "Content to wrap" },
+    { name: "label", type: "string", description: "Label text above the container" },
+    { name: "showCrosshairs", type: "boolean", default: "true", description: "Show center crosshair lines" },
+    { name: "color", type: '"orange" | "green" | "cyan" | "red"', default: '"orange"', description: "Bracket and crosshair color" },
+    { name: "bracketSize", type: "number", default: "24", description: "Corner bracket size in pixels" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>

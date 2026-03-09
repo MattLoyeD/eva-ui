@@ -1,0 +1,55 @@
+import { SeeleMonolith } from "@/components";
+import { ComponentPreview, PropsTable } from "@/components/docs";
+
+# Seele Monolith
+
+SOUND ONLY monolith block representing a SEELE committee member. Shows animated equalizer bars when speaking. Dark, imposing, and mysterious.
+
+```tsx
+import { SeeleMonolith } from "@/components";
+```
+
+## Silent
+
+<ComponentPreview
+  title="SILENT"
+  code={`<SeeleMonolith id="01" isSpeaking={false} className="min-h-[140px]" />`}
+>
+  <SeeleMonolith id="01" isSpeaking={false} className="min-h-[140px]" />
+</ComponentPreview>
+
+## Speaking
+
+<ComponentPreview
+  title="SPEAKING"
+  code={`<SeeleMonolith id="02" isSpeaking className="min-h-[140px]" />`}
+>
+  <SeeleMonolith id="02" isSpeaking className="min-h-[140px]" />
+</ComponentPreview>
+
+## Multiple Monoliths
+
+<ComponentPreview
+  title="COUNCIL"
+  code={`<div className="grid grid-cols-3 gap-3">
+  <SeeleMonolith id="01" isSpeaking className="min-h-[120px]" />
+  <SeeleMonolith id="02" isSpeaking={false} className="min-h-[120px]" />
+  <SeeleMonolith id="03" isSpeaking className="min-h-[120px]" />
+</div>`}
+>
+  <div className="grid grid-cols-3 gap-3">
+    <SeeleMonolith id="01" isSpeaking className="min-h-[120px]" />
+    <SeeleMonolith id="02" isSpeaking={false} className="min-h-[120px]" />
+    <SeeleMonolith id="03" isSpeaking className="min-h-[120px]" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "id", type: "string", required: true, description: 'Monolith identifier displayed as "SEELE {id}"' },
+    { name: "isSpeaking", type: "boolean", default: "false", description: "Show animated equalizer bars" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>

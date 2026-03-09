@@ -1,0 +1,68 @@
+import { SelectMenu } from "@/components";
+import { ComponentPreview, PropsTable } from "@/components/docs";
+
+# Select Menu
+
+Styled dropdown with angle brackets `< >` on focus. Custom arrow indicator. Extends standard HTML select attributes.
+
+```tsx
+import { SelectMenu } from "@/components";
+```
+
+## Basic Usage
+
+<ComponentPreview
+  title="DEFAULT"
+  code={`<SelectMenu
+  label="PRIORITY LEVEL"
+  options={[
+    { value: "alpha", label: "ALPHA" },
+    { value: "beta", label: "BETA" },
+    { value: "gamma", label: "GAMMA" },
+    { value: "omega", label: "OMEGA" },
+  ]}
+  color="orange"
+/>`}
+>
+  <SelectMenu
+    label="PRIORITY LEVEL"
+    options={[
+      { value: "alpha", label: "ALPHA" },
+      { value: "beta", label: "BETA" },
+      { value: "gamma", label: "GAMMA" },
+      { value: "omega", label: "OMEGA" },
+    ]}
+    color="orange"
+  />
+</ComponentPreview>
+
+## Color Variants
+
+<ComponentPreview
+  title="COLORS"
+  code={`<div className="space-y-4">
+  <SelectMenu label="ORANGE" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="orange" />
+  <SelectMenu label="GREEN" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="green" />
+  <SelectMenu label="CYAN" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="cyan" />
+</div>`}
+>
+  <div className="space-y-4">
+    <SelectMenu label="ORANGE" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="orange" />
+    <SelectMenu label="GREEN" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="green" />
+    <SelectMenu label="CYAN" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="cyan" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    { name: "options", type: "SelectMenuOption[]", required: true, description: "Array of { value, label, disabled? }" },
+    { name: "label", type: "string", description: "Label text" },
+    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme" },
+    { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Select size" },
+    { name: "placeholder", type: "string", default: '"SELECT..."', description: "Default placeholder text" },
+    { name: "error", type: "string", description: "Error message" },
+    { name: "wrapperClassName", type: "string", default: '""', description: "Wrapper element CSS classes" },
+  ]}
+/>
