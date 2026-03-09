@@ -36,10 +36,10 @@ export type { NavigationTabsProps, NavigationTab } from "./NavigationTabs";
 
 // Phase 2 — Advanced Components
 export { EvaTitleScreen } from "./EvaTitleScreen";
-export type { EvaTitleScreenProps, TitleFragment } from "./EvaTitleScreen";
+export type { EvaTitleScreenProps } from "./EvaTitleScreen";
 
 export { MagiSystemPanel } from "./MagiSystemPanel";
-export type { MagiSystemPanelProps, MagiStatus } from "./MagiSystemPanel";
+export type { MagiSystemPanelProps, MagiVote, MagiStatus } from "./MagiSystemPanel";
 
 export { SyncRatioChart } from "./SyncRatioChart";
 export type { SyncRatioChartProps } from "./SyncRatioChart";

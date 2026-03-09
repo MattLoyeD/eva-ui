@@ -1,137 +1,168 @@
 "use client";
 
-import { type ReactNode } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-export interface TitleFragment {
-  text: string;
-  /** Font size class override (e.g. "text-7xl", "text-2xl") */
-  size?: string;
-  /** Color override */
-  color?: string;
-  /** Whether this fragment starts on a new line */
-  break?: boolean;
-  /** Language hint for styling — "jp" uses serif title font */
-  lang?: "en" | "jp";
-}
+import { motion } from "framer-motion";
 
 export interface EvaTitleScreenProps {
-  /** Title fragments with mixed sizes and styles */
-  fragments: TitleFragment[];
-  /** Whether the title is visible */
-  visible?: boolean;
-  /** Subtitle text below the main title */
+  /** Main title text (e.g. "EPISODE:01") */
+  title: string;
+  /** Optional secondary text (e.g. "ANGEL ATTACK") */
   subtitle?: string;
-  /** Episode number or classification */
-  episodeNumber?: string;
-  /** Alignment of the text block */
-  align?: "left" | "center" | "right";
-  /** Full-screen mode */
-  fullScreen?: boolean;
-  /** Optional children rendered below */
-  children?: ReactNode;
+  /** Text layout mode */
+  align?: "center" | "split" | "random";
   /** Optional className */
   className?: string;
 }
 
 export function EvaTitleScreen({
-  fragments,
-  visible = true,
+  title,
   subtitle,
-  episodeNumber,
   align = "center",
-  fullScreen = true,
-  children,
   className = "",
 }: EvaTitleScreenProps) {
-  const alignClass =
-    align === "left"
-      ? "text-left items-start"
-      : align === "right"
-        ? "text-right items-end"
-        : "text-center items-center";
+  // "random" mode: generate deterministic offsets from title characters
+  const randomOffsets = title.split("").map((ch, i) => ({
+    x: ((ch.charCodeAt(0) * 7 + i * 31) % 60) - 30,
+    y: ((ch.charCodeAt(0) * 13 + i * 17) % 40) - 20,
+  }));
 
-  return (
-    <AnimatePresence>
-      {visible && (
+  // ─── SPLIT layout ───
+  if (align === "split") {
+    return (
+      <div
+        className={`relative w-full min-h-screen bg-bg-base flex flex-col justify-between overflow-hidden select-none ${className}`}
+      >
+        {/* Title — top left */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          className={`
-            ${fullScreen ? "fixed inset-0 z-50" : "relative w-full"}
-            bg-eva-black flex flex-col justify-center ${alignClass}
-            px-12 py-16 ${className}
-          `}
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="p-8 md:p-16"
         >
-          {/* Episode number */}
-          {episodeNumber && (
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="mb-6"
-            >
-              <span
-                className="text-sm tracking-[0.4em] uppercase text-eva-mid-gray"
-                style={{ fontFamily: "var(--font-eva-display)" }}
-              >
-                {episodeNumber}
-              </span>
-            </motion.div>
-          )}
+          <h1
+            className="text-white text-6xl sm:text-8xl md:text-[10rem] lg:text-[14rem] font-black uppercase"
+            style={{
+              fontFamily: "var(--font-eva-title)",
+              lineHeight: "0.85",
+              letterSpacing: "-0.04em",
+            }}
+          >
+            {title}
+          </h1>
+        </motion.div>
 
-          {/* Main title fragments */}
-          <div className={`flex flex-wrap gap-x-4 gap-y-1 ${alignClass} max-w-5xl`}>
-            {fragments.map((frag, i) => (
+        {/* Subtitle — bottom right */}
+        {subtitle && (
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+            className="self-end p-8 md:p-16"
+          >
+            <h2
+              className="text-white text-5xl sm:text-7xl md:text-[8rem] lg:text-[12rem] font-black uppercase text-right"
+              style={{
+                fontFamily: "var(--font-eva-title)",
+                lineHeight: "0.85",
+                letterSpacing: "-0.04em",
+              }}
+            >
+              {subtitle}
+            </h2>
+          </motion.div>
+        )}
+      </div>
+    );
+  }
+
+  // ─── RANDOM layout ───
+  if (align === "random") {
+    return (
+      <div
+        className={`relative w-full min-h-screen bg-bg-base flex items-center justify-center overflow-hidden select-none ${className}`}
+      >
+        <div className="relative">
+          {/* Title characters scattered */}
+          <div className="flex flex-wrap justify-center">
+            {title.split("").map((char, i) => (
               <motion.span
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + i * 0.15, duration: 0.4 }}
-                className={`
-                  ${frag.break ? "basis-full" : ""}
-                  ${frag.size || "text-6xl md:text-8xl"}
-                  ${frag.color || "text-white"}
-                  font-black uppercase leading-[0.9] tracking-tight select-none
-                `}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  x: randomOffsets[i].x,
+                  y: randomOffsets[i].y,
+                }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="text-white text-6xl sm:text-8xl md:text-[10rem] font-black uppercase inline-block"
                 style={{
-                  fontFamily:
-                    frag.lang === "jp"
-                      ? "var(--font-eva-title)"
-                      : "var(--font-eva-title)",
+                  fontFamily: "var(--font-eva-title)",
+                  lineHeight: "0.85",
+                  letterSpacing: "-0.04em",
                 }}
               >
-                {frag.text}
+                {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
           </div>
 
-          {/* Subtitle */}
+          {/* Subtitle below */}
           {subtitle && (
-            <motion.p
+            <motion.h2
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-              className="mt-6 text-lg tracking-[0.3em] uppercase text-eva-mid-gray"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              animate={{ opacity: 0.7 }}
+              transition={{ delay: title.length * 0.05 + 0.3, duration: 0.5 }}
+              className="text-white text-2xl md:text-5xl font-black uppercase text-center mt-8"
+              style={{
+                fontFamily: "var(--font-eva-title)",
+                lineHeight: "0.85",
+                letterSpacing: "-0.02em",
+              }}
             >
               {subtitle}
-            </motion.p>
+            </motion.h2>
           )}
+        </div>
+      </div>
+    );
+  }
 
-          {/* Decorative line */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
-            className="mt-8 h-px w-64 bg-eva-mid-gray origin-left"
-          />
+  // ─── CENTER layout (default) ───
+  return (
+    <div
+      className={`relative w-full min-h-screen bg-bg-base flex flex-col items-center justify-center overflow-hidden select-none ${className}`}
+    >
+      {/* Title */}
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="text-white text-6xl sm:text-8xl md:text-[10rem] lg:text-[14rem] font-black uppercase text-center px-4"
+        style={{
+          fontFamily: "var(--font-eva-title)",
+          lineHeight: "0.85",
+          letterSpacing: "-0.04em",
+        }}
+      >
+        {title}
+      </motion.h1>
 
-          {children}
-        </motion.div>
+      {/* Subtitle */}
+      {subtitle && (
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.7 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="text-white text-3xl md:text-6xl lg:text-8xl font-black uppercase text-center mt-2 px-4"
+          style={{
+            fontFamily: "var(--font-eva-title)",
+            lineHeight: "0.85",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          {subtitle}
+        </motion.h2>
       )}
-    </AnimatePresence>
+    </div>
   );
 }

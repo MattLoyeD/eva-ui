@@ -1,77 +1,104 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export interface SyncRatioChartProps {
-  /** Width of the SVG */
-  width?: number;
-  /** Height of the SVG */
-  height?: number;
-  /** Frequency of wave A (blue) */
+  /** Frequency of wave A (data-blue/cyan) */
   frequencyA?: number;
-  /** Frequency of wave B (magenta) */
+  /** Frequency of wave B (magenta-wave) */
   frequencyB?: number;
-  /** Amplitude of wave A (0-1) */
+  /** Amplitude of wave A in pixels */
   amplitudeA?: number;
-  /** Amplitude of wave B (0-1) */
+  /** Amplitude of wave B in pixels */
   amplitudeB?: number;
+  /** Phase offset of wave A in radians */
+  phaseA?: number;
   /** Phase offset of wave B in radians */
   phaseB?: number;
   /** Show grid background */
   showGrid?: boolean;
   /** Title label */
   title?: string;
-  /** Animate the waves */
+  /** Animate the wave paths drawing in */
   animated?: boolean;
   /** Optional className */
   className?: string;
 }
 
-function generateWavePath(
+/**
+ * Generates an SVG path string for a sine wave.
+ * Uses 100 sample points for smooth rendering.
+ */
+const generateSineWavePath = (
   width: number,
   height: number,
-  frequency: number,
-  amplitude: number,
   phase: number,
-  points: number = 200
-): string {
-  const midY = height / 2;
-  const amp = (height / 2) * amplitude * 0.8;
-  const parts: string[] = [];
+  amplitude: number,
+  frequency: number
+): string => {
+  let path = "";
+  const points = 100;
+  const step = width / points;
+  const centerY = height / 2;
 
   for (let i = 0; i <= points; i++) {
-    const x = (i / points) * width;
-    const y = midY + Math.sin((i / points) * Math.PI * 2 * frequency + phase) * amp;
-    parts.push(`${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`);
+    const x = i * step;
+    const y = centerY + amplitude * Math.sin(x * frequency + phase);
+
+    if (i === 0) {
+      path += `M ${x},${y}`;
+    } else {
+      path += ` L ${x},${y}`;
+    }
   }
 
-  return parts.join(" ");
-}
+  return path;
+};
 
 export function SyncRatioChart({
-  width = 600,
-  height = 200,
-  frequencyA = 3,
-  frequencyB = 3.5,
-  amplitudeA = 0.6,
-  amplitudeB = 0.5,
+  frequencyA = 0.04,
+  frequencyB = 0.055,
+  amplitudeA = 50,
+  amplitudeB = 40,
+  phaseA = 0,
   phaseB = 1.2,
   showGrid = true,
   title,
   animated = true,
   className = "",
 }: SyncRatioChartProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 600, height: 200 });
+
+  // Observe container size so SVG fills 100%
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        if (width > 0 && height > 0) {
+          setDimensions({ width, height });
+        }
+      }
+    });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const { width, height } = dimensions;
+
   // Generate grid lines
   const gridLines = useMemo(() => {
     const lines: { x1: number; y1: number; x2: number; y2: number }[] = [];
     const gridSpacing = 20;
 
-    // Vertical lines
     for (let x = 0; x <= width; x += gridSpacing) {
       lines.push({ x1: x, y1: 0, x2: x, y2: height });
     }
-    // Horizontal lines
     for (let y = 0; y <= height; y += gridSpacing) {
       lines.push({ x1: 0, y1: y, x2: width, y2: y });
     }
@@ -79,22 +106,21 @@ export function SyncRatioChart({
     return lines;
   }, [width, height]);
 
-  // Wave paths
+  // Wave paths using the exact generateSineWavePath function
   const pathA = useMemo(
-    () => generateWavePath(width, height, frequencyA, amplitudeA, 0),
-    [width, height, frequencyA, amplitudeA]
+    () => generateSineWavePath(width, height, phaseA, amplitudeA, frequencyA),
+    [width, height, phaseA, amplitudeA, frequencyA]
   );
 
   const pathB = useMemo(
-    () => generateWavePath(width, height, frequencyB, amplitudeB, phaseB),
-    [width, height, frequencyB, amplitudeB, phaseB]
+    () => generateSineWavePath(width, height, phaseB, amplitudeB, frequencyB),
+    [width, height, phaseB, amplitudeB, frequencyB]
   );
 
-  // Center axis
-  const midY = height / 2;
+  const centerY = height / 2;
 
   return (
-    <div className={`bg-eva-black border border-eva-mid-gray ${className}`}>
+    <div className={`bg-eva-black border border-eva-mid-gray flex flex-col ${className}`}>
       {/* Title bar */}
       {title && (
         <div className="flex items-center justify-between px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
@@ -117,15 +143,16 @@ export function SyncRatioChart({
         </div>
       )}
 
-      {/* Chart */}
-      <div className="p-2">
+      {/* Chart — fills container */}
+      <div ref={containerRef} className="flex-1 min-h-[120px]">
         <svg
           viewBox={`0 0 ${width} ${height}`}
           width="100%"
-          height={height}
-          className="overflow-visible"
+          height="100%"
+          preserveAspectRatio="none"
+          className="block"
         >
-          {/* Grid */}
+          {/* Grid (grid-green) */}
           {showGrid &&
             gridLines.map((line, i) => (
               <line
@@ -140,18 +167,18 @@ export function SyncRatioChart({
               />
             ))}
 
-          {/* Center axis (heavier) */}
+          {/* Center axis (heavier grid-green line) */}
           <line
             x1={0}
-            y1={midY}
+            y1={centerY}
             x2={width}
-            y2={midY}
+            y2={centerY}
             stroke="#00FF00"
             strokeWidth="0.6"
             opacity="0.25"
           />
 
-          {/* Wave A (cyan/blue) */}
+          {/* Wave A — data-blue (cyan) */}
           <motion.path
             d={pathA}
             fill="none"
@@ -166,7 +193,7 @@ export function SyncRatioChart({
             }}
           />
 
-          {/* Wave B (magenta) */}
+          {/* Wave B — magenta-wave */}
           <motion.path
             d={pathB}
             fill="none"
@@ -184,13 +211,13 @@ export function SyncRatioChart({
           />
 
           {/* Axis labels */}
-          <text x="4" y="12" fontSize="8" fill="#333" fontFamily="var(--font-eva-mono)">
+          <text x="4" y="12" fontSize="8" fill="#333333" fontFamily="var(--font-eva-mono)">
             +1.0
           </text>
-          <text x="4" y={midY + 3} fontSize="8" fill="#333" fontFamily="var(--font-eva-mono)">
+          <text x="4" y={centerY + 3} fontSize="8" fill="#333333" fontFamily="var(--font-eva-mono)">
             0.0
           </text>
-          <text x="4" y={height - 4} fontSize="8" fill="#333" fontFamily="var(--font-eva-mono)">
+          <text x="4" y={height - 4} fontSize="8" fill="#333333" fontFamily="var(--font-eva-mono)">
             -1.0
           </text>
         </svg>
@@ -199,10 +226,10 @@ export function SyncRatioChart({
       {/* Footer */}
       <div className="flex items-center justify-between px-3 py-1 border-t border-eva-mid-gray bg-eva-dark-gray text-[10px] font-mono text-eva-mid-gray">
         <span>
-          FREQ: {frequencyA.toFixed(1)}Hz / {frequencyB.toFixed(1)}Hz
+          FREQ: {frequencyA.toFixed(3)}Hz / {frequencyB.toFixed(3)}Hz
         </span>
         <span>
-          AMP: {(amplitudeA * 100).toFixed(0)}% / {(amplitudeB * 100).toFixed(0)}%
+          AMP: {amplitudeA.toFixed(0)}px / {amplitudeB.toFixed(0)}px
         </span>
       </div>
     </div>

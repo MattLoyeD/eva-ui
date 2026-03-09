@@ -14,6 +14,7 @@ import { DataGrid } from "@/components/DataGrid";
 import { SystemDialog } from "@/components/SystemDialog";
 import { NavigationTabs } from "@/components/NavigationTabs";
 import { MagiSystemPanel } from "@/components/MagiSystemPanel";
+import type { MagiVote } from "@/components/MagiSystemPanel";
 import { SyncRatioChart } from "@/components/SyncRatioChart";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { SeeleMonolith } from "@/components/SeeleMonolith";
@@ -64,9 +65,11 @@ export default function NervCommandCenter() {
   const [atFieldStrength, setAtFieldStrength] = useState(78);
   const [syncRate, setSyncRate] = useState(55.2);
   const [lcl, setLcl] = useState(23);
-  const [magiMelchior, setMagiMelchior] = useState<"idle" | "computing" | "accepted" | "rejected">("idle");
-  const [magiBalthasar, setMagiBalthasar] = useState<"idle" | "computing" | "accepted" | "rejected">("idle");
-  const [magiCasper, setMagiCasper] = useState<"idle" | "computing" | "accepted" | "rejected">("idle");
+  const [magiVotes, setMagiVotes] = useState<MagiVote[]>([
+    { name: "MELCHIOR 1", status: "idle" },
+    { name: "BALTHASAR 2", status: "idle" },
+    { name: "CASPER 3", status: "idle" },
+  ]);
   const [classifiedUnlocked, setClassifiedUnlocked] = useState(false);
 
   // Live clock
@@ -104,16 +107,19 @@ export default function NervCommandCenter() {
 
   // MAGI voting simulation
   const triggerMagiVote = useCallback(() => {
-    setMagiMelchior("computing");
-    setMagiBalthasar("computing");
-    setMagiCasper("computing");
-    setTimeout(() => setMagiMelchior("accepted"), 1500);
-    setTimeout(() => setMagiBalthasar("accepted"), 2800);
-    setTimeout(() => setMagiCasper("rejected"), 3500);
+    const update = (idx: number, status: "idle" | "computing" | "accepted" | "rejected") =>
+      setMagiVotes((prev) => prev.map((v, i) => (i === idx ? { ...v, status } : v)));
+
+    update(0, "computing");
+    update(1, "computing");
+    update(2, "computing");
+    setTimeout(() => update(0, "accepted"), 1500);
+    setTimeout(() => update(1, "accepted"), 2800);
+    setTimeout(() => update(2, "rejected"), 3500);
     setTimeout(() => {
-      setMagiMelchior("idle");
-      setMagiBalthasar("idle");
-      setMagiCasper("idle");
+      update(0, "idle");
+      update(1, "idle");
+      update(2, "idle");
     }, 7000);
   }, []);
 
@@ -313,7 +319,6 @@ export default function NervCommandCenter() {
                   {/* Row 3: Sync Ratio Waveform */}
                   <TargetingContainer label="HARMONIC WAVEFORM ANALYSIS" color="cyan">
                     <SyncRatioChart
-                      height={140}
                       showGrid
                       animated
                     />
@@ -321,12 +326,8 @@ export default function NervCommandCenter() {
 
                   {/* Row 4: Pilot sync data (classified) */}
                   <ClassifiedOverlay
-                    visible={!classifiedUnlocked}
-                    level="CLASSIFIED"
-                    subtitle="PILOT BIOMETRIC DATA — CLEARANCE LEVEL 4"
-                    unlockable
-                    unlockCode="NERV"
-                    onUnlock={() => setClassifiedUnlocked(true)}
+                    text="CLASSIFIED"
+                    isUnlocked={classifiedUnlocked}
                   >
                     <DataGrid
                       title="EVANGELION PILOT SYNCHRONIZATION"
@@ -394,33 +395,22 @@ export default function NervCommandCenter() {
                         </Button>
                       </div>
 
-                      <Button variant="ghost" size="sm" fullWidth>
-                        RESET TO STANDARD
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        fullWidth
+                        onClick={() => setClassifiedUnlocked((v) => !v)}
+                      >
+                        {classifiedUnlocked ? "LOCK PILOT DATA" : "UNLOCK PILOT DATA"}
                       </Button>
                     </div>
                   </TargetingContainer>
 
                   {/* MAGI System Panel */}
-                  <MagiSystemPanel
-                    melchior={magiMelchior}
-                    balthasar={magiBalthasar}
-                    casper={magiCasper}
-                  />
+                  <MagiSystemPanel votes={magiVotes} />
 
                   {/* Countdown Timer */}
-                  <div className="border border-eva-mid-gray bg-eva-panel p-4">
-                    <h3
-                      className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange mb-3"
-                      style={{ fontFamily: "var(--font-eva-display)" }}
-                    >
-                      OPERATION TIMER
-                    </h3>
-                    <CountdownTimer
-                      duration={300}
-                      label="UNTIL CONTACT"
-                      running
-                    />
-                  </div>
+                  <CountdownTimer initialSeconds={300} />
 
                   {/* SEELE Council */}
                   <div className="border border-eva-mid-gray bg-eva-panel p-3">
@@ -434,7 +424,7 @@ export default function NervCommandCenter() {
                       {["01", "02", "03", "04", "05", "06"].map((n, i) => (
                         <SeeleMonolith
                           key={n}
-                          label={n}
+                          id={n}
                           isSpeaking={i === 0 || i === 2}
                           className="min-h-[80px]"
                         />

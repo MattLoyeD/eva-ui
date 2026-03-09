@@ -1,109 +1,105 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 export interface CountdownTimerProps {
-  /** Total duration in seconds */
-  duration: number;
-  /** Whether the timer is running */
-  running?: boolean;
-  /** Called when timer reaches zero */
-  onComplete?: () => void;
-  /** Label text */
-  label?: string;
-  /** Show the INTERNAL BATTERY label */
-  showBatteryLabel?: boolean;
+  /** Duration in seconds (e.g. 300 for 5 minutes) */
+  initialSeconds: number;
+  /** Callback when the timer reaches 0 */
+  onExpire?: () => void;
   /** Optional className */
   className?: string;
 }
 
+/** Format milliseconds into MM:SS:ms display */
 function formatTime(totalMs: number): string {
-  const totalSeconds = Math.max(0, totalMs / 1000);
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = Math.floor(totalSeconds % 60);
-  const ms = Math.floor((totalMs % 1000) / 10);
+  const clamped = Math.max(0, totalMs);
+  const minutes = Math.floor(clamped / 60000);
+  const seconds = Math.floor((clamped % 60000) / 1000);
+  const ms = Math.floor((clamped % 1000) / 10);
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:${String(ms).padStart(2, "0")}`;
 }
 
+/** Color class by remaining time */
 function getTimerColor(remainingMs: number): string {
   if (remainingMs <= 10000) return "text-eva-red";
-  if (remainingMs <= 60000) return "text-eva-red";
+  if (remainingMs <= 60000) return "text-eva-orange";
   return "text-eva-lcd-green";
 }
 
 export function CountdownTimer({
-  duration,
-  running = true,
-  onComplete,
-  label = "INTERNAL BATTERY",
-  showBatteryLabel = true,
+  initialSeconds,
+  onExpire,
   className = "",
 }: CountdownTimerProps) {
-  const totalMs = duration * 1000;
+  const totalMs = initialSeconds * 1000;
   const [remaining, setRemaining] = useState(totalMs);
-  const onCompleteRef = useRef(onComplete);
-  onCompleteRef.current = onComplete;
-
-  const tick = useCallback(() => {
-    setRemaining((prev) => {
-      const next = prev - 50;
-      if (next <= 0) {
-        onCompleteRef.current?.();
-        return 0;
-      }
-      return next;
-    });
-  }, []);
+  const onExpireRef = useRef(onExpire);
+  onExpireRef.current = onExpire;
+  const firedRef = useRef(false);
 
   useEffect(() => {
-    if (!running || remaining <= 0) return;
-    const interval = setInterval(tick, 50);
+    if (remaining <= 0) return;
+
+    const interval = setInterval(() => {
+      setRemaining((prev) => {
+        const next = prev - 50;
+        if (next <= 0) {
+          if (!firedRef.current) {
+            firedRef.current = true;
+            onExpireRef.current?.();
+          }
+          return 0;
+        }
+        return next;
+      });
+    }, 50);
+
     return () => clearInterval(interval);
-  }, [running, remaining, tick]);
+  }, [remaining]);
 
-  // Reset when duration changes
+  // Reset when initialSeconds changes
   useEffect(() => {
-    setRemaining(duration * 1000);
-  }, [duration]);
+    setRemaining(initialSeconds * 1000);
+    firedRef.current = false;
+  }, [initialSeconds]);
 
   const color = getTimerColor(remaining);
-  const isUrgent = remaining <= 10000;
-  const isCritical = remaining <= 60000;
-  const percentage = (remaining / totalMs) * 100;
+  const isUrgent = remaining <= 10000 && remaining > 0;
+  const isCritical = remaining <= 60000 && remaining > 10000;
+  const percentage = totalMs > 0 ? (remaining / totalMs) * 100 : 0;
 
   return (
     <div className={`bg-eva-black border border-eva-mid-gray ${className}`}>
-      {/* Header */}
-      {showBatteryLabel && (
-        <div className="flex items-center justify-between px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
-          <span
-            className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-            style={{ fontFamily: "var(--font-eva-display)" }}
-          >
-            {label}
-          </span>
-          <span className={`text-[10px] font-mono ${color}`}>
-            {percentage.toFixed(1)}%
-          </span>
-        </div>
-      )}
+      {/* Header — INTERNAL BATTERY */}
+      <div className="flex items-center justify-between px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
+        <span
+          className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
+          style={{ fontFamily: "var(--font-eva-display)" }}
+        >
+          INTERNAL BATTERY
+        </span>
+        <span className={`text-[10px] font-mono ${color}`}>
+          {percentage.toFixed(1)}%
+        </span>
+      </div>
 
-      {/* Timer display */}
+      {/* Timer display — MM:SS:ms */}
       <div className="flex items-center justify-center py-6 px-4">
         <motion.div
           className={`text-5xl md:text-6xl font-bold tabular-nums ${color}`}
           style={{ fontFamily: "var(--font-eva-mono)" }}
           animate={
             isUrgent
-              ? { opacity: [1, 0, 1] }
+              ? { opacity: [1, 0.2, 1] }
               : isCritical
                 ? { opacity: [1, 0.6, 1] }
                 : {}
           }
           transition={
             isUrgent
-              ? { duration: 0.3, repeat: Infinity }
+              ? { duration: 0.25, repeat: Infinity }
               : isCritical
                 ? { duration: 0.8, repeat: Infinity }
                 : {}
@@ -138,8 +134,8 @@ export function CountdownTimer({
 
       {/* Footer */}
       <div className="flex items-center justify-between px-3 py-1 border-t border-eva-mid-gray bg-eva-dark-gray text-[10px] font-mono text-eva-mid-gray">
-        <span>{running ? "ACTIVE" : "PAUSED"}</span>
-        <span>ACT. TIME: {formatTime(totalMs - remaining)}</span>
+        <span>{remaining > 0 ? "ACTIVE" : "EXPIRED"}</span>
+        <span>ELAPSED: {formatTime(totalMs - remaining)}</span>
       </div>
     </div>
   );

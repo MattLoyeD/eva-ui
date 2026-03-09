@@ -1,2 +1,2 @@
 export { MagiSystemPanel } from "./MagiSystemPanel";
-export type { MagiSystemPanelProps, MagiStatus } from "./MagiSystemPanel";
+export type { MagiSystemPanelProps, MagiVote, MagiStatus } from "./MagiSystemPanel";

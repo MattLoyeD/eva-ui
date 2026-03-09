@@ -3,25 +3,24 @@
 import { motion } from "framer-motion";
 
 export interface SeeleMonolithProps {
-  /** Display label — typically a number like "01" */
-  label?: string;
-  /** Whether the monolith is currently "speaking" */
+  /** Monolith identifier number (e.g. "01") */
+  id: string;
+  /** Whether the monolith is currently speaking */
   isSpeaking?: boolean;
-  /** Override the displayed text (default: SOUND ONLY) */
-  text?: string;
   /** Optional className */
   className?: string;
 }
 
-function AudioWaveBar({ delay }: { delay: number }) {
+/** A single animated equalizer bar */
+function EqualizerBar({ delay }: { delay: number }) {
   return (
     <motion.div
       className="w-[3px] bg-eva-orange"
       animate={{
-        height: ["4px", "16px", "8px", "14px", "4px"],
+        height: ["4px", "16px", "6px", "14px", "4px"],
       }}
       transition={{
-        duration: 0.6,
+        duration: 0.5,
         repeat: Infinity,
         delay,
         ease: "easeInOut",
@@ -31,42 +30,53 @@ function AudioWaveBar({ delay }: { delay: number }) {
 }
 
 export function SeeleMonolith({
-  label,
+  id,
   isSpeaking = false,
-  text = "SOUND ONLY",
   className = "",
 }: SeeleMonolithProps) {
   return (
     <div
-      className={`relative flex flex-col items-center justify-center bg-eva-black border border-eva-mid-gray/40 min-h-[120px] min-w-[100px] ${className}`}
+      className={`
+        relative flex flex-col items-center justify-center
+        bg-bg-base min-h-[160px] min-w-[100px]
+        ${className}
+      `}
+      style={{
+        boxShadow: "inset 0 0 12px rgba(51, 51, 51, 0.5), 0 0 1px rgba(51, 51, 51, 0.3)",
+        border: "1px solid rgba(51, 51, 51, 0.35)",
+      }}
     >
-      {/* Label number top-left */}
-      {label && (
-        <span
-          className="absolute top-2 left-3 text-[10px] font-mono text-eva-mid-gray/60 uppercase tracking-wider"
-        >
-          {label}
-        </span>
-      )}
+      {/* SEELE ID — top */}
+      <span
+        className="absolute top-3 text-[10px] uppercase tracking-[0.25em] font-bold text-eva-mid-gray/50 font-mono"
+      >
+        SEELE {id}
+      </span>
 
-      {/* SOUND ONLY text */}
+      {/* SOUND ONLY — center, condensed sans-serif, orange/red */}
       <span
         className="text-sm font-bold uppercase tracking-[0.15em] text-eva-orange"
         style={{ fontFamily: "var(--font-eva-display)" }}
       >
-        {text}
+        SOUND ONLY
       </span>
 
-      {/* Audio wave indicator */}
+      {/* Equalizer bars — below SOUND ONLY when speaking */}
       {isSpeaking && (
         <div className="flex items-end gap-[2px] mt-3 h-[18px]">
-          <AudioWaveBar delay={0} />
-          <AudioWaveBar delay={0.1} />
-          <AudioWaveBar delay={0.2} />
-          <AudioWaveBar delay={0.1} />
-          <AudioWaveBar delay={0.15} />
+          <EqualizerBar delay={0} />
+          <EqualizerBar delay={0.08} />
+          <EqualizerBar delay={0.16} />
+          <EqualizerBar delay={0.1} />
         </div>
       )}
+
+      {/* SEELE ID — bottom */}
+      <span
+        className="absolute bottom-3 text-[9px] font-mono text-eva-mid-gray/30 tracking-wider"
+      >
+        {id}
+      </span>
     </div>
   );
 }
