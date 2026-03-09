@@ -1,4 +1,5 @@
 import { ComponentPreview, PropsTable } from "@/components/docs";
+import { NavigationTabsHorizontalDemo, NavigationTabsVerticalDemo, NavigationTabsCyanDemo } from "@/components/docs/NavigationTabsDemo";
 
 # Navigation Tabs
 
@@ -10,34 +11,58 @@ import { NavigationTabs } from "@/components";
 
 ## Horizontal
 
-```tsx
-<NavigationTabs
+<ComponentPreview
+  title="HORIZONTAL"
+  code={`<NavigationTabs
   tabs={[
     { id: "ops", label: "OPERATIONS" },
     { id: "intel", label: "INTELLIGENCE" },
     { id: "magi", label: "MAGI SYSTEM", icon: "◆" },
   ]}
-  activeTab="ops"
+  activeTab={activeTab}
   onTabChange={setActiveTab}
   color="orange"
-/>
-```
+/>`}
+>
+  <NavigationTabsHorizontalDemo />
+</ComponentPreview>
 
 ## Vertical
 
-```tsx
-<NavigationTabs
+<ComponentPreview
+  title="VERTICAL"
+  code={`<NavigationTabs
   tabs={[
     { id: "status", label: "STATUS" },
     { id: "sync", label: "SYNC DATA" },
     { id: "comms", label: "COMMUNICATIONS" },
   ]}
-  activeTab="status"
+  activeTab={activeTab}
   onTabChange={setActiveTab}
   direction="vertical"
   color="green"
-/>
-```
+/>`}
+>
+  <NavigationTabsVerticalDemo />
+</ComponentPreview>
+
+## Cyan with Disabled Tab
+
+<ComponentPreview
+  title="CYAN"
+  code={`<NavigationTabs
+  tabs={[
+    { id: "primary", label: "PRIMARY" },
+    { id: "secondary", label: "SECONDARY" },
+    { id: "backup", label: "BACKUP", disabled: true },
+  ]}
+  activeTab={activeTab}
+  onTabChange={setActiveTab}
+  color="cyan"
+/>`}
+>
+  <NavigationTabsCyanDemo />
+</ComponentPreview>
 
 ## Props
 

@@ -13,7 +13,7 @@ import { ClassifiedOverlay } from "@/components";
 
 <ComponentPreview
   title="LOCKED"
-  code={`<div className="relative h-48">
+  code={`<div className="relative h-48 overflow-hidden">
   <ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
     <div className="p-6 text-eva-green font-mono text-sm">
       CLASSIFIED DATA — EYES ONLY
@@ -21,7 +21,7 @@ import { ClassifiedOverlay } from "@/components";
   </ClassifiedOverlay>
 </div>`}
 >
-  <div className="relative h-48">
+  <div className="relative h-48 overflow-hidden">
     <ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
       <div className="p-6 text-eva-green font-mono text-sm">
         CLASSIFIED DATA — EYES ONLY
@@ -34,7 +34,7 @@ import { ClassifiedOverlay } from "@/components";
 
 <ComponentPreview
   title="UNLOCKED"
-  code={`<div className="relative h-48">
+  code={`<div className="relative h-48 overflow-hidden">
   <ClassifiedOverlay text="TOP SECRET" isUnlocked={true}>
     <div className="p-6 text-eva-green font-mono text-sm">
       CLASSIFIED DATA — EYES ONLY<br/>
@@ -44,7 +44,7 @@ import { ClassifiedOverlay } from "@/components";
   </ClassifiedOverlay>
 </div>`}
 >
-  <div className="relative h-48">
+  <div className="relative h-48 overflow-hidden">
     <ClassifiedOverlay text="TOP SECRET" isUnlocked={true}>
       <div className="p-6 text-eva-green font-mono text-sm">
         CLASSIFIED DATA — EYES ONLY<br/>
@@ -59,13 +59,13 @@ import { ClassifiedOverlay } from "@/components";
 
 <ComponentPreview
   title="CUSTOM"
-  code={`<div className="relative h-48">
+  code={`<div className="relative h-48 overflow-hidden">
   <ClassifiedOverlay text="CLASSIFIED" isUnlocked={false}>
     <div className="p-6">Hidden content</div>
   </ClassifiedOverlay>
 </div>`}
 >
-  <div className="relative h-48">
+  <div className="relative h-48 overflow-hidden">
     <ClassifiedOverlay text="CLASSIFIED" isUnlocked={false}>
       <div className="p-6">Hidden content</div>
     </ClassifiedOverlay>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export interface DataGridColumn {
@@ -8,6 +8,10 @@ export interface DataGridColumn {
   header: string;
   width?: string;
   align?: "left" | "center" | "right";
+  /** Enable click-to-sort on this column */
+  sortable?: boolean;
+  /** Column data type for sorting — "auto" detects from first non-empty value */
+  type?: "string" | "int" | "float" | "datetime" | "auto";
 }
 
 export interface DataGridProps {
@@ -27,6 +31,8 @@ export interface DataGridProps {
   title?: string;
   /** Show row index column */
   showIndex?: boolean;
+  /** Rows per page — undefined = show all (no pagination) */
+  pageSize?: number;
   /** Optional className */
   className?: string;
 }
@@ -52,6 +58,24 @@ const colorMap = {
   },
 };
 
+/** Detect column data type from first non-empty value */
+function detectColumnType(
+  data: Record<string, string | number>[],
+  key: string
+): "string" | "int" | "float" | "datetime" {
+  const firstNonEmpty = data.find(
+    (row) => row[key] != null && row[key] !== ""
+  );
+  if (!firstNonEmpty) return "string";
+  const val = String(firstNonEmpty[key]);
+
+  if (/^-?\d+$/.test(val)) return "int";
+  if (/^-?\d+\.?\d*$/.test(val) && !isNaN(parseFloat(val))) return "float";
+  if (!isNaN(Date.parse(val)) && val.length > 4) return "datetime";
+
+  return "string";
+}
+
 export function DataGrid({
   columns,
   data,
@@ -61,11 +85,78 @@ export function DataGrid({
   maxHeight = "400px",
   title,
   showIndex = false,
+  pageSize,
   className = "",
 }: DataGridProps) {
   const c = colorMap[color];
   const scrollRef = useRef<HTMLDivElement>(null);
   const [hovering, setHovering] = useState(false);
+
+  // ─── Sorting state ───
+  const [sortKey, setSortKey] = useState<string | null>(null);
+  const [sortDir, setSortDir] = useState<"asc" | "desc" | null>(null);
+
+  // ─── Pagination state ───
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // Reset page when sort or data changes
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [data.length, sortKey, sortDir]);
+
+  // ─── Sorted data ───
+  const sortedData = useMemo(() => {
+    if (!sortKey || !sortDir) return data;
+
+    const col = columns.find((c) => c.key === sortKey);
+    const colType =
+      col?.type === "auto" || !col?.type
+        ? detectColumnType(data, sortKey)
+        : col.type;
+
+    return [...data].sort((a, b) => {
+      const aVal = a[sortKey] ?? "";
+      const bVal = b[sortKey] ?? "";
+      let cmp = 0;
+
+      switch (colType) {
+        case "int":
+        case "float":
+          cmp = parseFloat(String(aVal)) - parseFloat(String(bVal));
+          break;
+        case "datetime":
+          cmp = Date.parse(String(aVal)) - Date.parse(String(bVal));
+          break;
+        default:
+          cmp = String(aVal).localeCompare(String(bVal));
+      }
+
+      return sortDir === "desc" ? -cmp : cmp;
+    });
+  }, [data, sortKey, sortDir, columns]);
+
+  // ─── Paginated data ───
+  const totalPages = pageSize
+    ? Math.max(1, Math.ceil(sortedData.length / pageSize))
+    : 1;
+  const displayData = pageSize
+    ? sortedData.slice(currentPage * pageSize, (currentPage + 1) * pageSize)
+    : sortedData;
+
+  // ─── Header click handler ───
+  const handleHeaderClick = (col: DataGridColumn) => {
+    if (!col.sortable) return;
+
+    if (sortKey !== col.key) {
+      setSortKey(col.key);
+      setSortDir("asc");
+    } else if (sortDir === "asc") {
+      setSortDir("desc");
+    } else {
+      setSortKey(null);
+      setSortDir(null);
+    }
+  };
 
   // Auto-scroll effect
   useEffect(() => {
@@ -76,7 +167,6 @@ export function DataGrid({
 
     const interval = setInterval(() => {
       el.scrollTop += 1;
-      // Reset to top when reached bottom
       if (el.scrollTop >= el.scrollHeight - el.clientHeight) {
         el.scrollTop = 0;
       }
@@ -110,7 +200,10 @@ export function DataGrid({
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
       >
-        <table className="w-full border-collapse" style={{ fontFamily: "var(--font-eva-mono)" }}>
+        <table
+          className="w-full border-collapse"
+          style={{ fontFamily: "var(--font-eva-mono)" }}
+        >
           {/* Header */}
           <thead className="sticky top-0 z-10">
             <tr className={c.header}>
@@ -122,7 +215,10 @@ export function DataGrid({
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className={`px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold border-r border-black/20 last:border-r-0`}
+                  onClick={() => handleHeaderClick(col)}
+                  className={`px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold border-r border-black/20 last:border-r-0 ${
+                    col.sortable ? "cursor-pointer select-none" : ""
+                  }`}
                   style={{
                     width: col.width,
                     textAlign: col.align || "left",
@@ -130,6 +226,15 @@ export function DataGrid({
                   }}
                 >
                   {col.header}
+                  {col.sortable && (
+                    <span className="ml-1.5 text-[8px] opacity-80">
+                      {sortKey === col.key
+                        ? sortDir === "asc"
+                          ? "▲"
+                          : "▼"
+                        : "—"}
+                    </span>
+                  )}
                 </th>
               ))}
             </tr>
@@ -137,9 +242,9 @@ export function DataGrid({
 
           {/* Body */}
           <tbody>
-            {data.map((row, i) => (
+            {displayData.map((row, i) => (
               <motion.tr
-                key={i}
+                key={`${currentPage}-${i}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: i * 0.02 }}
@@ -151,7 +256,9 @@ export function DataGrid({
               >
                 {showIndex && (
                   <td className="px-3 py-1.5 text-eva-mid-gray border-r border-eva-mid-gray/20">
-                    {String(i + 1).padStart(3, "0")}
+                    {String(
+                      (pageSize ? currentPage * pageSize : 0) + i + 1
+                    ).padStart(3, "0")}
                   </td>
                 )}
                 {columns.map((col) => (
@@ -172,6 +279,40 @@ export function DataGrid({
       {/* Footer status */}
       <div className="flex items-center justify-between px-3 py-1 border-t border-eva-mid-gray bg-eva-dark-gray text-[10px] font-mono text-eva-mid-gray">
         <span>ROWS: {data.length}</span>
+
+        {pageSize && totalPages > 1 && (
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
+              disabled={currentPage === 0}
+              className={`uppercase tracking-wider cursor-pointer ${
+                currentPage === 0
+                  ? "opacity-30 cursor-default"
+                  : `${c.row} hover:underline`
+              }`}
+            >
+              PREV
+            </button>
+            <span className={c.row}>
+              PAGE {String(currentPage + 1).padStart(2, "0")}/
+              {String(totalPages).padStart(2, "0")}
+            </span>
+            <button
+              onClick={() =>
+                setCurrentPage((p) => Math.min(totalPages - 1, p + 1))
+              }
+              disabled={currentPage === totalPages - 1}
+              className={`uppercase tracking-wider cursor-pointer ${
+                currentPage === totalPages - 1
+                  ? "opacity-30 cursor-default"
+                  : `${c.row} hover:underline`
+              }`}
+            >
+              NEXT
+            </button>
+          </div>
+        )}
+
         {autoScroll && (
           <span className={hovering ? "text-eva-orange" : ""}>
             {hovering ? "SCROLL PAUSED" : "AUTO-SCROLL ACTIVE"}

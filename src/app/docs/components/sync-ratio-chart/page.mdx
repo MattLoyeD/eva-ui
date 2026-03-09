@@ -3,7 +3,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 
 # Sync Ratio Chart
 
-Pure SVG dual sinusoidal waveform chart. Zero external charting dependencies. Uses a precise `generateSineWavePath` function with 100 sample points per wave.
+Pure SVG dual sinusoidal waveform chart with continuous oscilloscope-like movement. Zero external charting dependencies. Uses `requestAnimationFrame` for smooth real-time wave animation after an initial draw-in effect.
 
 ```tsx
 import { SyncRatioChart } from "@/components";
@@ -49,6 +49,19 @@ import { SyncRatioChart } from "@/components";
   </div>
 </ComponentPreview>
 
+## Fast Speed
+
+<ComponentPreview
+  title="SPEED x3"
+  code={`<div style={{ height: "200px" }}>
+  <SyncRatioChart showGrid animated speed={3} />
+</div>`}
+>
+  <div style={{ height: "200px" }}>
+    <SyncRatioChart showGrid animated speed={3} />
+  </div>
+</ComponentPreview>
+
 ## Without Grid
 
 <ComponentPreview
@@ -74,11 +87,12 @@ import { SyncRatioChart } from "@/components";
     { name: "phaseB", type: "number", default: "1.2", description: "Wave B phase offset in radians" },
     { name: "showGrid", type: "boolean", default: "true", description: "Show green grid background" },
     { name: "title", type: "string", description: "Chart title" },
-    { name: "animated", type: "boolean", default: "true", description: "Animate path drawing on mount" },
+    { name: "animated", type: "boolean", default: "true", description: "Enable draw-in + continuous oscillation" },
+    { name: "speed", type: "number", default: "1", description: "Speed multiplier for wave oscillation" },
     { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
   ]}
 />
 
-<Callout type="info" title="WAVEFORM MATH">
-  Each wave is computed as: `y = centerY + amplitude * Math.sin(x * frequency + phase)` across 100 evenly-spaced sample points. Wave A renders in cyan, Wave B in magenta.
+<Callout type="info" title="CONTINUOUS MOVEMENT">
+  Waves oscillate continuously via `requestAnimationFrame`. Initial draw-in animation plays for 1.5 seconds, then seamlessly transitions to real-time oscillation. Wave B moves at 0.7× the speed of Wave A for organic visual variety.
 </Callout>

@@ -97,7 +97,7 @@ export function NavigationTabs({
             {/* Active indicator line */}
             {isActive && (
               <motion.div
-                layoutId="activeTab"
+                layoutId={`activeTab-${tabs[0]?.id ?? "nav"}`}
                 className={`absolute ${c.indicator} ${
                   isVertical
                     ? "left-0 top-0 bottom-0 w-0.5"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState, useEffect } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export interface SyncRatioChartProps {
@@ -20,8 +20,10 @@ export interface SyncRatioChartProps {
   showGrid?: boolean;
   /** Title label */
   title?: string;
-  /** Animate the wave paths drawing in */
+  /** Animate the wave paths drawing in + continuous oscillation */
   animated?: boolean;
+  /** Speed multiplier for continuous wave oscillation */
+  speed?: number;
   /** Optional className */
   className?: string;
 }
@@ -66,10 +68,18 @@ export function SyncRatioChart({
   showGrid = true,
   title,
   animated = true,
+  speed = 1,
   className = "",
 }: SyncRatioChartProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 600, height: 200 });
+
+  // ─── Draw-in animation state ───
+  const [drawComplete, setDrawComplete] = useState(!animated);
+  const pathARef = useRef<SVGPathElement>(null);
+  const pathBRef = useRef<SVGPathElement>(null);
+  const rafRef = useRef<number>(0);
+  const timeRef = useRef(0);
 
   // Observe container size so SVG fills 100%
   useEffect(() => {
@@ -91,6 +101,65 @@ export function SyncRatioChart({
 
   const { width, height } = dimensions;
 
+  // Mark draw-in as complete after animation
+  useEffect(() => {
+    if (!animated) {
+      setDrawComplete(true);
+      return;
+    }
+    const timer = setTimeout(() => setDrawComplete(true), 1800);
+    return () => clearTimeout(timer);
+  }, [animated]);
+
+  // ─── Continuous RAF animation ───
+  useEffect(() => {
+    if (!drawComplete) return;
+
+    let lastTime = 0;
+
+    const animate = (timestamp: number) => {
+      if (lastTime === 0) lastTime = timestamp;
+      const delta = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      timeRef.current += delta * speed;
+
+      const newPathA = generateSineWavePath(
+        width,
+        height,
+        phaseA + timeRef.current,
+        amplitudeA,
+        frequencyA
+      );
+      const newPathB = generateSineWavePath(
+        width,
+        height,
+        phaseB + timeRef.current * 0.7,
+        amplitudeB,
+        frequencyB
+      );
+
+      if (pathARef.current) pathARef.current.setAttribute("d", newPathA);
+      if (pathBRef.current) pathBRef.current.setAttribute("d", newPathB);
+
+      rafRef.current = requestAnimationFrame(animate);
+    };
+
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [
+    drawComplete,
+    width,
+    height,
+    phaseA,
+    phaseB,
+    amplitudeA,
+    amplitudeB,
+    frequencyA,
+    frequencyB,
+    speed,
+  ]);
+
   // Generate grid lines
   const gridLines = useMemo(() => {
     const lines: { x1: number; y1: number; x2: number; y2: number }[] = [];
@@ -106,21 +175,28 @@ export function SyncRatioChart({
     return lines;
   }, [width, height]);
 
-  // Wave paths using the exact generateSineWavePath function
-  const pathA = useMemo(
-    () => generateSineWavePath(width, height, phaseA, amplitudeA, frequencyA),
-    [width, height, phaseA, amplitudeA, frequencyA]
+  // Initial static paths (used for draw-in + initial frame)
+  const pathA = generateSineWavePath(
+    width,
+    height,
+    phaseA,
+    amplitudeA,
+    frequencyA
   );
-
-  const pathB = useMemo(
-    () => generateSineWavePath(width, height, phaseB, amplitudeB, frequencyB),
-    [width, height, phaseB, amplitudeB, frequencyB]
+  const pathB = generateSineWavePath(
+    width,
+    height,
+    phaseB,
+    amplitudeB,
+    frequencyB
   );
 
   const centerY = height / 2;
 
   return (
-    <div className={`bg-eva-black border border-eva-mid-gray flex flex-col ${className}`}>
+    <div
+      className={`bg-eva-black border border-eva-mid-gray flex flex-col ${className}`}
+    >
       {/* Title bar */}
       {title && (
         <div className="flex items-center justify-between px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
@@ -179,45 +255,93 @@ export function SyncRatioChart({
           />
 
           {/* Wave A — data-blue (cyan) */}
-          <motion.path
-            d={pathA}
-            fill="none"
-            stroke="#00FFFF"
-            strokeWidth="1.5"
-            opacity="0.9"
-            initial={animated ? { pathLength: 0 } : undefined}
-            animate={animated ? { pathLength: 1 } : undefined}
-            transition={animated ? { duration: 1.5, ease: "easeOut" } : undefined}
-            style={{
-              filter: "drop-shadow(0 0 3px rgba(0, 255, 255, 0.5))",
-            }}
-          />
+          {!drawComplete && animated ? (
+            <motion.path
+              d={pathA}
+              fill="none"
+              stroke="#00FFFF"
+              strokeWidth="1.5"
+              opacity="0.9"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              style={{
+                filter: "drop-shadow(0 0 3px rgba(0, 255, 255, 0.5))",
+              }}
+            />
+          ) : (
+            <path
+              ref={pathARef}
+              d={pathA}
+              fill="none"
+              stroke="#00FFFF"
+              strokeWidth="1.5"
+              opacity="0.9"
+              style={{
+                filter: "drop-shadow(0 0 3px rgba(0, 255, 255, 0.5))",
+              }}
+            />
+          )}
 
           {/* Wave B — magenta-wave */}
-          <motion.path
-            d={pathB}
-            fill="none"
-            stroke="#FF00FF"
-            strokeWidth="1.5"
-            opacity="0.9"
-            initial={animated ? { pathLength: 0 } : undefined}
-            animate={animated ? { pathLength: 1 } : undefined}
-            transition={
-              animated ? { duration: 1.5, ease: "easeOut", delay: 0.3 } : undefined
-            }
-            style={{
-              filter: "drop-shadow(0 0 3px rgba(255, 0, 255, 0.5))",
-            }}
-          />
+          {!drawComplete && animated ? (
+            <motion.path
+              d={pathB}
+              fill="none"
+              stroke="#FF00FF"
+              strokeWidth="1.5"
+              opacity="0.9"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{
+                duration: 1.5,
+                ease: "easeOut",
+                delay: 0.3,
+              }}
+              style={{
+                filter: "drop-shadow(0 0 3px rgba(255, 0, 255, 0.5))",
+              }}
+            />
+          ) : (
+            <path
+              ref={pathBRef}
+              d={pathB}
+              fill="none"
+              stroke="#FF00FF"
+              strokeWidth="1.5"
+              opacity="0.9"
+              style={{
+                filter: "drop-shadow(0 0 3px rgba(255, 0, 255, 0.5))",
+              }}
+            />
+          )}
 
           {/* Axis labels */}
-          <text x="4" y="12" fontSize="8" fill="#333333" fontFamily="var(--font-eva-mono)">
+          <text
+            x="4"
+            y="12"
+            fontSize="8"
+            fill="rgba(0, 255, 0, 0.4)"
+            fontFamily="var(--font-eva-mono)"
+          >
             +1.0
           </text>
-          <text x="4" y={centerY + 3} fontSize="8" fill="#333333" fontFamily="var(--font-eva-mono)">
+          <text
+            x="4"
+            y={centerY + 3}
+            fontSize="8"
+            fill="rgba(0, 255, 0, 0.4)"
+            fontFamily="var(--font-eva-mono)"
+          >
             0.0
           </text>
-          <text x="4" y={height - 4} fontSize="8" fill="#333333" fontFamily="var(--font-eva-mono)">
+          <text
+            x="4"
+            y={height - 4}
+            fontSize="8"
+            fill="rgba(0, 255, 0, 0.4)"
+            fontFamily="var(--font-eva-mono)"
+          >
             -1.0
           </text>
         </svg>

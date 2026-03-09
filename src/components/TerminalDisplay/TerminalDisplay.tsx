@@ -143,7 +143,10 @@ export function TerminalDisplay({
             className={`${textColor} ${glowClass} whitespace-pre-wrap`}
           >
             {showLineNumbers && (
-              <span className="inline-block w-10 text-right mr-3 text-eva-mid-gray select-none">
+              <span
+                className="inline-block w-10 text-right mr-3 text-eva-mid-gray select-none text-xs tabular-nums"
+                style={{ fontFamily: "var(--font-eva-mono)" }}
+              >
                 {String(i + 1).padStart(3, "0")}
               </span>
             )}

@@ -37,4 +37,13 @@ export const docsNavigation: NavSection[] = [
       { title: "CLASSIFIED OVERLAY", href: "/docs/components/classified-overlay" },
     ],
   },
+  {
+    title: "EXAMPLES",
+    items: [
+      { title: "REAL-TIME DASHBOARD", href: "/examples/realtime" },
+      { title: "FORM", href: "/examples/form" },
+      { title: "BLOG", href: "/examples/blog" },
+      { title: "SAAS LANDING PAGE", href: "/examples/saas" },
+    ],
+  },
 ];

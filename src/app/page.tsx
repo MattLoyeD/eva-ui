@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { EmergencyBanner } from "@/components/EmergencyBanner";
-import { EvaTitleScreen } from "@/components/EvaTitleScreen";
 import { Button } from "@/components/Button";
 import { InputField } from "@/components/InputField";
 import { SyncProgressBar } from "@/components/SyncProgressBar";
@@ -14,6 +13,10 @@ import type { MagiVote } from "@/components/MagiSystemPanel";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { SeeleMonolith } from "@/components/SeeleMonolith";
 import { ClassifiedOverlay } from "@/components/ClassifiedOverlay";
+import { TerminalDisplay } from "@/components/TerminalDisplay";
+import { DataGrid } from "@/components/DataGrid";
+import { NavigationTabs } from "@/components/NavigationTabs";
+import { TargetingContainer } from "@/components/TargetingContainer";
 
 // ─── Pilot sync data ───
 const pilots = [
@@ -22,23 +25,37 @@ const pilots = [
   { id: "EVA-02", pilot: "SORYU ASUKA", sync: 92 },
 ];
 
+// ─── Event log data ───
+const eventLogData = [
+  { time: "14:32:01.221", event: "PATTERN BLUE DETECTED", level: "CRITICAL", source: "MAGI-1" },
+  { time: "14:32:01.445", event: "A.T. FIELD ANALYSIS BEGIN", level: "INFO", source: "MAGI-2" },
+  { time: "14:32:02.102", event: "MAGI CONSENSUS REQUESTED", level: "INFO", source: "CENTRAL" },
+  { time: "14:32:03.018", event: "SYNC RATE FLUCTUATION", level: "WARNING", source: "EVA-01" },
+  { time: "14:32:04.887", event: "EVANGELION UNIT-01 LAUNCH", level: "WARNING", source: "CAGE-7" },
+  { time: "14:32:06.333", event: "UMBILICAL CABLE CONNECTED", level: "INFO", source: "EVA-01" },
+  { time: "14:32:08.190", event: "TARGET LOCKED", level: "CRITICAL", source: "MAGI-3" },
+  { time: "14:32:09.441", event: "PROGRESSIVE KNIFE DEPLOYED", level: "INFO", source: "EVA-01" },
+  { time: "14:32:11.002", event: "A.T. FIELD NEUTRALIZED", level: "CRITICAL", source: "MAGI-1" },
+  { time: "14:32:13.887", event: "CORE EXPOSED", level: "WARNING", source: "ANALYSIS" },
+];
+
 export default function NervCommandCenter() {
   // ─── Global state ───
   const [systemStatus, setSystemStatus] = useState<"NORMAL" | "EMERGENCY">(
     "NORMAL"
   );
   const [currentTime, setCurrentTime] = useState("");
-  const [syncValues, setSyncValues] = useState(
-    pilots.map((p) => p.sync)
-  );
+  const [syncValues, setSyncValues] = useState(pilots.map((p) => p.sync));
   const [magiVotes, setMagiVotes] = useState<MagiVote[]>([
     { name: "MELCHIOR 1", status: "idle" },
     { name: "BALTHASAR 2", status: "idle" },
     { name: "CASPER 3", status: "idle" },
   ]);
   const [classifiedUnlocked, setClassifiedUnlocked] = useState(false);
+  const [dashboardTab, setDashboardTab] = useState("logs");
 
   const isEmergency = systemStatus === "EMERGENCY";
+  const autoTriggeredRef = useRef(false);
 
   // ─── Live clock ───
   useEffect(() => {
@@ -101,10 +118,21 @@ export default function NervCommandCenter() {
     });
   }, [triggerMagiVote]);
 
+  // ─── Auto-trigger emergency after 5 seconds ───
+  useEffect(() => {
+    if (autoTriggeredRef.current) return;
+    const timer = setTimeout(() => {
+      if (!autoTriggeredRef.current) {
+        autoTriggeredRef.current = true;
+        setSystemStatus("EMERGENCY");
+        triggerMagiVote();
+      }
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [triggerMagiVote]);
+
   // ─── Border color token ───
-  const borderColor = isEmergency
-    ? "border-alert-red"
-    : "border-grid-green";
+  const borderColor = isEmergency ? "border-alert-red" : "border-grid-green";
 
   return (
     <div
@@ -130,21 +158,30 @@ export default function NervCommandCenter() {
         {/* NORMAL → Title screen header (compact) */}
         {!isEmergency && (
           <div className="relative w-full h-[120px] overflow-hidden bg-bg-base flex items-center justify-between px-8">
-            {/* Left — title */}
-            <motion.h1
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-white text-3xl md:text-5xl font-black uppercase"
-              style={{
-                fontFamily: "var(--font-eva-title)",
-                lineHeight: "0.9",
-                letterSpacing: "-0.03em",
-              }}
-            >
-              PROJECT
-              <br />
-              IDENTIFIER
-            </motion.h1>
+            {/* Left — title + doc link */}
+            <div>
+              <motion.h1
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="text-white text-3xl md:text-5xl font-black uppercase"
+                style={{
+                  fontFamily: "var(--font-eva-title)",
+                  lineHeight: "0.9",
+                  letterSpacing: "-0.03em",
+                }}
+              >
+                PROJECT
+                <br />
+                NERV
+              </motion.h1>
+              <Link
+                href="/docs"
+                className="text-[10px] uppercase tracking-[0.2em] text-eva-cyan hover:text-eva-orange transition-colors font-bold mt-2 inline-block"
+                style={{ fontFamily: "var(--font-eva-display)" }}
+              >
+                DOCUMENTATION &rarr;
+              </Link>
+            </div>
 
             {/* Center — decorative line */}
             <div className="hidden md:block flex-1 mx-8 h-px bg-eva-mid-gray/30" />
@@ -186,7 +223,9 @@ export default function NervCommandCenter() {
           <motion.div
             className={`w-2 h-2 ${isEmergency ? "bg-eva-red" : "bg-eva-green"}`}
             animate={isEmergency ? { opacity: [1, 0, 1] } : {}}
-            transition={isEmergency ? { duration: 0.4, repeat: Infinity } : {}}
+            transition={
+              isEmergency ? { duration: 0.4, repeat: Infinity } : {}
+            }
           />
           <span
             className={`text-xs uppercase tracking-[0.2em] font-bold ${
@@ -202,7 +241,6 @@ export default function NervCommandCenter() {
           <span className="text-[10px] font-mono text-eva-mid-gray">
             NERV HQ — CENTRAL DOGMA — GEOFRONT L-02
           </span>
-          {/* The big alert toggle */}
           <Button
             variant={isEmergency ? "primary" : "danger"}
             size="sm"
@@ -216,7 +254,7 @@ export default function NervCommandCenter() {
       {/* ═══════════════════════════════════════════
           MAIN CONTENT — 3-Column Grid
           ═══════════════════════════════════════════ */}
-      <main className="grid grid-cols-12 gap-0 min-h-[calc(100vh-180px)]">
+      <main className="grid grid-cols-12 gap-0">
         {/* ─────────────────────────────────────────
             LEFT COLUMN — Monitoring (3 cols)
             ───────────────────────────────────────── */}
@@ -225,9 +263,7 @@ export default function NervCommandCenter() {
         >
           {/* Countdown Timer */}
           <div className={`border-b ${borderColor}`}>
-            <CountdownTimer
-              initialSeconds={isEmergency ? 300 : 300}
-            />
+            <CountdownTimer initialSeconds={300} />
           </div>
 
           {/* Pilot Sync Rates */}
@@ -253,9 +289,9 @@ export default function NervCommandCenter() {
               </div>
             ))}
 
-            {/* Spacer + decorative footer */}
+            {/* Decorative footer */}
             <div className="mt-auto pt-4 border-t border-eva-mid-gray/30">
-              <div className="text-[9px] font-mono text-eva-mid-gray/50 space-y-0.5">
+              <div className="text-[9px] font-mono text-eva-mid-gray/70 space-y-0.5">
                 <div>LCL SYSTEM ........... NOMINAL</div>
                 <div>ENTRY PLUG ........... LOCKED</div>
                 <div>A.T. FIELD ........... DEPLOYED</div>
@@ -274,7 +310,6 @@ export default function NervCommandCenter() {
             className={`border-b ${borderColor} flex flex-col`}
             style={{ minHeight: "280px" }}
           >
-            {/* Chart label */}
             <div className="flex items-center justify-between px-4 py-1.5 bg-eva-dark-gray border-b border-eva-mid-gray/30">
               <span
                 className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
@@ -293,7 +328,6 @@ export default function NervCommandCenter() {
                 </span>
               </div>
             </div>
-            {/* Chart fills the rest */}
             <div className="flex-1">
               <SyncRatioChart showGrid animated />
             </div>
@@ -301,10 +335,7 @@ export default function NervCommandCenter() {
 
           {/* MAGI System Panel — bottom half */}
           <div className="flex-1 flex flex-col">
-            <MagiSystemPanel
-              votes={magiVotes}
-              className="flex-1"
-            />
+            <MagiSystemPanel votes={magiVotes} className="flex-1" />
           </div>
         </div>
 
@@ -324,7 +355,11 @@ export default function NervCommandCenter() {
             </h3>
             <div className="flex flex-col gap-2">
               <SeeleMonolith id="01" isSpeaking className="min-h-[100px]" />
-              <SeeleMonolith id="02" isSpeaking={false} className="min-h-[100px]" />
+              <SeeleMonolith
+                id="02"
+                isSpeaking={false}
+                className="min-h-[100px]"
+              />
               <SeeleMonolith id="03" isSpeaking className="min-h-[100px]" />
             </div>
           </div>
@@ -365,14 +400,13 @@ export default function NervCommandCenter() {
                   readOnly
                 />
 
-                <div className="pt-2 text-[9px] font-mono text-eva-mid-gray/50 space-y-0.5">
+                <div className="pt-2 text-[9px] font-mono text-eva-mid-gray/70 space-y-0.5">
                   <div>CLEARANCE: LEVEL 7 — EYES ONLY</div>
                   <div>ENCRYPTION: AES-256 / MAGI-VERIFIED</div>
                 </div>
               </div>
             </ClassifiedOverlay>
 
-            {/* Unlock toggle button */}
             <div className="absolute bottom-3 left-3 right-3 z-[60]">
               <Button
                 variant={classifiedUnlocked ? "ghost" : "danger"}
@@ -388,6 +422,79 @@ export default function NervCommandCenter() {
       </main>
 
       {/* ═══════════════════════════════════════════
+          EXTENDED DISPLAY — System Logs & Event Data
+          ═══════════════════════════════════════════ */}
+      <section className={`border-t-2 ${borderColor}`}>
+        {/* Navigation Tabs */}
+        <div className={`border-b ${borderColor}`}>
+          <NavigationTabs
+            tabs={[
+              { id: "logs", label: "SYSTEM LOGS" },
+              { id: "events", label: "EVENT DATA" },
+              { id: "analysis", label: "ANALYSIS" },
+            ]}
+            activeTab={dashboardTab}
+            onTabChange={setDashboardTab}
+            color="orange"
+          />
+        </div>
+
+        <div className="grid grid-cols-12 gap-0">
+          {/* Left — Terminal Display */}
+          <div className={`col-span-5 border-r ${borderColor}`}>
+            <TargetingContainer label="SYSTEM OUTPUT" color="cyan">
+              <TerminalDisplay
+                lines={[
+                  "NERV CENTRAL DOGMA — BOOT SEQUENCE",
+                  "INITIALIZING MAGI SUBSYSTEMS...",
+                  "MELCHIOR-1 ......... ONLINE",
+                  "BALTHASAR-2 ........ ONLINE",
+                  "CASPER-3 ........... ONLINE",
+                  "PILOT NEURAL LINK ... ESTABLISHED",
+                  "EVANGELION CAGE LOCKS. ENGAGED",
+                  "LCL IONIZATION ...... COMPLETE",
+                  "SYNC GRAPH NOMINAL .. STANDBY",
+                  "AWAITING COMMAND INPUT...",
+                ]}
+                color="green"
+                title="SYSTEM LOG"
+                maxHeight="280px"
+                showLineNumbers
+              />
+            </TargetingContainer>
+          </div>
+
+          {/* Right — DataGrid with event log */}
+          <div className="col-span-7">
+            <DataGrid
+              columns={[
+                {
+                  key: "time",
+                  header: "TIMESTAMP",
+                  width: "130px",
+                  sortable: true,
+                },
+                { key: "event", header: "EVENT", sortable: true },
+                {
+                  key: "level",
+                  header: "LEVEL",
+                  align: "center",
+                  sortable: true,
+                },
+                { key: "source", header: "SOURCE", align: "right" },
+              ]}
+              data={eventLogData}
+              color="cyan"
+              title="EVENT LOG"
+              showIndex
+              pageSize={5}
+              maxHeight="300px"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           FOOTER STATUS BAR
           ═══════════════════════════════════════════ */}
       <footer
@@ -396,7 +503,7 @@ export default function NervCommandCenter() {
         } flex items-center justify-between text-[10px] font-mono text-eva-mid-gray`}
       >
         <div className="flex items-center gap-3">
-          <span>NERV COMMAND CENTER v2.0</span>
+          <span>NERV COMMAND CENTER v3.0</span>
           <span className="text-eva-mid-gray/30">|</span>
           <span>
             EvaUI —{" "}
@@ -409,11 +516,25 @@ export default function NervCommandCenter() {
           >
             DOCUMENTATION &rarr;
           </Link>
+          <span className="text-eva-mid-gray/30">|</span>
+          <Link
+            href="/examples/realtime"
+            className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider"
+          >
+            EXAMPLES &rarr;
+          </Link>
         </div>
         <div className="flex items-center gap-3">
-          <span>MAGI: {magiVotes.every((v) => v.status === "idle") ? "STANDBY" : "ACTIVE"}</span>
+          <span>
+            MAGI:{" "}
+            {magiVotes.every((v) => v.status === "idle")
+              ? "STANDBY"
+              : "ACTIVE"}
+          </span>
           <span className="text-eva-mid-gray/30">|</span>
-          <span className="text-eva-green">SECURE CHANNEL — ENCRYPTED</span>
+          <span className="text-eva-green">
+            SECURE CHANNEL — ENCRYPTED
+          </span>
         </div>
       </footer>
     </div>

@@ -1,4 +1,5 @@
 import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+import { SystemDialogNormalDemo, SystemDialogWarningDemo, SystemDialogCriticalDemo } from "@/components/docs/SystemDialogDemo";
 
 # System Dialog
 
@@ -10,13 +11,16 @@ import { SystemDialog } from "@/components";
 
 ## Severity Levels
 
-<Callout type="warning" title="INTERACTIVE COMPONENT">
-  SystemDialog is a controlled modal that requires `open` state and callback handlers. The previews below show the dialog content styling without the full overlay behavior.
+<Callout type="info" title="INTERACTIVE">
+  Click each button to open the dialog. Click ACCEPT, DECLINE, or the overlay background to close.
 </Callout>
 
 ### Normal
 
-```tsx
+<ComponentPreview
+  title="NORMAL"
+  code={`const [isOpen, setOpen] = useState(false);
+
 <SystemDialog
   open={isOpen}
   title="SYSTEM NOTIFICATION"
@@ -25,13 +29,16 @@ import { SystemDialog } from "@/components";
   onDecline={() => setOpen(false)}
 >
   <p>Routine maintenance scheduled for 0300 hours.</p>
-</SystemDialog>
-```
+</SystemDialog>`}
+>
+  <SystemDialogNormalDemo />
+</ComponentPreview>
 
 ### Warning
 
-```tsx
-<SystemDialog
+<ComponentPreview
+  title="WARNING"
+  code={`<SystemDialog
   open={isOpen}
   title="OVERRIDE REQUEST"
   severity="warning"
@@ -41,25 +48,30 @@ import { SystemDialog } from "@/components";
   onDecline={handleCancel}
 >
   <p>MAGI authorization required for Unit-01 activation.</p>
-</SystemDialog>
-```
+</SystemDialog>`}
+>
+  <SystemDialogWarningDemo />
+</ComponentPreview>
 
 ### Critical
 
-```tsx
-<SystemDialog
+<ComponentPreview
+  title="CRITICAL"
+  code={`<SystemDialog
   open={isOpen}
   title="SELF-DESTRUCT CONFIRMATION"
   severity="critical"
   acceptText="CONFIRM"
   declineText="ABORT"
+  showHazardStripes
   onAccept={handleConfirm}
   onClose={handleClose}
-  showHazardStripes
 >
   <p>This action is irreversible. All personnel must evacuate.</p>
-</SystemDialog>
-```
+</SystemDialog>`}
+>
+  <SystemDialogCriticalDemo />
+</ComponentPreview>
 
 ## Props
 

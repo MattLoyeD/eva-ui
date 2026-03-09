@@ -1,9 +1,9 @@
 import { DataGrid } from "@/components";
-import { ComponentPreview, PropsTable } from "@/components/docs";
+import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 
 # Data Grid
 
-Surveillance-style data table with sticky header, auto-scroll capability, and motion-animated row entry. Pauses auto-scroll on hover.
+Surveillance-style data table with sticky header, auto-scroll capability, sortable columns with type auto-detection, automatic pagination, and motion-animated row entry.
 
 ```tsx
 import { DataGrid } from "@/components";
@@ -50,42 +50,77 @@ import { DataGrid } from "@/components";
   />
 </ComponentPreview>
 
-## With Row Index
+## Sortable Columns
 
 <ComponentPreview
-  title="INDEXED"
+  title="SORTABLE"
   code={`<DataGrid
   columns={[
-    { key: "timestamp", header: "TIMESTAMP", width: "140px" },
-    { key: "event", header: "EVENT" },
-    { key: "level", header: "LEVEL", align: "center" },
+    { key: "unit", header: "UNIT", width: "100px", sortable: true },
+    { key: "pilot", header: "PILOT", sortable: true },
+    { key: "sync", header: "SYNC %", align: "right", sortable: true, type: "float" },
+    { key: "status", header: "STATUS", align: "center", sortable: true },
   ]}
-  data={[
-    { timestamp: "14:32:01.221", event: "PATTERN BLUE DETECTED", level: "CRITICAL" },
-    { timestamp: "14:32:01.445", event: "A.T. FIELD ANALYSIS BEGIN", level: "INFO" },
-    { timestamp: "14:32:02.102", event: "MAGI CONSENSUS REQUESTED", level: "INFO" },
-    { timestamp: "14:32:04.887", event: "EVANGELION UNIT-01 LAUNCH", level: "WARNING" },
-  ]}
-  color="cyan"
-  title="EVENT LOG"
-  showIndex
+  data={[...]}
+  color="orange"
+  title="SORTABLE REGISTRY"
 />`}
 >
   <DataGrid
     columns={[
-      { key: "timestamp", header: "TIMESTAMP", width: "140px" },
-      { key: "event", header: "EVENT" },
-      { key: "level", header: "LEVEL", align: "center" },
+      { key: "unit", header: "UNIT", width: "100px", sortable: true },
+      { key: "pilot", header: "PILOT", sortable: true },
+      { key: "sync", header: "SYNC %", align: "right", sortable: true, type: "float" },
+      { key: "status", header: "STATUS", align: "center", sortable: true },
+    ]}
+    data={[
+      { unit: "EVA-00", pilot: "AYANAMI REI", sync: "68.2", status: "ACTIVE" },
+      { unit: "EVA-01", pilot: "IKARI SHINJI", sync: "41.5", status: "STANDBY" },
+      { unit: "EVA-02", pilot: "SORYU ASUKA", sync: "92.1", status: "ACTIVE" },
+      { unit: "EVA-03", pilot: "SUZUHARA TOJI", sync: "0.0", status: "OFFLINE" },
+      { unit: "EVA-04", pilot: "NAGISA KAWORU", sync: "99.9", status: "CLASSIFIED" },
+    ]}
+    color="orange"
+    title="SORTABLE REGISTRY"
+  />
+</ComponentPreview>
+
+## Paginated
+
+<ComponentPreview
+  title="PAGINATED"
+  code={`<DataGrid
+  columns={[
+    { key: "timestamp", header: "TIMESTAMP", width: "140px", sortable: true },
+    { key: "event", header: "EVENT", sortable: true },
+    { key: "level", header: "LEVEL", align: "center", sortable: true },
+  ]}
+  data={[...]}
+  color="cyan"
+  title="EVENT LOG"
+  showIndex
+  pageSize={3}
+/>`}
+>
+  <DataGrid
+    columns={[
+      { key: "timestamp", header: "TIMESTAMP", width: "140px", sortable: true },
+      { key: "event", header: "EVENT", sortable: true },
+      { key: "level", header: "LEVEL", align: "center", sortable: true },
     ]}
     data={[
       { timestamp: "14:32:01.221", event: "PATTERN BLUE DETECTED", level: "CRITICAL" },
       { timestamp: "14:32:01.445", event: "A.T. FIELD ANALYSIS BEGIN", level: "INFO" },
       { timestamp: "14:32:02.102", event: "MAGI CONSENSUS REQUESTED", level: "INFO" },
+      { timestamp: "14:32:03.018", event: "SYNC RATE FLUCTUATION", level: "WARNING" },
       { timestamp: "14:32:04.887", event: "EVANGELION UNIT-01 LAUNCH", level: "WARNING" },
+      { timestamp: "14:32:06.333", event: "UMBILICAL CABLE CONNECTED", level: "INFO" },
+      { timestamp: "14:32:08.190", event: "TARGET LOCKED", level: "CRITICAL" },
     ]}
     color="cyan"
     title="EVENT LOG"
     showIndex
+    pageSize={3}
   />
 </ComponentPreview>
 
@@ -93,7 +128,7 @@ import { DataGrid } from "@/components";
 
 <PropsTable
   props={[
-    { name: "columns", type: "DataGridColumn[]", required: true, description: "Column definitions: { key, header, width?, align? }" },
+    { name: "columns", type: "DataGridColumn[]", required: true, description: "Column definitions: { key, header, width?, align?, sortable?, type? }" },
     { name: "data", type: "Record<string, string | number>[]", required: true, description: "Row data array" },
     { name: "color", type: '"orange" | "green" | "cyan"', default: '"green"', description: "Table color theme" },
     { name: "autoScroll", type: "boolean", default: "false", description: "Enable continuous scroll (pauses on hover)" },
@@ -101,6 +136,11 @@ import { DataGrid } from "@/components";
     { name: "maxHeight", type: "string", default: '"400px"', description: "Container max height" },
     { name: "title", type: "string", description: "Title bar text" },
     { name: "showIndex", type: "boolean", default: "false", description: "Show row index column" },
+    { name: "pageSize", type: "number", description: "Rows per page — undefined shows all rows" },
     { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
   ]}
 />
+
+<Callout type="info" title="COLUMN SORTING">
+  Set `sortable: true` on columns to enable click-to-sort. Type auto-detection checks the first value: integers, floats, datetimes, or string fallback. Override with `type: "int" | "float" | "datetime" | "string"`. Click cycles: unsorted → ascending → descending → unsorted.
+</Callout>
