@@ -1,0 +1,127 @@
+import { Callout } from "@/components/docs";
+
+# Installation
+
+EvaUI is a React component library built with Next.js, Tailwind CSS 4, and Framer Motion. Follow these steps to integrate the NERV design system into your project.
+
+## Prerequisites
+
+<Callout type="info" title="REQUIREMENTS">
+  EvaUI requires React 19+, Tailwind CSS 4+, and Framer Motion 12+. The components use the `"use client"` directive and are designed for the Next.js App Router.
+</Callout>
+
+## Install Dependencies
+
+```bash
+npm install react react-dom framer-motion
+npm install -D tailwindcss @tailwindcss/postcss
+```
+
+## Tailwind CSS Configuration
+
+EvaUI uses Tailwind CSS 4's `@theme` block for all design tokens. Add the following to your `globals.css`:
+
+```css
+@import "tailwindcss";
+
+@theme {
+  /* Core EVA Colors */
+  --color-eva-black: #000000;
+  --color-eva-red: #FF0000;
+  --color-eva-orange: #FF9900;
+  --color-eva-green: #00FF00;
+  --color-eva-cyan: #00FFFF;
+  --color-eva-amber: #FFAA00;
+  --color-eva-white: #E0E0E0;
+  --color-eva-dark-gray: #1A1A1A;
+  --color-eva-mid-gray: #333333;
+  --color-eva-panel: #0A0A0A;
+  --color-eva-purple: #9933FF;
+  --color-eva-magenta: #FF00FF;
+  --color-eva-lcd-green: #39FF14;
+
+  /* Semantic Aliases */
+  --color-bg-base: #000000;
+  --color-alert-red: #FF0000;
+  --color-text-orange: #FF9900;
+  --color-grid-green: #00FF00;
+  --color-data-blue: #00FFFF;
+  --color-magenta-wave: #FF00FF;
+  --color-lcd-green: #39FF14;
+
+  /* Typography */
+  --font-eva-display: "Oswald", "Impact", "Arial Narrow", system-ui, sans-serif;
+  --font-eva-mono: "Fira Code", "JetBrains Mono", "Courier New", monospace;
+  --font-eva-body: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-eva-title: "Noto Serif JP", "Playfair Display", "Georgia", serif;
+}
+```
+
+## Font Loading
+
+Add the Google Fonts link to your `layout.tsx` `<head>`:
+
+```tsx
+<link
+  href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Fira+Code:wght@400;500;700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;700;900&family=Playfair+Display:wght@400;700;900&display=swap"
+  rel="stylesheet"
+/>
+```
+
+## Global Styles
+
+For the full NERV experience, add these global rules to enforce the brutalist aesthetic:
+
+```css
+/* Zero border-radius — brutalist industrial */
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
+
+/* CRT Scanline overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent, transparent 2px,
+    rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* Accessibility — respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  body::after { display: none; }
+}
+```
+
+## Basic Usage
+
+Once configured, import components from the library:
+
+```tsx
+import { EmergencyBanner, Button, TerminalDisplay } from "@/components";
+
+export default function MyPage() {
+  return (
+    <div className="bg-eva-black min-h-screen p-8">
+      <EmergencyBanner text="ALERT" severity="warning" />
+      <Button variant="danger" size="lg">
+        INITIATE OVERRIDE
+      </Button>
+    </div>
+  );
+}
+```
+
+<Callout type="warning" title="IMPORTANT">
+  All components use the `"use client"` directive. Make sure your bundler supports React Client Components (Next.js App Router recommended).
+</Callout>

@@ -1,8 +1,9 @@
-import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 const isProd = process.env.NODE_ENV === "production";
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   output: "export",
   basePath: isProd ? "/eva-ui" : "",
@@ -10,6 +11,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  pageExtensions: ["ts", "tsx", "mdx"],
 };
 
-export default nextConfig;
+const withMDX = createMDX({});
+
+export default withMDX(nextConfig);

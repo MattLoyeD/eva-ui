@@ -1,0 +1,128 @@
+import { EmergencyBanner } from "@/components";
+import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+
+# Emergency Banner
+
+Full-screen or inline alert banner with animated hazard stripes, scanline overlay, and flickering text. Used for PATTERN BLUE detection, system failures, and general alerts.
+
+```tsx
+import { EmergencyBanner } from "@/components";
+```
+
+## Basic Usage
+
+<ComponentPreview
+  title="DEFAULT"
+  code={`<EmergencyBanner
+  text="EMERGENCY"
+  subtext="PATTERN BLUE DETECTED — ALL PERSONNEL TO BATTLE STATIONS"
+  visible
+/>`}
+>
+  <EmergencyBanner
+    text="EMERGENCY"
+    subtext="PATTERN BLUE DETECTED — ALL PERSONNEL TO BATTLE STATIONS"
+    visible
+  />
+</ComponentPreview>
+
+## Severity Variants
+
+The `severity` prop controls the color scheme. Three levels are available:
+
+### Emergency (Red)
+
+<ComponentPreview
+  title="EMERGENCY"
+  code={`<EmergencyBanner text="EMERGENCY" severity="emergency" visible />`}
+>
+  <EmergencyBanner text="EMERGENCY" severity="emergency" visible />
+</ComponentPreview>
+
+### Warning (Orange)
+
+<ComponentPreview
+  title="WARNING"
+  code={`<EmergencyBanner text="WARNING" severity="warning" visible />`}
+>
+  <EmergencyBanner text="WARNING" severity="warning" visible />
+</ComponentPreview>
+
+### Info (Cyan)
+
+<ComponentPreview
+  title="INFO"
+  code={`<EmergencyBanner text="SYSTEM UPDATE" severity="info" visible />`}
+>
+  <EmergencyBanner text="SYSTEM UPDATE" severity="info" visible />
+</ComponentPreview>
+
+## With Subtext
+
+<ComponentPreview
+  title="SUBTEXT"
+  code={`<EmergencyBanner
+  text="REFUSED"
+  subtext="MAGI CONSENSUS: 2/3 REJECTED — OVERRIDE DENIED"
+  severity="emergency"
+  visible
+/>`}
+>
+  <EmergencyBanner
+    text="REFUSED"
+    subtext="MAGI CONSENSUS: 2/3 REJECTED — OVERRIDE DENIED"
+    severity="emergency"
+    visible
+  />
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  props={[
+    {
+      name: "text",
+      type: "string",
+      default: '"EMERGENCY"',
+      description: "Main alert text displayed in flickering large type",
+    },
+    {
+      name: "subtext",
+      type: "string",
+      default: "—",
+      description: "Secondary message below the main text",
+    },
+    {
+      name: "visible",
+      type: "boolean",
+      default: "true",
+      description: "Controls visibility with AnimatePresence enter/exit animation",
+    },
+    {
+      name: "severity",
+      type: '"emergency" | "warning" | "info"',
+      default: '"emergency"',
+      description: "Visual severity level: red, orange, or cyan color scheme",
+    },
+    {
+      name: "fullScreen",
+      type: "boolean",
+      default: "false",
+      description: "Fixed full-screen overlay mode vs inline container",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
+  ]}
+/>
+
+## Accessibility
+
+<Callout type="info" title="ARIA ATTRIBUTES">
+  EmergencyBanner uses `role="alert"` and `aria-live="assertive"` to announce the alert to screen readers immediately when it becomes visible.
+</Callout>
+
+The flickering text animation respects `prefers-reduced-motion` — when reduced motion is preferred, the text displays without animation.
