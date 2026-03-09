@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/banner.svg" alt="EVA UI — Neon Genesis Evangelion Design System" width="100%" />
+  <img src="docs/banner.png" alt="EVA UI — Neon Genesis Evangelion Design System" width="100%" />
 </p>
 
 <p align="center">

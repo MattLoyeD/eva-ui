@@ -35,6 +35,7 @@ export const docsNavigation: NavSection[] = [
       { title: "COUNTDOWN TIMER", href: "/docs/components/countdown-timer" },
       { title: "SEELE MONOLITH", href: "/docs/components/seele-monolith" },
       { title: "CLASSIFIED OVERLAY", href: "/docs/components/classified-overlay" },
+      { title: "TOAST NOTIFICATIONS", href: "/docs/components/toast" },
     ],
   },
   {

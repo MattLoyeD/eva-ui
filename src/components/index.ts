@@ -52,3 +52,13 @@ export type { SeeleMonolithProps } from "./SeeleMonolith";
 
 export { ClassifiedOverlay } from "./ClassifiedOverlay";
 export type { ClassifiedOverlayProps } from "./ClassifiedOverlay";
+
+// Phase 3 — Toast Notification System
+export { EvaToastProvider, ToastContainer, useToast } from "./Toast";
+export type {
+  EvaToastProviderProps,
+  Toast,
+  ToastVariant,
+  ToastContextValue,
+  AddToastPayload,
+} from "./Toast";
