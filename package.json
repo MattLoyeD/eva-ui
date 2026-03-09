@@ -1,6 +1,6 @@
 {
   "name": "@mattloyed/eva-ui",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "React component library inspired by NERV/MAGI interfaces from Neon Genesis Evangelion",
   "private": false,
   "license": "MIT",
