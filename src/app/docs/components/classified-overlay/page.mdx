@@ -1,5 +1,6 @@
 import { ClassifiedOverlay } from "@/components";
 import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+import { ClassifiedOverlayDemo } from "@/components/docs/ClassifiedOverlayDemo";
 
 # Classified Overlay
 
@@ -9,67 +10,79 @@ TOP SECRET overlay with diagonal red/black hazard stripes. Slides away violently
 import { ClassifiedOverlay } from "@/components";
 ```
 
+## Interactive Demo
+
+<Callout type="info" title="INTERACTIVE">
+  Click the DECRYPT button to toggle the overlay on and off.
+</Callout>
+
+<ComponentPreview
+  title="TOGGLE DEMO"
+  code={`<ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
+  <div className="p-6 text-eva-green font-mono text-sm space-y-1">
+    <div>CLASSIFIED DATA — EYES ONLY</div>
+    <div>CLEARANCE: LEVEL 7</div>
+    <div>DEAD SEA SCROLLS LOCATION: [REDACTED]</div>
+    <div>HUMAN INSTRUMENTALITY PROJECT: [REDACTED]</div>
+  </div>
+</ClassifiedOverlay>`}
+>
+  <ClassifiedOverlayDemo />
+</ComponentPreview>
+
 ## Locked State
 
 <ComponentPreview
   title="LOCKED"
-  code={`<div className="relative h-48 overflow-hidden">
-  <ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
+  code={`<ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
+  <div className="p-6 text-eva-green font-mono text-sm">
+    CLASSIFIED DATA — EYES ONLY
+  </div>
+</ClassifiedOverlay>`}
+>
+  <ClassifiedOverlay text="TOP SECRET" isUnlocked={false} className="min-h-[200px]">
     <div className="p-6 text-eva-green font-mono text-sm">
       CLASSIFIED DATA — EYES ONLY
     </div>
   </ClassifiedOverlay>
-</div>`}
->
-  <div className="relative h-48 overflow-hidden">
-    <ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
-      <div className="p-6 text-eva-green font-mono text-sm">
-        CLASSIFIED DATA — EYES ONLY
-      </div>
-    </ClassifiedOverlay>
-  </div>
 </ComponentPreview>
 
 ## Unlocked State
 
 <ComponentPreview
   title="UNLOCKED"
-  code={`<div className="relative h-48 overflow-hidden">
-  <ClassifiedOverlay text="TOP SECRET" isUnlocked={true}>
-    <div className="p-6 text-eva-green font-mono text-sm">
-      CLASSIFIED DATA — EYES ONLY<br/>
-      CLEARANCE: LEVEL 7<br/>
-      DEAD SEA SCROLLS LOCATION: [REDACTED]
+  code={`<ClassifiedOverlay text="TOP SECRET" isUnlocked={true}>
+  <div className="p-6 text-eva-green font-mono text-sm">
+    CLASSIFIED DATA — EYES ONLY
+    CLEARANCE: LEVEL 7
+    DEAD SEA SCROLLS LOCATION: [REDACTED]
+  </div>
+</ClassifiedOverlay>`}
+>
+  <ClassifiedOverlay text="TOP SECRET" isUnlocked={true} className="min-h-[200px]">
+    <div className="p-6 text-eva-green font-mono text-sm space-y-1">
+      <div>CLASSIFIED DATA — EYES ONLY</div>
+      <div>CLEARANCE: LEVEL 7</div>
+      <div>DEAD SEA SCROLLS LOCATION: [REDACTED]</div>
     </div>
   </ClassifiedOverlay>
-</div>`}
->
-  <div className="relative h-48 overflow-hidden">
-    <ClassifiedOverlay text="TOP SECRET" isUnlocked={true}>
-      <div className="p-6 text-eva-green font-mono text-sm">
-        CLASSIFIED DATA — EYES ONLY<br/>
-        CLEARANCE: LEVEL 7<br/>
-        DEAD SEA SCROLLS LOCATION: [REDACTED]
-      </div>
-    </ClassifiedOverlay>
-  </div>
 </ComponentPreview>
 
 ## Custom Text
 
 <ComponentPreview
   title="CUSTOM"
-  code={`<div className="relative h-48 overflow-hidden">
-  <ClassifiedOverlay text="CLASSIFIED" isUnlocked={false}>
-    <div className="p-6">Hidden content</div>
-  </ClassifiedOverlay>
-</div>`}
->
-  <div className="relative h-48 overflow-hidden">
-    <ClassifiedOverlay text="CLASSIFIED" isUnlocked={false}>
-      <div className="p-6">Hidden content</div>
-    </ClassifiedOverlay>
+  code={`<ClassifiedOverlay text="EYES ONLY" isUnlocked={false}>
+  <div className="p-6 text-eva-orange font-mono text-sm">
+    NERV INTERNAL MEMO — RESTRICTED ACCESS
   </div>
+</ClassifiedOverlay>`}
+>
+  <ClassifiedOverlay text="EYES ONLY" isUnlocked={false} className="min-h-[200px]">
+    <div className="p-6 text-eva-orange font-mono text-sm">
+      NERV INTERNAL MEMO — RESTRICTED ACCESS
+    </div>
+  </ClassifiedOverlay>
 </ComponentPreview>
 
 ## Props

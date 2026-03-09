@@ -3,7 +3,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 
 # Emergency Banner
 
-Full-screen or inline alert banner with animated hazard stripes, scanline overlay, and flickering text. Used for PATTERN BLUE detection, system failures, and general alerts.
+Full-screen or inline alert banner with animated hazard stripes, scanline overlay, and flickering text. Seven severity levels cover every operational scenario — from routine information to total system failure.
 
 ```tsx
 import { EmergencyBanner } from "@/components";
@@ -28,9 +28,9 @@ import { EmergencyBanner } from "@/components";
 
 ## Severity Variants
 
-The `severity` prop controls the color scheme. Three levels are available:
+Seven severity levels control the color scheme, hazard stripe style, and flickering behavior.
 
-### Emergency (Red)
+### Emergency (Red — flickering)
 
 <ComponentPreview
   title="EMERGENCY"
@@ -39,7 +39,7 @@ The `severity` prop controls the color scheme. Three levels are available:
   <EmergencyBanner text="EMERGENCY" severity="emergency" visible />
 </ComponentPreview>
 
-### Warning (Orange)
+### Warning (Orange — flickering)
 
 <ComponentPreview
   title="WARNING"
@@ -48,7 +48,7 @@ The `severity` prop controls the color scheme. Three levels are available:
   <EmergencyBanner text="WARNING" severity="warning" visible />
 </ComponentPreview>
 
-### Info (Cyan)
+### Info (Cyan — static)
 
 <ComponentPreview
   title="INFO"
@@ -57,23 +57,69 @@ The `severity` prop controls the color scheme. Three levels are available:
   <EmergencyBanner text="SYSTEM UPDATE" severity="info" visible />
 </ComponentPreview>
 
-## With Subtext
+### Success (Green — static)
 
 <ComponentPreview
-  title="SUBTEXT"
+  title="SUCCESS"
+  code={`<EmergencyBanner text="MISSION COMPLETE" severity="success" subtext="ALL TARGETS ELIMINATED — STAND DOWN" visible />`}
+>
+  <EmergencyBanner text="MISSION COMPLETE" severity="success" subtext="ALL TARGETS ELIMINATED — STAND DOWN" visible />
+</ComponentPreview>
+
+### Critical (Red inverted — white text, flickering)
+
+<ComponentPreview
+  title="CRITICAL"
+  code={`<EmergencyBanner text="CRITICAL" severity="critical" subtext="CORE MELTDOWN IMMINENT — EVACUATE" visible />`}
+>
+  <EmergencyBanner text="CRITICAL" severity="critical" subtext="CORE MELTDOWN IMMINENT — EVACUATE" visible />
+</ComponentPreview>
+
+### Contrast (Black & white — high visibility)
+
+<ComponentPreview
+  title="CONTRAST"
+  code={`<EmergencyBanner text="BROADCAST" severity="contrast" subtext="SYSTEM-WIDE ANNOUNCEMENT" visible />`}
+>
+  <EmergencyBanner text="BROADCAST" severity="contrast" subtext="SYSTEM-WIDE ANNOUNCEMENT" visible />
+</ComponentPreview>
+
+### Disabled (Gray — muted)
+
+<ComponentPreview
+  title="DISABLED"
+  code={`<EmergencyBanner text="OFFLINE" severity="disabled" subtext="SYSTEM DEACTIVATED — NO ACTIVE ALERTS" visible />`}
+>
+  <EmergencyBanner text="OFFLINE" severity="disabled" subtext="SYSTEM DEACTIVATED — NO ACTIVE ALERTS" visible />
+</ComponentPreview>
+
+## With Children
+
+The `children` prop allows embedding links, buttons, or other interactive content inside the banner.
+
+<ComponentPreview
+  title="CHILDREN"
   code={`<EmergencyBanner
-  text="REFUSED"
-  subtext="MAGI CONSENSUS: 2/3 REJECTED — OVERRIDE DENIED"
-  severity="emergency"
+  text="ALERT"
+  subtext="NEW PROTOCOL AVAILABLE"
+  severity="info"
   visible
-/>`}
+>
+  <a href="/docs" className="text-eva-black underline font-mono text-sm">
+    VIEW DOCUMENTATION →
+  </a>
+</EmergencyBanner>`}
 >
   <EmergencyBanner
-    text="REFUSED"
-    subtext="MAGI CONSENSUS: 2/3 REJECTED — OVERRIDE DENIED"
-    severity="emergency"
+    text="ALERT"
+    subtext="NEW PROTOCOL AVAILABLE"
+    severity="info"
     visible
-  />
+  >
+    <a href="/docs" className="text-eva-black underline font-mono text-sm">
+      VIEW DOCUMENTATION →
+    </a>
+  </EmergencyBanner>
 </ComponentPreview>
 
 ## Props
@@ -84,7 +130,7 @@ The `severity` prop controls the color scheme. Three levels are available:
       name: "text",
       type: "string",
       default: '"EMERGENCY"',
-      description: "Main alert text displayed in flickering large type",
+      description: "Main alert text displayed in large type",
     },
     {
       name: "subtext",
@@ -100,15 +146,21 @@ The `severity` prop controls the color scheme. Three levels are available:
     },
     {
       name: "severity",
-      type: '"emergency" | "warning" | "info"',
+      type: '"emergency" | "warning" | "info" | "success" | "critical" | "contrast" | "disabled"',
       default: '"emergency"',
-      description: "Visual severity level: red, orange, or cyan color scheme",
+      description: "Visual severity level controlling colors, stripes, and flickering",
     },
     {
       name: "fullScreen",
       type: "boolean",
       default: "false",
       description: "Fixed full-screen overlay mode vs inline container",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Optional content rendered below subtext (links, buttons, etc.)",
     },
     {
       name: "className",
@@ -124,5 +176,3 @@ The `severity` prop controls the color scheme. Three levels are available:
 <Callout type="info" title="ARIA ATTRIBUTES">
   EmergencyBanner uses `role="alert"` and `aria-live="assertive"` to announce the alert to screen readers immediately when it becomes visible.
 </Callout>
-
-The flickering text animation respects `prefers-reduced-motion` — when reduced motion is preferred, the text displays without animation.

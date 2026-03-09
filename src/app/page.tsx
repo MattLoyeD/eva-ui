@@ -54,8 +54,12 @@ export default function NervCommandCenter() {
   const [classifiedUnlocked, setClassifiedUnlocked] = useState(false);
   const [dashboardTab, setDashboardTab] = useState("logs");
 
+  const [emergencySeverity, setEmergencySeverity] = useState<
+    "emergency" | "warning" | "info" | "success" | "critical" | "contrast"
+  >("emergency");
   const isEmergency = systemStatus === "EMERGENCY";
   const autoTriggeredRef = useRef(false);
+  const cycleRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // ─── Live clock ───
   useEffect(() => {
@@ -118,18 +122,48 @@ export default function NervCommandCenter() {
     });
   }, [triggerMagiVote]);
 
-  // ─── Auto-trigger emergency after 5 seconds ───
+  // ─── Random severity picker ───
+  const randomSeverity = useCallback(() => {
+    const severities: typeof emergencySeverity[] = [
+      "emergency", "warning", "critical", "contrast", "info",
+    ];
+    return severities[Math.floor(Math.random() * severities.length)];
+  }, []);
+
+  // ─── Auto-trigger emergency: first at 5s, auto-dismiss 10s, cycle every 60s ───
   useEffect(() => {
     if (autoTriggeredRef.current) return;
-    const timer = setTimeout(() => {
-      if (!autoTriggeredRef.current) {
-        autoTriggeredRef.current = true;
+
+    const firstTimer = setTimeout(() => {
+      autoTriggeredRef.current = true;
+      setEmergencySeverity("emergency");
+      setSystemStatus("EMERGENCY");
+      triggerMagiVote();
+
+      // Auto-dismiss after 10s
+      setTimeout(() => {
+        setSystemStatus("NORMAL");
+      }, 10000);
+
+      // Start the recurring cycle every 60s
+      cycleRef.current = setInterval(() => {
+        const sev = randomSeverity();
+        setEmergencySeverity(sev);
         setSystemStatus("EMERGENCY");
         triggerMagiVote();
-      }
+
+        // Auto-dismiss after 10s
+        setTimeout(() => {
+          setSystemStatus("NORMAL");
+        }, 10000);
+      }, 60000);
     }, 5000);
-    return () => clearTimeout(timer);
-  }, [triggerMagiVote]);
+
+    return () => {
+      clearTimeout(firstTimer);
+      if (cycleRef.current) clearInterval(cycleRef.current);
+    };
+  }, [triggerMagiVote, randomSeverity]);
 
   // ─── Border color token ───
   const borderColor = isEmergency ? "border-alert-red" : "border-grid-green";
@@ -145,14 +179,22 @@ export default function NervCommandCenter() {
           HEADER (Full Width)
           ═══════════════════════════════════════════ */}
       <header className={`relative w-full border-b-2 ${borderColor}`}>
-        {/* EMERGENCY → Banner overlay */}
+        {/* EMERGENCY → Banner overlay with doc link */}
         {isEmergency && (
           <EmergencyBanner
             text="EMERGENCY"
             subtext="PATTERN BLUE DETECTED — ALL PERSONNEL TO BATTLE STATIONS"
             visible
-            severity="emergency"
-          />
+            severity={emergencySeverity}
+          >
+            <Link
+              href="/docs"
+              className="inline-block text-xs font-mono uppercase tracking-[0.2em] underline underline-offset-4 hover:opacity-80 transition-opacity text-eva-black"
+              style={{ fontFamily: "var(--font-eva-display)" }}
+            >
+              VIEW DOCUMENTATION →
+            </Link>
+          </EmergencyBanner>
         )}
 
         {/* NORMAL → Title screen header (compact) */}

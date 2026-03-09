@@ -6,7 +6,7 @@ import { TerminalDisplay } from "@/components/TerminalDisplay";
 import { ClassifiedOverlay } from "@/components/ClassifiedOverlay";
 import { EmergencyBanner } from "@/components/EmergencyBanner";
 import { Button } from "@/components/Button";
-import { DataGrid } from "@/components/DataGrid";
+import { EvaCard } from "@/components/EvaCard";
 
 // ─── Blog post data ───
 interface Post {
@@ -16,6 +16,7 @@ interface Post {
   date: string;
   classified: boolean;
   breaking: boolean;
+  excerpt: string;
   content: string[];
 }
 
@@ -27,6 +28,7 @@ const posts: Post[] = [
     date: "2015-06-22",
     classified: false,
     breaking: true,
+    excerpt: "Third Angel encounter at Tokyo-3. EVA-01 deployed with pilot Ikari Shinji.",
     content: [
       "SUBJECT: THIRD ANGEL ENCOUNTER — SACHIEL",
       "═══════════════════════════════════════",
@@ -54,6 +56,7 @@ const posts: Post[] = [
     date: "2015-05-10",
     classified: false,
     breaking: false,
+    excerpt: "Technical brief on the MAGI supercomputer triad — Melchior, Balthasar, and Casper.",
     content: [
       "MAGI SUPERCOMPUTER — TECHNICAL BRIEF",
       "═══════════════════════════════════════",
@@ -81,6 +84,7 @@ const posts: Post[] = [
     date: "2015-04-01",
     classified: true,
     breaking: false,
+    excerpt: "Section 7A analysis of the Dead Sea Scrolls. SEELE eyes only.",
     content: [
       "DEAD SEA SCROLLS — SECTION 7A",
       "═══════════════════════════════════════",
@@ -107,6 +111,7 @@ const posts: Post[] = [
     date: "2015-06-15",
     classified: true,
     breaking: false,
+    excerpt: "Quarterly psychological evaluation of all active Evangelion pilots.",
     content: [
       "PILOT EVALUATION — QUARTERLY REVIEW",
       "═══════════════════════════════════════",
@@ -135,6 +140,7 @@ const posts: Post[] = [
     date: "2015-07-01",
     classified: false,
     breaking: false,
+    excerpt: "Quarterly maintenance schedule for all active Evangelion units.",
     content: [
       "MAINTENANCE SCHEDULE — Q3 2015",
       "═══════════════════════════════════════",
@@ -155,13 +161,101 @@ const posts: Post[] = [
       "  Scheduled: 2015-09-01",
     ],
   },
+  {
+    id: "006",
+    title: "OPERATION YASHIMA — TACTICAL BRIEF",
+    category: "REPORTS",
+    date: "2015-07-05",
+    classified: false,
+    breaking: false,
+    excerpt: "Tactical overview of Operation Yashima against the 5th Angel, Ramiel.",
+    content: [
+      "OPERATION YASHIMA — TACTICAL BRIEF",
+      "═══════════════════════════════════════",
+      "TARGET: 5th ANGEL — RAMIEL",
+      "CLASSIFICATION: GEOMETRIC / BEAM TYPE",
+      "",
+      "STRATEGY: Long-range positron snipe",
+      "WEAPON: Positron rifle (prototype)",
+      "POWER: Japan national grid (100%)",
+      "",
+      "PILOT: IKARI SHINJI (EVA-01)",
+      "SUPPORT: AYANAMI REI (EVA-00, shield)",
+      "",
+      "OUTCOME: TARGET ELIMINATED",
+      "  First shot: MISS (refraction error)",
+      "  Second shot: DIRECT HIT — CORE BREACH",
+      "",
+      "EVA-00 sustained critical damage.",
+      "Pilot Ayanami recovered alive.",
+      "STATUS: OPERATION SUCCESS",
+    ],
+  },
+  {
+    id: "007",
+    title: "CENTRAL DOGMA ACCESS PROTOCOLS",
+    category: "CLASSIFIED",
+    date: "2015-03-15",
+    classified: true,
+    breaking: false,
+    excerpt: "Updated access protocols for Terminal Dogma and Lilith containment.",
+    content: [
+      "CENTRAL DOGMA — ACCESS PROTOCOLS v4.2",
+      "═══════════════════════════════════════",
+      "CLASSIFICATION: ABOVE TOP SECRET",
+      "",
+      "LEVEL 1: General access (Sections A-C)",
+      "LEVEL 2: MAGI terminal rooms (auth req.)",
+      "LEVEL 3: Eva cages + LCL plant",
+      "LEVEL 4: Commander's office",
+      "LEVEL 5: [REDACTED]",
+      "LEVEL 6: [REDACTED]",
+      "LEVEL 7: Terminal Dogma",
+      "",
+      "WARNING: Unauthorized access to Level 7",
+      "will result in immediate termination.",
+      "",
+      "LILITH containment status: STABLE",
+      "Lance of Longinus: SECURED",
+    ],
+  },
+  {
+    id: "008",
+    title: "LCL PURIFICATION SYSTEM UPGRADE",
+    category: "TECHNICAL",
+    date: "2015-06-28",
+    classified: false,
+    breaking: false,
+    excerpt: "New filtration system reduces LCL contamination by 47%.",
+    content: [
+      "LCL PURIFICATION — SYSTEM UPGRADE NOTICE",
+      "═══════════════════════════════════════",
+      "",
+      "The LCL purification system has been upgraded",
+      "to Generation 3 filtration technology.",
+      "",
+      "IMPROVEMENTS:",
+      "  Contamination reduction: 47%",
+      "  Processing speed: +200%",
+      "  Pilot comfort index: +15 points",
+      "  Odor reduction: -60% (blood smell)",
+      "",
+      "DEPLOYMENT TIMELINE:",
+      "  EVA-01: COMPLETE",
+      "  EVA-00: IN PROGRESS",
+      "  EVA-02: SCHEDULED (2015-07-10)",
+      "",
+      "All pilots report improved sync clarity",
+      "following the upgrade.",
+    ],
+  },
 ];
 
 const categories = ["ALL", "REPORTS", "CLASSIFIED", "TECHNICAL"];
 
 export default function BlogExample() {
   const [activeCategory, setActiveCategory] = useState("ALL");
-  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(posts[0]);
   const [unlockedPosts, setUnlockedPosts] = useState<Set<string>>(new Set());
 
   const filteredPosts =
@@ -191,8 +285,8 @@ export default function BlogExample() {
         >
           NERV INTELLIGENCE BULLETIN
         </h1>
-        <p className="text-[10px] font-mono text-eva-mid-gray mt-1">
-          CLASSIFIED COMMUNICATIONS — AUTHORIZED PERSONNEL ONLY
+        <p className="text-[10px] font-mono text-eva-white/50 mt-1">
+          CLASSIFIED COMMUNICATIONS — {posts.length} BULLETINS — AUTHORIZED PERSONNEL ONLY
         </p>
       </div>
 
@@ -200,82 +294,108 @@ export default function BlogExample() {
       <NavigationTabs
         tabs={categories.map((cat) => ({
           id: cat,
-          label: cat,
+          label: `${cat} (${cat === "ALL" ? posts.length : posts.filter((p) => p.category === cat).length})`,
           icon: cat === "CLASSIFIED" ? "◆" : undefined,
         }))}
         activeTab={activeCategory}
-        onTabChange={setActiveCategory}
+        onTabChange={(cat) => {
+          setActiveCategory(cat);
+          setSelectedPost(null);
+        }}
         color="orange"
       />
 
-      <div className="grid grid-cols-12 gap-0">
+      <div className="grid grid-cols-12 gap-0" style={{ minHeight: "600px" }}>
         {/* Post list */}
-        <div className="col-span-5 border-r border-eva-orange">
-          <DataGrid
-            columns={[
-              { key: "id", header: "#", width: "50px" },
-              { key: "title", header: "SUBJECT", sortable: true },
-              { key: "date", header: "DATE", width: "100px", sortable: true, type: "datetime" },
-              { key: "category", header: "CAT", width: "80px", align: "center", sortable: true },
-            ]}
-            data={filteredPosts.map((p) => ({
-              id: p.id,
-              title: p.title,
-              date: p.date,
-              category: p.category,
-            }))}
-            color="orange"
-            title={`BULLETINS — ${activeCategory}`}
-            maxHeight="500px"
-          />
-
-          <div className="p-3 space-y-1">
+        <div className="col-span-4 border-r border-eva-orange overflow-y-auto" style={{ maxHeight: "700px" }}>
+          <div className="p-2 space-y-1">
             {filteredPosts.map((post) => (
-              <Button
+              <button
                 key={post.id}
-                variant={
-                  selectedPost?.id === post.id ? "primary" : "ghost"
-                }
-                size="sm"
-                fullWidth
                 onClick={() => setSelectedPost(post)}
+                className={`w-full text-left p-3 transition-colors cursor-pointer border-l-2 ${
+                  selectedPost?.id === post.id
+                    ? "bg-eva-orange/10 border-eva-orange"
+                    : "bg-transparent border-transparent hover:bg-eva-white/5 hover:border-eva-white/20"
+                }`}
               >
-                {post.classified ? "◆ " : ""}
-                {post.id} — {post.title.slice(0, 35)}
-                {post.title.length > 35 ? "..." : ""}
-              </Button>
+                <div className="flex items-start gap-2">
+                  {post.classified && (
+                    <span className="text-eva-red text-[10px] mt-0.5">◆</span>
+                  )}
+                  {post.breaking && (
+                    <span className="text-eva-orange text-[10px] mt-0.5 animate-pulse">⚡</span>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <div
+                      className={`text-xs font-bold uppercase tracking-wider truncate ${
+                        selectedPost?.id === post.id ? "text-eva-orange" : "text-eva-white/80"
+                      }`}
+                      style={{ fontFamily: "var(--font-eva-display)" }}
+                    >
+                      {post.title}
+                    </div>
+                    <div className="text-[10px] text-eva-white/40 font-mono mt-1 line-clamp-2">
+                      {post.excerpt}
+                    </div>
+                    <div className="flex items-center gap-2 mt-1.5">
+                      <span className="text-[9px] text-eva-cyan font-mono">{post.date}</span>
+                      <span className="text-[9px] text-eva-white/20">|</span>
+                      <span className={`text-[9px] font-mono ${
+                        post.category === "CLASSIFIED" ? "text-eva-red" : "text-eva-white/40"
+                      }`}>
+                        {post.category}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </button>
             ))}
           </div>
         </div>
 
         {/* Post content */}
-        <div className="col-span-7 p-4">
+        <div className="col-span-8 p-4">
           {selectedPost ? (
             <div className="relative">
-              {selectedPost.classified &&
-              !unlockedPosts.has(selectedPost.id) ? (
-                <div className="relative h-[500px]">
-                  <ClassifiedOverlay
-                    text="CLASSIFIED"
-                    isUnlocked={false}
-                  >
+              {/* Post header */}
+              <div className="mb-4 pb-3 border-b border-eva-white/10">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono text-eva-cyan">#{selectedPost.id}</span>
+                  <span className="text-[10px] text-eva-white/20">|</span>
+                  <span className="text-[10px] font-mono text-eva-white/40">{selectedPost.date}</span>
+                  <span className="text-[10px] text-eva-white/20">|</span>
+                  <span className={`text-[10px] font-mono ${
+                    selectedPost.category === "CLASSIFIED" ? "text-eva-red" : "text-eva-white/40"
+                  }`}>
+                    {selectedPost.category}
+                  </span>
+                </div>
+                <h2
+                  className="text-lg uppercase tracking-[0.15em] text-eva-orange font-bold"
+                  style={{ fontFamily: "var(--font-eva-display)" }}
+                >
+                  {selectedPost.title}
+                </h2>
+              </div>
+
+              {selectedPost.classified && !unlockedPosts.has(selectedPost.id) ? (
+                <div className="relative" style={{ minHeight: "400px" }}>
+                  <ClassifiedOverlay text="CLASSIFIED" isUnlocked={false} className="min-h-[400px]">
                     <TerminalDisplay
                       lines={selectedPost.content}
                       color="green"
                       title={selectedPost.title}
-                      typewriter
                       maxHeight="460px"
                       showLineNumbers
                     />
                   </ClassifiedOverlay>
-                  <div className="absolute bottom-4 left-4 right-4 z-[60]">
+                  <div className="mt-4">
                     <Button
                       variant="danger"
                       fullWidth
                       onClick={() =>
-                        setUnlockedPosts((prev) =>
-                          new Set([...prev, selectedPost.id])
-                        )
+                        setUnlockedPosts((prev) => new Set([...prev, selectedPost.id]))
                       }
                     >
                       OVERRIDE CLEARANCE — DECRYPT
@@ -294,15 +414,17 @@ export default function BlogExample() {
               )}
             </div>
           ) : (
-            <div className="flex items-center justify-center h-[400px]">
-              <div className="text-center">
-                <div className="text-eva-mid-gray font-mono text-sm uppercase tracking-wider">
-                  SELECT A BULLETIN TO VIEW
+            <div className="flex items-center justify-center h-full">
+              <EvaCard title="NO BULLETIN SELECTED">
+                <div className="text-center space-y-2 py-4">
+                  <div className="text-eva-white/60 font-mono text-sm uppercase tracking-wider">
+                    SELECT A BULLETIN TO VIEW
+                  </div>
+                  <div className="text-eva-white/30 font-mono text-[10px]">
+                    {filteredPosts.length} ENTRIES AVAILABLE IN {activeCategory}
+                  </div>
                 </div>
-                <div className="text-eva-mid-gray/50 font-mono text-[10px] mt-2">
-                  {filteredPosts.length} ENTRIES AVAILABLE
-                </div>
-              </div>
+              </EvaCard>
             </div>
           )}
         </div>

@@ -39,6 +39,9 @@ export const docsNavigation: NavSection[] = [
       { title: "WIREFRAME LOADER", href: "/docs/components/wireframe-loader" },
       { title: "EVA CARD", href: "/docs/components/eva-card" },
       { title: "EVA ACCORDION", href: "/docs/components/eva-accordion" },
+      { title: "EVA BAR CHART", href: "/docs/components/eva-bar-chart" },
+      { title: "EVA GAUGE", href: "/docs/components/eva-gauge" },
+      { title: "EVA PIE CHART", href: "/docs/components/eva-pie-chart" },
     ],
   },
   {

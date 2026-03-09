@@ -72,3 +72,13 @@ export type { EvaCardProps } from "./EvaCard";
 
 export { EvaAccordion, EvaAccordionItem } from "./EvaAccordion";
 export type { EvaAccordionProps, EvaAccordionItemProps } from "./EvaAccordion";
+
+// Phase 4 — Chart Components
+export { EvaBarChart } from "./EvaBarChart";
+export type { EvaBarChartProps, EvaBarChartBar } from "./EvaBarChart";
+
+export { EvaGauge } from "./EvaGauge";
+export type { EvaGaugeProps } from "./EvaGauge";
+
+export { EvaPieChart } from "./EvaPieChart";
+export type { EvaPieChartProps, EvaPieSlice } from "./EvaPieChart";
