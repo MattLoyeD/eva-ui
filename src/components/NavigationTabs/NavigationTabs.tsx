@@ -104,6 +104,15 @@ export const NavigationTabs = forwardRef<HTMLElement, NavigationTabsProps>(
               {/* Label */}
               {tab.label}
 
+              {/* Active status dot (inline) */}
+              {isActive && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className={`ml-2 w-1.5 h-1.5 shrink-0 ${c.indicator}`}
+                />
+              )}
+
               {/* Active indicator line */}
               {isActive && (
                 <motion.div
@@ -114,17 +123,6 @@ export const NavigationTabs = forwardRef<HTMLElement, NavigationTabsProps>(
                       : "bottom-0 left-0 right-0 h-0.5"
                   }`}
                   transition={{ type: "spring", stiffness: 500, damping: 35 }}
-                />
-              )}
-
-              {/* Active status dot */}
-              {isActive && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className={`absolute ${
-                    isVertical ? "right-3 top-1/2 -translate-y-1/2" : "top-1 right-1"
-                  } w-1.5 h-1.5 ${c.indicator}`}
                 />
               )}
             </button>

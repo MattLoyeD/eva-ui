@@ -118,7 +118,7 @@ export const EvaGauge = forwardRef<HTMLDivElement, EvaGaugeProps>(
           fill="none"
           stroke="rgba(255,255,255,0.06)"
           strokeWidth={8}
-          strokeLinecap="round"
+          strokeLinecap="butt"
         />
 
         {/* Threshold zone */}
@@ -131,7 +131,7 @@ export const EvaGauge = forwardRef<HTMLDivElement, EvaGaugeProps>(
             fill="none"
             stroke="rgba(255,0,0,0.12)"
             strokeWidth={8}
-            strokeLinecap="round"
+            strokeLinecap="butt"
           />
         )}
 
@@ -141,7 +141,7 @@ export const EvaGauge = forwardRef<HTMLDivElement, EvaGaugeProps>(
           fill="none"
           stroke={activeColor.stroke}
           strokeWidth={5}
-          strokeLinecap="round"
+          strokeLinecap="butt"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -171,7 +171,7 @@ export const EvaGauge = forwardRef<HTMLDivElement, EvaGaugeProps>(
           y2={needle.y}
           stroke={activeColor.stroke}
           strokeWidth={1.5}
-          strokeLinecap="round"
+          strokeLinecap="butt"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
