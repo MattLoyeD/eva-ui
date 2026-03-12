@@ -9,6 +9,11 @@ import { TerminalDisplay } from "@/components/TerminalDisplay";
 import { TargetingContainer } from "@/components/TargetingContainer";
 import { EvaStatusStamp } from "@/components/EvaStatusStamp";
 import { PilotCard } from "@/components/PilotCard";
+import { EvaCheckbox } from "@/components/EvaCheckbox";
+import { EvaToggle } from "@/components/EvaToggle";
+import { EvaTextarea } from "@/components/EvaTextarea";
+import { EvaRadioGroup } from "@/components/EvaRadioGroup";
+import { EvaDivider } from "@/components/EvaDivider";
 
 const unitOptions = [
   { value: "", label: "— SELECT UNIT —" },
@@ -33,6 +38,9 @@ export default function FormExample() {
     unit: "",
     priority: "",
     notes: "",
+    clearanceLevel: "standard",
+    confirmAuth: false,
+    liveMonitoring: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showConfirm, setShowConfirm] = useState(false);
@@ -71,6 +79,8 @@ export default function FormExample() {
         `UNIT:     ${formData.unit}`,
         `PRIORITY: ${formData.priority}`,
         `NOTES:    ${formData.notes || "NONE"}`,
+        `CLEARANCE: ${formData.clearanceLevel.toUpperCase()}`,
+        `LIVE MON: ${formData.liveMonitoring ? "ENABLED" : "DISABLED"}`,
         "═══════════════════════════════════════",
         "STATUS: TRANSMITTED TO CENTRAL DOGMA",
         "MAGI VERIFICATION: PENDING",
@@ -152,7 +162,7 @@ export default function FormExample() {
                 />
               </div>
 
-              <InputField
+              <EvaTextarea
                 label="MISSION NOTES"
                 placeholder="Additional instructions..."
                 color="cyan"
@@ -161,7 +171,44 @@ export default function FormExample() {
                   setFormData((d) => ({ ...d, notes: e.target.value }))
                 }
                 hint="OPTIONAL — 256 CHARACTER LIMIT"
+                rows={3}
               />
+
+              <EvaDivider label="AUTHORIZATION" color="orange" />
+
+              <EvaRadioGroup
+                label="CLEARANCE LEVEL"
+                options={[
+                  { value: "standard", label: "STANDARD" },
+                  { value: "elevated", label: "ELEVATED" },
+                  { value: "commander", label: "COMMANDER ONLY" },
+                ]}
+                value={formData.clearanceLevel}
+                onChange={(v) =>
+                  setFormData((d) => ({ ...d, clearanceLevel: v }))
+                }
+                color="cyan"
+                direction="horizontal"
+              />
+
+              <div className="flex items-center gap-6">
+                <EvaCheckbox
+                  label="CONFIRM AUTHORIZATION"
+                  checked={formData.confirmAuth}
+                  onChange={(e) =>
+                    setFormData((d) => ({ ...d, confirmAuth: e.target.checked }))
+                  }
+                  color="orange"
+                />
+                <EvaToggle
+                  label="LIVE MONITORING"
+                  checked={formData.liveMonitoring}
+                  onChange={(v) =>
+                    setFormData((d) => ({ ...d, liveMonitoring: v }))
+                  }
+                  color="green"
+                />
+              </div>
 
               {Object.keys(errors).length > 0 && (
                 <div className="text-eva-red text-[10px] font-mono uppercase tracking-wider">
@@ -188,6 +235,9 @@ export default function FormExample() {
                       unit: "",
                       priority: "",
                       notes: "",
+                      clearanceLevel: "standard",
+                      confirmAuth: false,
+                      liveMonitoring: false,
                     });
                     setErrors({});
                     setSubmitted(false);
