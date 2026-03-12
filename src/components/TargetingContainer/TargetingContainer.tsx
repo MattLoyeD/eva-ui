@@ -128,7 +128,7 @@ export const TargetingContainer = forwardRef<HTMLDivElement, TargetingContainerP
       {/* Label */}
       {label && (
         <div
-          className="absolute -top-3 left-6 px-2 bg-eva-black text-xs uppercase tracking-[0.2em] font-bold"
+          className="absolute -top-3 left-6 px-2 bg-eva-black text-xs uppercase tracking-[0.2em] font-bold z-20"
           style={{ color: c, fontFamily: "var(--font-eva-display)" }}
         >
           {label}
@@ -136,7 +136,7 @@ export const TargetingContainer = forwardRef<HTMLDivElement, TargetingContainerP
       )}
 
       {/* Content */}
-      <div className="relative z-10">{children}</div>
+      <div className={`relative z-10 ${label ? "mt-3" : ""}`}>{children}</div>
     </motion.div>
   );
 });

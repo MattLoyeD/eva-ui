@@ -83,8 +83,9 @@ export const NavigationTabs = forwardRef<HTMLElement, NavigationTabsProps>(
               className={`
                 relative cursor-pointer select-none
                 uppercase tracking-[0.15em] text-xs font-bold
-                transition-colors duration-100
+                transition-colors duration-100 whitespace-nowrap
                 disabled:opacity-30 disabled:cursor-not-allowed
+                flex items-center overflow-hidden
                 ${isVertical
                   ? `px-4 py-3 text-left border-l-2 ${isActive ? c.active : c.inactive}`
                   : `px-5 py-2.5 border-b-2 ${isActive ? c.active : c.inactive}`
@@ -93,12 +94,12 @@ export const NavigationTabs = forwardRef<HTMLElement, NavigationTabsProps>(
               style={{ fontFamily: "var(--font-eva-display)" }}
             >
               {/* Classification marker */}
-              <span className="opacity-40 mr-2 text-[10px]">
+              <span className="opacity-40 mr-2 text-[10px] shrink-0">
                 {String(i + 1).padStart(2, "0")}
               </span>
 
               {/* Tab icon */}
-              {tab.icon && <span className="mr-1.5">{tab.icon}</span>}
+              {tab.icon && <span className="mr-1.5 shrink-0">{tab.icon}</span>}
 
               {/* Label */}
               {tab.label}

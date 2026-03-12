@@ -106,7 +106,7 @@ export default function FormExample() {
 
       <div className="grid grid-cols-12 gap-0">
         {/* Form */}
-        <div className="col-span-7 p-6 border-r border-eva-orange">
+        <div className="col-span-7 p-6 pt-10 border-r border-eva-orange">
           <TargetingContainer label="OPERATOR DETAILS" color="orange">
             <div className="p-4 space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -267,7 +267,7 @@ export default function FormExample() {
                   maxHeight="300px"
                   showLineNumbers
                 />
-                <div className="relative h-20 overflow-hidden">
+                <div className="relative h-40 overflow-hidden">
                   <EvaStatusStamp text="APPROVED" color="green" bordered rotation={-8} />
                 </div>
               </div>
