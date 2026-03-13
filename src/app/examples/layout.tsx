@@ -6,10 +6,18 @@ import Link from "next/link";
 const navLinkStyle = { fontFamily: "var(--font-eva-display)" };
 
 const exampleLinks = [
+  { href: "/examples/dashboard", label: "DASHBOARD" },
   { href: "/examples/realtime", label: "REAL-TIME" },
+  { href: "/examples/comms", label: "COMMS" },
   { href: "/examples/form", label: "FORM" },
   { href: "/examples/blog", label: "BLOG" },
   { href: "/examples/saas", label: "SAAS" },
+  { href: "/examples/landing", label: "LANDING" },
+  { href: "/examples/auth/login", label: "LOGIN" },
+  { href: "/examples/inventory", label: "INVENTORY" },
+  { href: "/examples/pilots", label: "PILOTS" },
+  { href: "/examples/report", label: "REPORT" },
+  { href: "/examples/error", label: "404" },
 ];
 
 export default function ExamplesLayout({
