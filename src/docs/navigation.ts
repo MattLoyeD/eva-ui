@@ -8,22 +8,33 @@ export interface NavSection {
   items: NavItem[];
 }
 
+/** Single link shown outside collapsible sections */
+export interface NavLink {
+  title: string;
+  href: string;
+}
+
 export const docsNavigation: NavSection[] = [
   {
-    title: "GETTING STARTED",
+    title: "SYSTEM",
     items: [
       { title: "Installation", href: "/docs/getting-started/installation" },
+      { title: "Theme Provider", href: "/docs/components/theme-provider" },
     ],
   },
   {
-    title: "LAYOUT",
+    title: "LAYOUT & NAVIGATION",
     items: [
       { title: "Card", href: "/docs/components/card" },
       { title: "Accordion", href: "/docs/components/accordion" },
       { title: "Divider", href: "/docs/components/divider" },
       { title: "Drawer", href: "/docs/components/drawer" },
+      { title: "Breadcrumb", href: "/docs/components/breadcrumb" },
       { title: "Targeting Container", href: "/docs/components/targeting-container" },
       { title: "Hex Grid Background", href: "/docs/components/hex-grid-background" },
+      { title: "Navigation Tabs", href: "/docs/components/navigation-tabs" },
+      { title: "Emergency Banner", href: "/docs/components/emergency-banner" },
+      { title: "Stepper", href: "/docs/components/stepper" },
     ],
   },
   {
@@ -50,11 +61,10 @@ export const docsNavigation: NavSection[] = [
       { title: "Skeleton", href: "/docs/components/skeleton" },
       { title: "Pilot Card", href: "/docs/components/pilot-card" },
       { title: "Pagination", href: "/docs/components/pagination" },
-      { title: "Breadcrumb", href: "/docs/components/breadcrumb" },
     ],
   },
   {
-    title: "CHARTS",
+    title: "CHARTS & STATUS",
     items: [
       { title: "Bar Chart", href: "/docs/components/bar-chart" },
       { title: "Gauge", href: "/docs/components/gauge" },
@@ -65,23 +75,15 @@ export const docsNavigation: NavSection[] = [
     ],
   },
   {
-    title: "OVERLAYS",
+    title: "OVERLAYS & FEEDBACK",
     items: [
       { title: "System Dialog", href: "/docs/components/system-dialog" },
       { title: "Classified Overlay", href: "/docs/components/classified-overlay" },
+      { title: "Title Screen", href: "/docs/components/title-screen" },
       { title: "Toast", href: "/docs/components/toast" },
       { title: "Status Stamp", href: "/docs/components/status-stamp" },
       { title: "Tooltip", href: "/docs/components/tooltip" },
       { title: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
-      { title: "Title Screen", href: "/docs/components/title-screen" },
-    ],
-  },
-  {
-    title: "NAVIGATION",
-    items: [
-      { title: "Navigation Tabs", href: "/docs/components/navigation-tabs" },
-      { title: "Emergency Banner", href: "/docs/components/emergency-banner" },
-      { title: "Stepper", href: "/docs/components/stepper" },
     ],
   },
   {
@@ -96,32 +98,10 @@ export const docsNavigation: NavSection[] = [
       { title: "Wireframe Loader", href: "/docs/components/wireframe-loader" },
     ],
   },
-  {
-    title: "THEMING",
-    items: [
-      { title: "Theme Provider", href: "/docs/components/theme-provider" },
-    ],
-  },
-  {
-    title: "EXAMPLES",
-    items: [
-      { title: "Command Center", href: "/" },
-      { title: "Dashboard", href: "/examples/dashboard" },
-      { title: "Real-time", href: "/examples/realtime" },
-      { title: "Comms Terminal", href: "/examples/comms" },
-      { title: "Form", href: "/examples/form" },
-      { title: "Blog", href: "/examples/blog" },
-      { title: "Inventory", href: "/examples/inventory" },
-      { title: "Pilots", href: "/examples/pilots" },
-      { title: "Report", href: "/examples/report" },
-      { title: "Files", href: "/examples/files" },
-      { title: "SaaS Landing", href: "/examples/saas" },
-      { title: "Landing", href: "/examples/landing" },
-      { title: "Login", href: "/examples/auth/login" },
-      { title: "Register", href: "/examples/auth/register" },
-      { title: "Help", href: "/examples/help" },
-      { title: "Error 404", href: "/examples/error" },
-      { title: "Empty State", href: "/examples/empty" },
-    ],
-  },
+];
+
+/** Standalone links shown at the bottom of the sidebar */
+export const docsQuickLinks: NavLink[] = [
+  { title: "EXAMPLES", href: "/examples" },
+  { title: "GITHUB", href: "https://github.com/MattLoyeD/eva-ui" },
 ];

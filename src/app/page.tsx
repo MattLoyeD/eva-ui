@@ -1,26 +1,24 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { EmergencyBanner } from "@/components/EmergencyBanner";
 import { Button } from "@/components/Button";
-import { InputField } from "@/components/InputField";
+import { Card } from "@/components/Card";
 import { SyncProgressBar } from "@/components/SyncProgressBar";
 import { SyncRatioChart } from "@/components/SyncRatioChart";
 import { MagiSystemPanel } from "@/components/MagiSystemPanel";
 import type { MagiVote } from "@/components/MagiSystemPanel";
-import { CountdownTimer } from "@/components/CountdownTimer";
-import { SeeleMonolith } from "@/components/SeeleMonolith";
-import { ClassifiedOverlay } from "@/components/ClassifiedOverlay";
-import { TerminalDisplay } from "@/components/TerminalDisplay";
+import { SegmentDisplay } from "@/components/SegmentDisplay";
 import { DataGrid } from "@/components/DataGrid";
-import { NavigationTabs } from "@/components/NavigationTabs";
 import { TargetingContainer } from "@/components/TargetingContainer";
 import { Badge } from "@/components/Badge";
 import { Gauge } from "@/components/Gauge";
 import { BarChart } from "@/components/BarChart";
 import { PhaseStatusStack } from "@/components/PhaseStatusStack";
+import { PieChart } from "@/components/PieChart";
+import { GradientStatusBar } from "@/components/GradientStatusBar";
+import { PatternAlert } from "@/components/PatternAlert";
 import { Stepper } from "@/components/Stepper";
 import { Divider } from "@/components/Divider";
 
@@ -29,68 +27,65 @@ const pilots = [
   { id: "EVA-00", pilot: "AYANAMI REI", sync: 68 },
   { id: "EVA-01", pilot: "IKARI SHINJI", sync: 41 },
   { id: "EVA-02", pilot: "SORYU ASUKA", sync: 92 },
+  { id: "EVA-03", pilot: "SUZUHARA TOJI", sync: 55 },
+  { id: "EVA-04", pilot: "NAGISA KAWORU", sync: 73 },
 ];
 
-// ─── Event log data ───
-const eventLogData = [
-  { time: "14:32:01.221", event: "PATTERN BLUE DETECTED", level: "CRITICAL", source: "MAGI-1" },
-  { time: "14:32:01.445", event: "A.T. FIELD ANALYSIS BEGIN", level: "INFO", source: "MAGI-2" },
-  { time: "14:32:02.102", event: "MAGI CONSENSUS REQUESTED", level: "INFO", source: "CENTRAL" },
-  { time: "14:32:03.018", event: "SYNC RATE FLUCTUATION", level: "WARNING", source: "EVA-01" },
-  { time: "14:32:04.887", event: "EVANGELION UNIT-01 LAUNCH", level: "WARNING", source: "CAGE-7" },
-  { time: "14:32:06.333", event: "UMBILICAL CABLE CONNECTED", level: "INFO", source: "EVA-01" },
-  { time: "14:32:08.190", event: "TARGET LOCKED", level: "CRITICAL", source: "MAGI-3" },
-  { time: "14:32:09.441", event: "PROGRESSIVE KNIFE DEPLOYED", level: "INFO", source: "EVA-01" },
-  { time: "14:32:11.002", event: "A.T. FIELD NEUTRALIZED", level: "CRITICAL", source: "MAGI-1" },
-  { time: "14:32:13.887", event: "CORE EXPOSED", level: "WARNING", source: "ANALYSIS" },
+// ─── Operations log data (15 rows) ───
+const operationsLog = [
+  { time: "14:32:01.221", operation: "PATTERN BLUE DETECTED — SECTOR 7G", priority: "CRITICAL", operator: "MAGI-1", status: "CONFIRMED" },
+  { time: "14:32:01.445", operation: "A.T. FIELD ANALYSIS INITIATED", priority: "HIGH", operator: "MAGI-2", status: "IN PROGRESS" },
+  { time: "14:32:02.102", operation: "MAGI CONSENSUS PROTOCOL REQUESTED", priority: "HIGH", operator: "CENTRAL", status: "PENDING" },
+  { time: "14:32:03.018", operation: "SYNC RATE FLUCTUATION — EVA-01", priority: "WARNING", operator: "CAGE-7", status: "MONITORING" },
+  { time: "14:32:04.887", operation: "EVANGELION UNIT-01 LAUNCH SEQUENCE", priority: "CRITICAL", operator: "COMMAND", status: "EXECUTING" },
+  { time: "14:32:06.333", operation: "UMBILICAL CABLE CONNECTION VERIFIED", priority: "NORMAL", operator: "EVA-01", status: "COMPLETE" },
+  { time: "14:32:08.190", operation: "TARGET LOCK ACQUIRED — BEARING 270", priority: "HIGH", operator: "MAGI-3", status: "LOCKED" },
+  { time: "14:32:09.441", operation: "PROGRESSIVE KNIFE DEPLOYMENT", priority: "NORMAL", operator: "EVA-01", status: "ARMED" },
+  { time: "14:32:11.002", operation: "A.T. FIELD NEUTRALIZATION ATTEMPT", priority: "CRITICAL", operator: "MAGI-1", status: "IN PROGRESS" },
+  { time: "14:32:13.887", operation: "ANGEL CORE EXPOSURE DETECTED", priority: "HIGH", operator: "ANALYSIS", status: "CONFIRMED" },
+  { time: "14:32:15.100", operation: "EVA-02 STANDBY ORDER ISSUED", priority: "NORMAL", operator: "COMMAND", status: "ACKNOWLEDGED" },
+  { time: "14:32:17.442", operation: "LCL PRESSURE NOMINAL — ALL UNITS", priority: "LOW", operator: "MEDICAL", status: "OK" },
+  { time: "14:32:19.881", operation: "GEOFRONT PERIMETER SCAN COMPLETE", priority: "LOW", operator: "SECURITY", status: "CLEAR" },
+  { time: "14:32:22.003", operation: "S2 ENGINE OUTPUT FLUCTUATION", priority: "WARNING", operator: "MAGI-2", status: "MONITORING" },
+  { time: "14:32:24.667", operation: "DUMMY PLUG SYSTEM CHECK — FAILED", priority: "WARNING", operator: "CAGE-3", status: "ERROR" },
 ];
 
 export default function NervCommandCenter() {
-  // ─── Global state ───
-  const [systemStatus, setSystemStatus] = useState<"NORMAL" | "EMERGENCY">(
-    "NORMAL"
-  );
-  const [currentTime, setCurrentTime] = useState("");
+  // ─── State ───
+  const [systemStatus, setSystemStatus] = useState<"NORMAL" | "EMERGENCY">("NORMAL");
+  const [clockSeconds, setClockSeconds] = useState(0);
   const [syncValues, setSyncValues] = useState(pilots.map((p) => p.sync));
+  const [anomalyVisible, setAnomalyVisible] = useState(false);
   const [magiVotes, setMagiVotes] = useState<MagiVote[]>([
     { name: "MELCHIOR 1", status: "idle" },
     { name: "BALTHASAR 2", status: "idle" },
     { name: "CASPER 3", status: "idle" },
   ]);
-  const [classifiedUnlocked, setClassifiedUnlocked] = useState(false);
-  const [dashboardTab, setDashboardTab] = useState("logs");
 
   const [emergencySeverity, setEmergencySeverity] = useState<
     "emergency" | "warning" | "info" | "success" | "critical" | "contrast"
   >("emergency");
+
   const isEmergency = systemStatus === "EMERGENCY";
   const autoTriggeredRef = useRef(false);
   const cycleRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // ─── Live clock ───
+  // ─── Live clock (seconds since midnight for SegmentDisplay) ───
   useEffect(() => {
     const tick = () => {
       const now = new Date();
-      setCurrentTime(
-        now.toLocaleTimeString("en-GB", {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        })
-      );
+      setClockSeconds(now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds());
     };
     tick();
     const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, []);
 
-  // ─── Simulated sync gauge fluctuation ───
+  // ─── Sync fluctuation every 2s ───
   useEffect(() => {
     const interval = setInterval(() => {
       setSyncValues((prev) =>
-        prev.map((v) =>
-          Math.max(10, Math.min(99, v + (Math.random() - 0.5) * 4))
-        )
+        prev.map((v) => Math.max(10, Math.min(99, v + (Math.random() - 0.5) * 6)))
       );
     }, 2000);
     return () => clearInterval(interval);
@@ -98,13 +93,8 @@ export default function NervCommandCenter() {
 
   // ─── MAGI voting simulation ───
   const triggerMagiVote = useCallback(() => {
-    const update = (
-      idx: number,
-      status: "idle" | "computing" | "accepted" | "rejected"
-    ) =>
-      setMagiVotes((prev) =>
-        prev.map((v, i) => (i === idx ? { ...v, status } : v))
-      );
+    const update = (idx: number, status: "idle" | "computing" | "accepted" | "rejected") =>
+      setMagiVotes((prev) => prev.map((v, i) => (i === idx ? { ...v, status } : v)));
 
     update(0, "computing");
     update(1, "computing");
@@ -119,16 +109,22 @@ export default function NervCommandCenter() {
     }, 8000);
   }, []);
 
-  // ─── Toggle system status ───
+  // ─── Toggle emergency ───
   const toggleAlert = useCallback(() => {
     setSystemStatus((prev) => {
       const next = prev === "NORMAL" ? "EMERGENCY" : "NORMAL";
-      if (next === "EMERGENCY") triggerMagiVote();
+      if (next === "EMERGENCY") {
+        triggerMagiVote();
+        setAnomalyVisible(true);
+        setTimeout(() => setAnomalyVisible(false), 10000);
+      } else {
+        setAnomalyVisible(false);
+      }
       return next;
     });
   }, [triggerMagiVote]);
 
-  // ─── Random severity picker ───
+  // ─── Severity picker ───
   const randomSeverity = useCallback(() => {
     const severities: typeof emergencySeverity[] = [
       "emergency", "warning", "critical", "contrast", "info",
@@ -136,7 +132,7 @@ export default function NervCommandCenter() {
     return severities[Math.floor(Math.random() * severities.length)];
   }, []);
 
-  // ─── Auto-trigger emergency: first at 5s, auto-dismiss 10s, cycle every 60s ───
+  // ─── Auto-trigger: first at 5s, dismiss at 10s, cycle every 60s ───
   useEffect(() => {
     if (autoTriggeredRef.current) return;
 
@@ -144,23 +140,24 @@ export default function NervCommandCenter() {
       autoTriggeredRef.current = true;
       setEmergencySeverity("emergency");
       setSystemStatus("EMERGENCY");
+      setAnomalyVisible(true);
       triggerMagiVote();
 
-      // Auto-dismiss after 10s
       setTimeout(() => {
         setSystemStatus("NORMAL");
+        setAnomalyVisible(false);
       }, 10000);
 
-      // Start the recurring cycle every 60s
       cycleRef.current = setInterval(() => {
         const sev = randomSeverity();
         setEmergencySeverity(sev);
         setSystemStatus("EMERGENCY");
+        setAnomalyVisible(true);
         triggerMagiVote();
 
-        // Auto-dismiss after 10s
         setTimeout(() => {
           setSystemStatus("NORMAL");
+          setAnomalyVisible(false);
         }, 10000);
       }, 60000);
     }, 5000);
@@ -171,100 +168,84 @@ export default function NervCommandCenter() {
     };
   }, [triggerMagiVote, randomSeverity]);
 
-  // ─── Border color token ───
+  // ─── Derived values ───
   const borderColor = isEmergency ? "border-alert-red" : "border-grid-green";
+  const avgSync = Math.round(syncValues.reduce((a, b) => a + b, 0) / syncValues.length);
 
   return (
     <div
       className="min-h-screen w-full overflow-x-hidden transition-colors duration-500"
-      style={{
-        backgroundColor: isEmergency ? "#1A0000" : "#000000",
-      }}
+      style={{ backgroundColor: isEmergency ? "#1A0000" : "#000000" }}
     >
       {/* ═══════════════════════════════════════════
-          HEADER (Full Width)
+          EMERGENCY BANNER (overlay)
           ═══════════════════════════════════════════ */}
-      <header className={`relative w-full border-b-2 ${borderColor}`}>
-        {/* EMERGENCY → Banner overlay with doc link */}
-        {isEmergency && (
-          <EmergencyBanner
-            text="EMERGENCY"
-            subtext="PATTERN BLUE DETECTED — ALL PERSONNEL TO BATTLE STATIONS"
-            visible
-            severity={emergencySeverity}
+      {isEmergency && (
+        <EmergencyBanner
+          text="EMERGENCY"
+          subtext="PATTERN BLUE DETECTED — ALL PERSONNEL TO BATTLE STATIONS"
+          visible
+          severity={emergencySeverity}
+        >
+          <Link
+            href="/docs"
+            className="inline-block text-xs font-mono uppercase tracking-[0.2em] underline underline-offset-4 hover:opacity-80 transition-opacity text-eva-black"
+            style={{ fontFamily: "var(--font-eva-display)" }}
           >
-            <Link
-              href="/docs"
-              className="inline-block text-xs font-mono uppercase tracking-[0.2em] underline underline-offset-4 hover:opacity-80 transition-opacity text-eva-black"
+            VIEW DOCUMENTATION
+          </Link>
+        </EmergencyBanner>
+      )}
+
+      {/* ═══════════════════════════════════════════
+          HEADER — Compact command bar
+          ═══════════════════════════════════════════ */}
+      <header className={`w-full border-b-2 ${borderColor} bg-bg-base`}>
+        <div className="px-4 py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
+          {/* Left — Title */}
+          <div className="text-center lg:text-left shrink-0">
+            <h1
+              className="text-white text-3xl sm:text-4xl font-black uppercase leading-none"
+              style={{ fontFamily: "var(--font-eva-display)", letterSpacing: "-0.02em" }}
+            >
+              EVA-UI
+            </h1>
+            <p
+              className="text-eva-mid-gray text-xs uppercase tracking-[0.35em]"
               style={{ fontFamily: "var(--font-eva-display)" }}
             >
-              VIEW DOCUMENTATION →
-            </Link>
-          </EmergencyBanner>
-        )}
-
-        {/* NORMAL → Hero header */}
-        {!isEmergency && (
-          <div className="relative w-full overflow-hidden bg-bg-base px-4 sm:px-8 py-6 sm:py-8">
-            {/* Top row: title + time */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between gap-4 sm:gap-0">
-              {/* Left — EVA-UI title block */}
-              <div className="text-center sm:text-left">
-                <motion.h1
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-white text-5xl sm:text-6xl md:text-7xl font-black uppercase"
-                  style={{
-                    fontFamily: "var(--font-eva-display)",
-                    lineHeight: "0.85",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  EVA-UI
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.5 }}
-                  transition={{ delay: 0.15 }}
-                  className="text-eva-mid-gray text-xs sm:text-sm uppercase tracking-[0.35em] mt-1"
-                  style={{ fontFamily: "var(--font-eva-display)" }}
-                >
-                  NERV COMMAND CENTER
-                </motion.p>
-              </div>
-
-              {/* Right — time */}
-              <div className="text-center sm:text-right">
-                <span
-                  className="text-sm font-mono text-eva-orange tabular-nums eva-text-shadow-orange block"
-                  style={{ fontFamily: "var(--font-eva-mono)" }}
-                >
-                  {currentTime || "00:00:00"} — TOKYO-3
-                </span>
-              </div>
-            </div>
-
-            {/* Quick-link buttons row */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-              className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-5"
-            >
-              <Link href="/docs">
-                <Button variant="primary" size="sm">DOCUMENTATION</Button>
-              </Link>
-              <Link href="/examples">
-                <Button variant="terminal" size="sm">EXAMPLES</Button>
-              </Link>
-              <Button variant="ghost" size="sm">NPM PACKAGE</Button>
-            </motion.div>
+              NERV COMMAND CENTER
+            </p>
           </div>
-        )}
+
+          {/* Center — Install snippet */}
+          <code className="text-xs font-mono text-eva-cyan bg-eva-black/60 px-3 py-1.5 border border-eva-cyan/30 select-all whitespace-nowrap">
+            npm install @mattloyed/eva-ui
+          </code>
+
+          {/* Right — Clock + buttons */}
+          <div className="flex items-center gap-3 flex-wrap justify-center lg:justify-end">
+            <SegmentDisplay
+              value={clockSeconds}
+              format="H:MM:SS"
+              color="orange"
+              size="sm"
+            />
+            <Link href="/docs">
+              <Button variant="primary" size="sm">DOCS</Button>
+            </Link>
+            <Link href="/examples">
+              <Button variant="terminal" size="sm">EXAMPLES</Button>
+            </Link>
+            <a href="https://www.npmjs.com/package/@mattloyed/eva-ui" target="_blank" rel="noopener noreferrer">
+              <Button variant="ghost" size="sm">NPM</Button>
+            </a>
+          </div>
+        </div>
       </header>
 
       {/* ═══════════════════════════════════════════
-          STATUS BAR
+          STATUS BAR — Thin info strip
           ═══════════════════════════════════════════ */}
       <div
         className={`flex flex-col sm:flex-row items-center justify-between px-4 py-1.5 border-b ${borderColor} gap-2 ${
@@ -272,12 +253,8 @@ export default function NervCommandCenter() {
         }`}
       >
         <div className="flex items-center gap-3">
-          <motion.div
-            className={`w-2 h-2 ${isEmergency ? "bg-eva-red" : "bg-eva-green"}`}
-            animate={isEmergency ? { opacity: [1, 0, 1] } : {}}
-            transition={
-              isEmergency ? { duration: 0.4, repeat: Infinity } : {}
-            }
+          <div
+            className={`w-2 h-2 ${isEmergency ? "bg-eva-red animate-pulse" : "bg-eva-green"}`}
           />
           <span
             className={`text-xs uppercase tracking-[0.2em] font-bold ${
@@ -288,18 +265,10 @@ export default function NervCommandCenter() {
             {isEmergency ? "CONDITION RED" : "ALL SYSTEMS NORMAL"}
           </span>
         </div>
-
-        <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center sm:justify-end">
-          <code className="hidden md:inline text-[10px] sm:text-xs font-mono text-eva-cyan bg-eva-black/60 px-2 py-0.5 border border-eva-cyan/30 select-all">
-            npm install @mattloyed/eva-ui
-          </code>
-          <span className="hidden sm:inline text-[10px] sm:text-xs font-mono text-eva-mid-gray">
-            47 COMPONENTS
-          </span>
-          <span className="hidden sm:inline text-eva-mid-gray/30">|</span>
-          <span className="hidden sm:inline text-[10px] sm:text-xs font-mono text-eva-mid-gray">
-            v0.7.0
-          </span>
+        <div className="flex items-center gap-3 flex-wrap justify-center">
+          <span className="text-xs font-mono text-eva-mid-gray">47 COMPONENTS</span>
+          <span className="text-eva-mid-gray/30">|</span>
+          <span className="text-xs font-mono text-eva-mid-gray">v0.7.0</span>
           <Button
             variant={isEmergency ? "primary" : "danger"}
             size="sm"
@@ -311,79 +280,83 @@ export default function NervCommandCenter() {
       </div>
 
       {/* ═══════════════════════════════════════════
-          MAIN CONTENT — 3-Column Grid
+          ROW 1 — KPI Strip (6 metric cards)
           ═══════════════════════════════════════════ */}
-      <main className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-        {/* ─────────────────────────────────────────
-            LEFT COLUMN — Monitoring (3 cols)
-            ───────────────────────────────────────── */}
-        <div
-          className={`col-span-full lg:col-span-3 lg:border-r ${borderColor} flex flex-col`}
-        >
-          {/* Countdown Timer */}
-          <div className={`border-b ${borderColor}`}>
-            <CountdownTimer initialSeconds={300} />
-          </div>
+      <section className={`border-b ${borderColor} px-4 py-4`}>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <KpiCard label="ACTIVE UNITS" value="4" color="text-eva-cyan" />
+          <KpiCard label="SYNC RATE" value={`${avgSync}%`} color="text-eva-green" />
+          <KpiCard label="THREAT LEVEL" value={isEmergency ? "HIGH" : "LOW"} color={isEmergency ? "text-eva-red" : "text-eva-green"} />
+          <KpiCard label="POWER GRID" value="98%" color="text-eva-orange" />
+          <KpiCard label="PERSONNEL" value="847" color="text-eva-cyan" />
+          <KpiCard label="MAGI CONSENSUS" value="2/3" color="text-eva-magenta" />
+        </div>
+      </section>
 
-          {/* Pilot Sync Rates */}
-          <div className="flex-1 p-3 flex flex-col gap-4">
-            <h3
-              className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-              style={{ fontFamily: "var(--font-eva-display)" }}
-            >
-              PILOT SYNCHRONIZATION
-            </h3>
+      {/* ═══════════════════════════════════════════
+          ROW 2 — Main Monitoring (3-column)
+          ═══════════════════════════════════════════ */}
+      <main className={`grid grid-cols-1 lg:grid-cols-12 gap-0 border-b ${borderColor}`}>
+        {/* ─── LEFT (4 cols): Pilot Sync + Phase Status ─── */}
+        <div className={`col-span-full lg:col-span-4 lg:border-r ${borderColor} p-3 flex flex-col gap-4`}>
+          <h3
+            className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
+            style={{ fontFamily: "var(--font-eva-display)" }}
+          >
+            PILOT SYNCHRONIZATION
+          </h3>
 
-            {pilots.map((p, i) => (
-              <div key={p.id} className="space-y-1">
-                <div className="flex items-center justify-between text-[10px] sm:text-xs font-mono text-eva-mid-gray">
-                  <span>{p.id}</span>
-                  <span className="text-eva-cyan">{p.pilot}</span>
-                </div>
-                <SyncProgressBar
-                  value={syncValues[i]}
-                  label={`${p.id} SYNC`}
-                  blocks={15}
-                />
+          {pilots.map((p, i) => (
+            <div key={p.id} className="space-y-1">
+              <div className="flex items-center justify-between text-xs font-mono text-eva-mid-gray">
+                <span>{p.id}</span>
+                <span className="text-eva-cyan">{p.pilot}</span>
               </div>
-            ))}
-
-            {/* Decorative footer */}
-            <div className="mt-auto pt-4 border-t border-eva-mid-gray/30">
-              <div className="text-[9px] sm:text-xs font-mono text-eva-mid-gray/70 space-y-0.5">
-                <div>LCL SYSTEM ........... NOMINAL</div>
-                <div>ENTRY PLUG ........... LOCKED</div>
-                <div>A.T. FIELD ........... DEPLOYED</div>
-                <div>UMBILICAL CABLE ...... CONNECTED</div>
-              </div>
+              <SyncProgressBar
+                value={syncValues[i]}
+                label={`${p.id} SYNC`}
+                blocks={15}
+              />
             </div>
-          </div>
+          ))}
+
+          <Divider color="orange" variant="dashed" />
+
+          <PhaseStatusStack
+            title="SYSTEM PHASES"
+            color="orange"
+            phases={[
+              { label: "MAGI CORE", status: "ok", value: "ONLINE" },
+              { label: "A.T. FIELD", status: "ok", value: "ACTIVE" },
+              { label: "ENTRY PLUG", status: "warning", value: "SYNC" },
+              { label: "S2 ENGINE", status: "danger", value: "LOCKED" },
+              { label: "LCL SYSTEM", status: "ok", value: "NOMINAL" },
+              { label: "UMBILICAL", status: "ok", value: "CONNECTED" },
+              { label: "DUMMY PLUG", status: "inactive", value: "OFF" },
+              { label: "N2 MINES", status: "warning", value: "ARMED" },
+            ]}
+          />
         </div>
 
-        {/* ─────────────────────────────────────────
-            CENTER COLUMN — Data Viz & Decision (6 cols)
-            ───────────────────────────────────────── */}
-        <div className="col-span-full lg:col-span-6 flex flex-col">
-          {/* Sync Ratio Chart — top half */}
-          <div
-            className={`border-b ${borderColor} flex flex-col`}
-            style={{ minHeight: "280px" }}
-          >
+        {/* ─── CENTER (5 cols): Charts ─── */}
+        <div className={`col-span-full lg:col-span-5 lg:border-r ${borderColor} flex flex-col`}>
+          {/* Sync Ratio Chart */}
+          <div className={`border-b ${borderColor} flex flex-col min-h-[200px] lg:min-h-[280px]`}>
             <div className="flex items-center justify-between px-4 py-1.5 bg-eva-dark-gray border-b border-eva-mid-gray/30">
               <span
                 className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
                 style={{ fontFamily: "var(--font-eva-display)" }}
               >
-                HARMONIC WAVEFORM ANALYSIS
+                HARMONIC WAVEFORM
               </span>
-              <div className="flex items-center gap-3 text-[10px] sm:text-xs font-mono">
+              <div className="flex items-center gap-3 text-xs font-mono">
                 <span className="flex items-center gap-1">
                   <span className="w-3 h-0.5 bg-eva-cyan inline-block" />
                   <span className="text-eva-cyan">DATA-BLUE</span>
                 </span>
                 <span className="flex items-center gap-1">
                   <span className="w-3 h-0.5 bg-eva-magenta inline-block" />
-                  <span className="text-eva-magenta">MAGENTA-WAVE</span>
+                  <span className="text-eva-magenta">MAGENTA</span>
                 </span>
               </div>
             </div>
@@ -392,171 +365,155 @@ export default function NervCommandCenter() {
             </div>
           </div>
 
-          {/* MAGI System Panel — bottom half */}
-          <div className="flex-1 flex flex-col">
-            <MagiSystemPanel votes={magiVotes} className="flex-1" />
+          {/* BarChart — Unit Deployment */}
+          <div className={`border-b ${borderColor} p-3 min-h-[200px] lg:min-h-[280px]`}>
+            <BarChart
+              bars={[
+                { label: "EVA-00", value: syncValues[0] },
+                { label: "EVA-01", value: syncValues[1] },
+                { label: "EVA-02", value: syncValues[2] },
+                { label: "EVA-03", value: syncValues[3] },
+                { label: "EVA-04", value: syncValues[4] },
+              ]}
+              maxValue={100}
+              color="green"
+              title="UNIT DEPLOYMENT STATUS"
+              showGrid
+              showValues
+              segmented
+              height={200}
+              unit="%"
+            />
+          </div>
+
+          {/* GradientStatusBar — Threat Assessment */}
+          <div className="p-3">
+            <GradientStatusBar
+              value={isEmergency ? 78 : 22}
+              label="THREAT ASSESSMENT"
+              sublabel={isEmergency ? "ANGEL DETECTED" : "ALL CLEAR"}
+              color={isEmergency ? "red" : "cyan"}
+              zones={[
+                { start: 0, end: 30, color: "#00FF00", label: "LOW" },
+                { start: 30, end: 60, color: "#FF9900", label: "MED" },
+                { start: 60, end: 80, color: "#FF4400", label: "HIGH" },
+                { start: 80, end: 100, color: "#FF0000", label: "CRIT" },
+              ]}
+            />
           </div>
         </div>
 
-        {/* ─────────────────────────────────────────
-            RIGHT COLUMN — Comms & Security (3 cols)
-            ───────────────────────────────────────── */}
-        <div
-          className={`col-span-full lg:col-span-3 lg:border-l ${borderColor} flex flex-col`}
-        >
-          {/* SEELE Monoliths */}
-          <div className={`border-b ${borderColor} p-3`}>
-            <h3
-              className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange mb-3"
-              style={{ fontFamily: "var(--font-eva-display)" }}
-            >
-              SEELE — SECURE CHANNEL
-            </h3>
-            <div className="flex flex-col gap-2">
-              <SeeleMonolith id="01" isSpeaking className="min-h-[100px]" />
-              <SeeleMonolith
-                id="02"
-                isSpeaking={false}
-                className="min-h-[100px]"
-              />
-              <SeeleMonolith id="03" isSpeaking className="min-h-[100px]" />
-            </div>
+        {/* ─── RIGHT (3 cols): Gauges + PieChart ─── */}
+        <div className="col-span-full lg:col-span-3 p-3 flex flex-col gap-4">
+          <h3
+            className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
+            style={{ fontFamily: "var(--font-eva-display)" }}
+          >
+            SYSTEM GAUGES
+          </h3>
+
+          <div className="flex flex-row lg:flex-col items-center justify-around gap-4 flex-wrap">
+            <Gauge
+              value={avgSync}
+              label="SYNC"
+              unit="%"
+              color="cyan"
+              size={120}
+              showTicks
+              threshold={85}
+            />
+            <Gauge
+              value={98}
+              label="POWER"
+              unit="%"
+              color="green"
+              size={120}
+              showTicks
+              threshold={90}
+            />
+            <Gauge
+              value={isEmergency ? 42 : 95}
+              label="CONTAINMENT"
+              unit="%"
+              color={isEmergency ? "red" : "orange"}
+              size={120}
+              showTicks
+              threshold={50}
+            />
           </div>
 
-          {/* Classified form zone */}
-          <div className="flex-1 relative">
-            <ClassifiedOverlay
-              text="TOP SECRET"
-              isUnlocked={classifiedUnlocked}
-            >
-              <div className="p-4 space-y-4 h-full">
-                <h3
-                  className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange mb-2"
-                  style={{ fontFamily: "var(--font-eva-display)" }}
-                >
-                  CLASSIFIED TERMINAL
-                </h3>
+          <Divider color="cyan" variant="dashed" />
 
-                <InputField
-                  label="OPERATOR ID"
-                  placeholder="Enter ID..."
-                  color="orange"
-                  value="IKARI-G"
-                  readOnly
-                />
-                <InputField
-                  label="AUTHORIZATION CODE"
-                  placeholder="••••••••"
-                  color="green"
-                  type="password"
-                  readOnly
-                />
-                <InputField
-                  label="TARGET DESIGNATION"
-                  placeholder="ANGEL-XX"
-                  color="cyan"
-                  value="SACHIEL"
-                  readOnly
-                />
-
-                <div className="pt-2 text-[9px] sm:text-xs font-mono text-eva-mid-gray/70 space-y-0.5">
-                  <div>CLEARANCE: LEVEL 7 — EYES ONLY</div>
-                  <div>ENCRYPTION: AES-256 / MAGI-VERIFIED</div>
-                </div>
-              </div>
-            </ClassifiedOverlay>
-
-            <div className="absolute bottom-3 left-3 right-3 z-[60]">
-              <Button
-                variant={classifiedUnlocked ? "ghost" : "danger"}
-                size="sm"
-                fullWidth
-                onClick={() => setClassifiedUnlocked((v) => !v)}
-              >
-                {classifiedUnlocked ? "RE-CLASSIFY" : "OVERRIDE CLEARANCE"}
-              </Button>
-            </div>
-          </div>
+          <PieChart
+            slices={[
+              { label: "DEFENSE", value: 35 },
+              { label: "RESEARCH", value: 25 },
+              { label: "OPERATIONS", value: 20 },
+              { label: "MEDICAL", value: 12 },
+              { label: "ADMIN", value: 8 },
+            ]}
+            title="RESOURCE ALLOCATION"
+            size={160}
+            donut
+            showLegend
+            showLabels
+            color="mixed"
+          />
         </div>
       </main>
 
       {/* ═══════════════════════════════════════════
-          EXTENDED DISPLAY — System Logs & Event Data
+          ROW 3 — Extended Display (2 columns)
           ═══════════════════════════════════════════ */}
-      <section className={`border-t-2 ${borderColor}`}>
-        {/* Navigation Tabs */}
-        <div className={`border-b ${borderColor}`}>
-          <NavigationTabs
-            tabs={[
-              { id: "logs", label: "SYSTEM LOGS" },
-              { id: "events", label: "EVENT DATA" },
-              { id: "analysis", label: "ANALYSIS" },
-            ]}
-            activeTab={dashboardTab}
-            onTabChange={setDashboardTab}
-            color="orange"
-          />
-        </div>
-
+      <section className={`border-b ${borderColor}`}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-          {/* Left — Terminal Display */}
-          <div className={`col-span-full lg:col-span-5 lg:border-r ${borderColor}`}>
-            <TargetingContainer label="SYSTEM OUTPUT" color="cyan">
-              <TerminalDisplay
-                lines={[
-                  "NERV CENTRAL DOGMA — BOOT SEQUENCE",
-                  "INITIALIZING MAGI SUBSYSTEMS...",
-                  "MELCHIOR-1 ......... ONLINE",
-                  "BALTHASAR-2 ........ ONLINE",
-                  "CASPER-3 ........... ONLINE",
-                  "PILOT NEURAL LINK ... ESTABLISHED",
-                  "EVANGELION CAGE LOCKS. ENGAGED",
-                  "LCL IONIZATION ...... COMPLETE",
-                  "SYNC GRAPH NOMINAL .. STANDBY",
-                  "AWAITING COMMAND INPUT...",
-                ]}
-                color="green"
-                title="SYSTEM LOG"
-                maxHeight="280px"
-                showLineNumbers
-              />
-            </TargetingContainer>
-          </div>
-
-          {/* Right — DataGrid with event log */}
-          <div className="col-span-full lg:col-span-7">
+          {/* Left — DataGrid with 15 rows */}
+          <div className={`col-span-full lg:col-span-7 lg:border-r ${borderColor}`}>
             <DataGrid
               columns={[
-                {
-                  key: "time",
-                  header: "TIMESTAMP",
-                  width: "130px",
-                  sortable: true,
-                },
-                { key: "event", header: "EVENT", sortable: true },
-                {
-                  key: "level",
-                  header: "LEVEL",
-                  align: "center",
-                  sortable: true,
-                },
-                { key: "source", header: "SOURCE", align: "right" },
+                { key: "time", header: "TIMESTAMP", width: "130px", sortable: true },
+                { key: "operation", header: "OPERATION", sortable: true },
+                { key: "priority", header: "PRIORITY", align: "center", sortable: true },
+                { key: "operator", header: "OPERATOR", align: "center" },
+                { key: "status", header: "STATUS", align: "right" },
               ]}
-              data={eventLogData}
+              data={operationsLog}
               color="cyan"
-              title="EVENT LOG"
+              title="OPERATIONS LOG"
               showIndex
-              pageSize={5}
-              maxHeight="300px"
+              pageSize={8}
+              maxHeight="420px"
             />
+          </div>
+
+          {/* Right — MAGI + PatternAlert */}
+          <div className="col-span-full lg:col-span-5 flex flex-col">
+            <MagiSystemPanel votes={magiVotes} trapezoidal className="flex-1" />
+
+            <div className={`border-t ${borderColor} p-3`}>
+              <PatternAlert
+                designation="3rd ANGEL"
+                pattern="PATTERN"
+                bloodType="BLUE"
+                visible={anomalyVisible}
+                color="red"
+                animated
+                subtitle="SACHIEL — APPROACHING TOKYO-3"
+              />
+              {!anomalyVisible && (
+                <div className="text-xs font-mono text-eva-mid-gray/50 text-center py-6 uppercase tracking-wider">
+                  NO ANOMALY DETECTED — STANDBY
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════
-          COMPONENT SHOWCASE
+          ROW 4 — Component Showcase
           ═══════════════════════════════════════════ */}
-      <section className={`border-t-2 ${borderColor}`}>
+      <section className={`border-b ${borderColor}`}>
         <TargetingContainer label="COMPONENT SHOWCASE" color="orange">
           <div className="p-4 sm:p-6 space-y-6">
             {/* Category badges */}
@@ -567,68 +524,17 @@ export default function NervCommandCenter() {
               <Badge label="HUD" variant="warning" size="sm" />
               <Badge label="DATA" variant="default" size="sm" />
               <Badge label="LAYOUT" variant="info" size="sm" />
+              <Badge label="NAVIGATION" variant="success" size="sm" />
             </div>
 
             <Divider color="orange" variant="dashed" />
 
-            {/* Live demo row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-              {/* Gauge */}
-              <div className="flex justify-center">
-                <Gauge
-                  value={syncValues[2]}
-                  label="SYNC RATE"
-                  unit="%"
-                  color="cyan"
-                  size={140}
-                  showTicks
-                  threshold={85}
-                />
-              </div>
-
-              {/* BarChart (segmented) */}
-              <div>
-                <BarChart
-                  bars={[
-                    { label: "EVA-00", value: syncValues[0] },
-                    { label: "EVA-01", value: syncValues[1] },
-                    { label: "EVA-02", value: syncValues[2] },
-                  ]}
-                  maxValue={100}
-                  color="green"
-                  title="UNIT STATUS"
-                  showGrid
-                  showValues
-                  segmented
-                  height={160}
-                  unit="%"
-                />
-              </div>
-
-              {/* PhaseStatusStack */}
-              <div>
-                <PhaseStatusStack
-                  title="SYSTEM PHASES"
-                  color="orange"
-                  phases={[
-                    { label: "MAGI CORE", status: "ok", value: "ONLINE" },
-                    { label: "A.T. FIELD", status: "ok", value: "ACTIVE" },
-                    { label: "ENTRY PLUG", status: "warning", value: "SYNC" },
-                    { label: "S2 ENGINE", status: "danger", value: "LOCKED" },
-                    { label: "DUMMY PLUG", status: "inactive", value: "OFF" },
-                  ]}
-                />
-              </div>
-            </div>
-
-            <Divider color="cyan" variant="dashed" />
-
-            {/* Stepper: INSTALL → IMPORT → BUILD */}
+            {/* Stepper: INSTALL -> IMPORT -> BUILD */}
             <div className="max-w-lg mx-auto">
               <Stepper
                 steps={[
                   { label: "INSTALL", description: "npm install @mattloyed/eva-ui" },
-                  { label: "IMPORT", description: "import { Button } from ..." },
+                  { label: "IMPORT", description: "import { Button } from 'eva-ui'" },
                   { label: "BUILD", description: "Create your command center" },
                 ]}
                 activeStep={1}
@@ -636,54 +542,40 @@ export default function NervCommandCenter() {
                 direction="horizontal"
               />
             </div>
+
+            <Divider color="cyan" variant="dashed" />
           </div>
         </TargetingContainer>
       </section>
 
       {/* ═══════════════════════════════════════════
-          FOOTER STATUS BAR
+          FOOTER
           ═══════════════════════════════════════════ */}
       <footer
         className={`px-4 py-3 border-t-2 ${borderColor} ${
           isEmergency ? "bg-eva-red/5" : "bg-eva-dark-gray"
-        } flex flex-col gap-3 text-[10px] sm:text-xs font-mono text-eva-mid-gray`}
+        } flex flex-col gap-3 text-xs font-mono text-eva-mid-gray`}
       >
-        {/* Top row — links */}
+        {/* Links */}
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="/docs"
-            className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider"
-          >
+          <Link href="/docs" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
             DOCUMENTATION
           </Link>
           <span className="text-eva-mid-gray/30">|</span>
-          <Link
-            href="/examples"
-            className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider"
-          >
+          <Link href="/examples" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
             EXAMPLES
           </Link>
           <span className="text-eva-mid-gray/30">|</span>
-          <a
-            href="https://github.com/mattloyed/eva-ui"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider"
-          >
+          <a href="https://github.com/mattloyed/eva-ui" target="_blank" rel="noopener noreferrer" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
             GITHUB
           </a>
           <span className="text-eva-mid-gray/30">|</span>
-          <a
-            href="https://www.npmjs.com/package/@mattloyed/eva-ui"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider"
-          >
+          <a href="https://www.npmjs.com/package/@mattloyed/eva-ui" target="_blank" rel="noopener noreferrer" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
             NPM
           </a>
         </div>
 
-        {/* Bottom row — attribution + quote */}
+        {/* Attribution + quote */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>
             MADE WITH [REDACTED] BY{" "}
@@ -692,14 +584,25 @@ export default function NervCommandCenter() {
           <span className="text-eva-mid-gray/50 italic">
             &ldquo;GOD&apos;S IN HIS HEAVEN. ALL&apos;S RIGHT WITH THE WORLD.&rdquo;
           </span>
-          <span>
-            MAGI:{" "}
-            {magiVotes.every((v) => v.status === "idle")
-              ? "STANDBY"
-              : "ACTIVE"}
-          </span>
         </div>
       </footer>
     </div>
+  );
+}
+
+// ─── KPI Card helper component ───
+function KpiCard({ label, value, color }: { label: string; value: string; color: string }) {
+  return (
+    <Card variant="hud">
+      <div className="text-center py-2 px-1">
+        <div className={`text-xl sm:text-2xl font-black font-mono ${color}`}>{value}</div>
+        <div
+          className="text-xs text-eva-mid-gray uppercase tracking-wider mt-1"
+          style={{ fontFamily: "var(--font-eva-display)" }}
+        >
+          {label}
+        </div>
+      </div>
+    </Card>
   );
 }

@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { docsNavigation } from "@/docs/navigation";
+import { docsNavigation, docsQuickLinks } from "@/docs/navigation";
 
 function getActiveSectionIndex(pathname: string): number {
   return docsNavigation.findIndex((section) =>
@@ -131,21 +131,31 @@ function SidebarContent({
             </div>
           );
         })}
+
+        {/* Quick links */}
+        <div className="py-2 border-t border-eva-mid-gray mt-1">
+          {docsQuickLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={onLinkClick}
+              className="flex items-center gap-2 px-4 py-2 text-[10px] uppercase tracking-[0.3em] font-bold text-eva-cyan/70 hover:text-eva-cyan transition-colors"
+              style={{ fontFamily: "var(--font-eva-display)" }}
+            >
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="square" strokeLinejoin="miter" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              {link.title}
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* Footer */}
       <div className="px-4 py-3 border-t border-eva-mid-gray shrink-0">
         <div className="text-[9px] font-mono text-eva-white/40 space-y-0.5">
-          <div>EVA-UI v0.5.0</div>
+          <div>EVA-UI v0.7.0</div>
           <div>NERV DOCUMENTATION SYSTEM</div>
-          <div className="mt-1">
-            <Link
-              href="https://github.com/MattLoyeD/eva-ui"
-              className="text-eva-cyan/60 hover:text-eva-cyan transition-colors"
-            >
-              GITHUB REPOSITORY
-            </Link>
-          </div>
         </div>
       </div>
     </div>
