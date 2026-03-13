@@ -548,7 +548,7 @@ Rotating wireframe cube/polyhedron loading indicator with scanline effect.
 Container card with angled cut corner and variant styling. Supports header title and footer slot.
 
 ```tsx
-<Card title="UNIT STATUS" variant="highlighted">
+<Card title="UNIT STATUS" variant="hud">
   <p>All systems nominal</p>
 </Card>
 ```
@@ -558,7 +558,7 @@ Container card with angled cut corner and variant styling. Supports header title
 | `title` | `string` | — | Card header title |
 | `children` | `ReactNode` | — | Card body content |
 | `footer` | `ReactNode` | — | Card footer content |
-| `variant` | `"default" \| "highlighted" \| "danger"` | `"default"` | Visual variant |
+| `variant` | `"default" \| "alert" \| "hud"` | `"default"` | Visual variant |
 | `cutSize` | `number` | `20` | Corner cut size in pixels |
 | `className` | `string` | `""` | Additional CSS classes |
 
@@ -610,11 +610,13 @@ Horizontal bar chart with LCD-style block segments. Each bar renders as filled b
 ```tsx
 <BarChart
   bars={[
-    { label: "EVA-00", value: 65, color: "cyan" },
-    { label: "EVA-01", value: 89, color: "orange" },
-    { label: "EVA-02", value: 42, color: "red" },
+    { label: "EVA-00", value: 65 },
+    { label: "EVA-01", value: 89 },
+    { label: "EVA-02", value: 42 },
   ]}
   title="SYNC RATES"
+  color="cyan"
+  segmented
 />
 ```
 
@@ -623,7 +625,14 @@ Horizontal bar chart with LCD-style block segments. Each bar renders as filled b
 | `bars` | `BarChartBar[]` | **required** | `{ label, value, color? }` |
 | `title` | `string` | — | Chart title |
 | `maxValue` | `number` | — | Max value (auto-detected if omitted) |
-| `showValues` | `boolean` | `true` | Show value labels |
+| `color` | `"cyan" \| "green" \| "orange" \| "red" \| "magenta"` | `"cyan"` | Color theme |
+| `showGrid` | `boolean` | `true` | Show grid lines |
+| `showValues` | `boolean` | `true` | Show value labels on bars |
+| `direction` | `"vertical" \| "horizontal"` | `"vertical"` | Bar direction |
+| `stagger` | `number` | `0.08` | Animation stagger delay in seconds |
+| `height` | `number` | `200` | Chart height in pixels (vertical) or width (horizontal) |
+| `unit` | `string` | `""` | Unit suffix for values (e.g. `"%"`, `"ms"`) |
+| `segmented` | `boolean` | `false` | Segmented LCD-cell look with discrete blocks |
 | `className` | `string` | `""` | Additional CSS classes |
 
 ---
@@ -633,16 +642,28 @@ Horizontal bar chart with LCD-style block segments. Each bar renders as filled b
 SVG radial gauge with animated needle and threshold color zones.
 
 ```tsx
-<Gauge value={78} label="POWER OUTPUT" unit="%" />
+<Gauge value={78} label="POWER OUTPUT" unit="%" variant="ring" gradientFrom="#FF00FF" gradientTo="#FF9900" />
 ```
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `value` | `number` | **required** | Current value (0-100) |
+| `min` | `number` | `0` | Minimum value |
+| `max` | `number` | `100` | Maximum value |
 | `label` | `string` | — | Gauge label text |
-| `unit` | `string` | — | Unit suffix |
-| `thresholds` | `object` | — | Color threshold values |
+| `unit` | `string` | `"%"` | Unit suffix shown after value |
+| `color` | `"cyan" \| "green" \| "orange" \| "red" \| "magenta"` | `"cyan"` | Color theme |
+| `size` | `number` | `160` | Gauge size in pixels |
+| `showTicks` | `boolean` | `true` | Show tick marks |
+| `threshold` | `number` | — | Value above which gauge turns red |
+| `variant` | `"needle" \| "ring"` | `"needle"` | Display variant |
+| `gradientFrom` | `string` | `"#FF00FF"` | Gradient start color (ring variant) |
+| `gradientTo` | `string` | `"#FF9900"` | Gradient end color (ring variant) |
 | `className` | `string` | `""` | Additional CSS classes |
+
+**Variants:**
+- `needle` — Traditional gauge with animated needle and center dot
+- `ring` — Thick arc ring with gradient fill from `gradientFrom` to `gradientTo`
 
 ---
 
@@ -688,13 +709,14 @@ Large rotated stamp overlay text. Used for classification marks like APPROVED, R
 |------|------|---------|-------------|
 | `text` | `string` | **required** | Stamp text |
 | `visible` | `boolean` | `true` | Visibility toggle |
-| `color` | `"red" \| "green" \| "orange" \| "cyan"` | `"red"` | Stamp color |
+| `color` | `"red" \| "green" \| "orange" \| "cyan" \| "magenta"` | `"red"` | Stamp color |
 | `rotation` | `number` | `-12` | Rotation angle in degrees |
 | `repeat` | `boolean` | `false` | Tile the stamp across the area |
 | `repeatRows` | `number` | `3` | Rows when repeating |
 | `repeatCols` | `number` | `2` | Columns when repeating |
 | `subtitle` | `string` | — | Secondary text |
 | `bordered` | `boolean` | `false` | Show border around stamp |
+| `doubleBordered` | `boolean` | `false` | Show double border frame (implies `bordered`) |
 | `fullScreen` | `boolean` | `false` | Fixed full-screen overlay |
 | `className` | `string` | `""` | Additional CSS classes |
 
@@ -836,6 +858,92 @@ Pilot identification card with photo area, designation, vitals, and status indic
 
 ---
 
+## Phase 6 — Status & Data Components
+
+---
+
+### `PhaseStatusStack`
+
+Stacked status indicator showing multiple phase items with color-coded statuses. Each row displays a label and optional value with background color based on status.
+
+```tsx
+<PhaseStatusStack
+  title="SYSTEM PHASES"
+  color="green"
+  phases={[
+    { label: "PHASE 1", status: "ok", value: "100%" },
+    { label: "PHASE 2", status: "warning", value: "78%" },
+    { label: "PHASE 3", status: "danger" },
+    { label: "PHASE 4", status: "inactive" },
+  ]}
+/>
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `phases` | `PhaseItem[]` | **required** | `{ label, status, value? }` |
+| `color` | `"orange" \| "green" \| "cyan"` | `"green"` | Title text color theme |
+| `title` | `string` | — | Title displayed above the stack |
+| `className` | `string` | `""` | Additional CSS classes |
+
+**Types:**
+```typescript
+interface PhaseItem {
+  label: string;
+  status: "ok" | "warning" | "danger" | "inactive";
+  value?: string;
+}
+```
+
+**Status colors:**
+- `ok` — Green background, black text
+- `warning` — Orange background, black text
+- `danger` — Red background, black text
+- `inactive` — Gray background, gray text
+
+---
+
+### `GradientStatusBar`
+
+Zone-based horizontal status bar with colored segments, value indicator, and bottom scale. Each zone defines a range with its own color, creating a segmented gradient effect.
+
+```tsx
+<GradientStatusBar
+  value={72}
+  label="CORE TEMP"
+  sublabel="CELCIUS"
+  color="cyan"
+  zones={[
+    { start: 0, end: 40, color: "#00FFFF", label: "SAFE" },
+    { start: 40, end: 70, color: "#FF9900", label: "WARN" },
+    { start: 70, end: 100, color: "#FF0000", label: "CRIT" },
+  ]}
+/>
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | **required** | Current value |
+| `min` | `number` | `0` | Minimum value |
+| `max` | `number` | `100` | Maximum value |
+| `zones` | `StatusZone[]` | **required** | `{ start, end, color, label? }` |
+| `label` | `string` | — | Primary label |
+| `sublabel` | `string` | — | Secondary label below the primary |
+| `color` | `"cyan" \| "green" \| "orange" \| "red" \| "magenta"` | `"cyan"` | Label text color theme |
+| `className` | `string` | `""` | Additional CSS classes |
+
+**Types:**
+```typescript
+interface StatusZone {
+  start: number;
+  end: number;
+  label?: string;
+  color: string;
+}
+```
+
+---
+
 ## `> EXPORTED_TYPES`
 
 All types are exported from the barrel file:
@@ -891,7 +999,12 @@ import type {
   TargetingReticleProps,
   PilotCardProps,
   PilotCardField,
-  // Phase 6
+  // Phase 6 — Status & Data
+  PhaseStatusStackProps,
+  PhaseItem,
+  GradientStatusBarProps,
+  StatusZone,
+  // Phase 6 — Form & UI
   CheckboxProps,
   ToggleProps,
   TextareaProps,

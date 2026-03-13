@@ -3,7 +3,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 
 # Card
 
-Brutalist armour-plate card container with CSS `clip-path` corner cut. Used for grouping status displays, forms, and data readouts. Two variants: default (green tactical) and alert (red emergency).
+Brutalist armour-plate card container with CSS `clip-path` corner cut. Used for grouping status displays, forms, and data readouts. Three variants: default (green tactical), alert (red emergency), and hud (translucent overlay with backdrop blur).
 
 ```tsx
 import { Card } from "@mattloyed/eva-ui";
@@ -56,6 +56,29 @@ import { Card } from "@mattloyed/eva-ui";
   </Card>
 </ComponentPreview>
 
+## HUD Variant
+
+Translucent overlay with backdrop blur, no clip-path corner cut, ideal for HUD-style overlays.
+
+<ComponentPreview
+  title="HUD"
+  code={`<Card title="OVERLAY STATUS" variant="hud">
+  <div className="text-xs font-mono text-white/70 space-y-1">
+    <div>Mode: PASSIVE SCAN</div>
+    <div>A.T. Field: NOMINAL</div>
+    <div>Visibility: 82%</div>
+  </div>
+</Card>`}
+>
+  <Card title="OVERLAY STATUS" variant="hud">
+    <div className="text-xs font-mono text-white/70 space-y-1">
+      <div>Mode: PASSIVE SCAN</div>
+      <div>A.T. Field: NOMINAL</div>
+      <div>Visibility: 82%</div>
+    </div>
+  </Card>
+</ComponentPreview>
+
 ## Without Title
 
 <ComponentPreview
@@ -80,7 +103,7 @@ import { Card } from "@mattloyed/eva-ui";
     { name: "title", type: "string", description: "Card header title (displayed uppercase)" },
     { name: "children", type: "ReactNode", description: "Main content", required: true },
     { name: "footer", type: "ReactNode", description: "Footer content" },
-    { name: "variant", type: '"default" | "alert"', default: '"default"', description: "Visual variant — green or red border + glow" },
+    { name: "variant", type: '"default" | "alert" | "hud"', default: '"default"', description: "Visual variant — green border, red border + glow, or translucent HUD overlay with backdrop blur" },
     { name: "cutSize", type: "number", default: "20", description: "Corner cut size in pixels" },
     { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
   ]}

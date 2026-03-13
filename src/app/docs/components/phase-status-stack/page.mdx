@@ -1,0 +1,150 @@
+import { PhaseStatusStack } from "@/components";
+import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
+
+# PhaseStatusStack
+
+A vertical stack of phase status rows with color-coded backgrounds. Each row displays a label, status color, and optional value. Used for system readiness panels, checklist displays, and multi-phase status overviews.
+
+```tsx
+import { PhaseStatusStack } from "@mattloyed/eva-ui";
+```
+
+## Basic Usage
+
+<ComponentPreview
+  title="DEFAULT"
+  code={`import { PhaseStatusStack } from "@mattloyed/eva-ui";
+
+<PhaseStatusStack
+  title="SYSTEM CHECK"
+  phases={[
+    { label: "POWER", status: "ok" },
+    { label: "COMMS", status: "ok" },
+    { label: "WEAPONS", status: "warning" },
+    { label: "SHIELDS", status: "danger" },
+  ]}
+/>`}
+>
+  <PhaseStatusStack
+    title="SYSTEM CHECK"
+    phases={[
+      { label: "POWER", status: "ok" },
+      { label: "COMMS", status: "ok" },
+      { label: "WEAPONS", status: "warning" },
+      { label: "SHIELDS", status: "danger" },
+    ]}
+  />
+</ComponentPreview>
+
+## With Values
+
+<ComponentPreview
+  title="WITH VALUES"
+  code={`<PhaseStatusStack
+  title="SYNC PHASES"
+  color="cyan"
+  phases={[
+    { label: "PHASE 1", status: "ok", value: "98.2%" },
+    { label: "PHASE 2", status: "ok", value: "87.1%" },
+    { label: "PHASE 3", status: "warning", value: "54.3%" },
+    { label: "PHASE 4", status: "inactive", value: "---" },
+  ]}
+/>`}
+>
+  <PhaseStatusStack
+    title="SYNC PHASES"
+    color="cyan"
+    phases={[
+      { label: "PHASE 1", status: "ok", value: "98.2%" },
+      { label: "PHASE 2", status: "ok", value: "87.1%" },
+      { label: "PHASE 3", status: "warning", value: "54.3%" },
+      { label: "PHASE 4", status: "inactive", value: "---" },
+    ]}
+  />
+</ComponentPreview>
+
+## Color Themes
+
+<ComponentPreview
+  title="TITLE COLORS"
+  code={`<div className="flex gap-6">
+  <PhaseStatusStack
+    title="GREEN"
+    color="green"
+    phases={[
+      { label: "A", status: "ok" },
+      { label: "B", status: "ok" },
+    ]}
+  />
+  <PhaseStatusStack
+    title="ORANGE"
+    color="orange"
+    phases={[
+      { label: "A", status: "warning" },
+      { label: "B", status: "danger" },
+    ]}
+  />
+  <PhaseStatusStack
+    title="CYAN"
+    color="cyan"
+    phases={[
+      { label: "A", status: "ok" },
+      { label: "B", status: "inactive" },
+    ]}
+  />
+</div>`}
+>
+  <div className="flex gap-6">
+    <PhaseStatusStack
+      title="GREEN"
+      color="green"
+      phases={[
+        { label: "A", status: "ok" },
+        { label: "B", status: "ok" },
+      ]}
+    />
+    <PhaseStatusStack
+      title="ORANGE"
+      color="orange"
+      phases={[
+        { label: "A", status: "warning" },
+        { label: "B", status: "danger" },
+      ]}
+    />
+    <PhaseStatusStack
+      title="CYAN"
+      color="cyan"
+      phases={[
+        { label: "A", status: "ok" },
+        { label: "B", status: "inactive" },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+### PhaseStatusStackProps
+
+<PropsTable
+  props={[
+    { name: "phases", type: "PhaseItem[]", description: "Array of phase items to display", required: true },
+    { name: "title", type: "string", description: "Title displayed above the stack" },
+    { name: "color", type: '"orange" | "green" | "cyan"', default: '"green"', description: "Color theme for the title" },
+    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+  ]}
+/>
+
+### PhaseItem
+
+<PropsTable
+  props={[
+    { name: "label", type: "string", description: "Text label for the phase row", required: true },
+    { name: "status", type: '"ok" | "warning" | "danger" | "inactive"', description: "Status determining the row background color", required: true },
+    { name: "value", type: "string", description: "Optional value displayed on the right side of the row" },
+  ]}
+/>
+
+<Callout type="info" title="STATUS COLORS">
+  Each status maps to an EVA palette color: **ok** renders green, **warning** renders orange, **danger** renders red, and **inactive** renders a dimmed gray.
+</Callout>

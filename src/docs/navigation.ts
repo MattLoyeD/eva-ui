@@ -60,6 +60,8 @@ export const docsNavigation: NavSection[] = [
       { title: "DRAWER", href: "/docs/components/drawer" },
       { title: "DIVIDER", href: "/docs/components/divider" },
       { title: "THEME PROVIDER", href: "/docs/components/theme-provider" },
+      { title: "PHASE STATUS STACK", href: "/docs/components/phase-status-stack" },
+      { title: "GRADIENT STATUS BAR", href: "/docs/components/gradient-status-bar" },
     ],
   },
   {

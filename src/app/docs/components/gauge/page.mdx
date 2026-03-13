@@ -52,6 +52,21 @@ When the value exceeds the threshold, the gauge automatically turns red.
   </div>
 </ComponentPreview>
 
+## Ring Variant
+
+The ring variant replaces the needle with a thick gradient arc. Use `gradientFrom` and `gradientTo` to customise the sweep colors.
+
+<ComponentPreview
+  title="RING"
+  code={`<Gauge value={68} label="A.T. FIELD" variant="ring" />
+<Gauge value={85} label="POWER" variant="ring" gradientFrom="#00FFFF" gradientTo="#00FF00" />`}
+>
+  <div className="flex flex-wrap items-center justify-center gap-6 py-4">
+    <Gauge value={68} label="A.T. FIELD" variant="ring" />
+    <Gauge value={85} label="POWER" variant="ring" gradientFrom="#00FFFF" gradientTo="#00FF00" />
+  </div>
+</ComponentPreview>
+
 ## Sizes
 
 <ComponentPreview
@@ -80,6 +95,9 @@ When the value exceeds the threshold, the gauge automatically turns red.
     { name: "size", type: "number", default: "160", description: "Gauge size in pixels" },
     { name: "showTicks", type: "boolean", default: "true", description: "Show tick marks" },
     { name: "threshold", type: "number", description: "Value above which gauge turns red" },
+    { name: "variant", type: '"needle" | "ring"', default: '"needle"', description: "Display variant — classic needle or thick gradient arc ring" },
+    { name: "gradientFrom", type: "string", default: '"#FF00FF"', description: "Gradient start color (ring variant)" },
+    { name: "gradientTo", type: "string", default: '"#FF9900"', description: "Gradient end color (ring variant)" },
     { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
   ]}
 />

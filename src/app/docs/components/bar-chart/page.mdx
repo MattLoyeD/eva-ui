@@ -102,6 +102,39 @@ import { BarChart } from "@mattloyed/eva-ui";
   />
 </ComponentPreview>
 
+## Segmented Mode
+
+Renders bars as discrete LCD-cell blocks instead of solid fills.
+
+<ComponentPreview
+  title="SEGMENTED"
+  code={`<BarChart
+  title="POWER OUTPUT"
+  segmented
+  bars={[
+    { label: "UNIT-00", value: 72 },
+    { label: "UNIT-01", value: 58 },
+    { label: "UNIT-02", value: 95 },
+    { label: "UNIT-03", value: 40 },
+  ]}
+  unit="%"
+  color="green"
+/>`}
+>
+  <BarChart
+    title="POWER OUTPUT"
+    segmented
+    bars={[
+      { label: "UNIT-00", value: 72 },
+      { label: "UNIT-01", value: 58 },
+      { label: "UNIT-02", value: 95 },
+      { label: "UNIT-03", value: 40 },
+    ]}
+    unit="%"
+    color="green"
+  />
+</ComponentPreview>
+
 ## Props
 
 <PropsTable
@@ -116,6 +149,7 @@ import { BarChart } from "@mattloyed/eva-ui";
     { name: "stagger", type: "number", default: "0.08", description: "Animation stagger delay (seconds)" },
     { name: "height", type: "number", default: "200", description: "Chart height in pixels" },
     { name: "unit", type: "string", default: '""', description: "Value suffix (e.g. %, ms)" },
+    { name: "segmented", type: "boolean", default: "false", description: "Renders bars as discrete LCD-cell blocks instead of solid fills" },
     { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
   ]}
 />
