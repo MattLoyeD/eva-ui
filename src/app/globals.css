@@ -249,9 +249,25 @@ body::after {
   padding-top: 3rem; /* h-12 mobile top bar */
 }
 
+.docs-content {
+  max-width: 56rem; /* max-w-4xl = 896px */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1.5rem; /* py-8 px-6 */
+}
+
+@media (min-width: 640px) {
+  .docs-content {
+    padding: 3rem 2rem; /* sm:py-12 sm:px-8 */
+  }
+}
+
 @media (min-width: 1024px) {
   .docs-main {
     padding-left: 16rem; /* w-64 = 256px = 16rem */
     padding-top: 0;
+  }
+  .docs-content {
+    padding: 3rem 2.5rem; /* more breathing room on desktop */
   }
 }

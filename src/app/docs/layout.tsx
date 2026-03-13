@@ -6,7 +6,7 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-eva-black">
       <DocsSidebar />
       <main className="docs-main">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 py-8 sm:py-12">
+        <div className="docs-content">
           {children}
         </div>
       </main>
