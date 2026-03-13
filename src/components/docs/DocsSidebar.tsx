@@ -56,7 +56,7 @@ function SidebarContent({
         >
           EVA-UI
         </div>
-        <div className="text-[10px] font-mono text-eva-white/50 mt-0.5">
+        <div className="text-[10px] font-mono text-eva-white mt-0.5">
           DOCUMENTATION SYSTEM
         </div>
       </div>
@@ -116,7 +116,7 @@ function SidebarContent({
                             ${
                               isActive
                                 ? "text-eva-orange border-eva-orange bg-eva-black font-bold"
-                                : "text-eva-white/80 border-transparent hover:text-eva-orange hover:border-eva-orange/50"
+                                : "text-white border-transparent hover:text-eva-orange hover:border-eva-orange/50"
                             }
                           `}
                           style={{ fontFamily: "var(--font-eva-display)" }}
@@ -153,7 +153,7 @@ function SidebarContent({
 
       {/* Footer */}
       <div className="px-4 py-3 border-t border-eva-mid-gray shrink-0">
-        <div className="text-[9px] font-mono text-eva-white/40 space-y-0.5">
+        <div className="text-[9px] font-mono text-eva-white/70 space-y-0.5">
           <div>EVA-UI v0.7.0</div>
           <div>NERV DOCUMENTATION SYSTEM</div>
         </div>
@@ -222,7 +222,7 @@ export function DocsSidebar() {
             <button
               type="button"
               onClick={closeMobile}
-              className="absolute top-3 right-3 text-eva-white/60 hover:text-eva-orange transition-colors p-1 cursor-pointer z-10"
+              className="absolute top-3 right-3 text-eva-white hover:text-eva-orange transition-colors p-1 cursor-pointer z-10"
               aria-label="Close navigation menu"
             >
               <svg

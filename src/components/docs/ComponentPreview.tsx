@@ -28,7 +28,7 @@ export function ComponentPreview({
   ];
 
   return (
-    <div className="mb-8 border border-eva-mid-gray">
+    <div className="mb-10 border border-eva-mid-gray">
       {/* Tab header */}
       <div className="flex items-center bg-eva-dark-gray border-b border-eva-mid-gray">
         {title && (
@@ -64,7 +64,7 @@ export function ComponentPreview({
 
       {/* Tab content */}
       {activeTab === "preview" && (
-        <div className="p-6 bg-eva-black min-h-[120px] flex items-center justify-center">
+        <div className="p-8 bg-eva-black min-h-[140px] flex items-center justify-center">
           <div className="w-full">{children}</div>
         </div>
       )}
