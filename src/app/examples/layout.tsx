@@ -17,6 +17,10 @@ const exampleLinks = [
   { href: "/examples/inventory", label: "INVENTORY" },
   { href: "/examples/pilots", label: "PILOTS" },
   { href: "/examples/report", label: "REPORT" },
+  { href: "/examples/files", label: "FILES" },
+  { href: "/examples/help", label: "HELP" },
+  { href: "/examples/auth/register", label: "REGISTER" },
+  { href: "/examples/empty", label: "EMPTY" },
   { href: "/examples/error", label: "404" },
 ];
 
