@@ -125,8 +125,8 @@ function MagiColumn({ vote, index }: { vote: MagiVote; index: number }) {
         {vote.status === "idle" && (
           <div className="flex items-center justify-center h-full p-4">
             <div className="text-center">
-              <div className="text-2xl font-mono text-eva-green/40 mb-2">&mdash;</div>
-              <div className="text-xs font-mono text-eva-green/60 uppercase tracking-wider">
+              <div className="text-2xl font-mono text-eva-green/60 mb-2">&mdash;</div>
+              <div className="text-xs font-mono text-eva-green uppercase tracking-wider">
                 STANDBY
               </div>
             </div>

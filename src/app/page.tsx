@@ -109,6 +109,12 @@ export default function NervCommandCenter() {
     }, 8000);
   }, []);
 
+  // Auto-trigger on mount so the panel isn't static black blocks
+  useEffect(() => {
+    const timer = setTimeout(() => triggerMagiVote(), 1500);
+    return () => clearTimeout(timer);
+  }, [triggerMagiVote]);
+
   // ─── Toggle emergency ───
   const toggleAlert = useCallback(() => {
     setSystemStatus((prev) => {
@@ -488,7 +494,7 @@ export default function NervCommandCenter() {
 
           {/* Right — MAGI + PatternAlert */}
           <div className="col-span-full lg:col-span-5 flex flex-col">
-            <MagiSystemPanel votes={magiVotes} trapezoidal className="flex-1" />
+            <MagiSystemPanel votes={magiVotes} className="flex-1" />
 
             <div className={`border-t ${borderColor} p-3`}>
               <PatternAlert
