@@ -171,7 +171,7 @@ export default function LandingPage() {
                 <div className="space-y-2 font-mono text-xs text-eva-white/70">
                   <div className="flex items-center justify-between border-b border-eva-mid-gray/20 pb-2">
                     <span>PACKAGE</span>
-                    <span className="text-eva-green">@mattloyed/eva-ui</span>
+                    <span className="text-eva-green">@mdrbx/eva-ui</span>
                   </div>
                   <div className="flex items-center justify-between border-b border-eva-mid-gray/20 pb-2">
                     <span>DISTRIBUTION</span>
@@ -253,7 +253,7 @@ export default function LandingPage() {
                   INSTALL SEQUENCE
                 </div>
                 <code className="mt-2 block font-mono text-xs text-eva-green">
-                  npm install @mattloyed/eva-ui
+                  npm install @mdrbx/eva-ui
                 </code>
               </div>
             </div>

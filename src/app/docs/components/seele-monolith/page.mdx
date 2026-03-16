@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable } from "@/components/docs";
 SOUND ONLY monolith block representing a SEELE committee member. Shows animated equalizer bars when speaking. Dark, imposing, and mysterious.
 
 ```tsx
-import { SeeleMonolith } from "@mattloyed/eva-ui";
+import { SeeleMonolith } from "@mdrbx/eva-ui";
 ```
 
 ## Silent
@@ -48,8 +48,23 @@ import { SeeleMonolith } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "id", type: "string", required: true, description: 'Monolith identifier displayed as "SEELE {id}"' },
-    { name: "isSpeaking", type: "boolean", default: "false", description: "Show animated equalizer bars" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "id",
+      type: "string",
+      required: true,
+      description: 'Monolith identifier displayed as "SEELE {id}"',
+    },
+    {
+      name: "isSpeaking",
+      type: "boolean",
+      default: "false",
+      description: "Show animated equalizer bars",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />

@@ -6,14 +6,14 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Animated overlay menu triggered by any element. Supports icons, disabled items, danger actions, and dividers with configurable color themes and alignment.
 
 ```tsx
-import { DropdownMenu } from "@mattloyed/eva-ui";
+import { DropdownMenu } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
 
 <ComponentPreview
   title="DEFAULT"
-  code={`import { DropdownMenu, Button } from "@mattloyed/eva-ui";
+  code={`import { DropdownMenu, Button } from "@mdrbx/eva-ui";
 
 <DropdownMenu
   trigger={<Button size="sm">ACTIONS</Button>}
@@ -51,7 +51,11 @@ import { DropdownMenu } from "@mattloyed/eva-ui";
 />`}
 >
   <DropdownMenu
-    trigger={<Button size="sm" variant="ghost">OPTIONS</Button>}
+    trigger={
+      <Button size="sm" variant="ghost">
+        OPTIONS
+      </Button>
+    }
     items={[
       { label: "Rename" },
       { label: "Move" },
@@ -127,11 +131,36 @@ import { DropdownMenu } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "trigger", type: "ReactNode", description: "The element that opens the menu", required: true },
-    { name: "items", type: "DropdownMenuItem[]", description: "Menu items to render (see below)", required: true },
-    { name: "color", type: '"orange" | "green" | "cyan" | "red"', default: '"orange"', description: "Color theme for borders and text" },
-    { name: "align", type: '"left" | "right"', default: '"left"', description: "Menu alignment relative to the trigger" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes for the wrapper" },
+    {
+      name: "trigger",
+      type: "ReactNode",
+      description: "The element that opens the menu",
+      required: true,
+    },
+    {
+      name: "items",
+      type: "DropdownMenuItem[]",
+      description: "Menu items to render (see below)",
+      required: true,
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan" | "red"',
+      default: '"orange"',
+      description: "Color theme for borders and text",
+    },
+    {
+      name: "align",
+      type: '"left" | "right"',
+      default: '"left"',
+      description: "Menu alignment relative to the trigger",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes for the wrapper",
+    },
   ]}
 />
 
@@ -139,15 +168,41 @@ import { DropdownMenu } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "label", type: "string", description: "Menu item text (rendered uppercase)", required: true },
-    { name: "icon", type: "string", description: "Icon character displayed before the label" },
-    { name: "onClick", type: "() => void", description: "Callback when the item is clicked" },
-    { name: "disabled", type: "boolean", description: "Prevent interaction and reduce opacity" },
-    { name: "danger", type: "boolean", description: "Render item in red danger color" },
-    { name: "divider", type: "boolean", description: "Render a horizontal separator instead of a button" },
+    {
+      name: "label",
+      type: "string",
+      description: "Menu item text (rendered uppercase)",
+      required: true,
+    },
+    {
+      name: "icon",
+      type: "string",
+      description: "Icon character displayed before the label",
+    },
+    {
+      name: "onClick",
+      type: "() => void",
+      description: "Callback when the item is clicked",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      description: "Prevent interaction and reduce opacity",
+    },
+    {
+      name: "danger",
+      type: "boolean",
+      description: "Render item in red danger color",
+    },
+    {
+      name: "divider",
+      type: "boolean",
+      description: "Render a horizontal separator instead of a button",
+    },
   ]}
 />
 
 <Callout type="info" title="KEYBOARD SUPPORT">
-  The menu closes automatically on Escape key press and on clicks outside the menu area.
+  The menu closes automatically on Escape key press and on clicks outside the
+  menu area.
 </Callout>

@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Block-based LCD progress bar with dynamic color thresholds. Blocks fill left-to-right with color transitions based on value. Used for pilot synchronization rates and system metrics.
 
 ```tsx
-import { SyncProgressBar } from "@mattloyed/eva-ui";
+import { SyncProgressBar } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
@@ -60,15 +60,45 @@ The bar automatically changes color based on the value:
 
 <PropsTable
   props={[
-    { name: "value", type: "number", required: true, description: "Progress value (0-100)" },
-    { name: "label", type: "string", description: "Label text displayed above the bar" },
-    { name: "showPercentage", type: "boolean", default: "true", description: "Show percentage readout" },
-    { name: "blocks", type: "number", default: "20", description: "Number of LCD blocks in the bar" },
-    { name: "blockHeight", type: "number", default: "16", description: "Block height in pixels" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "value",
+      type: "number",
+      required: true,
+      description: "Progress value (0-100)",
+    },
+    {
+      name: "label",
+      type: "string",
+      description: "Label text displayed above the bar",
+    },
+    {
+      name: "showPercentage",
+      type: "boolean",
+      default: "true",
+      description: "Show percentage readout",
+    },
+    {
+      name: "blocks",
+      type: "number",
+      default: "20",
+      description: "Number of LCD blocks in the bar",
+    },
+    {
+      name: "blockHeight",
+      type: "number",
+      default: "16",
+      description: "Block height in pixels",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="COLOR LOGIC">
-  Color thresholds: 0–50% cyan, 50–80% green, 80–95% orange, 95%+ red with blinking animation.
+  Color thresholds: 0–50% cyan, 50–80% green, 80–95% orange, 95%+ red with
+  blinking animation.
 </Callout>

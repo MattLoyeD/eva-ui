@@ -227,7 +227,7 @@ export default function NervCommandCenter() {
 
           {/* Center — Install snippet */}
           <code className="text-xs font-mono text-eva-cyan bg-eva-black/60 px-3 py-1.5 border border-eva-cyan/30 select-all whitespace-nowrap">
-            npm install @mattloyed/eva-ui
+            npm install @mdrbx/eva-ui
           </code>
 
           {/* Right — Clock + buttons */}
@@ -244,7 +244,7 @@ export default function NervCommandCenter() {
             <Link href="/examples">
               <Button variant="terminal" size="sm">EXAMPLES</Button>
             </Link>
-            <a href="https://www.npmjs.com/package/@mattloyed/eva-ui" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.npmjs.com/package/@mdrbx/eva-ui" target="_blank" rel="noopener noreferrer">
               <Button variant="ghost" size="sm">NPM</Button>
             </a>
           </div>
@@ -538,7 +538,7 @@ export default function NervCommandCenter() {
             <div className="max-w-lg mx-auto">
               <Stepper
                 steps={[
-                  { label: "INSTALL", description: "npm install @mattloyed/eva-ui" },
+                  { label: "INSTALL", description: "npm install @mdrbx/eva-ui" },
                   { label: "IMPORT", description: "import { Button } from 'eva-ui'" },
                   { label: "BUILD", description: "Create your command center" },
                 ]}
@@ -571,11 +571,11 @@ export default function NervCommandCenter() {
             EXAMPLES
           </Link>
           <span className="text-eva-mid-gray/30">|</span>
-          <a href="https://github.com/mattloyed/eva-ui" target="_blank" rel="noopener noreferrer" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
+          <a href="https://github.com/mdrbx/eva-ui" target="_blank" rel="noopener noreferrer" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
             GITHUB
           </a>
           <span className="text-eva-mid-gray/30">|</span>
-          <a href="https://www.npmjs.com/package/@mattloyed/eva-ui" target="_blank" rel="noopener noreferrer" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
+          <a href="https://www.npmjs.com/package/@mdrbx/eva-ui" target="_blank" rel="noopener noreferrer" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
             NPM
           </a>
         </div>

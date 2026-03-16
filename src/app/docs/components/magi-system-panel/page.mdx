@@ -6,8 +6,8 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Three-column MAGI supercomputer voting panel. Each column represents a MAGI brain (MELCHIOR, BALTHASAR, CASPER) with independent status states.
 
 ```tsx
-import { MagiSystemPanel } from "@mattloyed/eva-ui";
-import type { MagiVote } from "@mattloyed/eva-ui";
+import { MagiSystemPanel } from "@mdrbx/eva-ui";
+import type { MagiVote } from "@mdrbx/eva-ui";
 ```
 
 ## Idle State
@@ -77,12 +77,29 @@ import type { MagiVote } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "votes", type: "MagiVote[]", required: true, description: 'Array of { name: string, status: MagiStatus }' },
-    { name: "title", type: "string", default: '"MAGI SUPER COMPUTER SYSTEM"', description: "Panel header title" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "votes",
+      type: "MagiVote[]",
+      required: true,
+      description: "Array of { name: string, status: MagiStatus }",
+    },
+    {
+      name: "title",
+      type: "string",
+      default: '"MAGI SUPER COMPUTER SYSTEM"',
+      description: "Panel header title",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="MAGI STATUS TYPES">
-  **idle** — Gray, "STANDBY". **computing** — Scrolling hex data with cyan scan bar. **accepted** — Orange fill with "ACCEPTED". **rejected** — Red fill with blinking "REJECTED".
+  **idle** — Gray, "STANDBY". **computing** — Scrolling hex data with cyan scan
+  bar. **accepted** — Orange fill with "ACCEPTED". **rejected** — Red fill with
+  blinking "REJECTED".
 </Callout>

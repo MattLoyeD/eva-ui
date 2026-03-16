@@ -20,7 +20,10 @@ export const docsNavigation: NavSection[] = [
     items: [
       { title: "Installation", href: "/docs/getting-started/installation" },
       { title: "Visual Grammar", href: "/docs/getting-started/visual-grammar" },
-      { title: "Camera Overlay Grammar", href: "/docs/getting-started/camera-overlays" },
+      {
+        title: "Camera Overlay Grammar",
+        href: "/docs/getting-started/camera-overlays",
+      },
       { title: "Theme Provider", href: "/docs/components/theme-provider" },
     ],
   },
@@ -32,8 +35,14 @@ export const docsNavigation: NavSection[] = [
       { title: "Divider", href: "/docs/components/divider" },
       { title: "Drawer", href: "/docs/components/drawer" },
       { title: "Breadcrumb", href: "/docs/components/breadcrumb" },
-      { title: "Targeting Container", href: "/docs/components/targeting-container" },
-      { title: "Hex Grid Background", href: "/docs/components/hex-grid-background" },
+      {
+        title: "Targeting Container",
+        href: "/docs/components/targeting-container",
+      },
+      {
+        title: "Hex Grid Background",
+        href: "/docs/components/hex-grid-background",
+      },
       { title: "Navigation Tabs", href: "/docs/components/navigation-tabs" },
       { title: "Emergency Banner", href: "/docs/components/emergency-banner" },
       { title: "Stepper", href: "/docs/components/stepper" },
@@ -57,7 +66,10 @@ export const docsNavigation: NavSection[] = [
     items: [
       { title: "Terminal Display", href: "/docs/components/terminal-display" },
       { title: "Data Grid", href: "/docs/components/data-grid" },
-      { title: "Sync Progress Bar", href: "/docs/components/sync-progress-bar" },
+      {
+        title: "Sync Progress Bar",
+        href: "/docs/components/sync-progress-bar",
+      },
       { title: "Segment Display", href: "/docs/components/segment-display" },
       { title: "Badge", href: "/docs/components/badge" },
       { title: "Skeleton", href: "/docs/components/skeleton" },
@@ -72,15 +84,24 @@ export const docsNavigation: NavSection[] = [
       { title: "Gauge", href: "/docs/components/gauge" },
       { title: "Pie Chart", href: "/docs/components/pie-chart" },
       { title: "Sync Ratio Chart", href: "/docs/components/sync-ratio-chart" },
-      { title: "Phase Status Stack", href: "/docs/components/phase-status-stack" },
-      { title: "Gradient Status Bar", href: "/docs/components/gradient-status-bar" },
+      {
+        title: "Phase Status Stack",
+        href: "/docs/components/phase-status-stack",
+      },
+      {
+        title: "Gradient Status Bar",
+        href: "/docs/components/gradient-status-bar",
+      },
     ],
   },
   {
     title: "OVERLAYS & FEEDBACK",
     items: [
       { title: "System Dialog", href: "/docs/components/system-dialog" },
-      { title: "Classified Overlay", href: "/docs/components/classified-overlay" },
+      {
+        title: "Classified Overlay",
+        href: "/docs/components/classified-overlay",
+      },
       { title: "Title Screen", href: "/docs/components/title-screen" },
       { title: "Toast", href: "/docs/components/toast" },
       { title: "Status Stamp", href: "/docs/components/status-stamp" },
@@ -91,10 +112,19 @@ export const docsNavigation: NavSection[] = [
   {
     title: "HUD / MILITARY",
     items: [
-      { title: "Targeting Reticle", href: "/docs/components/targeting-reticle" },
-      { title: "Surveillance Grid", href: "/docs/components/surveillance-grid" },
+      {
+        title: "Targeting Reticle",
+        href: "/docs/components/targeting-reticle",
+      },
+      {
+        title: "Surveillance Grid",
+        href: "/docs/components/surveillance-grid",
+      },
       { title: "Pattern Alert", href: "/docs/components/pattern-alert" },
-      { title: "Magi System Panel", href: "/docs/components/magi-system-panel" },
+      {
+        title: "Magi System Panel",
+        href: "/docs/components/magi-system-panel",
+      },
       { title: "Seele Monolith", href: "/docs/components/seele-monolith" },
       { title: "Countdown Timer", href: "/docs/components/countdown-timer" },
       { title: "Wireframe Loader", href: "/docs/components/wireframe-loader" },
@@ -105,5 +135,5 @@ export const docsNavigation: NavSection[] = [
 /** Standalone links shown at the bottom of the sidebar */
 export const docsQuickLinks: NavLink[] = [
   { title: "EXAMPLES", href: "/examples" },
-  { title: "GITHUB", href: "https://github.com/MattLoyeD/eva-ui" },
+  { title: "GITHUB", href: "https://github.com/mdrbx/eva-ui" },
 ];

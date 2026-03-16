@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Monospaced bracket-style checkbox with `[X]` / `[ ]` / `[-]` states. Renders a hidden native checkbox for accessibility while displaying a stylised EVA-themed indicator with optional label.
 
 ```tsx
-import { Checkbox } from "@mattloyed/eva-ui";
+import { Checkbox } from "@mdrbx/eva-ui";
 ```
 
 ## Unchecked
@@ -66,15 +66,44 @@ import { Checkbox } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "label", type: "string", description: "Label text (displayed uppercase with // prefix)" },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme" },
-    { name: "indeterminate", type: "boolean", default: "false", description: "Indeterminate state — displays [-]" },
-    { name: "checked", type: "boolean", description: "Controlled checked state" },
-    { name: "disabled", type: "boolean", description: "Disables interaction and dims the checkbox" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "label",
+      type: "string",
+      description: "Label text (displayed uppercase with // prefix)",
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"orange"',
+      description: "Color theme",
+    },
+    {
+      name: "indeterminate",
+      type: "boolean",
+      default: "false",
+      description: "Indeterminate state — displays [-]",
+    },
+    {
+      name: "checked",
+      type: "boolean",
+      description: "Controlled checked state",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      description: "Disables interaction and dims the checkbox",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="BRACKET NOTATION">
-  The checkbox renders as `[X]` when checked, `[ ]` when unchecked, and `[-]` when indeterminate, matching the monospaced terminal aesthetic of NERV system interfaces.
+  The checkbox renders as `[X]` when checked, `[ ]` when unchecked, and `[-]`
+  when indeterminate, matching the monospaced terminal aesthetic of NERV system
+  interfaces.
 </Callout>

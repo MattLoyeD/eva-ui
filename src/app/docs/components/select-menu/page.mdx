@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable } from "@/components/docs";
 Styled dropdown with angle brackets `< >` on focus. Custom arrow indicator. Extends standard HTML select attributes.
 
 ```tsx
-import { SelectMenu } from "@mattloyed/eva-ui";
+import { SelectMenu } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
@@ -47,9 +47,30 @@ import { SelectMenu } from "@mattloyed/eva-ui";
 </div>`}
 >
   <div className="space-y-4">
-    <SelectMenu label="ORANGE" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="orange" />
-    <SelectMenu label="GREEN" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="green" />
-    <SelectMenu label="CYAN" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="cyan" />
+    <SelectMenu
+      label="ORANGE"
+      options={[
+        { value: "1", label: "OPTION A" },
+        { value: "2", label: "OPTION B" },
+      ]}
+      color="orange"
+    />
+    <SelectMenu
+      label="GREEN"
+      options={[
+        { value: "1", label: "OPTION A" },
+        { value: "2", label: "OPTION B" },
+      ]}
+      color="green"
+    />
+    <SelectMenu
+      label="CYAN"
+      options={[
+        { value: "1", label: "OPTION A" },
+        { value: "2", label: "OPTION B" },
+      ]}
+      color="cyan"
+    />
   </div>
 </ComponentPreview>
 
@@ -57,12 +78,37 @@ import { SelectMenu } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "options", type: "SelectMenuOption[]", required: true, description: "Array of { value, label, disabled? }" },
+    {
+      name: "options",
+      type: "SelectMenuOption[]",
+      required: true,
+      description: "Array of { value, label, disabled? }",
+    },
     { name: "label", type: "string", description: "Label text" },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme" },
-    { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Select size" },
-    { name: "placeholder", type: "string", default: '"SELECT..."', description: "Default placeholder text" },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"orange"',
+      description: "Color theme",
+    },
+    {
+      name: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "Select size",
+    },
+    {
+      name: "placeholder",
+      type: "string",
+      default: '"SELECT..."',
+      description: "Default placeholder text",
+    },
     { name: "error", type: "string", description: "Error message" },
-    { name: "wrapperClassName", type: "string", default: '""', description: "Wrapper element CSS classes" },
+    {
+      name: "wrapperClassName",
+      type: "string",
+      default: '""',
+      description: "Wrapper element CSS classes",
+    },
   ]}
 />

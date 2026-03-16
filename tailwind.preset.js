@@ -5,16 +5,16 @@
  * Usage (Tailwind v3):
  *   // tailwind.config.js
  *   module.exports = {
- *     presets: [require('@mattloyed/eva-ui/tailwind.preset')],
+ *     presets: [require('@mdrbx/eva-ui/tailwind.preset')],
  *     content: [
- *       './node_modules/@mattloyed/eva-ui/dist/**/*.{js,mjs}',
- *       // ... your own content paths
+ *       './node_modules/@mdrbx/eva-ui/dist/**/*.{ js, mjs } ',
+  *       // ... your own content paths
  *     ],
  *   }
  *
- * Usage (Tailwind v4):
- *   Import the CSS tokens directly in your main stylesheet:
- *   @import "@mattloyed/eva-ui/styles.css";
+ * Usage(Tailwind v4):
+ * Import the CSS tokens directly in your main stylesheet:
+ * @import "@mdrbx/eva-ui/styles.css";
  */
 
 /** @type {import('tailwindcss').Config} */

@@ -6,14 +6,14 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Multi-step progress indicator with numbered squares, connector lines, and an animated pulse on the active step. Supports horizontal and vertical layouts.
 
 ```tsx
-import { Stepper } from "@mattloyed/eva-ui";
+import { Stepper } from "@mdrbx/eva-ui";
 ```
 
 ## Horizontal
 
 <ComponentPreview
   title="HORIZONTAL"
-  code={`import { Stepper } from "@mattloyed/eva-ui";
+  code={`import { Stepper } from "@mdrbx/eva-ui";
 
 <Stepper
   activeStep={1}
@@ -80,11 +80,7 @@ import { Stepper } from "@mattloyed/eva-ui";
   <Stepper
     activeStep={0}
     color="cyan"
-    steps={[
-      { label: "SCAN" },
-      { label: "ANALYZE" },
-      { label: "REPORT" },
-    ]}
+    steps={[{ label: "SCAN" }, { label: "ANALYZE" }, { label: "REPORT" }]}
   />
 </ComponentPreview>
 
@@ -103,11 +99,7 @@ import { Stepper } from "@mattloyed/eva-ui";
   <Stepper
     activeStep={3}
     color="green"
-    steps={[
-      { label: "UPLOAD" },
-      { label: "PROCESS" },
-      { label: "COMPLETE" },
-    ]}
+    steps={[{ label: "UPLOAD" }, { label: "PROCESS" }, { label: "COMPLETE" }]}
   />
 </ComponentPreview>
 
@@ -115,11 +107,36 @@ import { Stepper } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "steps", type: "StepItem[]", description: "Step definitions (see below)", required: true },
-    { name: "activeStep", type: "number", description: "Currently active step (0-based index)", required: true },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme for step indicators and connectors" },
-    { name: "direction", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Layout direction" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "steps",
+      type: "StepItem[]",
+      description: "Step definitions (see below)",
+      required: true,
+    },
+    {
+      name: "activeStep",
+      type: "number",
+      description: "Currently active step (0-based index)",
+      required: true,
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"orange"',
+      description: "Color theme for step indicators and connectors",
+    },
+    {
+      name: "direction",
+      type: '"horizontal" | "vertical"',
+      default: '"horizontal"',
+      description: "Layout direction",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
@@ -127,11 +144,22 @@ import { Stepper } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "label", type: "string", description: "Step label text (rendered uppercase)", required: true },
-    { name: "description", type: "string", description: "Optional description shown below the label (vertical mode)" },
+    {
+      name: "label",
+      type: "string",
+      description: "Step label text (rendered uppercase)",
+      required: true,
+    },
+    {
+      name: "description",
+      type: "string",
+      description: "Optional description shown below the label (vertical mode)",
+    },
   ]}
 />
 
 <Callout type="info" title="STEP STATES">
-  Steps before the active index show a checkmark and solid connector. The active step pulses with a glowing dot. Future steps appear dimmed with dashed connectors.
+  Steps before the active index show a checkmark and solid connector. The active
+  step pulses with a glowing dot. Future steps appear dimmed with dashed
+  connectors.
 </Callout>

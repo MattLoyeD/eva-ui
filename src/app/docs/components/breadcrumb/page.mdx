@@ -6,14 +6,14 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Navigation breadcrumb trail with `>>` separator, uppercase labels, and color-coded links. The last item renders as the current page.
 
 ```tsx
-import { Breadcrumb } from "@mattloyed/eva-ui";
+import { Breadcrumb } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
 
 <ComponentPreview
   title="DEFAULT"
-  code={`import { Breadcrumb } from "@mattloyed/eva-ui";
+  code={`import { Breadcrumb } from "@mdrbx/eva-ui";
 
 <Breadcrumb
   items={[
@@ -36,7 +36,7 @@ import { Breadcrumb } from "@mattloyed/eva-ui";
 
 <ComponentPreview
   title="CUSTOM SEPARATOR"
-  code={`import { Breadcrumb } from "@mattloyed/eva-ui";
+  code={`import { Breadcrumb } from "@mdrbx/eva-ui";
 
 <Breadcrumb
   separator="/"
@@ -61,7 +61,7 @@ import { Breadcrumb } from "@mattloyed/eva-ui";
 
 <ComponentPreview
   title="COLORS"
-  code={`import { Breadcrumb } from "@mattloyed/eva-ui";
+  code={`import { Breadcrumb } from "@mdrbx/eva-ui";
 
 <div className="space-y-4">
   <Breadcrumb color="orange" items={[{ label: "HOME", href: "/" }, { label: "SECTOR A", href: "/a" }, { label: "CURRENT" }]} />
@@ -80,9 +80,29 @@ import { Breadcrumb } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "items", type: "BreadcrumbItem[]", required: true, description: "Array of { label, href?, onClick? }" },
-    { name: "separator", type: "string", default: '">>"', description: "Separator character between items" },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "items",
+      type: "BreadcrumbItem[]",
+      required: true,
+      description: "Array of { label, href?, onClick? }",
+    },
+    {
+      name: "separator",
+      type: "string",
+      default: '">>"',
+      description: "Separator character between items",
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"orange"',
+      description: "Color theme",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />

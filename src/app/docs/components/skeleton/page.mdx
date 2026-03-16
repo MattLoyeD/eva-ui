@@ -6,14 +6,14 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Terminal-first placeholder skeleton. Text renders as fine green CRT scan lines, while block and circular variants switch to a matrix of small white cells for a denser NERV monitor feel.
 
 ```tsx
-import { Skeleton } from "@mattloyed/eva-ui";
+import { Skeleton } from "@mdrbx/eva-ui";
 ```
 
 ## Text Variant
 
 <ComponentPreview
   title="TEXT"
-  code={`import { Skeleton } from "@mattloyed/eva-ui";
+  code={`import { Skeleton } from "@mdrbx/eva-ui";
 
 <Skeleton variant="text" />`}
 >
@@ -72,14 +72,40 @@ import { Skeleton } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "variant", type: '"text" | "rectangular" | "circular"', default: '"text"', description: "Shape variant" },
-    { name: "width", type: "string | number", description: "Width as CSS value or pixel number" },
-    { name: "height", type: "string | number", description: "Height as CSS value or pixel number" },
-    { name: "lines", type: "number", default: "1", description: "Number of text lines (only for text variant). Last line renders at 70% width." },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "variant",
+      type: '"text" | "rectangular" | "circular"',
+      default: '"text"',
+      description: "Shape variant",
+    },
+    {
+      name: "width",
+      type: "string | number",
+      description: "Width as CSS value or pixel number",
+    },
+    {
+      name: "height",
+      type: "string | number",
+      description: "Height as CSS value or pixel number",
+    },
+    {
+      name: "lines",
+      type: "number",
+      default: "1",
+      description:
+        "Number of text lines (only for text variant). Last line renders at 70% width.",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="TERMINAL PLACEHOLDER">
-  `text` uses fine green CRT bands to read like a terminal buffer, while `rectangular` and `circular` switch to a white cell matrix closer to tactical monitor placeholders than to a generic UI shimmer.
+  `text` uses fine green CRT bands to read like a terminal buffer, while
+  `rectangular` and `circular` switch to a white cell matrix closer to tactical
+  monitor placeholders than to a generic UI shimmer.
 </Callout>

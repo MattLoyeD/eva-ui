@@ -10,7 +10,7 @@
 All components are exported from `@/components` via barrel file. Each component is fully typed with TypeScript interfaces.
 
 ```tsx
-import { EmergencyBanner, Button, MagiSystemPanel } from "@mattloyed/eva-ui";
+import { EmergencyBanner, Button, MagiSystemPanel } from "@mdrbx/eva-ui";
 ```
 
 ---
@@ -33,16 +33,17 @@ Full-screen or inline alert banner with animated hazard stripes, scanline overla
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `text` | `string` | `"EMERGENCY"` | Main alert text displayed in flickering large type |
-| `subtext` | `string` | — | Secondary message below the main text |
-| `visible` | `boolean` | `true` | Controls visibility with AnimatePresence enter/exit |
-| `severity` | `"emergency" \| "warning" \| "info"` | `"emergency"` | Visual severity: red, orange, or cyan |
-| `fullScreen` | `boolean` | `false` | Fixed full-screen overlay vs inline container |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop         | Type                                 | Default       | Description                                         |
+| ------------ | ------------------------------------ | ------------- | --------------------------------------------------- |
+| `text`       | `string`                             | `"EMERGENCY"` | Main alert text displayed in flickering large type  |
+| `subtext`    | `string`                             | —             | Secondary message below the main text               |
+| `visible`    | `boolean`                            | `true`        | Controls visibility with AnimatePresence enter/exit |
+| `severity`   | `"emergency" \| "warning" \| "info"` | `"emergency"` | Visual severity: red, orange, or cyan               |
+| `fullScreen` | `boolean`                            | `false`       | Fixed full-screen overlay vs inline container       |
+| `className`  | `string`                             | `""`          | Additional CSS classes                              |
 
 **Severity colors:**
+
 - `emergency` — Red background (`#FF0000`), black text
 - `warning` — Orange background (`#FF9900`), black text
 - `info` — Cyan background (`#00FFFF`), black text
@@ -55,7 +56,11 @@ Monospace terminal emulator with optional typewriter effect. Auto-scrolls to bot
 
 ```tsx
 <TerminalDisplay
-  lines={["MAGI SYSTEM v2.11", "> Boot sequence initiated", "> All systems nominal"]}
+  lines={[
+    "MAGI SYSTEM v2.11",
+    "> Boot sequence initiated",
+    "> All systems nominal",
+  ]}
   typewriter
   typeSpeed={30}
   color="green"
@@ -64,19 +69,19 @@ Monospace terminal emulator with optional typewriter effect. Auto-scrolls to bot
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `lines` | `string[]` | **required** | Array of text lines to display |
-| `typewriter` | `boolean` | `false` | Enable character-by-character typing animation |
-| `typeSpeed` | `number` | `30` | Milliseconds per character (typewriter mode) |
-| `lineDelay` | `number` | `200` | Milliseconds between lines (typewriter mode) |
-| `color` | `"green" \| "orange" \| "cyan" \| "red"` | `"green"` | Terminal text color |
-| `showCursor` | `boolean` | `true` | Show blinking block cursor |
-| `title` | `string` | — | Title bar text |
-| `maxHeight` | `string` | `"400px"` | Max container height |
-| `showLineNumbers` | `boolean` | `false` | Show line number gutter |
-| `prompt` | `string` | — | Prompt prefix for each line |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop              | Type                                     | Default      | Description                                    |
+| ----------------- | ---------------------------------------- | ------------ | ---------------------------------------------- |
+| `lines`           | `string[]`                               | **required** | Array of text lines to display                 |
+| `typewriter`      | `boolean`                                | `false`      | Enable character-by-character typing animation |
+| `typeSpeed`       | `number`                                 | `30`         | Milliseconds per character (typewriter mode)   |
+| `lineDelay`       | `number`                                 | `200`        | Milliseconds between lines (typewriter mode)   |
+| `color`           | `"green" \| "orange" \| "cyan" \| "red"` | `"green"`    | Terminal text color                            |
+| `showCursor`      | `boolean`                                | `true`       | Show blinking block cursor                     |
+| `title`           | `string`                                 | —            | Title bar text                                 |
+| `maxHeight`       | `string`                                 | `"400px"`    | Max container height                           |
+| `showLineNumbers` | `boolean`                                | `false`      | Show line number gutter                        |
+| `prompt`          | `string`                                 | —            | Prompt prefix for each line                    |
+| `className`       | `string`                                 | `""`         | Additional CSS classes                         |
 
 ---
 
@@ -90,14 +95,14 @@ Wrapper component with corner L-brackets and optional crosshair grid background.
 </TargetingContainer>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | **required** | Content to wrap |
-| `label` | `string` | — | Label text above the container |
-| `showCrosshairs` | `boolean` | `true` | Show center crosshair lines |
-| `color` | `"orange" \| "green" \| "cyan" \| "red"` | `"orange"` | Bracket and crosshair color |
-| `bracketSize` | `number` | `24` | Corner bracket size in pixels |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop             | Type                                     | Default      | Description                    |
+| ---------------- | ---------------------------------------- | ------------ | ------------------------------ |
+| `children`       | `ReactNode`                              | **required** | Content to wrap                |
+| `label`          | `string`                                 | —            | Label text above the container |
+| `showCrosshairs` | `boolean`                                | `true`       | Show center crosshair lines    |
+| `color`          | `"orange" \| "green" \| "cyan" \| "red"` | `"orange"`   | Bracket and crosshair color    |
+| `bracketSize`    | `number`                                 | `24`         | Corner bracket size in pixels  |
+| `className`      | `string`                                 | `""`         | Additional CSS classes         |
 
 ---
 
@@ -112,13 +117,13 @@ SVG-based honeycomb hexagon grid pattern. Positioned absolute to fill its parent
 </div>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `color` | `string` | `"#FF9900"` | Hex color for the grid strokes |
-| `opacity` | `number` | `0.08` | Grid opacity (0-1) |
-| `hexSize` | `number` | `30` | Individual hexagon size in pixels |
-| `animated` | `boolean` | `true` | Enable pulse animation |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop        | Type      | Default     | Description                       |
+| ----------- | --------- | ----------- | --------------------------------- |
+| `color`     | `string`  | `"#FF9900"` | Hex color for the grid strokes    |
+| `opacity`   | `number`  | `0.08`      | Grid opacity (0-1)                |
+| `hexSize`   | `number`  | `30`        | Individual hexagon size in pixels |
+| `animated`  | `boolean` | `true`      | Enable pulse animation            |
+| `className` | `string`  | `""`        | Additional CSS classes            |
 
 ---
 
@@ -132,18 +137,19 @@ Multi-variant industrial button with corner decorations, loading state animation
 </Button>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"primary" \| "danger" \| "ghost" \| "terminal"` | `"primary"` | Visual variant |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Button size |
-| `loading` | `boolean` | `false` | Show loading dots animation |
-| `fullWidth` | `boolean` | `false` | Stretch to container width |
-| `disabled` | `boolean` | — | Disabled state (reduced opacity) |
-| `type` | `"button" \| "submit" \| "reset"` | `"button"` | HTML button type |
-| `onClick` | `MouseEventHandler` | — | Click handler |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop        | Type                                             | Default     | Description                      |
+| ----------- | ------------------------------------------------ | ----------- | -------------------------------- |
+| `variant`   | `"primary" \| "danger" \| "ghost" \| "terminal"` | `"primary"` | Visual variant                   |
+| `size`      | `"sm" \| "md" \| "lg"`                           | `"md"`      | Button size                      |
+| `loading`   | `boolean`                                        | `false`     | Show loading dots animation      |
+| `fullWidth` | `boolean`                                        | `false`     | Stretch to container width       |
+| `disabled`  | `boolean`                                        | —           | Disabled state (reduced opacity) |
+| `type`      | `"button" \| "submit" \| "reset"`                | `"button"`  | HTML button type                 |
+| `onClick`   | `MouseEventHandler`                              | —           | Click handler                    |
+| `className` | `string`                                         | `""`        | Additional CSS classes           |
 
 **Variants:**
+
 - `primary` — Orange border, orange text, inverts on hover
 - `danger` — Red border, red text, fills red on hover
 - `ghost` — Transparent with subtle border
@@ -164,15 +170,15 @@ Terminal-style text input with animated bracket decorators `[ ]` on focus. Shows
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | — | Label with `//` prefix |
-| `color` | `"orange" \| "green" \| "cyan"` | `"orange"` | Input color theme |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Input size |
-| `error` | `string` | — | Error message (red) |
-| `hint` | `string` | — | Hint text (muted) |
-| `wrapperClassName` | `string` | `""` | Wrapper element classes |
-| `...rest` | `InputHTMLAttributes` | — | All standard input props |
+| Prop               | Type                            | Default    | Description              |
+| ------------------ | ------------------------------- | ---------- | ------------------------ |
+| `label`            | `string`                        | —          | Label with `//` prefix   |
+| `color`            | `"orange" \| "green" \| "cyan"` | `"orange"` | Input color theme        |
+| `size`             | `"sm" \| "md" \| "lg"`          | `"md"`     | Input size               |
+| `error`            | `string`                        | —          | Error message (red)      |
+| `hint`             | `string`                        | —          | Hint text (muted)        |
+| `wrapperClassName` | `string`                        | `""`       | Wrapper element classes  |
+| `...rest`          | `InputHTMLAttributes`           | —          | All standard input props |
 
 ---
 
@@ -192,15 +198,15 @@ Styled dropdown with angle brackets `< >` on focus. Custom arrow indicator. Exte
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `options` | `SelectMenuOption[]` | **required** | Array of `{ value, label, disabled? }` |
-| `label` | `string` | — | Label text |
-| `color` | `"orange" \| "green" \| "cyan"` | `"orange"` | Color theme |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Select size |
-| `placeholder` | `string` | `"SELECT..."` | Default placeholder text |
-| `error` | `string` | — | Error message |
-| `wrapperClassName` | `string` | `""` | Wrapper element classes |
+| Prop               | Type                            | Default       | Description                            |
+| ------------------ | ------------------------------- | ------------- | -------------------------------------- |
+| `options`          | `SelectMenuOption[]`            | **required**  | Array of `{ value, label, disabled? }` |
+| `label`            | `string`                        | —             | Label text                             |
+| `color`            | `"orange" \| "green" \| "cyan"` | `"orange"`    | Color theme                            |
+| `size`             | `"sm" \| "md" \| "lg"`          | `"md"`        | Select size                            |
+| `placeholder`      | `string`                        | `"SELECT..."` | Default placeholder text               |
+| `error`            | `string`                        | —             | Error message                          |
+| `wrapperClassName` | `string`                        | `""`          | Wrapper element classes                |
 
 ---
 
@@ -212,14 +218,14 @@ Block-based LCD progress bar with dynamic color thresholds. Blocks fill left-to-
 <SyncProgressBar value={78.5} label="SYNC RATE" blocks={20} />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `number` | **required** | Progress value (0-100) |
-| `label` | `string` | — | Label text |
-| `showPercentage` | `boolean` | `true` | Show percentage readout |
-| `blocks` | `number` | `20` | Number of LCD blocks |
-| `blockHeight` | `number` | `16` | Block height in pixels |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop             | Type      | Default      | Description             |
+| ---------------- | --------- | ------------ | ----------------------- |
+| `value`          | `number`  | **required** | Progress value (0-100)  |
+| `label`          | `string`  | —            | Label text              |
+| `showPercentage` | `boolean` | `true`       | Show percentage readout |
+| `blocks`         | `number`  | `20`         | Number of LCD blocks    |
+| `blockHeight`    | `number`  | `16`         | Block height in pixels  |
+| `className`      | `string`  | `""`         | Additional CSS classes  |
 
 **Color thresholds:** `0-50%` cyan, `50-80%` green, `80-95%` orange, `95%+` red (blinking)
 
@@ -245,17 +251,17 @@ Surveillance-style data table with sticky header, auto-scroll, and motion-animat
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `columns` | `DataGridColumn[]` | **required** | `{ key, header, width?, align? }` |
-| `data` | `Record<string, string \| number>[]` | **required** | Row data array |
-| `color` | `"orange" \| "green" \| "cyan"` | `"green"` | Table color theme |
-| `autoScroll` | `boolean` | `false` | Enable continuous scroll |
-| `scrollSpeed` | `number` | `30` | Scroll speed (px/sec) |
-| `maxHeight` | `string` | `"400px"` | Container max height |
-| `title` | `string` | — | Title bar text |
-| `showIndex` | `boolean` | `false` | Show row index column |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop          | Type                                 | Default      | Description                       |
+| ------------- | ------------------------------------ | ------------ | --------------------------------- |
+| `columns`     | `DataGridColumn[]`                   | **required** | `{ key, header, width?, align? }` |
+| `data`        | `Record<string, string \| number>[]` | **required** | Row data array                    |
+| `color`       | `"orange" \| "green" \| "cyan"`      | `"green"`    | Table color theme                 |
+| `autoScroll`  | `boolean`                            | `false`      | Enable continuous scroll          |
+| `scrollSpeed` | `number`                             | `30`         | Scroll speed (px/sec)             |
+| `maxHeight`   | `string`                             | `"400px"`    | Container max height              |
+| `title`       | `string`                             | —            | Title bar text                    |
+| `showIndex`   | `boolean`                            | `false`      | Show row index column             |
+| `className`   | `string`                             | `""`         | Additional CSS classes            |
 
 ---
 
@@ -278,19 +284,19 @@ Modal dialog with hex grid background overlay. Severity levels add red borders, 
 </SystemDialog>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `open` | `boolean` | **required** | Dialog visibility |
-| `title` | `string` | `"SYSTEM NOTIFICATION"` | Dialog title |
-| `children` | `ReactNode` | — | Dialog body content |
-| `severity` | `"normal" \| "warning" \| "critical"` | `"normal"` | Visual severity level |
-| `acceptText` | `string` | `"ACCEPT"` | Accept button label |
-| `declineText` | `string` | `"DECLINE"` | Decline button label |
-| `onAccept` | `() => void` | — | Accept callback |
-| `onDecline` | `() => void` | — | Decline callback |
-| `onClose` | `() => void` | — | Overlay click callback |
-| `showHazardStripes` | `boolean` | — | Force hazard stripe border |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop                | Type                                  | Default                 | Description                |
+| ------------------- | ------------------------------------- | ----------------------- | -------------------------- |
+| `open`              | `boolean`                             | **required**            | Dialog visibility          |
+| `title`             | `string`                              | `"SYSTEM NOTIFICATION"` | Dialog title               |
+| `children`          | `ReactNode`                           | —                       | Dialog body content        |
+| `severity`          | `"normal" \| "warning" \| "critical"` | `"normal"`              | Visual severity level      |
+| `acceptText`        | `string`                              | `"ACCEPT"`              | Accept button label        |
+| `declineText`       | `string`                              | `"DECLINE"`             | Decline button label       |
+| `onAccept`          | `() => void`                          | —                       | Accept callback            |
+| `onDecline`         | `() => void`                          | —                       | Decline callback           |
+| `onClose`           | `() => void`                          | —                       | Overlay click callback     |
+| `showHazardStripes` | `boolean`                             | —                       | Force hazard stripe border |
+| `className`         | `string`                              | `""`                    | Additional CSS classes     |
 
 ---
 
@@ -312,14 +318,14 @@ Military-classified folder tabs with animated indicator bar. Supports horizontal
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `tabs` | `NavigationTab[]` | **required** | `{ id, label, icon?, disabled? }` |
-| `activeTab` | `string` | **required** | Currently active tab ID |
-| `onTabChange` | `(tabId: string) => void` | **required** | Tab change callback |
-| `direction` | `"horizontal" \| "vertical"` | `"horizontal"` | Tab layout direction |
-| `color` | `"orange" \| "green" \| "cyan"` | `"orange"` | Color theme |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop          | Type                            | Default        | Description                       |
+| ------------- | ------------------------------- | -------------- | --------------------------------- |
+| `tabs`        | `NavigationTab[]`               | **required**   | `{ id, label, icon?, disabled? }` |
+| `activeTab`   | `string`                        | **required**   | Currently active tab ID           |
+| `onTabChange` | `(tabId: string) => void`       | **required**   | Tab change callback               |
+| `direction`   | `"horizontal" \| "vertical"`    | `"horizontal"` | Tab layout direction              |
+| `color`       | `"orange" \| "green" \| "cyan"` | `"orange"`     | Color theme                       |
+| `className`   | `string`                        | `""`           | Additional CSS classes            |
 
 ---
 
@@ -339,14 +345,15 @@ Cinematic title card with serif typography and staggered motion animation. Three
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `string` | **required** | Main title text |
-| `subtitle` | `string` | — | Subtitle text |
-| `align` | `"center" \| "split" \| "random"` | `"center"` | Layout mode |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop        | Type                              | Default      | Description            |
+| ----------- | --------------------------------- | ------------ | ---------------------- |
+| `title`     | `string`                          | **required** | Main title text        |
+| `subtitle`  | `string`                          | —            | Subtitle text          |
+| `align`     | `"center" \| "split" \| "random"` | `"center"`   | Layout mode            |
+| `className` | `string`                          | `""`         | Additional CSS classes |
 
 **Alignment modes:**
+
 - `center` — Title and subtitle stacked vertically, centered
 - `split` — Title top-left, subtitle bottom-right (cinematic split)
 - `random` — Characters scattered with deterministic offsets
@@ -368,19 +375,24 @@ Three-column MAGI supercomputer voting panel. Each column represents a MAGI brai
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `votes` | `MagiVote[]` | **required** | Array of `{ name, status }` |
-| `title` | `string` | `"MAGI SUPER COMPUTER SYSTEM"` | Panel title |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop        | Type         | Default                        | Description                 |
+| ----------- | ------------ | ------------------------------ | --------------------------- |
+| `votes`     | `MagiVote[]` | **required**                   | Array of `{ name, status }` |
+| `title`     | `string`     | `"MAGI SUPER COMPUTER SYSTEM"` | Panel title                 |
+| `className` | `string`     | `""`                           | Additional CSS classes      |
 
 **Types:**
+
 ```typescript
 type MagiStatus = "idle" | "computing" | "accepted" | "rejected";
-interface MagiVote { name: string; status: MagiStatus; }
+interface MagiVote {
+  name: string;
+  status: MagiStatus;
+}
 ```
 
 **Status visuals:**
+
 - `idle` — Gray, "STANDBY" text
 - `computing` — Scrolling hex code data with cyan scanning bar
 - `accepted` — Orange filled background with "ACCEPTED"
@@ -405,18 +417,18 @@ Pure SVG dual sinusoidal waveform chart. No external charting libraries. Uses a 
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `frequencyA` | `number` | `0.04` | Wave A frequency |
-| `frequencyB` | `number` | `0.055` | Wave B frequency |
-| `amplitudeA` | `number` | `50` | Wave A amplitude (px) |
-| `amplitudeB` | `number` | `40` | Wave B amplitude (px) |
-| `phaseA` | `number` | `0` | Wave A phase offset (radians) |
-| `phaseB` | `number` | `1.2` | Wave B phase offset (radians) |
-| `showGrid` | `boolean` | `true` | Show green grid background |
-| `title` | `string` | — | Chart title |
-| `animated` | `boolean` | `true` | Animate path drawing on mount |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop         | Type      | Default | Description                   |
+| ------------ | --------- | ------- | ----------------------------- |
+| `frequencyA` | `number`  | `0.04`  | Wave A frequency              |
+| `frequencyB` | `number`  | `0.055` | Wave B frequency              |
+| `amplitudeA` | `number`  | `50`    | Wave A amplitude (px)         |
+| `amplitudeB` | `number`  | `40`    | Wave B amplitude (px)         |
+| `phaseA`     | `number`  | `0`     | Wave A phase offset (radians) |
+| `phaseB`     | `number`  | `1.2`   | Wave B phase offset (radians) |
+| `showGrid`   | `boolean` | `true`  | Show green grid background    |
+| `title`      | `string`  | —       | Chart title                   |
+| `animated`   | `boolean` | `true`  | Animate path drawing on mount |
+| `className`  | `string`  | `""`    | Additional CSS classes        |
 
 **Waveform math:** `y = centerY + amplitude * Math.sin(x * frequency + phase)`
 
@@ -435,11 +447,11 @@ LCD-style countdown timer with MM:SS:ms format, battery bar visualization, and u
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `initialSeconds` | `number` | **required** | Starting countdown value in seconds |
-| `onExpire` | `() => void` | — | Callback when timer reaches zero |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop             | Type         | Default      | Description                         |
+| ---------------- | ------------ | ------------ | ----------------------------------- |
+| `initialSeconds` | `number`     | **required** | Starting countdown value in seconds |
+| `onExpire`       | `() => void` | —            | Callback when timer reaches zero    |
+| `className`      | `string`     | `""`         | Additional CSS classes              |
 
 **Color transitions:** `>60s` LCD green, `10-60s` orange, `<10s` red with blink
 **Battery bar:** 20 segments, color shifts at 75% and 25% thresholds
@@ -454,11 +466,11 @@ SOUND ONLY monolith block representing a SEELE committee member. Shows animated 
 <SeeleMonolith id="01" isSpeaking />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `id` | `string` | **required** | Monolith identifier (e.g. `"01"`) |
-| `isSpeaking` | `boolean` | `false` | Show equalizer animation |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop         | Type      | Default      | Description                       |
+| ------------ | --------- | ------------ | --------------------------------- |
+| `id`         | `string`  | **required** | Monolith identifier (e.g. `"01"`) |
+| `isSpeaking` | `boolean` | `false`      | Show equalizer animation          |
+| `className`  | `string`  | `""`         | Additional CSS classes            |
 
 ---
 
@@ -472,12 +484,12 @@ TOP SECRET overlay with diagonal hazard stripes. Slides away violently when unlo
 </ClassifiedOverlay>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `text` | `string` | `"CLASSIFIED"` | Overlay text |
-| `isUnlocked` | `boolean` | `false` | When true, overlay slides away |
-| `children` | `ReactNode` | — | Content revealed when unlocked |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop         | Type        | Default        | Description                    |
+| ------------ | ----------- | -------------- | ------------------------------ |
+| `text`       | `string`    | `"CLASSIFIED"` | Overlay text                   |
+| `isUnlocked` | `boolean`   | `false`        | When true, overlay slides away |
+| `children`   | `ReactNode` | —              | Content revealed when unlocked |
+| `className`  | `string`    | `""`           | Additional CSS classes         |
 
 **Exit animation:** Slides upward (`y: "-100%"`) over 0.2s with `easeIn`
 
@@ -492,26 +504,28 @@ TOP SECRET overlay with diagonal hazard stripes. Slides away violently when unlo
 Context provider for the toast notification system. Wrap your app with this provider, then use the `useToast()` hook to trigger notifications.
 
 ```tsx
-import { ToastProvider, useToast } from "@mattloyed/eva-ui";
+import { ToastProvider, useToast } from "@mdrbx/eva-ui";
 
 // Wrap your app
 <ToastProvider>
   <App />
-</ToastProvider>
+</ToastProvider>;
 
 // Inside any component
 function MyComponent() {
   const { addToast } = useToast();
   return (
-    <button onClick={() => addToast({ message: "System online", variant: "success" })}>
+    <button
+      onClick={() => addToast({ message: "System online", variant: "success" })}
+    >
       Notify
     </button>
   );
 }
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
+| Prop       | Type        | Default      | Description |
+| ---------- | ----------- | ------------ | ----------- |
 | `children` | `ReactNode` | **required** | App content |
 
 **Toast variants:** `info`, `success`, `warning`, `error`, `critical`
@@ -533,13 +547,13 @@ Rotating wireframe cube/polyhedron loading indicator with scanline effect.
 <WireframeLoader size={64} color="cyan" label="PROCESSING..." />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `number` | `64` | Loader size in pixels |
-| `color` | `"orange" \| "green" \| "cyan"` | `"cyan"` | Color theme |
-| `label` | `string` | `"PROCESSING..."` | Text below the loader |
-| `speed` | `number` | `2.5` | Rotation speed multiplier |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop        | Type                            | Default           | Description               |
+| ----------- | ------------------------------- | ----------------- | ------------------------- |
+| `size`      | `number`                        | `64`              | Loader size in pixels     |
+| `color`     | `"orange" \| "green" \| "cyan"` | `"cyan"`          | Color theme               |
+| `label`     | `string`                        | `"PROCESSING..."` | Text below the loader     |
+| `speed`     | `number`                        | `2.5`             | Rotation speed multiplier |
+| `className` | `string`                        | `""`              | Additional CSS classes    |
 
 ---
 
@@ -553,14 +567,14 @@ Container card with angled cut corner and variant styling. Supports header title
 </Card>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `string` | — | Card header title |
-| `children` | `ReactNode` | — | Card body content |
-| `footer` | `ReactNode` | — | Card footer content |
-| `variant` | `"default" \| "alert" \| "hud"` | `"default"` | Visual variant |
-| `cutSize` | `number` | `20` | Corner cut size in pixels |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop        | Type                            | Default     | Description               |
+| ----------- | ------------------------------- | ----------- | ------------------------- |
+| `title`     | `string`                        | —           | Card header title         |
+| `children`  | `ReactNode`                     | —           | Card body content         |
+| `footer`    | `ReactNode`                     | —           | Card footer content       |
+| `variant`   | `"default" \| "alert" \| "hud"` | `"default"` | Visual variant            |
+| `cutSize`   | `number`                        | `20`        | Corner cut size in pixels |
+| `className` | `string`                        | `""`        | Additional CSS classes    |
 
 ---
 
@@ -581,21 +595,21 @@ Expandable content sections with animated open/close. Supports single or multipl
 
 **Accordion props:**
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | **required** | `AccordionItem` children |
-| `multiple` | `boolean` | `false` | Allow multiple items open |
-| `defaultOpen` | `string[]` | `[]` | Initially open item IDs |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop          | Type        | Default      | Description               |
+| ------------- | ----------- | ------------ | ------------------------- |
+| `children`    | `ReactNode` | **required** | `AccordionItem` children  |
+| `multiple`    | `boolean`   | `false`      | Allow multiple items open |
+| `defaultOpen` | `string[]`  | `[]`         | Initially open item IDs   |
+| `className`   | `string`    | `""`         | Additional CSS classes    |
 
 **AccordionItem props:**
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `id` | `string` | **required** | Unique item identifier |
-| `title` | `string` | **required** | Item header text |
-| `children` | `ReactNode` | — | Item body content |
-| `color` | `"orange" \| "green" \| "cyan"` | `"cyan"` | Color theme |
+| Prop       | Type                            | Default      | Description            |
+| ---------- | ------------------------------- | ------------ | ---------------------- |
+| `id`       | `string`                        | **required** | Unique item identifier |
+| `title`    | `string`                        | **required** | Item header text       |
+| `children` | `ReactNode`                     | —            | Item body content      |
+| `color`    | `"orange" \| "green" \| "cyan"` | `"cyan"`     | Color theme            |
 
 ---
 
@@ -620,20 +634,20 @@ Horizontal bar chart with LCD-style block segments. Each bar renders as filled b
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `bars` | `BarChartBar[]` | **required** | `{ label, value, color? }` |
-| `title` | `string` | — | Chart title |
-| `maxValue` | `number` | — | Max value (auto-detected if omitted) |
-| `color` | `"cyan" \| "green" \| "orange" \| "red" \| "magenta"` | `"cyan"` | Color theme |
-| `showGrid` | `boolean` | `true` | Show grid lines |
-| `showValues` | `boolean` | `true` | Show value labels on bars |
-| `direction` | `"vertical" \| "horizontal"` | `"vertical"` | Bar direction |
-| `stagger` | `number` | `0.08` | Animation stagger delay in seconds |
-| `height` | `number` | `200` | Chart height in pixels (vertical) or width (horizontal) |
-| `unit` | `string` | `""` | Unit suffix for values (e.g. `"%"`, `"ms"`) |
-| `segmented` | `boolean` | `false` | Segmented LCD-cell look with discrete blocks |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop         | Type                                                  | Default      | Description                                             |
+| ------------ | ----------------------------------------------------- | ------------ | ------------------------------------------------------- |
+| `bars`       | `BarChartBar[]`                                       | **required** | `{ label, value, color? }`                              |
+| `title`      | `string`                                              | —            | Chart title                                             |
+| `maxValue`   | `number`                                              | —            | Max value (auto-detected if omitted)                    |
+| `color`      | `"cyan" \| "green" \| "orange" \| "red" \| "magenta"` | `"cyan"`     | Color theme                                             |
+| `showGrid`   | `boolean`                                             | `true`       | Show grid lines                                         |
+| `showValues` | `boolean`                                             | `true`       | Show value labels on bars                               |
+| `direction`  | `"vertical" \| "horizontal"`                          | `"vertical"` | Bar direction                                           |
+| `stagger`    | `number`                                              | `0.08`       | Animation stagger delay in seconds                      |
+| `height`     | `number`                                              | `200`        | Chart height in pixels (vertical) or width (horizontal) |
+| `unit`       | `string`                                              | `""`         | Unit suffix for values (e.g. `"%"`, `"ms"`)             |
+| `segmented`  | `boolean`                                             | `false`      | Segmented LCD-cell look with discrete blocks            |
+| `className`  | `string`                                              | `""`         | Additional CSS classes                                  |
 
 ---
 
@@ -642,26 +656,34 @@ Horizontal bar chart with LCD-style block segments. Each bar renders as filled b
 SVG radial gauge with animated needle and threshold color zones.
 
 ```tsx
-<Gauge value={78} label="POWER OUTPUT" unit="%" variant="ring" gradientFrom="#FF00FF" gradientTo="#FF9900" />
+<Gauge
+  value={78}
+  label="POWER OUTPUT"
+  unit="%"
+  variant="ring"
+  gradientFrom="#FF00FF"
+  gradientTo="#FF9900"
+/>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `number` | **required** | Current value (0-100) |
-| `min` | `number` | `0` | Minimum value |
-| `max` | `number` | `100` | Maximum value |
-| `label` | `string` | — | Gauge label text |
-| `unit` | `string` | `"%"` | Unit suffix shown after value |
-| `color` | `"cyan" \| "green" \| "orange" \| "red" \| "magenta"` | `"cyan"` | Color theme |
-| `size` | `number` | `160` | Gauge size in pixels |
-| `showTicks` | `boolean` | `true` | Show tick marks |
-| `threshold` | `number` | — | Value above which gauge turns red |
-| `variant` | `"needle" \| "ring"` | `"needle"` | Display variant |
-| `gradientFrom` | `string` | `"#FF00FF"` | Gradient start color (ring variant) |
-| `gradientTo` | `string` | `"#FF9900"` | Gradient end color (ring variant) |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop           | Type                                                  | Default      | Description                         |
+| -------------- | ----------------------------------------------------- | ------------ | ----------------------------------- |
+| `value`        | `number`                                              | **required** | Current value (0-100)               |
+| `min`          | `number`                                              | `0`          | Minimum value                       |
+| `max`          | `number`                                              | `100`        | Maximum value                       |
+| `label`        | `string`                                              | —            | Gauge label text                    |
+| `unit`         | `string`                                              | `"%"`        | Unit suffix shown after value       |
+| `color`        | `"cyan" \| "green" \| "orange" \| "red" \| "magenta"` | `"cyan"`     | Color theme                         |
+| `size`         | `number`                                              | `160`        | Gauge size in pixels                |
+| `showTicks`    | `boolean`                                             | `true`       | Show tick marks                     |
+| `threshold`    | `number`                                              | —            | Value above which gauge turns red   |
+| `variant`      | `"needle" \| "ring"`                                  | `"needle"`   | Display variant                     |
+| `gradientFrom` | `string`                                              | `"#FF00FF"`  | Gradient start color (ring variant) |
+| `gradientTo`   | `string`                                              | `"#FF9900"`  | Gradient end color (ring variant)   |
+| `className`    | `string`                                              | `""`         | Additional CSS classes              |
 
 **Variants:**
+
 - `needle` — Traditional gauge with animated needle and center dot
 - `ring` — Thick arc ring with gradient fill from `gradientFrom` to `gradientTo`
 
@@ -683,13 +705,13 @@ SVG pie or donut chart with NERV-styled segments and legend.
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `slices` | `PieSlice[]` | **required** | `{ label, value, color }` |
-| `title` | `string` | — | Chart title |
-| `donut` | `boolean` | `false` | Render as donut chart |
-| `size` | `number` | `200` | Chart diameter in pixels |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop        | Type         | Default      | Description               |
+| ----------- | ------------ | ------------ | ------------------------- |
+| `slices`    | `PieSlice[]` | **required** | `{ label, value, color }` |
+| `title`     | `string`     | —            | Chart title               |
+| `donut`     | `boolean`    | `false`      | Render as donut chart     |
+| `size`      | `number`     | `200`        | Chart diameter in pixels  |
+| `className` | `string`     | `""`         | Additional CSS classes    |
 
 ---
 
@@ -705,20 +727,20 @@ Large rotated stamp overlay text. Used for classification marks like APPROVED, R
 <StatusStamp text="APPROVED" color="green" rotation={-12} />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `text` | `string` | **required** | Stamp text |
-| `visible` | `boolean` | `true` | Visibility toggle |
-| `color` | `"red" \| "green" \| "orange" \| "cyan" \| "magenta"` | `"red"` | Stamp color |
-| `rotation` | `number` | `-12` | Rotation angle in degrees |
-| `repeat` | `boolean` | `false` | Tile the stamp across the area |
-| `repeatRows` | `number` | `3` | Rows when repeating |
-| `repeatCols` | `number` | `2` | Columns when repeating |
-| `subtitle` | `string` | — | Secondary text |
-| `bordered` | `boolean` | `false` | Show border around stamp |
-| `doubleBordered` | `boolean` | `false` | Show double border frame (implies `bordered`) |
-| `fullScreen` | `boolean` | `false` | Fixed full-screen overlay |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop             | Type                                                  | Default      | Description                                   |
+| ---------------- | ----------------------------------------------------- | ------------ | --------------------------------------------- |
+| `text`           | `string`                                              | **required** | Stamp text                                    |
+| `visible`        | `boolean`                                             | `true`       | Visibility toggle                             |
+| `color`          | `"red" \| "green" \| "orange" \| "cyan" \| "magenta"` | `"red"`      | Stamp color                                   |
+| `rotation`       | `number`                                              | `-12`        | Rotation angle in degrees                     |
+| `repeat`         | `boolean`                                             | `false`      | Tile the stamp across the area                |
+| `repeatRows`     | `number`                                              | `3`          | Rows when repeating                           |
+| `repeatCols`     | `number`                                              | `2`          | Columns when repeating                        |
+| `subtitle`       | `string`                                              | —            | Secondary text                                |
+| `bordered`       | `boolean`                                             | `false`      | Show border around stamp                      |
+| `doubleBordered` | `boolean`                                             | `false`      | Show double border frame (implies `bordered`) |
+| `fullScreen`     | `boolean`                                             | `false`      | Fixed full-screen overlay                     |
+| `className`      | `string`                                              | `""`         | Additional CSS classes                        |
 
 ---
 
@@ -727,23 +749,29 @@ Large rotated stamp overlay text. Used for classification marks like APPROVED, R
 7-segment LED-style display for countdowns, clocks, and numeric readouts.
 
 ```tsx
-<SegmentDisplay value={300} countdown format="M:SS" color="orange" label="TIME REMAINING" />
+<SegmentDisplay
+  value={300}
+  countdown
+  format="M:SS"
+  color="orange"
+  label="TIME REMAINING"
+/>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `number` | `0` | Display value (seconds for countdown) |
-| `countdown` | `boolean` | `false` | Enable countdown mode |
-| `format` | `string` | `"H:MM:SS"` | Display format |
-| `digits` | `number` | — | Fixed digit count |
-| `color` | `"orange" \| "green" \| "cyan" \| "red"` | `"orange"` | Display color |
-| `criticalThreshold` | `number` | `60` | Seconds threshold for red blink |
-| `label` | `string` | — | Label above display |
-| `subLabel` | `string` | — | Label below display |
-| `size` | `"sm" \| "md" \| "lg"` | `"lg"` | Display size |
-| `blinkSeparator` | `boolean` | `true` | Blink the `:` separators |
-| `onComplete` | `() => void` | — | Countdown complete callback |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop                | Type                                     | Default     | Description                           |
+| ------------------- | ---------------------------------------- | ----------- | ------------------------------------- |
+| `value`             | `number`                                 | `0`         | Display value (seconds for countdown) |
+| `countdown`         | `boolean`                                | `false`     | Enable countdown mode                 |
+| `format`            | `string`                                 | `"H:MM:SS"` | Display format                        |
+| `digits`            | `number`                                 | —           | Fixed digit count                     |
+| `color`             | `"orange" \| "green" \| "cyan" \| "red"` | `"orange"`  | Display color                         |
+| `criticalThreshold` | `number`                                 | `60`        | Seconds threshold for red blink       |
+| `label`             | `string`                                 | —           | Label above display                   |
+| `subLabel`          | `string`                                 | —           | Label below display                   |
+| `size`              | `"sm" \| "md" \| "lg"`                   | `"lg"`      | Display size                          |
+| `blinkSeparator`    | `boolean`                                | `true`      | Blink the `:` separators              |
+| `onComplete`        | `() => void`                             | —           | Countdown complete callback           |
+| `className`         | `string`                                 | `""`        | Additional CSS classes                |
 
 ---
 
@@ -763,15 +791,15 @@ Multi-feed surveillance camera grid with status indicators and timestamps.
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `feeds` | `SurveillanceFeed[]` | **required** | `{ id, label, status, imageUrl? }` |
-| `columns` | `number` | `3` | Grid columns |
-| `color` | `"orange" \| "green" \| "cyan"` | `"green"` | Grid color theme |
-| `title` | `string` | — | Grid title |
-| `showTimestamp` | `boolean` | `true` | Show timestamp overlay |
-| `animated` | `boolean` | `true` | Enable scanline animation |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop            | Type                            | Default      | Description                        |
+| --------------- | ------------------------------- | ------------ | ---------------------------------- |
+| `feeds`         | `SurveillanceFeed[]`            | **required** | `{ id, label, status, imageUrl? }` |
+| `columns`       | `number`                        | `3`          | Grid columns                       |
+| `color`         | `"orange" \| "green" \| "cyan"` | `"green"`    | Grid color theme                   |
+| `title`         | `string`                        | —            | Grid title                         |
+| `showTimestamp` | `boolean`                       | `true`       | Show timestamp overlay             |
+| `animated`      | `boolean`                       | `true`       | Enable scanline animation          |
+| `className`     | `string`                        | `""`         | Additional CSS classes             |
 
 ---
 
@@ -783,18 +811,18 @@ PATTERN BLUE/ORANGE detection alert display with animated waveform and classific
 <PatternAlert designation="4TH ANGEL" pattern="PATTERN" bloodType="BLUE" />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `designation` | `string` | **required** | Target designation |
-| `pattern` | `string` | `"PATTERN"` | Pattern type prefix |
-| `bloodType` | `string` | `"BLUE"` | Blood type classification |
-| `visible` | `boolean` | `true` | Visibility toggle |
-| `scaleRange` | `number` | `3` | Scale range display |
-| `unit` | `string` | `"10⁻⁶m"` | Measurement unit |
-| `subtitle` | `string` | — | Additional info text |
-| `color` | `"orange" \| "green" \| "cyan" \| "red"` | `"orange"` | Color theme |
-| `animated` | `boolean` | `true` | Enable animations |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop          | Type                                     | Default      | Description               |
+| ------------- | ---------------------------------------- | ------------ | ------------------------- |
+| `designation` | `string`                                 | **required** | Target designation        |
+| `pattern`     | `string`                                 | `"PATTERN"`  | Pattern type prefix       |
+| `bloodType`   | `string`                                 | `"BLUE"`     | Blood type classification |
+| `visible`     | `boolean`                                | `true`       | Visibility toggle         |
+| `scaleRange`  | `number`                                 | `3`          | Scale range display       |
+| `unit`        | `string`                                 | `"10⁻⁶m"`    | Measurement unit          |
+| `subtitle`    | `string`                                 | —            | Additional info text      |
+| `color`       | `"orange" \| "green" \| "cyan" \| "red"` | `"orange"`   | Color theme               |
+| `animated`    | `boolean`                                | `true`       | Enable animations         |
+| `className`   | `string`                                 | `""`         | Additional CSS classes    |
 
 ---
 
@@ -811,17 +839,17 @@ Circular targeting HUD overlay with crosshairs, readouts, and lock-on animation.
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `mode` | `string` | `"MODE:SHOOT"` | Display mode text |
-| `locked` | `boolean` | `false` | Lock-on state (triggers animation) |
-| `coordinates` | `{ x: number; y: number }` | — | Coordinate readout |
-| `readouts` | `string[]` | — | Additional data readouts |
-| `color` | `"red" \| "orange" \| "green" \| "cyan"` | `"red"` | Reticle color |
-| `size` | `number` | `400` | Reticle diameter |
-| `animated` | `boolean` | `true` | Enable animations |
-| `targetLabel` | `string` | — | Target identification label |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop          | Type                                     | Default        | Description                        |
+| ------------- | ---------------------------------------- | -------------- | ---------------------------------- |
+| `mode`        | `string`                                 | `"MODE:SHOOT"` | Display mode text                  |
+| `locked`      | `boolean`                                | `false`        | Lock-on state (triggers animation) |
+| `coordinates` | `{ x: number; y: number }`               | —              | Coordinate readout                 |
+| `readouts`    | `string[]`                               | —              | Additional data readouts           |
+| `color`       | `"red" \| "orange" \| "green" \| "cyan"` | `"red"`        | Reticle color                      |
+| `size`        | `number`                                 | `400`          | Reticle diameter                   |
+| `animated`    | `boolean`                                | `true`         | Enable animations                  |
+| `targetLabel` | `string`                                 | —              | Target identification label        |
+| `className`   | `string`                                 | `""`           | Additional CSS classes             |
 
 ---
 
@@ -843,18 +871,18 @@ Pilot identification card with photo area, designation, vitals, and status indic
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `designation` | `string` | **required** | Pilot designation |
-| `name` | `string` | **required** | Pilot name |
-| `unit` | `string` | — | Assigned unit |
-| `fields` | `PilotCardField[]` | `[]` | `{ label, value }` data fields |
-| `plugNumber` | `string` | — | Entry plug number |
-| `checkStatus` | `string` | `"O.K."` | Status check text |
-| `color` | `"red" \| "orange" \| "green" \| "cyan"` | `"red"` | Card color theme |
-| `imageUrl` | `string` | — | Pilot photo URL |
-| `animated` | `boolean` | `true` | Enable entry animation |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop          | Type                                     | Default      | Description                    |
+| ------------- | ---------------------------------------- | ------------ | ------------------------------ |
+| `designation` | `string`                                 | **required** | Pilot designation              |
+| `name`        | `string`                                 | **required** | Pilot name                     |
+| `unit`        | `string`                                 | —            | Assigned unit                  |
+| `fields`      | `PilotCardField[]`                       | `[]`         | `{ label, value }` data fields |
+| `plugNumber`  | `string`                                 | —            | Entry plug number              |
+| `checkStatus` | `string`                                 | `"O.K."`     | Status check text              |
+| `color`       | `"red" \| "orange" \| "green" \| "cyan"` | `"red"`      | Card color theme               |
+| `imageUrl`    | `string`                                 | —            | Pilot photo URL                |
+| `animated`    | `boolean`                                | `true`       | Enable entry animation         |
+| `className`   | `string`                                 | `""`         | Additional CSS classes         |
 
 ---
 
@@ -879,14 +907,15 @@ Stacked status indicator showing multiple phase items with color-coded statuses.
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `phases` | `PhaseItem[]` | **required** | `{ label, status, value? }` |
-| `color` | `"orange" \| "green" \| "cyan"` | `"green"` | Title text color theme |
-| `title` | `string` | — | Title displayed above the stack |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop        | Type                            | Default      | Description                     |
+| ----------- | ------------------------------- | ------------ | ------------------------------- |
+| `phases`    | `PhaseItem[]`                   | **required** | `{ label, status, value? }`     |
+| `color`     | `"orange" \| "green" \| "cyan"` | `"green"`    | Title text color theme          |
+| `title`     | `string`                        | —            | Title displayed above the stack |
+| `className` | `string`                        | `""`         | Additional CSS classes          |
 
 **Types:**
+
 ```typescript
 interface PhaseItem {
   label: string;
@@ -896,6 +925,7 @@ interface PhaseItem {
 ```
 
 **Status colors:**
+
 - `ok` — Green background, black text
 - `warning` — Orange background, black text
 - `danger` — Red background, black text
@@ -921,18 +951,19 @@ Zone-based horizontal status bar with colored segments, value indicator, and bot
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `number` | **required** | Current value |
-| `min` | `number` | `0` | Minimum value |
-| `max` | `number` | `100` | Maximum value |
-| `zones` | `StatusZone[]` | **required** | `{ start, end, color, label? }` |
-| `label` | `string` | — | Primary label |
-| `sublabel` | `string` | — | Secondary label below the primary |
-| `color` | `"cyan" \| "green" \| "orange" \| "red" \| "magenta"` | `"cyan"` | Label text color theme |
-| `className` | `string` | `""` | Additional CSS classes |
+| Prop        | Type                                                  | Default      | Description                       |
+| ----------- | ----------------------------------------------------- | ------------ | --------------------------------- |
+| `value`     | `number`                                              | **required** | Current value                     |
+| `min`       | `number`                                              | `0`          | Minimum value                     |
+| `max`       | `number`                                              | `100`        | Maximum value                     |
+| `zones`     | `StatusZone[]`                                        | **required** | `{ start, end, color, label? }`   |
+| `label`     | `string`                                              | —            | Primary label                     |
+| `sublabel`  | `string`                                              | —            | Secondary label below the primary |
+| `color`     | `"cyan" \| "green" \| "orange" \| "red" \| "magenta"` | `"cyan"`     | Label text color theme            |
+| `className` | `string`                                              | `""`         | Additional CSS classes            |
 
 **Types:**
+
 ```typescript
 interface StatusZone {
   start: number;
@@ -1016,5 +1047,5 @@ import type {
   RadioGroupProps,
   DrawerProps,
   DividerProps,
-} from "@mattloyed/eva-ui";
+} from "@mdrbx/eva-ui";
 ```

@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Structural panel container for dense monitoring surfaces, plus a specialized rounded `video` variant for subject/video overlays. Use the angular variants for control-room chassis and the rounded one only when a surface should read like captured footage annotation.
 
 ```tsx
-import { Card } from "@mattloyed/eva-ui";
+import { Card } from "@mdrbx/eva-ui";
 ```
 
 ## Default Variant
@@ -46,7 +46,11 @@ import { Card } from "@mattloyed/eva-ui";
   </div>
 </Card>`}
 >
-  <Card title="CRITICAL ALERT" variant="alert" footer="TIMESTAMP: 2015-06-22T14:22:07Z">
+  <Card
+    title="CRITICAL ALERT"
+    variant="alert"
+    footer="TIMESTAMP: 2015-06-22T14:22:07Z"
+  >
     <div className="text-xs font-mono text-eva-red space-y-1">
       <div>PATTERN BLUE CONFIRMED</div>
       <div>Target designation: 5th ANGEL</div>
@@ -102,7 +106,10 @@ Rounded double-line plate for camera feeds, subject callouts, and footage overla
     <div className="absolute inset-0 opacity-20 [background:repeating-linear-gradient(0deg,transparent_0_4px,rgba(255,255,255,0.06)_4px_8px)]" />
     <div className="relative ml-auto max-w-sm">
       <Card title="KAWORU NAGISA" variant="video" footer="CAMERA NO.012 LEFT">
-        <div className="space-y-1.5 text-[10px] uppercase tracking-[0.12em] text-eva-orange/80" style={{ fontFamily: "var(--font-eva-mono)" }}>
+        <div
+          className="space-y-1.5 text-[10px] uppercase tracking-[0.12em] text-eva-orange/80"
+          style={{ fontFamily: "var(--font-eva-mono)" }}
+        >
           <div>Subject: Fifth C.</div>
           <div>Harmonics Test Proceeding</div>
           <div>Signal State: Live</div>
@@ -133,19 +140,49 @@ Rounded double-line plate for camera feeds, subject callouts, and footage overla
 
 <PropsTable
   props={[
-    { name: "title", type: "string", description: "Card header title (displayed uppercase)" },
-    { name: "children", type: "ReactNode", description: "Main content", required: true },
+    {
+      name: "title",
+      type: "string",
+      description: "Card header title (displayed uppercase)",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      description: "Main content",
+      required: true,
+    },
     { name: "footer", type: "ReactNode", description: "Footer content" },
-    { name: "variant", type: '"default" | "alert" | "hud" | "video"', default: '"default"', description: "Visual variant — structural panel, alert panel, translucent HUD panel, or rounded video-overlay plate" },
-    { name: "cutSize", type: "number", default: "20", description: "Legacy compatibility prop retained for older usages; not promoted by the current visual system" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "variant",
+      type: '"default" | "alert" | "hud" | "video"',
+      default: '"default"',
+      description:
+        "Visual variant — structural panel, alert panel, translucent HUD panel, or rounded video-overlay plate",
+    },
+    {
+      name: "cutSize",
+      type: "number",
+      default: "20",
+      description:
+        "Legacy compatibility prop retained for older usages; not promoted by the current visual system",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="TWO FAMILIES">
-  `default`, `alert`, and `hud` are structural cards for panels and chassis. `video` is different on purpose: it belongs to the camera-overlay family and should be reserved for footage, subject lockups, and signal annotations.
+  `default`, `alert`, and `hud` are structural cards for panels and chassis.
+  `video` is different on purpose: it belongs to the camera-overlay family and
+  should be reserved for footage, subject lockups, and signal annotations.
 </Callout>
 
 <Callout type="warning" title="DO NOT ROUND THE WHOLE SYSTEM">
-  The rounded edges in the anime are localized to camera/video plaques. Keep navigation, shells, and standard monitoring cards angular; use `variant="video"` only where the UI should feel attached to an image feed.
+  The rounded edges in the anime are localized to camera/video plaques. Keep
+  navigation, shells, and standard monitoring cards angular; use
+  `variant="video"` only where the UI should feel attached to an image feed.
 </Callout>

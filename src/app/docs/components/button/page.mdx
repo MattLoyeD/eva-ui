@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Multi-variant industrial button with corner decorations, loading state animation, and hover color inversion. The backbone of all user interactions in the NERV interface.
 
 ```tsx
-import { Button } from "@mattloyed/eva-ui";
+import { Button } from "@mdrbx/eva-ui";
 ```
 
 ## Variants
@@ -17,7 +17,9 @@ import { Button } from "@mattloyed/eva-ui";
   title="PRIMARY"
   code={`<Button variant="primary" size="lg">CONFIRM OPERATION</Button>`}
 >
-  <Button variant="primary" size="lg">CONFIRM OPERATION</Button>
+  <Button variant="primary" size="lg">
+    CONFIRM OPERATION
+  </Button>
 </ComponentPreview>
 
 ### Danger
@@ -26,7 +28,9 @@ import { Button } from "@mattloyed/eva-ui";
   title="DANGER"
   code={`<Button variant="danger" size="lg">INITIATE OVERRIDE</Button>`}
 >
-  <Button variant="danger" size="lg">INITIATE OVERRIDE</Button>
+  <Button variant="danger" size="lg">
+    INITIATE OVERRIDE
+  </Button>
 </ComponentPreview>
 
 ### Ghost
@@ -35,7 +39,9 @@ import { Button } from "@mattloyed/eva-ui";
   title="GHOST"
   code={`<Button variant="ghost" size="lg">CANCEL</Button>`}
 >
-  <Button variant="ghost" size="lg">CANCEL</Button>
+  <Button variant="ghost" size="lg">
+    CANCEL
+  </Button>
 </ComponentPreview>
 
 ### Terminal
@@ -44,7 +50,9 @@ import { Button } from "@mattloyed/eva-ui";
   title="TERMINAL"
   code={`<Button variant="terminal" size="lg">EXECUTE COMMAND</Button>`}
 >
-  <Button variant="terminal" size="lg">EXECUTE COMMAND</Button>
+  <Button variant="terminal" size="lg">
+    EXECUTE COMMAND
+  </Button>
 </ComponentPreview>
 
 ## Sizes
@@ -70,7 +78,9 @@ import { Button } from "@mattloyed/eva-ui";
   title="LOADING"
   code={`<Button variant="primary" loading>PROCESSING...</Button>`}
 >
-  <Button variant="primary" loading>PROCESSING...</Button>
+  <Button variant="primary" loading>
+    PROCESSING...
+  </Button>
 </ComponentPreview>
 
 ## Full Width
@@ -79,20 +89,61 @@ import { Button } from "@mattloyed/eva-ui";
   title="FULL WIDTH"
   code={`<Button variant="danger" fullWidth>SYSTEM OVERRIDE — FULL WIDTH</Button>`}
 >
-  <Button variant="danger" fullWidth>SYSTEM OVERRIDE — FULL WIDTH</Button>
+  <Button variant="danger" fullWidth>
+    SYSTEM OVERRIDE — FULL WIDTH
+  </Button>
 </ComponentPreview>
 
 ## Props
 
 <PropsTable
   props={[
-    { name: "variant", type: '"primary" | "danger" | "ghost" | "terminal"', default: '"primary"', description: "Visual variant and color scheme" },
-    { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Button size" },
-    { name: "loading", type: "boolean", default: "false", description: "Show animated loading dots" },
-    { name: "fullWidth", type: "boolean", default: "false", description: "Stretch to fill container width" },
-    { name: "disabled", type: "boolean", default: "false", description: "Disabled state with reduced opacity" },
-    { name: "type", type: '"button" | "submit" | "reset"', default: '"button"', description: "HTML button type attribute" },
-    { name: "onClick", type: "MouseEventHandler", description: "Click event handler" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "variant",
+      type: '"primary" | "danger" | "ghost" | "terminal"',
+      default: '"primary"',
+      description: "Visual variant and color scheme",
+    },
+    {
+      name: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "Button size",
+    },
+    {
+      name: "loading",
+      type: "boolean",
+      default: "false",
+      description: "Show animated loading dots",
+    },
+    {
+      name: "fullWidth",
+      type: "boolean",
+      default: "false",
+      description: "Stretch to fill container width",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disabled state with reduced opacity",
+    },
+    {
+      name: "type",
+      type: '"button" | "submit" | "reset"',
+      default: '"button"',
+      description: "HTML button type attribute",
+    },
+    {
+      name: "onClick",
+      type: "MouseEventHandler",
+      description: "Click event handler",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />

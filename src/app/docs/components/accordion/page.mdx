@@ -1,18 +1,22 @@
 import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
-import { AccordionBasicDemo, AccordionMultiDemo } from "@/components/docs/AccordionDemo";
+import {
+  AccordionBasicDemo,
+  AccordionMultiDemo,
+} from "@/components/docs/AccordionDemo";
 
 # Accordion
 
 Retractable data panels with terminal-style `[ + ]` / `[ - ]` toggle icons. Uses `AnimatePresence` for fast linear height animation. Supports single or multiple open items.
 
 ```tsx
-import { Accordion, AccordionItem } from "@mattloyed/eva-ui";
+import { Accordion, AccordionItem } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
 
 <Callout type="info" title="INTERACTIVE">
-  Click each panel header to expand/collapse. In single mode (default), opening one panel closes the others.
+  Click each panel header to expand/collapse. In single mode (default), opening
+  one panel closes the others.
 </Callout>
 
 <ComponentPreview
@@ -61,10 +65,30 @@ import { Accordion, AccordionItem } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "children", type: "ReactNode", description: "AccordionItem elements", required: true },
-    { name: "multiple", type: "boolean", default: "false", description: "Allow multiple items open simultaneously" },
-    { name: "defaultOpen", type: "string[]", default: "[]", description: "IDs of items open by default" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "children",
+      type: "ReactNode",
+      description: "AccordionItem elements",
+      required: true,
+    },
+    {
+      name: "multiple",
+      type: "boolean",
+      default: "false",
+      description: "Allow multiple items open simultaneously",
+    },
+    {
+      name: "defaultOpen",
+      type: "string[]",
+      default: "[]",
+      description: "IDs of items open by default",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
@@ -72,13 +96,34 @@ import { Accordion, AccordionItem } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "id", type: "string", description: "Unique item identifier", required: true },
-    { name: "title", type: "string", description: "Header label text", required: true },
-    { name: "children", type: "ReactNode", description: "Collapsible content", required: true },
-    { name: "color", type: '"cyan" | "white" | "orange" | "green"', default: '"cyan"', description: "Header text color" },
+    {
+      name: "id",
+      type: "string",
+      description: "Unique item identifier",
+      required: true,
+    },
+    {
+      name: "title",
+      type: "string",
+      description: "Header label text",
+      required: true,
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      description: "Collapsible content",
+      required: true,
+    },
+    {
+      name: "color",
+      type: '"cyan" | "white" | "orange" | "green"',
+      default: '"cyan"',
+      description: "Header text color",
+    },
   ]}
 />
 
 <Callout type="warning" title="COMPOUND COMPONENT">
-  `AccordionItem` must be used inside an `Accordion` container. Using it standalone will throw an error.
+  `AccordionItem` must be used inside an `Accordion` container. Using it
+  standalone will throw an error.
 </Callout>

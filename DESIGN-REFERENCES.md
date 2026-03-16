@@ -7,6 +7,7 @@ Ce fichier sert de garde-fou visuel pour les prochaines itérations du projet.
 La cible n'est pas "EVA poster", "cyberpunk SaaS" ou "dashboard glossy".
 
 La cible est :
+
 - NERV operations
 - urgence militaire
 - HUD de monitoring
@@ -18,17 +19,17 @@ La cible est :
 
 Ce sont les images les plus utiles pour juger la cohérence du système :
 
-- [screenshots/cards.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/cards.png)
-- [screenshots/card-line-subtitles.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/card-line-subtitles.png)
-- [screenshots/live-cursor-card.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/live-cursor-card.png)
-- [screenshots/phase-lists.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/phase-lists.png)
-- [screenshots/phase-lists-2.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/phase-lists-2.png)
-- [screenshots/battery-like-status-display-list.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/battery-like-status-display-list.png)
-- [screenshots/timer-with-titles.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/timer-with-titles.png)
-- [screenshots/linked-stacked-lists-monochromic.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/linked-stacked-lists-monochromic.png)
-- [screenshots/vertical-life-lines.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/vertical-life-lines.png)
-- [screenshots/magi-3-sides-quadrant-monitoring-display.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/magi-3-sides-quadrant-monitoring-display.png)
-- [screenshots/alert.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/alert.png)
+- [screenshots/cards.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/cards.png)
+- [screenshots/card-line-subtitles.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/card-line-subtitles.png)
+- [screenshots/live-cursor-card.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/live-cursor-card.png)
+- [screenshots/phase-lists.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/phase-lists.png)
+- [screenshots/phase-lists-2.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/phase-lists-2.png)
+- [screenshots/battery-like-status-display-list.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/battery-like-status-display-list.png)
+- [screenshots/timer-with-titles.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/timer-with-titles.png)
+- [screenshots/linked-stacked-lists-monochromic.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/linked-stacked-lists-monochromic.png)
+- [screenshots/vertical-life-lines.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/vertical-life-lines.png)
+- [screenshots/magi-3-sides-quadrant-monitoring-display.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/magi-3-sides-quadrant-monitoring-display.png)
+- [screenshots/alert.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/alert.png)
 
 ## Ce qu'il faut lire dans ces refs
 
@@ -63,24 +64,25 @@ Ce sont les images les plus utiles pour juger la cohérence du système :
 
 Utiles, mais à employer avec plus de prudence :
 
-- [screenshots/3-side-monitor.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/3-side-monitor.png)
-- [screenshots/magi-3-sides-quadrant-monitoring-display-2.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/magi-3-sides-quadrant-monitoring-display-2.png)
-- [screenshots/linked-stacked-lists-monochromic-2.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/linked-stacked-lists-monochromic-2.png)
-- [screenshots/multiple-gradient-bar-with-caution-danger.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/multiple-gradient-bar-with-caution-danger.png)
-- [screenshots/stacked-bars-charts.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/stacked-bars-charts.png)
-- [screenshots/alert-2.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/alert-2.png)
-- [screenshots/refused-display.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/refused-display.png)
-- [screenshots/shoot-mode.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/shoot-mode.png)
+- [screenshots/3-side-monitor.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/3-side-monitor.png)
+- [screenshots/magi-3-sides-quadrant-monitoring-display-2.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/magi-3-sides-quadrant-monitoring-display-2.png)
+- [screenshots/linked-stacked-lists-monochromic-2.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/linked-stacked-lists-monochromic-2.png)
+- [screenshots/multiple-gradient-bar-with-caution-danger.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/multiple-gradient-bar-with-caution-danger.png)
+- [screenshots/stacked-bars-charts.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/stacked-bars-charts.png)
+- [screenshots/alert-2.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/alert-2.png)
+- [screenshots/refused-display.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/refused-display.png)
+- [screenshots/shoot-mode.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/shoot-mode.png)
 
 ## Références à traiter comme avertissements
 
 Ces images peuvent être utiles pour des détails, mais ne doivent pas dicter la grammaire principale :
 
-- [screenshots/dognut-chart.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/dognut-chart.png)
-- [screenshots/weird-chart.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/weird-chart.png)
-- [screenshots/crooked-phase-lists.png](/home/mooty/dev/repos/mattloyed/eva-ui/screenshots/crooked-phase-lists.png)
+- [screenshots/dognut-chart.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/dognut-chart.png)
+- [screenshots/weird-chart.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/weird-chart.png)
+- [screenshots/crooked-phase-lists.png](/home/mooty/dev/repos/mdrbx/eva-ui/screenshots/crooked-phase-lists.png)
 
 Pourquoi :
+
 - trop proches d'un rendu "chart gimmick"
 - ou trop spécifiques pour devenir un langage système global
 

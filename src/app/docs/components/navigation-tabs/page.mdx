@@ -1,12 +1,16 @@
 import { ComponentPreview, PropsTable } from "@/components/docs";
-import { NavigationTabsHorizontalDemo, NavigationTabsVerticalDemo, NavigationTabsCyanDemo } from "@/components/docs/NavigationTabsDemo";
+import {
+  NavigationTabsHorizontalDemo,
+  NavigationTabsVerticalDemo,
+  NavigationTabsCyanDemo,
+} from "@/components/docs/NavigationTabsDemo";
 
 # Navigation Tabs
 
 Military-classified folder tabs with animated indicator bar. Supports horizontal and vertical orientations. Numbered badges and optional icons.
 
 ```tsx
-import { NavigationTabs } from "@mattloyed/eva-ui";
+import { NavigationTabs } from "@mdrbx/eva-ui";
 ```
 
 ## Horizontal
@@ -68,11 +72,41 @@ import { NavigationTabs } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "tabs", type: "NavigationTab[]", required: true, description: "Array of { id, label, icon?, disabled? }" },
-    { name: "activeTab", type: "string", required: true, description: "Currently active tab ID" },
-    { name: "onTabChange", type: "(tabId: string) => void", required: true, description: "Tab change callback" },
-    { name: "direction", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Tab layout direction" },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "tabs",
+      type: "NavigationTab[]",
+      required: true,
+      description: "Array of { id, label, icon?, disabled? }",
+    },
+    {
+      name: "activeTab",
+      type: "string",
+      required: true,
+      description: "Currently active tab ID",
+    },
+    {
+      name: "onTabChange",
+      type: "(tabId: string) => void",
+      required: true,
+      description: "Tab change callback",
+    },
+    {
+      name: "direction",
+      type: '"horizontal" | "vertical"',
+      default: '"horizontal"',
+      description: "Tab layout direction",
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"orange"',
+      description: "Color theme",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />

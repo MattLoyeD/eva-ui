@@ -1,13 +1,17 @@
 import { Pagination } from "@/components";
 import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
-import { PaginationBasicDemo, PaginationGreenDemo, PaginationCyanDemo } from "@/components/docs/PaginationDemo";
+import {
+  PaginationBasicDemo,
+  PaginationGreenDemo,
+  PaginationCyanDemo,
+} from "@/components/docs/PaginationDemo";
 
 # Pagination
 
 LCD-style page navigation with `<<` / `>>` arrow buttons and zero-padded page counter. Buttons disable automatically at boundaries.
 
 ```tsx
-import { Pagination } from "@mattloyed/eva-ui";
+import { Pagination } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
@@ -19,7 +23,7 @@ import { Pagination } from "@mattloyed/eva-ui";
 <ComponentPreview
   title="DEFAULT"
   code={`import { useState } from "react";
-import { Pagination } from "@mattloyed/eva-ui";
+import { Pagination } from "@mdrbx/eva-ui";
 
 const [page, setPage] = useState(1);
 
@@ -37,7 +41,7 @@ const [page, setPage] = useState(1);
 
 <ComponentPreview
   title="GREEN"
-  code={`import { Pagination } from "@mattloyed/eva-ui";
+  code={`import { Pagination } from "@mdrbx/eva-ui";
 
 <Pagination
   total={80}
@@ -52,7 +56,7 @@ const [page, setPage] = useState(1);
 
 <ComponentPreview
   title="CYAN"
-  code={`import { Pagination } from "@mattloyed/eva-ui";
+  code={`import { Pagination } from "@mdrbx/eva-ui";
 
 <Pagination
   total={50}
@@ -69,11 +73,41 @@ const [page, setPage] = useState(1);
 
 <PropsTable
   props={[
-    { name: "total", type: "number", required: true, description: "Total number of items" },
-    { name: "pageSize", type: "number", required: true, description: "Items per page" },
-    { name: "currentPage", type: "number", required: true, description: "Current active page (1-indexed)" },
-    { name: "onPageChange", type: "(page: number) => void", required: true, description: "Called when page changes" },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "total",
+      type: "number",
+      required: true,
+      description: "Total number of items",
+    },
+    {
+      name: "pageSize",
+      type: "number",
+      required: true,
+      description: "Items per page",
+    },
+    {
+      name: "currentPage",
+      type: "number",
+      required: true,
+      description: "Current active page (1-indexed)",
+    },
+    {
+      name: "onPageChange",
+      type: "(page: number) => void",
+      required: true,
+      description: "Called when page changes",
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"orange"',
+      description: "Color theme",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />

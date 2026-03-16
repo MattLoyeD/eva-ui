@@ -1,12 +1,21 @@
 import { Toggle } from "@/components";
-import { ComponentPreview, PropsTable, Callout, ToggleBasicDemo, ToggleOnDemo, ToggleColorsDemo, ToggleSizesDemo, ToggleDisabledDemo } from "@/components/docs";
+import {
+  ComponentPreview,
+  PropsTable,
+  Callout,
+  ToggleBasicDemo,
+  ToggleOnDemo,
+  ToggleColorsDemo,
+  ToggleSizesDemo,
+  ToggleDisabledDemo,
+} from "@/components/docs";
 
 # Toggle
 
 Sliding ON/OFF switch with glowing indicator and monospaced status text. Uses `role="switch"` for accessibility. Requires controlled state via `checked` and `onChange`.
 
 ```tsx
-import { Toggle } from "@mattloyed/eva-ui";
+import { Toggle } from "@mdrbx/eva-ui";
 ```
 
 ## Off State
@@ -67,16 +76,51 @@ import { Toggle } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "checked", type: "boolean", default: "false", description: "Controlled checked state" },
-    { name: "onChange", type: "(checked: boolean) => void", description: "Change handler — receives the new checked value" },
-    { name: "label", type: "string", description: "Label text (displayed uppercase)" },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme" },
-    { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Size preset" },
-    { name: "disabled", type: "boolean", default: "false", description: "Disables interaction and dims the toggle" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "checked",
+      type: "boolean",
+      default: "false",
+      description: "Controlled checked state",
+    },
+    {
+      name: "onChange",
+      type: "(checked: boolean) => void",
+      description: "Change handler — receives the new checked value",
+    },
+    {
+      name: "label",
+      type: "string",
+      description: "Label text (displayed uppercase)",
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"orange"',
+      description: "Color theme",
+    },
+    {
+      name: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "Size preset",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disables interaction and dims the toggle",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="CONTROLLED COMPONENT">
-  Toggle is fully controlled — you must manage `checked` state externally and pass an `onChange` handler. The sliding thumb emits a glow effect matching the active color theme.
+  Toggle is fully controlled — you must manage `checked` state externally and
+  pass an `onChange` handler. The sliding thumb emits a glow effect matching the
+  active color theme.
 </Callout>

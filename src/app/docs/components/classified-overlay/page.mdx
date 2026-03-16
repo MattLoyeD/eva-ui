@@ -7,7 +7,7 @@ import { ClassifiedOverlayDemo } from "@/components/docs/ClassifiedOverlayDemo";
 TOP SECRET overlay with diagonal red/black hazard stripes. Slides away violently when unlocked to reveal children content beneath. Used to gate sensitive information.
 
 ```tsx
-import { ClassifiedOverlay } from "@mattloyed/eva-ui";
+import { ClassifiedOverlay } from "@mdrbx/eva-ui";
 ```
 
 ## Interactive Demo
@@ -40,7 +40,11 @@ import { ClassifiedOverlay } from "@mattloyed/eva-ui";
   </div>
 </ClassifiedOverlay>`}
 >
-  <ClassifiedOverlay text="TOP SECRET" isUnlocked={false} className="min-h-[200px]">
+  <ClassifiedOverlay
+    text="TOP SECRET"
+    isUnlocked={false}
+    className="min-h-[200px]"
+  >
     <div className="p-6 text-eva-green font-mono text-sm">
       CLASSIFIED DATA — EYES ONLY
     </div>
@@ -59,7 +63,11 @@ import { ClassifiedOverlay } from "@mattloyed/eva-ui";
   </div>
 </ClassifiedOverlay>`}
 >
-  <ClassifiedOverlay text="TOP SECRET" isUnlocked={true} className="min-h-[200px]">
+  <ClassifiedOverlay
+    text="TOP SECRET"
+    isUnlocked={true}
+    className="min-h-[200px]"
+  >
     <div className="p-6 text-eva-green font-mono text-sm space-y-1">
       <div>CLASSIFIED DATA — EYES ONLY</div>
       <div>CLEARANCE: LEVEL 7</div>
@@ -78,7 +86,11 @@ import { ClassifiedOverlay } from "@mattloyed/eva-ui";
   </div>
 </ClassifiedOverlay>`}
 >
-  <ClassifiedOverlay text="EYES ONLY" isUnlocked={false} className="min-h-[200px]">
+  <ClassifiedOverlay
+    text="EYES ONLY"
+    isUnlocked={false}
+    className="min-h-[200px]"
+  >
     <div className="p-6 text-eva-orange font-mono text-sm">
       NERV INTERNAL MEMO — RESTRICTED ACCESS
     </div>
@@ -89,13 +101,33 @@ import { ClassifiedOverlay } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "text", type: "string", default: '"CLASSIFIED"', description: "Overlay text displayed in red" },
-    { name: "isUnlocked", type: "boolean", default: "false", description: "When true, overlay slides away to reveal children" },
-    { name: "children", type: "ReactNode", description: "Content revealed when unlocked" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "text",
+      type: "string",
+      default: '"CLASSIFIED"',
+      description: "Overlay text displayed in red",
+    },
+    {
+      name: "isUnlocked",
+      type: "boolean",
+      default: "false",
+      description: "When true, overlay slides away to reveal children",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      description: "Content revealed when unlocked",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="EXIT ANIMATION">
-  When unlocked, the overlay slides upward with `y: "-100%"` over 0.2 seconds using `easeIn` easing — a violent, satisfying reveal.
+  When unlocked, the overlay slides upward with `y: "-100%"` over 0.2 seconds
+  using `easeIn` easing — a violent, satisfying reveal.
 </Callout>

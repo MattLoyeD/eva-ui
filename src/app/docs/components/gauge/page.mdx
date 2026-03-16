@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Semicircular gauge meter with animated needle, arc fill, and tick marks. SVG-based with Framer Motion draw-in animation. Supports threshold warning and five color themes.
 
 ```tsx
-import { Gauge } from "@mattloyed/eva-ui";
+import { Gauge } from "@mdrbx/eva-ui";
 ```
 
 ## Default
@@ -48,7 +48,14 @@ When the value exceeds the threshold, the gauge automatically turns red.
   code={`<Gauge value={88} label="CORE TEMP" color="green" threshold={75} unit="°C" max={120} />`}
 >
   <div className="flex justify-center py-4">
-    <Gauge value={88} label="CORE TEMP" color="green" threshold={75} unit="°C" max={120} />
+    <Gauge
+      value={88}
+      label="CORE TEMP"
+      color="green"
+      threshold={75}
+      unit="°C"
+      max={120}
+    />
   </div>
 </ComponentPreview>
 
@@ -63,7 +70,13 @@ The ring variant replaces the needle with a thick gradient arc. Use `gradientFro
 >
   <div className="flex flex-wrap items-center justify-center gap-6 py-4">
     <Gauge value={68} label="A.T. FIELD" variant="ring" />
-    <Gauge value={85} label="POWER" variant="ring" gradientFrom="#00FFFF" gradientTo="#00FF00" />
+    <Gauge
+      value={85}
+      label="POWER"
+      variant="ring"
+      gradientFrom="#00FFFF"
+      gradientTo="#00FF00"
+    />
   </div>
 </ComponentPreview>
 
@@ -86,22 +99,79 @@ The ring variant replaces the needle with a thick gradient arc. Use `gradientFro
 
 <PropsTable
   props={[
-    { name: "value", type: "number", description: "Current gauge value", required: true },
+    {
+      name: "value",
+      type: "number",
+      description: "Current gauge value",
+      required: true,
+    },
     { name: "min", type: "number", default: "0", description: "Minimum value" },
-    { name: "max", type: "number", default: "100", description: "Maximum value" },
+    {
+      name: "max",
+      type: "number",
+      default: "100",
+      description: "Maximum value",
+    },
     { name: "label", type: "string", description: "Label above gauge" },
-    { name: "unit", type: "string", default: '"%"', description: "Value suffix" },
-    { name: "color", type: '"cyan" | "green" | "orange" | "red" | "magenta"', default: '"cyan"', description: "Color theme" },
-    { name: "size", type: "number", default: "160", description: "Gauge size in pixels" },
-    { name: "showTicks", type: "boolean", default: "true", description: "Show tick marks" },
-    { name: "threshold", type: "number", description: "Value above which gauge turns red" },
-    { name: "variant", type: '"needle" | "ring"', default: '"needle"', description: "Display variant — classic needle or thick gradient arc ring" },
-    { name: "gradientFrom", type: "string", default: '"#FF00FF"', description: "Gradient start color (ring variant)" },
-    { name: "gradientTo", type: "string", default: '"#FF9900"', description: "Gradient end color (ring variant)" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "unit",
+      type: "string",
+      default: '"%"',
+      description: "Value suffix",
+    },
+    {
+      name: "color",
+      type: '"cyan" | "green" | "orange" | "red" | "magenta"',
+      default: '"cyan"',
+      description: "Color theme",
+    },
+    {
+      name: "size",
+      type: "number",
+      default: "160",
+      description: "Gauge size in pixels",
+    },
+    {
+      name: "showTicks",
+      type: "boolean",
+      default: "true",
+      description: "Show tick marks",
+    },
+    {
+      name: "threshold",
+      type: "number",
+      description: "Value above which gauge turns red",
+    },
+    {
+      name: "variant",
+      type: '"needle" | "ring"',
+      default: '"needle"',
+      description:
+        "Display variant — classic needle or thick gradient arc ring",
+    },
+    {
+      name: "gradientFrom",
+      type: "string",
+      default: '"#FF00FF"',
+      description: "Gradient start color (ring variant)",
+    },
+    {
+      name: "gradientTo",
+      type: "string",
+      default: '"#FF9900"',
+      description: "Gradient end color (ring variant)",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="240° ARC">
-  The gauge uses a 240° arc sweep (from 7 o&apos;clock to 5 o&apos;clock) with 13 tick marks. The needle and value arc animate on mount with staggered Framer Motion transitions.
+  The gauge uses a 240° arc sweep (from 7 o&apos;clock to 5 o&apos;clock) with
+  13 tick marks. The needle and value arc animate on mount with staggered Framer
+  Motion transitions.
 </Callout>

@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 LCD-style countdown timer with MM:SS:ms format, battery bar visualization, and urgency color transitions. Used for operation time limits and self-destruct sequences.
 
 ```tsx
-import { CountdownTimer } from "@mattloyed/eva-ui";
+import { CountdownTimer } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
@@ -42,12 +42,28 @@ import { CountdownTimer } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "initialSeconds", type: "number", required: true, description: "Starting countdown value in seconds" },
-    { name: "onExpire", type: "() => void", description: "Callback fired when timer reaches zero" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "initialSeconds",
+      type: "number",
+      required: true,
+      description: "Starting countdown value in seconds",
+    },
+    {
+      name: "onExpire",
+      type: "() => void",
+      description: "Callback fired when timer reaches zero",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="COLOR TRANSITIONS">
-  Timer color changes based on remaining time: **&gt;60s** LCD green, **10–60s** orange, **&lt;10s** red with increasing blink intensity. Battery bar has 20 segments with thresholds at 75% and 25%.
+  Timer color changes based on remaining time: **&gt;60s** LCD green, **10–60s**
+  orange, **&lt;10s** red with increasing blink intensity. Battery bar has 20
+  segments with thresholds at 75% and 25%.
 </Callout>

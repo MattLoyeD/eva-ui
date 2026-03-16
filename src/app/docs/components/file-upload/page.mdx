@@ -6,14 +6,14 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Drag-and-drop file upload zone with L-bracket corners, animated hover state, file list display, and built-in size validation.
 
 ```tsx
-import { FileUpload } from "@mattloyed/eva-ui";
+import { FileUpload } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
 
 <ComponentPreview
   title="DEFAULT"
-  code={`import { FileUpload } from "@mattloyed/eva-ui";
+  code={`import { FileUpload } from "@mdrbx/eva-ui";
 
 <FileUpload onFilesSelected={(files) => console.log(files)} />`}
 >
@@ -91,18 +91,63 @@ import { FileUpload } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "onFilesSelected", type: "(files: File[]) => void", description: "Callback when files are selected or dropped" },
-    { name: "accept", type: "string", description: 'Accepted file types, e.g. ".pdf,.doc"' },
-    { name: "multiple", type: "boolean", default: "false", description: "Allow selecting multiple files" },
-    { name: "maxSize", type: "number", description: "Maximum file size in bytes; files exceeding this are rejected with an error" },
-    { name: "label", type: "string", default: '"DROP FILES HERE"', description: "Primary label inside the drop zone" },
-    { name: "sublabel", type: "string", default: '"or click to browse"', description: "Secondary label below the primary" },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Color theme for brackets and accents" },
-    { name: "disabled", type: "boolean", default: "false", description: "Disable interaction and dim the component" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "onFilesSelected",
+      type: "(files: File[]) => void",
+      description: "Callback when files are selected or dropped",
+    },
+    {
+      name: "accept",
+      type: "string",
+      description: 'Accepted file types, e.g. ".pdf,.doc"',
+    },
+    {
+      name: "multiple",
+      type: "boolean",
+      default: "false",
+      description: "Allow selecting multiple files",
+    },
+    {
+      name: "maxSize",
+      type: "number",
+      description:
+        "Maximum file size in bytes; files exceeding this are rejected with an error",
+    },
+    {
+      name: "label",
+      type: "string",
+      default: '"DROP FILES HERE"',
+      description: "Primary label inside the drop zone",
+    },
+    {
+      name: "sublabel",
+      type: "string",
+      default: '"or click to browse"',
+      description: "Secondary label below the primary",
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"orange"',
+      description: "Color theme for brackets and accents",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disable interaction and dim the component",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="FILE VALIDATION">
-  Files exceeding the maxSize limit are rejected with an inline error message. Accepted files appear in a list below the drop zone and can be individually removed.
+  Files exceeding the maxSize limit are rejected with an inline error message.
+  Accepted files appear in a list below the drop zone and can be individually
+  removed.
 </Callout>

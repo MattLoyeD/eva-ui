@@ -6,14 +6,14 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 A vertical stack of phase status rows with color-coded backgrounds. Each row displays a label, status color, and optional value. Used for system readiness panels, checklist displays, and multi-phase status overviews.
 
 ```tsx
-import { PhaseStatusStack } from "@mattloyed/eva-ui";
+import { PhaseStatusStack } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
 
 <ComponentPreview
   title="DEFAULT"
-  code={`import { PhaseStatusStack } from "@mattloyed/eva-ui";
+  code={`import { PhaseStatusStack } from "@mdrbx/eva-ui";
 
 <PhaseStatusStack
   title="SYSTEM CHECK"
@@ -128,10 +128,29 @@ import { PhaseStatusStack } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "phases", type: "PhaseItem[]", description: "Array of phase items to display", required: true },
-    { name: "title", type: "string", description: "Title displayed above the stack" },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"green"', description: "Color theme for the title" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "phases",
+      type: "PhaseItem[]",
+      description: "Array of phase items to display",
+      required: true,
+    },
+    {
+      name: "title",
+      type: "string",
+      description: "Title displayed above the stack",
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"green"',
+      description: "Color theme for the title",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
@@ -139,12 +158,28 @@ import { PhaseStatusStack } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "label", type: "string", description: "Text label for the phase row", required: true },
-    { name: "status", type: '"ok" | "warning" | "danger" | "inactive"', description: "Status determining the row background color", required: true },
-    { name: "value", type: "string", description: "Optional value displayed on the right side of the row" },
+    {
+      name: "label",
+      type: "string",
+      description: "Text label for the phase row",
+      required: true,
+    },
+    {
+      name: "status",
+      type: '"ok" | "warning" | "danger" | "inactive"',
+      description: "Status determining the row background color",
+      required: true,
+    },
+    {
+      name: "value",
+      type: "string",
+      description: "Optional value displayed on the right side of the row",
+    },
   ]}
 />
 
 <Callout type="info" title="STATUS COLORS">
-  Each status maps to an EVA palette color: **ok** renders green, **warning** renders orange, **danger** renders red, and **inactive** renders a dimmed gray.
+  Each status maps to an EVA palette color: **ok** renders green, **warning**
+  renders orange, **danger** renders red, and **inactive** renders a dimmed
+  gray.
 </Callout>

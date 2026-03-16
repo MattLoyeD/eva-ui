@@ -1,18 +1,23 @@
 import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
-import { SystemDialogNormalDemo, SystemDialogWarningDemo, SystemDialogCriticalDemo } from "@/components/docs/SystemDialogDemo";
+import {
+  SystemDialogNormalDemo,
+  SystemDialogWarningDemo,
+  SystemDialogCriticalDemo,
+} from "@/components/docs/SystemDialogDemo";
 
 # System Dialog
 
 Modal dialog with hex grid background overlay. Severity levels add red borders, blinking warning icons, and hazard stripes. Uses `AnimatePresence` for smooth enter/exit transitions.
 
 ```tsx
-import { SystemDialog } from "@mattloyed/eva-ui";
+import { SystemDialog } from "@mdrbx/eva-ui";
 ```
 
 ## Severity Levels
 
 <Callout type="info" title="INTERACTIVE">
-  Click each button to open the dialog. Click ACCEPT, DECLINE, or the overlay background to close.
+  Click each button to open the dialog. Click ACCEPT, DECLINE, or the overlay
+  background to close.
 </Callout>
 
 ### Normal
@@ -77,16 +82,62 @@ import { SystemDialog } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "open", type: "boolean", required: true, description: "Dialog visibility state" },
-    { name: "title", type: "string", default: '"SYSTEM NOTIFICATION"', description: "Dialog title text" },
+    {
+      name: "open",
+      type: "boolean",
+      required: true,
+      description: "Dialog visibility state",
+    },
+    {
+      name: "title",
+      type: "string",
+      default: '"SYSTEM NOTIFICATION"',
+      description: "Dialog title text",
+    },
     { name: "children", type: "ReactNode", description: "Dialog body content" },
-    { name: "severity", type: '"normal" | "warning" | "critical"', default: '"normal"', description: "Visual severity level" },
-    { name: "acceptText", type: "string", default: '"ACCEPT"', description: "Accept button label" },
-    { name: "declineText", type: "string", default: '"DECLINE"', description: "Decline button label" },
-    { name: "onAccept", type: "() => void", description: "Accept button callback" },
-    { name: "onDecline", type: "() => void", description: "Decline button callback" },
-    { name: "onClose", type: "() => void", description: "Overlay click callback" },
-    { name: "showHazardStripes", type: "boolean", description: "Force hazard stripe border display" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "severity",
+      type: '"normal" | "warning" | "critical"',
+      default: '"normal"',
+      description: "Visual severity level",
+    },
+    {
+      name: "acceptText",
+      type: "string",
+      default: '"ACCEPT"',
+      description: "Accept button label",
+    },
+    {
+      name: "declineText",
+      type: "string",
+      default: '"DECLINE"',
+      description: "Decline button label",
+    },
+    {
+      name: "onAccept",
+      type: "() => void",
+      description: "Accept button callback",
+    },
+    {
+      name: "onDecline",
+      type: "() => void",
+      description: "Decline button callback",
+    },
+    {
+      name: "onClose",
+      type: "() => void",
+      description: "Overlay click callback",
+    },
+    {
+      name: "showHazardStripes",
+      type: "boolean",
+      description: "Force hazard stripe border display",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />

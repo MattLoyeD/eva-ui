@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Pure SVG dual sinusoidal waveform chart with continuous oscilloscope-like movement. Zero external charting dependencies. Uses `requestAnimationFrame` for smooth real-time wave animation after an initial draw-in effect.
 
 ```tsx
-import { SyncRatioChart } from "@mattloyed/eva-ui";
+import { SyncRatioChart } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
@@ -79,20 +79,73 @@ import { SyncRatioChart } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "frequencyA", type: "number", default: "0.04", description: "Wave A frequency" },
-    { name: "frequencyB", type: "number", default: "0.055", description: "Wave B frequency" },
-    { name: "amplitudeA", type: "number", default: "50", description: "Wave A amplitude in pixels" },
-    { name: "amplitudeB", type: "number", default: "40", description: "Wave B amplitude in pixels" },
-    { name: "phaseA", type: "number", default: "0", description: "Wave A phase offset in radians" },
-    { name: "phaseB", type: "number", default: "1.2", description: "Wave B phase offset in radians" },
-    { name: "showGrid", type: "boolean", default: "true", description: "Show green grid background" },
+    {
+      name: "frequencyA",
+      type: "number",
+      default: "0.04",
+      description: "Wave A frequency",
+    },
+    {
+      name: "frequencyB",
+      type: "number",
+      default: "0.055",
+      description: "Wave B frequency",
+    },
+    {
+      name: "amplitudeA",
+      type: "number",
+      default: "50",
+      description: "Wave A amplitude in pixels",
+    },
+    {
+      name: "amplitudeB",
+      type: "number",
+      default: "40",
+      description: "Wave B amplitude in pixels",
+    },
+    {
+      name: "phaseA",
+      type: "number",
+      default: "0",
+      description: "Wave A phase offset in radians",
+    },
+    {
+      name: "phaseB",
+      type: "number",
+      default: "1.2",
+      description: "Wave B phase offset in radians",
+    },
+    {
+      name: "showGrid",
+      type: "boolean",
+      default: "true",
+      description: "Show green grid background",
+    },
     { name: "title", type: "string", description: "Chart title" },
-    { name: "animated", type: "boolean", default: "true", description: "Enable draw-in + continuous oscillation" },
-    { name: "speed", type: "number", default: "1", description: "Speed multiplier for wave oscillation" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "animated",
+      type: "boolean",
+      default: "true",
+      description: "Enable draw-in + continuous oscillation",
+    },
+    {
+      name: "speed",
+      type: "number",
+      default: "1",
+      description: "Speed multiplier for wave oscillation",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="CONTINUOUS MOVEMENT">
-  Waves oscillate continuously via `requestAnimationFrame`. Initial draw-in animation plays for 1.5 seconds, then seamlessly transitions to real-time oscillation. Wave B moves at 0.7× the speed of Wave A for organic visual variety.
+  Waves oscillate continuously via `requestAnimationFrame`. Initial draw-in
+  animation plays for 1.5 seconds, then seamlessly transitions to real-time
+  oscillation. Wave B moves at 0.7× the speed of Wave A for organic visual
+  variety.
 </Callout>

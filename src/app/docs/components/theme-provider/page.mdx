@@ -6,14 +6,14 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Wrapper component that injects CSS custom properties onto a `<div>`, allowing descendant components to inherit overridden theme values. Keys without a `--` prefix are automatically prefixed with `--color-`.
 
 ```tsx
-import { ThemeProvider } from "@mattloyed/eva-ui";
+import { ThemeProvider } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Theme Override
 
 <ComponentPreview
   title="CUSTOM COLORS"
-  code={`import { ThemeProvider, Card, Button } from "@mattloyed/eva-ui";
+  code={`import { ThemeProvider, Card, Button } from "@mdrbx/eva-ui";
 
 <ThemeProvider
   theme={{
@@ -81,12 +81,30 @@ Use the `--` prefix to set arbitrary CSS custom properties directly.
 
 <PropsTable
   props={[
-    { name: "theme", type: "Record<string, string>", default: '{}', description: "Theme overrides — keys are CSS custom property names (without -- prefix gets --color- prepended), values are CSS values" },
-    { name: "children", type: "ReactNode", required: true, description: "Child content that inherits the theme overrides" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes on the wrapper div" },
+    {
+      name: "theme",
+      type: "Record<string, string>",
+      default: "{}",
+      description:
+        "Theme overrides — keys are CSS custom property names (without -- prefix gets --color- prepended), values are CSS values",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      required: true,
+      description: "Child content that inherits the theme overrides",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes on the wrapper div",
+    },
   ]}
 />
 
 <Callout type="info" title="KEY PREFIXING">
-  Keys without a `--` prefix are automatically converted to `--color-{key}`. For example, `"eva-green": "#ff00ff"` becomes `--color-eva-green: #ff00ff`. Keys that already start with `--` are passed through unchanged.
+  Keys without a `--` prefix are automatically converted to `--color-{key}`. For
+  example, `"eva-green": "#ff00ff"` becomes `--color-eva-green: #ff00ff`. Keys
+  that already start with `--` are passed through unchanged.
 </Callout>

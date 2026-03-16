@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable } from "@/components/docs";
 Monospace terminal emulator with optional typewriter effect. Auto-scrolls to bottom. Shows a blinking cursor, optional line numbers, and a status bar.
 
 ```tsx
-import { TerminalDisplay } from "@mattloyed/eva-ui";
+import { TerminalDisplay } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
@@ -33,7 +33,7 @@ import { TerminalDisplay } from "@mattloyed/eva-ui";
       "> Initializing BALTHASAR...",
       "> Initializing CASPER...",
       "> All systems nominal.",
-      "> Awaiting operator input..."
+      "> Awaiting operator input...",
     ]}
     color="green"
     title="TERMINAL — MAGI DIRECT"
@@ -51,7 +51,10 @@ import { TerminalDisplay } from "@mattloyed/eva-ui";
 />`}
 >
   <TerminalDisplay
-    lines={["WARNING: Sync rate fluctuation detected", "EVA-01 neural link unstable"]}
+    lines={[
+      "WARNING: Sync rate fluctuation detected",
+      "EVA-01 neural link unstable",
+    ]}
     color="orange"
     title="ALERT LOG"
   />
@@ -69,7 +72,11 @@ import { TerminalDisplay } from "@mattloyed/eva-ui";
 />`}
 >
   <TerminalDisplay
-    lines={["Connecting to MAGI...", "Authentication verified.", "Welcome, Commander."]}
+    lines={[
+      "Connecting to MAGI...",
+      "Authentication verified.",
+      "Welcome, Commander.",
+    ]}
     typewriter
     typeSpeed={40}
     color="cyan"
@@ -88,7 +95,12 @@ import { TerminalDisplay } from "@mattloyed/eva-ui";
 />`}
 >
   <TerminalDisplay
-    lines={["import { MAGI } from 'nerv';", "", "const result = MAGI.evaluate();", "console.log(result.consensus);"]}
+    lines={[
+      "import { MAGI } from 'nerv';",
+      "",
+      "const result = MAGI.evaluate();",
+      "console.log(result.consensus);",
+    ]}
     showLineNumbers
     color="green"
     title="SOURCE"
@@ -99,16 +111,65 @@ import { TerminalDisplay } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "lines", type: "string[]", required: true, description: "Array of text lines to display" },
-    { name: "typewriter", type: "boolean", default: "false", description: "Enable character-by-character typing animation" },
-    { name: "typeSpeed", type: "number", default: "30", description: "Milliseconds per character in typewriter mode" },
-    { name: "lineDelay", type: "number", default: "200", description: "Milliseconds between lines in typewriter mode" },
-    { name: "color", type: '"green" | "orange" | "cyan" | "red"', default: '"green"', description: "Terminal text color" },
-    { name: "showCursor", type: "boolean", default: "true", description: "Show blinking block cursor" },
+    {
+      name: "lines",
+      type: "string[]",
+      required: true,
+      description: "Array of text lines to display",
+    },
+    {
+      name: "typewriter",
+      type: "boolean",
+      default: "false",
+      description: "Enable character-by-character typing animation",
+    },
+    {
+      name: "typeSpeed",
+      type: "number",
+      default: "30",
+      description: "Milliseconds per character in typewriter mode",
+    },
+    {
+      name: "lineDelay",
+      type: "number",
+      default: "200",
+      description: "Milliseconds between lines in typewriter mode",
+    },
+    {
+      name: "color",
+      type: '"green" | "orange" | "cyan" | "red"',
+      default: '"green"',
+      description: "Terminal text color",
+    },
+    {
+      name: "showCursor",
+      type: "boolean",
+      default: "true",
+      description: "Show blinking block cursor",
+    },
     { name: "title", type: "string", description: "Title bar text" },
-    { name: "maxHeight", type: "string", default: '"400px"', description: "Max container height" },
-    { name: "showLineNumbers", type: "boolean", default: "false", description: "Show line number gutter" },
-    { name: "prompt", type: "string", description: "Prompt prefix for each line" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "maxHeight",
+      type: "string",
+      default: '"400px"',
+      description: "Max container height",
+    },
+    {
+      name: "showLineNumbers",
+      type: "boolean",
+      default: "false",
+      description: "Show line number gutter",
+    },
+    {
+      name: "prompt",
+      type: "string",
+      description: "Prompt prefix for each line",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />

@@ -3,7 +3,7 @@
 ## Getting Started
 
 ```bash
-git clone https://github.com/MattLoyeD/eva-ui.git
+git clone https://github.com/mdrbx/eva-ui.git
 cd eva-ui
 npm install
 npm run dev        # Start docs site at localhost:3000
@@ -52,21 +52,26 @@ Components must accept a `ref` and spread native HTML attributes:
 ```tsx
 import { forwardRef, type HTMLAttributes } from "react";
 
-export interface MyComponentProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "color" | "title"> {
+export interface MyComponentProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "color" | "title"
+> {
   // Custom props here
   color?: "orange" | "green" | "cyan";
   title?: string;
 }
 
 export const MyComponent = forwardRef<HTMLDivElement, MyComponentProps>(
-  function MyComponent({ color = "orange", title, className = "", ...rest }, ref) {
+  function MyComponent(
+    { color = "orange", title, className = "", ...rest },
+    ref,
+  ) {
     return (
       <div ref={ref} className={`... ${className}`} {...rest}>
         {/* content */}
       </div>
     );
-  }
+  },
 );
 ```
 
@@ -97,7 +102,7 @@ Documentation pages use MDX and live in `src/app/docs/components/`:
 
 1. Create `src/app/docs/components/your-component/page.mdx`
 2. Import the component and create interactive examples
-3. All imports in examples should use `from "@mattloyed/eva-ui"`
+3. All imports in examples should use `from "@mdrbx/eva-ui"`
 4. Add a link in the docs navigation
 
 ## Testing

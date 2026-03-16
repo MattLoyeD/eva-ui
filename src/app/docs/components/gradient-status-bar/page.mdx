@@ -6,14 +6,14 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 A segmented horizontal bar with color-coded zones, a value indicator, and a bottom scale. Used for threat levels, resource meters, and any metric that spans multiple severity ranges.
 
 ```tsx
-import { GradientStatusBar } from "@mattloyed/eva-ui";
+import { GradientStatusBar } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
 
 <ComponentPreview
   title="DEFAULT"
-  code={`import { GradientStatusBar } from "@mattloyed/eva-ui";
+  code={`import { GradientStatusBar } from "@mdrbx/eva-ui";
 
 <GradientStatusBar
   value={62}
@@ -113,11 +113,36 @@ import { GradientStatusBar } from "@mattloyed/eva-ui";
 </div>`}
 >
   <div className="flex flex-col gap-4">
-    <GradientStatusBar value={40} label="CYAN" color="cyan" zones={[{ start: 0, end: 100, color: "#06b6d4" }]} />
-    <GradientStatusBar value={60} label="GREEN" color="green" zones={[{ start: 0, end: 100, color: "#10b981" }]} />
-    <GradientStatusBar value={75} label="ORANGE" color="orange" zones={[{ start: 0, end: 100, color: "#f59e0b" }]} />
-    <GradientStatusBar value={90} label="RED" color="red" zones={[{ start: 0, end: 100, color: "#ef4444" }]} />
-    <GradientStatusBar value={50} label="MAGENTA" color="magenta" zones={[{ start: 0, end: 100, color: "#d946ef" }]} />
+    <GradientStatusBar
+      value={40}
+      label="CYAN"
+      color="cyan"
+      zones={[{ start: 0, end: 100, color: "#06b6d4" }]}
+    />
+    <GradientStatusBar
+      value={60}
+      label="GREEN"
+      color="green"
+      zones={[{ start: 0, end: 100, color: "#10b981" }]}
+    />
+    <GradientStatusBar
+      value={75}
+      label="ORANGE"
+      color="orange"
+      zones={[{ start: 0, end: 100, color: "#f59e0b" }]}
+    />
+    <GradientStatusBar
+      value={90}
+      label="RED"
+      color="red"
+      zones={[{ start: 0, end: 100, color: "#ef4444" }]}
+    />
+    <GradientStatusBar
+      value={50}
+      label="MAGENTA"
+      color="magenta"
+      zones={[{ start: 0, end: 100, color: "#d946ef" }]}
+    />
   </div>
 </ComponentPreview>
 
@@ -127,14 +152,47 @@ import { GradientStatusBar } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "value", type: "number", description: "Current value", required: true },
-    { name: "zones", type: "StatusZone[]", description: "Status zones defining color segments", required: true },
+    {
+      name: "value",
+      type: "number",
+      description: "Current value",
+      required: true,
+    },
+    {
+      name: "zones",
+      type: "StatusZone[]",
+      description: "Status zones defining color segments",
+      required: true,
+    },
     { name: "min", type: "number", default: "0", description: "Minimum value" },
-    { name: "max", type: "number", default: "100", description: "Maximum value" },
-    { name: "label", type: "string", description: "Primary label displayed above the bar" },
-    { name: "sublabel", type: "string", description: "Secondary label below the primary" },
-    { name: "color", type: '"cyan" | "green" | "orange" | "red" | "magenta"', default: '"cyan"', description: "Color theme for the label text" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "max",
+      type: "number",
+      default: "100",
+      description: "Maximum value",
+    },
+    {
+      name: "label",
+      type: "string",
+      description: "Primary label displayed above the bar",
+    },
+    {
+      name: "sublabel",
+      type: "string",
+      description: "Secondary label below the primary",
+    },
+    {
+      name: "color",
+      type: '"cyan" | "green" | "orange" | "red" | "magenta"',
+      default: '"cyan"',
+      description: "Color theme for the label text",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
@@ -142,13 +200,33 @@ import { GradientStatusBar } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "start", type: "number", description: "Start value of the zone", required: true },
-    { name: "end", type: "number", description: "End value of the zone", required: true },
-    { name: "color", type: "string", description: "CSS color for the zone", required: true },
-    { name: "label", type: "string", description: "Optional label shown above the zone boundary" },
+    {
+      name: "start",
+      type: "number",
+      description: "Start value of the zone",
+      required: true,
+    },
+    {
+      name: "end",
+      type: "number",
+      description: "End value of the zone",
+      required: true,
+    },
+    {
+      name: "color",
+      type: "string",
+      description: "CSS color for the zone",
+      required: true,
+    },
+    {
+      name: "label",
+      type: "string",
+      description: "Optional label shown above the zone boundary",
+    },
   ]}
 />
 
 <Callout type="info" title="ACCESSIBILITY">
-  The bar renders with `role="meter"` and proper `aria-valuenow`, `aria-valuemin`, and `aria-valuemax` attributes for screen reader support.
+  The bar renders with `role="meter"` and proper `aria-valuenow`,
+  `aria-valuemin`, and `aria-valuemax` attributes for screen reader support.
 </Callout>

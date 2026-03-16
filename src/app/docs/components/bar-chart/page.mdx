@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Animated bar chart with scanline texture, glow effects, and grid lines. Supports vertical and horizontal orientations. Built entirely with SVG-free DOM elements and Framer Motion.
 
 ```tsx
-import { BarChart } from "@mattloyed/eva-ui";
+import { BarChart } from "@mdrbx/eva-ui";
 ```
 
 ## Vertical Bars
@@ -139,21 +139,77 @@ Renders bars as discrete LCD-cell blocks instead of solid fills.
 
 <PropsTable
   props={[
-    { name: "bars", type: "BarChartBar[]", description: "Array of { label, value, color? }", required: true },
-    { name: "maxValue", type: "number", description: "Max scale value (auto-detected if omitted)" },
-    { name: "color", type: '"cyan" | "green" | "orange" | "red" | "magenta"', default: '"cyan"', description: "Default bar color theme" },
+    {
+      name: "bars",
+      type: "BarChartBar[]",
+      description: "Array of { label, value, color? }",
+      required: true,
+    },
+    {
+      name: "maxValue",
+      type: "number",
+      description: "Max scale value (auto-detected if omitted)",
+    },
+    {
+      name: "color",
+      type: '"cyan" | "green" | "orange" | "red" | "magenta"',
+      default: '"cyan"',
+      description: "Default bar color theme",
+    },
     { name: "title", type: "string", description: "Chart title text" },
-    { name: "showGrid", type: "boolean", default: "true", description: "Show grid lines" },
-    { name: "showValues", type: "boolean", default: "true", description: "Show value labels" },
-    { name: "direction", type: '"vertical" | "horizontal"', default: '"vertical"', description: "Bar orientation" },
-    { name: "stagger", type: "number", default: "0.08", description: "Animation stagger delay (seconds)" },
-    { name: "height", type: "number", default: "200", description: "Chart height in pixels" },
-    { name: "unit", type: "string", default: '""', description: "Value suffix (e.g. %, ms)" },
-    { name: "segmented", type: "boolean", default: "false", description: "Renders bars as discrete LCD-cell blocks instead of solid fills" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "showGrid",
+      type: "boolean",
+      default: "true",
+      description: "Show grid lines",
+    },
+    {
+      name: "showValues",
+      type: "boolean",
+      default: "true",
+      description: "Show value labels",
+    },
+    {
+      name: "direction",
+      type: '"vertical" | "horizontal"',
+      default: '"vertical"',
+      description: "Bar orientation",
+    },
+    {
+      name: "stagger",
+      type: "number",
+      default: "0.08",
+      description: "Animation stagger delay (seconds)",
+    },
+    {
+      name: "height",
+      type: "number",
+      default: "200",
+      description: "Chart height in pixels",
+    },
+    {
+      name: "unit",
+      type: "string",
+      default: '""',
+      description: "Value suffix (e.g. %, ms)",
+    },
+    {
+      name: "segmented",
+      type: "boolean",
+      default: "false",
+      description:
+        "Renders bars as discrete LCD-cell blocks instead of solid fills",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="SCANLINE TEXTURE">
-  Each bar features a subtle horizontal scanline overlay for that authentic CRT monitor look. The glow effect uses box-shadow for GPU-accelerated rendering.
+  Each bar features a subtle horizontal scanline overlay for that authentic CRT
+  monitor look. The glow effect uses box-shadow for GPU-accelerated rendering.
 </Callout>

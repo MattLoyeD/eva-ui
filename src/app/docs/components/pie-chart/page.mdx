@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Animated pie or donut chart with crosshair grid, glow effects, and optional legend. SVG-based with per-slice color override. Four color palettes available.
 
 ```tsx
-import { PieChart } from "@mattloyed/eva-ui";
+import { PieChart } from "@mdrbx/eva-ui";
 ```
 
 ## Pie Chart
@@ -116,17 +116,54 @@ import { PieChart } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "slices", type: "PieSlice[]", description: "Array of { label, value, color? }", required: true },
+    {
+      name: "slices",
+      type: "PieSlice[]",
+      description: "Array of { label, value, color? }",
+      required: true,
+    },
     { name: "title", type: "string", description: "Chart title" },
-    { name: "size", type: "number", default: "180", description: "Chart size in pixels" },
-    { name: "donut", type: "boolean", default: "false", description: "Hollow center mode" },
-    { name: "showLegend", type: "boolean", default: "true", description: "Show color legend" },
-    { name: "showLabels", type: "boolean", default: "true", description: "Show % labels on slices" },
-    { name: "color", type: '"cyan" | "green" | "orange" | "mixed"', default: '"mixed"', description: "Color palette" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "size",
+      type: "number",
+      default: "180",
+      description: "Chart size in pixels",
+    },
+    {
+      name: "donut",
+      type: "boolean",
+      default: "false",
+      description: "Hollow center mode",
+    },
+    {
+      name: "showLegend",
+      type: "boolean",
+      default: "true",
+      description: "Show color legend",
+    },
+    {
+      name: "showLabels",
+      type: "boolean",
+      default: "true",
+      description: "Show % labels on slices",
+    },
+    {
+      name: "color",
+      type: '"cyan" | "green" | "orange" | "mixed"',
+      default: '"mixed"',
+      description: "Color palette",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="CROSSHAIR GRID">
-  The chart background features concentric circles and crosshair lines for that targeting computer aesthetic. Slices animate in with staggered scale transitions.
+  The chart background features concentric circles and crosshair lines for that
+  targeting computer aesthetic. Slices animate in with staggered scale
+  transitions.
 </Callout>

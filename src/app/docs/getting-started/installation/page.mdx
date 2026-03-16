@@ -7,11 +7,12 @@ EvaUI is a React component library inspired by the NERV/MAGI interfaces from Neo
 ## Install the Package
 
 ```bash
-npm install @mattloyed/eva-ui
+npm install @mdrbx/eva-ui
 ```
 
 <Callout type="info" title="PEER DEPENDENCIES">
-  EvaUI requires **React 18+**, **Framer Motion 11+**, and optionally **Tailwind CSS 3.4+** (or 4+). Install any missing peer dependencies:
+  EvaUI requires **React 18+**, **Framer Motion 11+**, and optionally **Tailwind
+  CSS 3.4+** (or 4+). Install any missing peer dependencies:
 </Callout>
 
 ```bash
@@ -25,32 +26,32 @@ If you use **Tailwind CSS 4**, add the EvaUI CSS theme tokens directly in your s
 
 ```css
 @import "tailwindcss";
-@import "@mattloyed/eva-ui/styles.css";
+@import "@mdrbx/eva-ui/styles.css";
 
 @theme {
   /* Core EVA Colors */
   --color-eva-black: #000000;
-  --color-eva-red: #FF0000;
-  --color-eva-orange: #FF9900;
-  --color-eva-green: #00FF00;
-  --color-eva-cyan: #00FFFF;
-  --color-eva-amber: #FFAA00;
-  --color-eva-white: #E0E0E0;
-  --color-eva-dark-gray: #1A1A1A;
+  --color-eva-red: #ff0000;
+  --color-eva-orange: #ff9900;
+  --color-eva-green: #00ff00;
+  --color-eva-cyan: #00ffff;
+  --color-eva-amber: #ffaa00;
+  --color-eva-white: #e0e0e0;
+  --color-eva-dark-gray: #1a1a1a;
   --color-eva-mid-gray: #333333;
-  --color-eva-panel: #0A0A0A;
-  --color-eva-purple: #9933FF;
-  --color-eva-magenta: #FF00FF;
-  --color-eva-lcd-green: #39FF14;
+  --color-eva-panel: #0a0a0a;
+  --color-eva-purple: #9933ff;
+  --color-eva-magenta: #ff00ff;
+  --color-eva-lcd-green: #39ff14;
 
   /* Semantic Aliases */
   --color-bg-base: #000000;
-  --color-alert-red: #FF0000;
-  --color-text-orange: #FF9900;
-  --color-grid-green: #00FF00;
-  --color-data-blue: #00FFFF;
-  --color-magenta-wave: #FF00FF;
-  --color-lcd-green: #39FF14;
+  --color-alert-red: #ff0000;
+  --color-text-orange: #ff9900;
+  --color-grid-green: #00ff00;
+  --color-data-blue: #00ffff;
+  --color-magenta-wave: #ff00ff;
+  --color-lcd-green: #39ff14;
 
   /* Typography */
   --font-eva-display: "Oswald", "Impact", "Arial Narrow", system-ui, sans-serif;
@@ -67,10 +68,10 @@ If you use **Tailwind CSS 3**, use the included preset:
 ```js
 // tailwind.config.js
 module.exports = {
-  presets: [require("@mattloyed/eva-ui/tailwind.preset")],
+  presets: [require("@mdrbx/eva-ui/tailwind.preset")],
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@mattloyed/eva-ui/dist/**/*.{js,mjs}",
+    "./node_modules/@mdrbx/eva-ui/dist/**/*.{js,mjs}",
   ],
 };
 ```
@@ -92,7 +93,9 @@ For the full NERV experience, add these global rules to enforce the brutalist ae
 
 ```css
 /* Zero border-radius — brutalist industrial */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   border-radius: 0 !important;
 }
 
@@ -105,19 +108,25 @@ body::after {
   z-index: 9999;
   background: repeating-linear-gradient(
     0deg,
-    transparent, transparent 2px,
-    rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
   );
 }
 
 /* Accessibility — respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  body::after { display: none; }
+  body::after {
+    display: none;
+  }
 }
 ```
 
@@ -132,7 +141,7 @@ import {
   TerminalDisplay,
   DataGrid,
   Gauge,
-} from "@mattloyed/eva-ui";
+} from "@mdrbx/eva-ui";
 
 export default function MyPage() {
   return (
@@ -150,23 +159,27 @@ export default function MyPage() {
 
 EvaUI ships **32 components** covering layout, data display, forms, overlays, charts, and military-style HUD elements:
 
-| Category | Components |
-|----------|-----------|
-| **Layout** | `TargetingContainer`, `HexGridBackground`, `Card`, `Accordion` |
-| **Data Display** | `TerminalDisplay`, `DataGrid`, `SyncProgressBar`, `SyncRatioChart`, `SegmentDisplay`, `PhaseStatusStack`, `GradientStatusBar` |
-| **Charts** | `BarChart`, `Gauge`, `PieChart` |
-| **Navigation** | `NavigationTabs`, `EmergencyBanner` |
-| **Forms** | `Button`, `InputField`, `SelectMenu` |
-| **Overlays** | `SystemDialog`, `ClassifiedOverlay`, `TitleScreen`, `ToastProvider`, `StatusStamp` |
-| **HUD / Military** | `TargetingReticle`, `SurveillanceGrid`, `PatternAlert`, `PilotCard` |
-| **Special** | `MagiSystemPanel`, `CountdownTimer`, `SeeleMonolith`, `WireframeLoader` |
+| Category           | Components                                                                                                                    |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Layout**         | `TargetingContainer`, `HexGridBackground`, `Card`, `Accordion`                                                                |
+| **Data Display**   | `TerminalDisplay`, `DataGrid`, `SyncProgressBar`, `SyncRatioChart`, `SegmentDisplay`, `PhaseStatusStack`, `GradientStatusBar` |
+| **Charts**         | `BarChart`, `Gauge`, `PieChart`                                                                                               |
+| **Navigation**     | `NavigationTabs`, `EmergencyBanner`                                                                                           |
+| **Forms**          | `Button`, `InputField`, `SelectMenu`                                                                                          |
+| **Overlays**       | `SystemDialog`, `ClassifiedOverlay`, `TitleScreen`, `ToastProvider`, `StatusStamp`                                            |
+| **HUD / Military** | `TargetingReticle`, `SurveillanceGrid`, `PatternAlert`, `PilotCard`                                                           |
+| **Special**        | `MagiSystemPanel`, `CountdownTimer`, `SeeleMonolith`, `WireframeLoader`                                                       |
 
 <Callout type="info" title="CAMERA OVERLAY SUB-FAMILY">
-  `PatternAlert`, `PilotCard`, and bordered `StatusStamp` also belong to the dedicated camera-overlay grammar used for subject identification and signal-feed annotations. See <a href="/docs/getting-started/camera-overlays">Camera Overlay Grammar</a>.
+  `PatternAlert`, `PilotCard`, and bordered `StatusStamp` also belong to the
+  dedicated camera-overlay grammar used for subject identification and
+  signal-feed annotations. See{" "}
+  <a href="/docs/getting-started/camera-overlays">Camera Overlay Grammar</a>.
 </Callout>
 
 <Callout type="warning" title="CLIENT COMPONENTS">
-  All components use the `"use client"` directive. They are designed for React Client Components (Next.js App Router, Vite, Create React App, etc.).
+  All components use the `"use client"` directive. They are designed for React
+  Client Components (Next.js App Router, Vite, Create React App, etc.).
 </Callout>
 
 ## TypeScript
@@ -174,5 +187,5 @@ EvaUI ships **32 components** covering layout, data display, forms, overlays, ch
 EvaUI is fully typed. All prop interfaces are exported alongside their components:
 
 ```tsx
-import type { ButtonProps, DataGridColumn } from "@mattloyed/eva-ui";
+import type { ButtonProps, DataGridColumn } from "@mdrbx/eva-ui";
 ```

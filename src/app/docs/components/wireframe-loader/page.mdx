@@ -6,15 +6,12 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Wireframe octahedron spinner inspired by Ramiel (the 5th Angel). Pure SVG geometry with framer-motion draw-in animation and continuous 3D Y-axis rotation. Zero external 3D libraries.
 
 ```tsx
-import { WireframeLoader } from "@mattloyed/eva-ui";
+import { WireframeLoader } from "@mdrbx/eva-ui";
 ```
 
 ## Default
 
-<ComponentPreview
-  title="DEFAULT"
-  code={`<WireframeLoader />`}
->
+<ComponentPreview title="DEFAULT" code={`<WireframeLoader />`}>
   <div className="flex justify-center py-4">
     <WireframeLoader />
   </div>
@@ -58,14 +55,42 @@ import { WireframeLoader } from "@mattloyed/eva-ui";
 
 <PropsTable
   props={[
-    { name: "size", type: "number", default: "64", description: "Octahedron size in pixels" },
-    { name: "color", type: '"cyan" | "green" | "orange" | "red" | "magenta"', default: '"cyan"', description: "Stroke color" },
-    { name: "label", type: "string", default: '"PROCESSING..."', description: "Blinking text below the loader (empty string to hide)" },
-    { name: "speed", type: "number", default: "2.5", description: "Rotation speed in seconds per revolution" },
-    { name: "className", type: "string", default: '""', description: "Additional CSS classes" },
+    {
+      name: "size",
+      type: "number",
+      default: "64",
+      description: "Octahedron size in pixels",
+    },
+    {
+      name: "color",
+      type: '"cyan" | "green" | "orange" | "red" | "magenta"',
+      default: '"cyan"',
+      description: "Stroke color",
+    },
+    {
+      name: "label",
+      type: "string",
+      default: '"PROCESSING..."',
+      description: "Blinking text below the loader (empty string to hide)",
+    },
+    {
+      name: "speed",
+      type: "number",
+      default: "2.5",
+      description: "Rotation speed in seconds per revolution",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS classes",
+    },
   ]}
 />
 
 <Callout type="info" title="SVG GEOMETRY">
-  The octahedron is drawn as an isometric projection using SVG polygons and lines. The outer diamond, inner diamond, cross axes, and structural edges create a convincing wireframe 3D effect without any WebGL or Three.js dependency.
+  The octahedron is drawn as an isometric projection using SVG polygons and
+  lines. The outer diamond, inner diamond, cross axes, and structural edges
+  create a convincing wireframe 3D effect without any WebGL or Three.js
+  dependency.
 </Callout>

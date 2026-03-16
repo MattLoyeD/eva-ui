@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - `forwardRef` support on all components — every component now accepts `ref` and spreads native HTML attributes
 - `useId()` for accessible label/input association in `InputField` and `SelectMenu`
 - React Portal rendering for `SystemDialog` and `ToastContainer`
@@ -22,17 +23,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `type-check` script in package.json
 
 ### Fixed
+
 - Moved `next`, `@mdx-js/*`, `prism-react-renderer` from `dependencies` to `devDependencies` — consumers no longer install the entire doc site stack
 - Moved `react`, `react-dom`, `framer-motion` from `dependencies` to `devDependencies` (already in `peerDependencies`)
 
 ### Changed
-- Updated README: component count from 17 to 30+, imports use `@mattloyed/eva-ui`, added installation section
+
+- Updated README: component count from 17 to 30+, imports use `@mdrbx/eva-ui`, added installation section
 - Updated `docs/COMPONENTS.md` with Phase 3-5 component documentation
-- All code examples use `from "@mattloyed/eva-ui"` instead of `from "@/components"`
+- All code examples use `from "@mdrbx/eva-ui"` instead of `from "@/components"`
 
 ## [1.0.0] - 2025-06-01
 
 ### Added
+
 - Phase 1 — 11 core interface components: `EmergencyBanner`, `TerminalDisplay`, `TargetingContainer`, `HexGridBackground`, `Button`, `InputField`, `SelectMenu`, `SyncProgressBar`, `DataGrid`, `SystemDialog`, `NavigationTabs`
 - Phase 2 — 6 advanced components: `TitleScreen`, `MagiSystemPanel`, `SyncRatioChart`, `CountdownTimer`, `SeeleMonolith`, `ClassifiedOverlay`
 - Phase 3 — Toast system (`ToastProvider`, `ToastContainer`, `useToast`), `WireframeLoader`, `Card`, `Accordion`

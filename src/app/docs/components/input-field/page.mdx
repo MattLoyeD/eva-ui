@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable } from "@/components/docs";
 Terminal-style text input with animated bracket decorators `[ ]` on focus. Shows error or hint text below. Extends all standard HTML input attributes.
 
 ```tsx
-import { InputField } from "@mattloyed/eva-ui";
+import { InputField } from "@mdrbx/eva-ui";
 ```
 
 ## Basic Usage
@@ -41,7 +41,12 @@ import { InputField } from "@mattloyed/eva-ui";
   title="ERROR"
   code={`<InputField label="AUTH CODE" placeholder="••••••" color="orange" error="INVALID CREDENTIALS — ACCESS DENIED" />`}
 >
-  <InputField label="AUTH CODE" placeholder="••••••" color="orange" error="INVALID CREDENTIALS — ACCESS DENIED" />
+  <InputField
+    label="AUTH CODE"
+    placeholder="••••••"
+    color="orange"
+    error="INVALID CREDENTIALS — ACCESS DENIED"
+  />
 </ComponentPreview>
 
 ## With Hint
@@ -50,19 +55,55 @@ import { InputField } from "@mattloyed/eva-ui";
   title="HINT"
   code={`<InputField label="TARGET" placeholder="ANGEL-XX" color="cyan" hint="Enter target designation code" />`}
 >
-  <InputField label="TARGET" placeholder="ANGEL-XX" color="cyan" hint="Enter target designation code" />
+  <InputField
+    label="TARGET"
+    placeholder="ANGEL-XX"
+    color="cyan"
+    hint="Enter target designation code"
+  />
 </ComponentPreview>
 
 ## Props
 
 <PropsTable
   props={[
-    { name: "label", type: "string", description: 'Label text with "//" prefix' },
-    { name: "color", type: '"orange" | "green" | "cyan"', default: '"orange"', description: "Input color theme" },
-    { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Input size" },
-    { name: "error", type: "string", description: "Error message displayed in red" },
-    { name: "hint", type: "string", description: "Hint text displayed in muted color" },
-    { name: "wrapperClassName", type: "string", default: '""', description: "Wrapper element CSS classes" },
-    { name: "...rest", type: "InputHTMLAttributes", description: "All standard HTML input attributes" },
+    {
+      name: "label",
+      type: "string",
+      description: 'Label text with "//" prefix',
+    },
+    {
+      name: "color",
+      type: '"orange" | "green" | "cyan"',
+      default: '"orange"',
+      description: "Input color theme",
+    },
+    {
+      name: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "Input size",
+    },
+    {
+      name: "error",
+      type: "string",
+      description: "Error message displayed in red",
+    },
+    {
+      name: "hint",
+      type: "string",
+      description: "Hint text displayed in muted color",
+    },
+    {
+      name: "wrapperClassName",
+      type: "string",
+      default: '""',
+      description: "Wrapper element CSS classes",
+    },
+    {
+      name: "...rest",
+      type: "InputHTMLAttributes",
+      description: "All standard HTML input attributes",
+    },
   ]}
 />
