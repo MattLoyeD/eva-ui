@@ -1,26 +1,157 @@
 import Link from "next/link";
+import { TitleScreen } from "@/components";
+import type { TitleScreenBlock } from "@/components";
 
 const displayFont = { fontFamily: "var(--font-nerv-display)" };
 const monoFont = { fontFamily: "var(--font-nerv-mono)" };
 
+const glowHeroBlocks: TitleScreenBlock[] = [
+  {
+    role: "masthead",
+    text: "UI",
+    anchor: "top-left",
+    size: "lg",
+    width: "content",
+    offsetY: "-5cqh",
+  },
+  {
+    role: "lead",
+    text: "LIBRARY",
+    anchor: "top-left",
+    size: "xl",
+    width: "medium",
+  },
+  {
+    role: "hero",
+    text: "NERV-UI",
+    anchor: "middle-left",
+    size: "display",
+    width: "full",
+  },
+  {
+    role: "footer",
+    text: "MDRBX/NERV-UI",
+    anchor: "bottom-left",
+    font: "display",
+    tone: "primary",
+    size: "md",
+    width: "medium",
+    offsetY: "-5cqh",
+  },
+  {
+    role: "support",
+    text: "世界の中心でアイを叫んだけもの",
+    anchor: "bottom-center",
+    tone: "primary",
+    size: "md",
+    width: "wide",
+    offsetY: "3.5cqh",
+  },
+];
+
 const examples = [
-  { href: "/examples/dashboard", name: "Dashboard", description: "Operations monitoring center", category: "DASHBOARD" },
-  { href: "/examples/realtime", name: "Real-time", description: "Live sensor data & telemetry charts", category: "MONITORING" },
-  { href: "/examples/comms", name: "Comms Terminal", description: "Military-grade chat interface", category: "COMMUNICATION" },
-  { href: "/examples/form", name: "Dispatch Form", description: "Multi-field form with validation", category: "FORMS" },
-  { href: "/examples/blog", name: "Intelligence Bulletin", description: "Classified content feed", category: "CONTENT" },
-  { href: "/examples/inventory", name: "Equipment Requisition", description: "CRUD inventory management", category: "CRUD" },
-  { href: "/examples/pilots", name: "Pilot Dossier", description: "Personnel profiles & sync history", category: "DATA" },
-  { href: "/examples/report", name: "Mission Report", description: "After-action document template", category: "DOCUMENT" },
-  { href: "/examples/files", name: "MAGI File System", description: "File browser with tree navigation", category: "FILES" },
-  { href: "/examples/saas", name: "SaaS Landing", description: "Marketing page with pricing tiers", category: "MARKETING" },
-  { href: "/examples/landing", name: "Library Landing", description: "NERV-UI component showcase page", category: "SHOWCASE" },
-  { href: "/examples/splash", name: "Ceremonial Splash", description: "Full-page EVA title-card splash screen", category: "SPLASH" },
-  { href: "/examples/auth/login", name: "Login", description: "Authentication terminal", category: "AUTH" },
-  { href: "/examples/auth/register", name: "Register", description: "Personnel registration portal", category: "AUTH" },
-  { href: "/examples/help", name: "Help Center", description: "FAQ & knowledge base", category: "SUPPORT" },
-  { href: "/examples/error", name: "Error 404", description: "Signal lost page", category: "ERROR" },
-  { href: "/examples/empty", name: "Empty State", description: "No data placeholder", category: "UTILITY" },
+  {
+    href: "/examples/dashboard",
+    name: "Dashboard",
+    description: "Operations monitoring center",
+    category: "DASHBOARD",
+  },
+  {
+    href: "/examples/realtime",
+    name: "Real-time",
+    description: "Live sensor data & telemetry charts",
+    category: "MONITORING",
+  },
+  {
+    href: "/examples/comms",
+    name: "Comms Terminal",
+    description: "Military-grade chat interface",
+    category: "COMMUNICATION",
+  },
+  {
+    href: "/examples/form",
+    name: "Dispatch Form",
+    description: "Multi-field form with validation",
+    category: "FORMS",
+  },
+  {
+    href: "/examples/blog",
+    name: "Intelligence Bulletin",
+    description: "Classified content feed",
+    category: "CONTENT",
+  },
+  {
+    href: "/examples/inventory",
+    name: "Equipment Requisition",
+    description: "CRUD inventory management",
+    category: "CRUD",
+  },
+  {
+    href: "/examples/pilots",
+    name: "Pilot Dossier",
+    description: "Personnel profiles & sync history",
+    category: "DATA",
+  },
+  {
+    href: "/examples/report",
+    name: "Mission Report",
+    description: "After-action document template",
+    category: "DOCUMENT",
+  },
+  {
+    href: "/examples/files",
+    name: "MAGI File System",
+    description: "File browser with tree navigation",
+    category: "FILES",
+  },
+  {
+    href: "/examples/saas",
+    name: "SaaS Landing",
+    description: "Marketing page with pricing tiers",
+    category: "MARKETING",
+  },
+  {
+    href: "/examples/landing",
+    name: "Library Landing",
+    description: "NERV-UI component showcase page",
+    category: "SHOWCASE",
+  },
+  {
+    href: "/examples/splash",
+    name: "Ceremonial Splash",
+    description: "Full-page EVA title-card splash screen",
+    category: "SPLASH",
+  },
+  {
+    href: "/examples/auth/login",
+    name: "Login",
+    description: "Authentication terminal",
+    category: "AUTH",
+  },
+  {
+    href: "/examples/auth/register",
+    name: "Register",
+    description: "Personnel registration portal",
+    category: "AUTH",
+  },
+  {
+    href: "/examples/help",
+    name: "Help Center",
+    description: "FAQ & knowledge base",
+    category: "SUPPORT",
+  },
+  {
+    href: "/examples/error",
+    name: "Error 404",
+    description: "Signal lost page",
+    category: "ERROR",
+  },
+  {
+    href: "/examples/empty",
+    name: "Empty State",
+    description: "No data placeholder",
+    category: "UTILITY",
+  },
 ];
 
 const categoryColors: Record<string, string> = {
@@ -45,6 +176,28 @@ const categoryColors: Record<string, string> = {
 export default function ExamplesGalleryPage() {
   return (
     <div className="min-h-screen bg-nerv-black px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto mb-8 max-w-7xl overflow-hidden border border-nerv-mid-gray/80 bg-nerv-black">
+        <div className="relative">
+          <TitleScreen
+            template="freeform"
+            appearance="glow"
+            blocks={glowHeroBlocks}
+            reveal="none"
+            className="!min-h-0 !h-[300px] sm:!h-[360px]"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.1),transparent_24%,transparent_72%,rgba(0,0,0,0.66))]" />
+          <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-4 p-4 sm:p-5">
+            <Link
+              href="/examples/splash"
+              className="border absolute right-2 top-2 border-nerv-white/28 bg-black/35 px-3 py-2 text-[10px] uppercase tracking-[0.22em] text-nerv-white/80 transition-colors hover:border-nerv-white hover:bg-nerv-white hover:text-black"
+              style={displayFont}
+            >
+              FULL
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
       <div className="mx-auto max-w-7xl border border-nerv-mid-gray/80 bg-[linear-gradient(135deg,rgba(255,153,0,0.14),transparent_42%)] mb-8">
         <div className="border-b border-nerv-mid-gray/80 px-4 py-2 sm:px-5">
@@ -52,7 +205,7 @@ export default function ExamplesGalleryPage() {
             className="text-[10px] uppercase tracking-[0.24em] text-nerv-green"
             style={monoFont}
           >
-            [entry.node] example router
+            [entry.node] samples
           </span>
         </div>
         <div className="grid gap-6 px-4 py-5 sm:px-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(20rem,0.7fr)]">
@@ -61,7 +214,7 @@ export default function ExamplesGalleryPage() {
               className="text-nerv-orange text-3xl sm:text-4xl lg:text-5xl tracking-[0.26em] uppercase"
               style={displayFont}
             >
-              Example Routes
+              Samples
             </h1>
             <p
               className="mt-3 max-w-3xl text-nerv-white/62 text-[13px] leading-7"
@@ -100,7 +253,10 @@ export default function ExamplesGalleryPage() {
               <div className="text-[8px] uppercase tracking-[0.18em] text-nerv-white/35">
                 routes
               </div>
-              <div className="mt-1 text-2xl uppercase tracking-[0.16em] text-nerv-orange" style={displayFont}>
+              <div
+                className="mt-1 text-2xl uppercase tracking-[0.16em] text-nerv-orange"
+                style={displayFont}
+              >
                 {String(examples.length).padStart(2, "0")}
               </div>
             </div>
@@ -108,7 +264,10 @@ export default function ExamplesGalleryPage() {
               <div className="text-[8px] uppercase tracking-[0.18em] text-nerv-white/35">
                 export
               </div>
-              <div className="mt-1 text-2xl uppercase tracking-[0.16em] text-nerv-green" style={displayFont}>
+              <div
+                className="mt-1 text-2xl uppercase tracking-[0.16em] text-nerv-green"
+                style={displayFont}
+              >
                 ready
               </div>
             </div>
@@ -116,7 +275,10 @@ export default function ExamplesGalleryPage() {
               <div className="text-[8px] uppercase tracking-[0.18em] text-nerv-white/35">
                 primary
               </div>
-              <div className="mt-1 text-sm uppercase tracking-[0.14em] text-nerv-cyan" style={displayFont}>
+              <div
+                className="mt-1 text-sm uppercase tracking-[0.14em] text-nerv-cyan"
+                style={displayFont}
+              >
                 dashboard
               </div>
             </div>
@@ -124,7 +286,10 @@ export default function ExamplesGalleryPage() {
               <div className="text-[8px] uppercase tracking-[0.18em] text-nerv-white/35">
                 mode
               </div>
-              <div className="mt-1 text-sm uppercase tracking-[0.14em] text-nerv-orange" style={displayFont}>
+              <div
+                className="mt-1 text-sm uppercase tracking-[0.14em] text-nerv-orange"
+                style={displayFont}
+              >
                 live audit
               </div>
             </div>
@@ -165,7 +330,10 @@ export default function ExamplesGalleryPage() {
             </h2>
 
             {/* Description */}
-            <p className="mt-2 min-h-[3rem] text-nerv-white/55 text-xs leading-relaxed" style={monoFont}>
+            <p
+              className="mt-2 min-h-[3rem] text-nerv-white/55 text-xs leading-relaxed"
+              style={monoFont}
+            >
               {ex.description}
             </p>
 
@@ -192,19 +360,19 @@ export default function ExamplesGalleryPage() {
             export board // stable
           </span>
           <div className="flex items-center gap-6" style={displayFont}>
-          <Link
-            href="/docs"
-            className="text-nerv-cyan hover:text-nerv-orange transition-colors"
-          >
-            Documentation
-          </Link>
-          <span className="text-nerv-white/20">|</span>
-          <Link
-            href="/"
-            className="text-nerv-cyan hover:text-nerv-orange transition-colors"
-          >
-            Command Center
-          </Link>
+            <Link
+              href="/docs"
+              className="text-nerv-cyan hover:text-nerv-orange transition-colors"
+            >
+              Documentation
+            </Link>
+            <span className="text-nerv-white/20">|</span>
+            <Link
+              href="/"
+              className="text-nerv-cyan hover:text-nerv-orange transition-colors"
+            >
+              Command Center
+            </Link>
           </div>
         </div>
       </div>

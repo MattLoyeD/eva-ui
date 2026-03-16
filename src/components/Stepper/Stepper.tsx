@@ -87,14 +87,14 @@ export const Stepper = forwardRef<HTMLElement, StepperProps>(
 
           return isVertical
             ? (
-              <div key={i} className="flex items-stretch">
+              <div key={i} className="flex items-start gap-3">
                 {/* Left column: number + connector */}
-                <div className="flex flex-col items-center">
+                <div className="flex w-4 shrink-0 flex-col items-center">
                   {/* Step number square */}
                   <motion.div
                     className={`
-                      relative w-4 h-4 flex items-center justify-center
-                      border text-[8px] font-bold shrink-0
+                      relative flex h-4 w-4 shrink-0 items-center justify-center
+                      border text-[8px] font-bold leading-none
                       ${stepColor}
                     `}
                     style={{ fontFamily: "var(--font-nerv-display)" }}
@@ -110,7 +110,7 @@ export const Stepper = forwardRef<HTMLElement, StepperProps>(
                     {/* Pulsing dot for active */}
                     {isActive && (
                       <motion.span
-                        className={`absolute -right-1 -top-1 w-1.5 h-1.5 ${c.pulse}`}
+                        className={`absolute right-0 top-0 h-1.5 w-1.5 translate-x-1/2 -translate-y-1/2 ${c.pulse}`}
                         animate={{ opacity: [1, 0.3, 1] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                       />
@@ -119,12 +119,12 @@ export const Stepper = forwardRef<HTMLElement, StepperProps>(
 
                   {/* Vertical connector line */}
                   {i < steps.length - 1 && (
-                    <div className="flex-1 min-h-6 w-px my-1">
+                    <div className="my-1 flex min-h-6 flex-1 justify-center">
                       {isCompleted ? (
-                        <div className={`w-full h-full ${c.line}`} />
+                        <div className={`h-full w-px ${c.line}`} />
                       ) : (
                         <div
-                          className={`w-full h-full border-l border-dashed ${c.lineDashed}`}
+                          className={`h-full w-0 border-l border-dashed ${c.lineDashed}`}
                         />
                       )}
                     </div>
@@ -132,7 +132,7 @@ export const Stepper = forwardRef<HTMLElement, StepperProps>(
                 </div>
 
                 {/* Right column: label + description */}
-                <div className="ml-3 pb-6 last:pb-0">
+                <div>
                   <span
                     className={`
                       uppercase tracking-[0.15em] text-xs
