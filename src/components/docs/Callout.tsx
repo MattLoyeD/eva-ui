@@ -8,21 +8,21 @@ interface CalloutProps {
 
 const calloutStyles = {
   info: {
-    border: "border-eva-cyan",
-    bg: "bg-eva-cyan/5",
-    title: "text-eva-cyan",
+    border: "border-nerv-cyan",
+    bg: "bg-nerv-cyan/5",
+    title: "text-nerv-cyan",
     icon: "i",
   },
   warning: {
-    border: "border-eva-orange",
-    bg: "bg-eva-orange/5",
-    title: "text-eva-orange",
+    border: "border-nerv-orange",
+    bg: "bg-nerv-orange/5",
+    title: "text-nerv-orange",
     icon: "!",
   },
   danger: {
-    border: "border-eva-red",
-    bg: "bg-eva-red/5",
-    title: "text-eva-red",
+    border: "border-nerv-red",
+    bg: "bg-nerv-red/5",
+    title: "text-nerv-red",
     icon: "!!",
   },
 };
@@ -34,15 +34,15 @@ export function Callout({ type = "info", title, children }: CalloutProps) {
       {title && (
         <div
           className={`text-xs uppercase tracking-[0.2em] font-bold ${s.title} mb-2`}
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           <span className="mr-2">[{s.icon}]</span>
           {title}
         </div>
       )}
       <div
-        className="text-eva-white text-[13px]"
-        style={{ fontFamily: "var(--font-eva-body)" }}
+        className="text-nerv-white text-[13px]"
+        style={{ fontFamily: "var(--font-nerv-body)" }}
       >
         {children}
       </div>

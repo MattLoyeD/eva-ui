@@ -1,10 +1,10 @@
-# Contributing to EvaUI
+# Contributing to NERV-UI
 
 ## Getting Started
 
 ```bash
-git clone https://github.com/mdrbx/eva-ui.git
-cd eva-ui
+git clone https://github.com/mdrbx/nerv-ui.git
+cd nerv-ui
 npm install
 npm run dev        # Start docs site at localhost:3000
 npm run build:lib  # Build the library to dist/
@@ -86,12 +86,12 @@ Every component accepts `className` for style customization.
 ## Design Rules
 
 - **`border-radius: 0`** — No rounded corners, ever. Sharp industrial angles only.
-- **NERV color palette** — Use the `eva-*` Tailwind tokens (`eva-orange`, `eva-green`, `eva-cyan`, `eva-red`, `eva-black`, `eva-mid-gray`, `eva-dark-gray`, `eva-white`).
+- **NERV color palette** — Use the `nerv-*` Tailwind tokens (`nerv-orange`, `nerv-green`, `nerv-cyan`, `nerv-red`, `nerv-black`, `nerv-mid-gray`, `nerv-dark-gray`, `nerv-white`).
 - **Typography** — Use CSS custom property font families:
-  - `var(--font-eva-display)` for headers/labels (Oswald)
-  - `var(--font-eva-mono)` for data/terminal text (Fira Code)
-  - `var(--font-eva-body)` for body text (Barlow Condensed)
-  - `var(--font-eva-title)` for cinematic titles (Noto Serif JP)
+  - `var(--font-nerv-display)` for headers/labels (Oswald)
+  - `var(--font-nerv-mono)` for data/terminal text (Fira Code)
+  - `var(--font-nerv-body)` for body text (Barlow Condensed)
+  - `var(--font-nerv-title)` for cinematic titles (Noto Serif JP)
 - **Uppercase tracking** — Labels use `uppercase tracking-[0.15em]` or `tracking-[0.2em]`
 - **Corner decorations** — Use L-bracket corner accents on cards and containers
 - **Animations** — Use framer-motion. Respect `prefers-reduced-motion`.
@@ -102,7 +102,7 @@ Documentation pages use MDX and live in `src/app/docs/components/`:
 
 1. Create `src/app/docs/components/your-component/page.mdx`
 2. Import the component and create interactive examples
-3. All imports in examples should use `from "@mdrbx/eva-ui"`
+3. All imports in examples should use `from "@mdrbx/nerv-ui"`
 4. Add a link in the docs navigation
 
 ## Testing

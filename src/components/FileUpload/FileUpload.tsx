@@ -234,7 +234,7 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(function F
             animate={{ y: isDragging ? -4 : 0 }}
             transition={{ duration: 0.15 }}
             className="text-2xl leading-none mb-3"
-            style={{ color: c, fontFamily: "var(--font-eva-display)" }}
+            style={{ color: c, fontFamily: "var(--font-nerv-display)" }}
           >
             ▲
           </motion.span>
@@ -242,15 +242,15 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(function F
           {/* Label */}
           <span
             className="text-xs uppercase tracking-[0.2em] font-bold mb-1"
-            style={{ color: c, fontFamily: "var(--font-eva-display)" }}
+            style={{ color: c, fontFamily: "var(--font-nerv-display)" }}
           >
             {label}
           </span>
 
           {/* Sublabel */}
           <span
-            className="text-[10px] uppercase tracking-[0.15em] text-eva-mid-gray"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-[10px] uppercase tracking-[0.15em] text-nerv-mid-gray"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {sublabel}
           </span>
@@ -276,8 +276,8 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(function F
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="mt-2 text-[10px] uppercase tracking-[0.15em] font-bold text-eva-red"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="mt-2 text-[10px] uppercase tracking-[0.15em] font-bold text-nerv-red"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {error}
           </motion.div>
@@ -299,23 +299,23 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(function F
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -8 }}
                 transition={{ duration: 0.15 }}
-                className="flex items-center gap-3 px-3 py-1.5 border border-eva-mid-gray/20"
+                className="flex items-center gap-3 px-3 py-1.5 border border-nerv-mid-gray/20"
               >
                 {/* Dot accent */}
                 <span className="w-1 h-1 shrink-0" style={{ backgroundColor: c }} />
 
                 {/* File name */}
                 <span
-                  className="text-[11px] uppercase tracking-[0.1em] text-eva-light-gray truncate flex-1"
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  className="text-[11px] uppercase tracking-[0.1em] text-nerv-light-gray truncate flex-1"
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   {file.name}
                 </span>
 
                 {/* File size */}
                 <span
-                  className="text-[10px] uppercase tracking-[0.1em] text-eva-mid-gray shrink-0"
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  className="text-[10px] uppercase tracking-[0.1em] text-nerv-mid-gray shrink-0"
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   {formatFileSize(file.size)}
                 </span>
@@ -327,7 +327,7 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(function F
                     e.stopPropagation();
                     removeFile(i);
                   }}
-                  className="text-eva-mid-gray hover:text-eva-red transition-colors text-xs leading-none cursor-pointer shrink-0"
+                  className="text-nerv-mid-gray hover:text-nerv-red transition-colors text-xs leading-none cursor-pointer shrink-0"
                   aria-label={`Remove ${file.name}`}
                 >
                   ×

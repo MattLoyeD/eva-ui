@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="banner.png" alt="EVA UI — Neon Genesis Evangelion Design System" width="100%" />
+  <img src="banner.png" alt="NERV-UI — Neon Genesis Evangelion Design System" width="100%" />
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@mdrbx/eva-ui"><img src="https://img.shields.io/npm/v/@mdrbx/eva-ui?style=flat-square&color=FF9900&labelColor=000000" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/@mdrbx/nerv-ui"><img src="https://img.shields.io/npm/v/@mdrbx/nerv-ui?style=flat-square&color=FF9900&labelColor=000000" alt="npm version" /></a>
   <img src="https://img.shields.io/badge/components-47-00FF00?style=flat-square&labelColor=000000" />
   <img src="https://img.shields.io/badge/examples-16_pages-00FFFF?style=flat-square&labelColor=000000" />
   <img src="https://img.shields.io/badge/border--radius-0px-FF0000?style=flat-square&labelColor=000000" />
@@ -22,9 +22,9 @@
 </p>
 
 <p align="center">
-  <a href="https://mdrbx.github.io/eva-ui/docs"><img src="https://img.shields.io/badge/DOCUMENTATION-FF9900?style=for-the-badge&labelColor=000000" alt="Documentation" /></a>
+  <a href="https://mdrbx.github.io/nerv-ui/docs"><img src="https://img.shields.io/badge/DOCUMENTATION-FF9900?style=for-the-badge&labelColor=000000" alt="Documentation" /></a>
   &nbsp;
-  <a href="https://mdrbx.github.io/eva-ui/examples"><img src="https://img.shields.io/badge/LIVE_EXAMPLES-00FFFF?style=for-the-badge&labelColor=000000" alt="Live Examples" /></a>
+  <a href="https://mdrbx.github.io/nerv-ui/examples"><img src="https://img.shields.io/badge/LIVE_EXAMPLES-00FFFF?style=for-the-badge&labelColor=000000" alt="Live Examples" /></a>
 </p>
 
 ---
@@ -32,12 +32,12 @@
 ## `> QUICK_START`
 
 ```bash
-npm install @mdrbx/eva-ui
+npm install @mdrbx/nerv-ui
 ```
 
 ```tsx
-import { Button, TerminalDisplay, Gauge } from "@mdrbx/eva-ui";
-import "@mdrbx/eva-ui/styles.css";
+import { Button, TerminalDisplay, Gauge } from "@mdrbx/nerv-ui";
+import "@mdrbx/nerv-ui/styles.css";
 
 export default function App() {
   return (
@@ -67,10 +67,10 @@ export default function App() {
 
 ```js
 // tailwind.config.js
-import evaPreset from "@mdrbx/eva-ui/tailwind.preset";
+import nervPreset from "@mdrbx/nerv-ui/tailwind.preset";
 
 export default {
-  presets: [evaPreset],
+  presets: [nervPreset],
 };
 ```
 
@@ -78,9 +78,9 @@ export default {
 
 ---
 
-## `> WHAT_IS_EVA_UI`
+## `> WHAT_IS_NERV_UI`
 
-EvaUI is a **47-component React design system** published on npm, built to replicate the iconic CRT-era military interfaces of NERV headquarters. Every pixel follows strict brutalist design rules:
+NERV-UI is a **47-component React design system** published on npm, built to replicate the iconic CRT-era military interfaces of NERV headquarters. Every pixel follows strict brutalist design rules:
 
 - **`border-radius: 0`** everywhere — sharp industrial angles only
 - **NERV color palette** — black void, alert red, text orange, grid green, data cyan, magenta wave
@@ -94,7 +94,7 @@ EvaUI is a **47-component React design system** published on npm, built to repli
 
 ## `> COMPONENTS`
 
-**47 components** across 7 categories. Full API reference in the [documentation](https://mdrbx.github.io/eva-ui/docs).
+**47 components** across 7 categories. Full API reference in the [documentation](https://mdrbx.github.io/nerv-ui/docs).
 
 | Category           | Components                                                                                                                                       |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -102,11 +102,11 @@ EvaUI is a **47-component React design system** published on npm, built to repli
 | **Forms**          | `Button`, `InputField`, `SelectMenu`, `Checkbox`, `Toggle`, `Textarea`, `RadioGroup`, `FileUpload`                                               |
 | **Data Display**   | `TerminalDisplay`, `DataGrid`, `SyncProgressBar`, `SegmentDisplay`, `Badge`, `Skeleton`, `PilotCard`, `Pagination`                               |
 | **Charts**         | `BarChart`, `Gauge`, `PieChart`, `SyncRatioChart`, `PhaseStatusStack`, `GradientStatusBar`                                                       |
-| **Overlays**       | `SystemDialog`, `ClassifiedOverlay`, `TitleScreen`, `ToastProvider`, `StatusStamp`, `Tooltip`, `DropdownMenu`                                    |
+| **Overlays**       | `SystemDialog`, `ClassifiedOverlay`, `TitleScreen`, `NervToastProvider`, `StatusStamp`, `Tooltip`, `DropdownMenu`                                |
 | **Navigation**     | `NavigationTabs`, `EmergencyBanner`, `Stepper`                                                                                                   |
 | **HUD / Military** | `TargetingReticle`, `SurveillanceGrid`, `PatternAlert`, `MagiSystemPanel`, `SeeleMonolith`, `CountdownTimer`, `WireframeLoader`, `ThemeProvider` |
 
-> **[Browse all components →](https://mdrbx.github.io/eva-ui/docs)**
+> **[Browse all components →](https://mdrbx.github.io/nerv-ui/docs)**
 
 ---
 
@@ -116,24 +116,24 @@ EvaUI is a **47-component React design system** published on npm, built to repli
 
 | Page                                                                           | Description                               |
 | ------------------------------------------------------------------------------ | ----------------------------------------- |
-| [**Command Center**](https://mdrbx.github.io/eva-ui/)                          | NERV HQ main dashboard with live data     |
-| [**Operations Dashboard**](https://mdrbx.github.io/eva-ui/examples/dashboard)  | KPI cards, charts, gauges, operations log |
-| [**Comms Terminal**](https://mdrbx.github.io/eva-ui/examples/comms)            | Military chat interface with channels     |
-| [**Dispatch Form**](https://mdrbx.github.io/eva-ui/examples/form)              | Multi-field form with validation          |
-| [**Intelligence Bulletin**](https://mdrbx.github.io/eva-ui/examples/blog)      | Classified content feed with filtering    |
-| [**Monitoring Station**](https://mdrbx.github.io/eva-ui/examples/realtime)     | Real-time sensor data & charts            |
-| [**Equipment Requisition**](https://mdrbx.github.io/eva-ui/examples/inventory) | CRUD inventory management                 |
-| [**Pilot Dossier**](https://mdrbx.github.io/eva-ui/examples/pilots)            | Personnel profiles with sync history      |
-| [**Mission Report**](https://mdrbx.github.io/eva-ui/examples/report)           | After-action document template            |
-| [**MAGI File System**](https://mdrbx.github.io/eva-ui/examples/files)          | File browser with tree navigation         |
-| [**SaaS Landing**](https://mdrbx.github.io/eva-ui/examples/saas)               | Marketing page with pricing               |
-| [**Library Landing**](https://mdrbx.github.io/eva-ui/examples/landing)         | EvaUI showcase page                       |
-| [**Login**](https://mdrbx.github.io/eva-ui/examples/auth/login)                | Authentication terminal                   |
-| [**Register**](https://mdrbx.github.io/eva-ui/examples/auth/register)          | Personnel registration                    |
-| [**Help Center**](https://mdrbx.github.io/eva-ui/examples/help)                | FAQ with knowledge base                   |
-| [**Error 404**](https://mdrbx.github.io/eva-ui/examples/error)                 | Signal lost page                          |
+| [**Command Center**](https://mdrbx.github.io/nerv-ui/)                          | NERV HQ main dashboard with live data     |
+| [**Operations Dashboard**](https://mdrbx.github.io/nerv-ui/examples/dashboard)  | KPI cards, charts, gauges, operations log |
+| [**Comms Terminal**](https://mdrbx.github.io/nerv-ui/examples/comms)            | Military chat interface with channels     |
+| [**Dispatch Form**](https://mdrbx.github.io/nerv-ui/examples/form)              | Multi-field form with validation          |
+| [**Intelligence Bulletin**](https://mdrbx.github.io/nerv-ui/examples/blog)      | Classified content feed with filtering    |
+| [**Monitoring Station**](https://mdrbx.github.io/nerv-ui/examples/realtime)     | Real-time sensor data & charts            |
+| [**Equipment Requisition**](https://mdrbx.github.io/nerv-ui/examples/inventory) | CRUD inventory management                 |
+| [**Pilot Dossier**](https://mdrbx.github.io/nerv-ui/examples/pilots)            | Personnel profiles with sync history      |
+| [**Mission Report**](https://mdrbx.github.io/nerv-ui/examples/report)           | After-action document template            |
+| [**MAGI File System**](https://mdrbx.github.io/nerv-ui/examples/files)          | File browser with tree navigation         |
+| [**SaaS Landing**](https://mdrbx.github.io/nerv-ui/examples/saas)               | Marketing page with pricing               |
+| [**Library Landing**](https://mdrbx.github.io/nerv-ui/examples/landing)         | NERV-UI showcase page                       |
+| [**Login**](https://mdrbx.github.io/nerv-ui/examples/auth/login)                | Authentication terminal                   |
+| [**Register**](https://mdrbx.github.io/nerv-ui/examples/auth/register)          | Personnel registration                    |
+| [**Help Center**](https://mdrbx.github.io/nerv-ui/examples/help)                | FAQ with knowledge base                   |
+| [**Error 404**](https://mdrbx.github.io/nerv-ui/examples/error)                 | Signal lost page                          |
 
-> **[Explore all examples →](https://mdrbx.github.io/eva-ui/examples)**
+> **[Explore all examples →](https://mdrbx.github.io/nerv-ui/examples)**
 
 ---
 
@@ -142,22 +142,22 @@ EvaUI is a **47-component React design system** published on npm, built to repli
 ```
 COLOR             HEX        USAGE
 ─────────────────────────────────────────────
-eva-black         #000000    Background void
-eva-red           #FF0000    Emergency / alerts
-eva-orange        #FF9900    Primary text & UI
-eva-green         #00FF00    Terminal / grid lines
-eva-cyan          #00FFFF    Data readouts
-eva-magenta       #FF00FF    Waveform accents
-eva-lcd-green     #39FF14    LCD displays
-eva-amber         #FFAA00    Warning states
-eva-purple        #9933FF    Special indicators
+nerv-black         #000000    Background void
+nerv-red           #FF0000    Emergency / alerts
+nerv-orange        #FF9900    Primary text & UI
+nerv-green         #00FF00    Terminal / grid lines
+nerv-cyan          #00FFFF    Data readouts
+nerv-magenta       #FF00FF    Waveform accents
+nerv-lcd-green     #39FF14    LCD displays
+nerv-amber         #FFAA00    Warning states
+nerv-purple        #9933FF    Special indicators
 
 TYPOGRAPHY        FAMILY                         USAGE
 ─────────────────────────────────────────────────────────
-eva-display       Oswald, Impact                 Headers & labels
-eva-mono          Fira Code, JetBrains Mono      Terminal & data
-eva-body          Barlow Condensed               Body text
-eva-title         Noto Serif JP, Playfair         Cinematic titles
+nerv-display       Oswald, Impact                 Headers & labels
+nerv-mono          Fira Code, JetBrains Mono      Terminal & data
+nerv-body          Barlow Condensed               Body text
+nerv-title         Noto Serif JP, Playfair         Cinematic titles
 ```
 
 ---
@@ -176,8 +176,8 @@ eva-title         Noto Serif JP, Playfair         Cinematic titles
 ## `> CONTRIBUTING`
 
 ```bash
-git clone https://github.com/mdrbx/eva-ui.git
-cd eva-ui
+git clone https://github.com/mdrbx/nerv-ui.git
+cd nerv-ui
 npm install
 npm run dev         # Dev server at localhost:3000
 npm run build:lib   # Build the npm package
@@ -208,5 +208,5 @@ MIT License. See [LICENSE](./LICENSE).
 </p>
 
 <p align="center">
-  <sub>MADE WITH [REDACTED] BY <a href="https://github.com/mdrbx">MATTLOYED</a></sub>
+  <sub>MADE WITH [REDACTED] BY <a href="https://github.com/mdrbx">mdrbx</a></sub>
 </p>

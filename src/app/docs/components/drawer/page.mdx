@@ -7,7 +7,7 @@ import { DrawerBasicDemo, DrawerLeftDemo } from "@/components/docs/DrawerDemo";
 Slide-in side panel with backdrop overlay, animated via Framer Motion. Renders through a portal to `document.body`. Supports left/right positioning and three color themes.
 
 ```tsx
-import { Drawer } from "@mdrbx/eva-ui";
+import { Drawer } from "@mdrbx/nerv-ui";
 ```
 
 ## Basic Usage
@@ -23,7 +23,7 @@ import { Drawer } from "@mdrbx/eva-ui";
 
 <Button onClick={() => setOpen(true)}>OPEN DRAWER</Button>
 <Drawer open={open} onClose={() => setOpen(false)} title="SYSTEM PANEL">
-  <div className="text-sm font-mono text-eva-white/80 space-y-2">
+  <div className="text-sm font-mono text-nerv-white/80 space-y-2">
     <div>Unit: EVA-01</div>
     <div>Status: ACTIVE</div>
     <div>Sync Rate: 89.2%</div>
@@ -44,7 +44,7 @@ import { Drawer } from "@mdrbx/eva-ui";
   side="left"
   color="green"
 >
-  <div className="text-sm font-mono text-eva-green/80 space-y-2">
+  <div className="text-sm font-mono text-nerv-green/80 space-y-2">
     <div>// OPERATIONS</div>
     <div>// INTELLIGENCE</div>
     <div>// MAGI SYSTEM</div>

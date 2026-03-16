@@ -20,23 +20,23 @@ export interface PhaseStatusStackProps {
 }
 
 const statusColorMap: Record<PhaseItem["status"], string> = {
-  ok: "bg-eva-green/90",
-  warning: "bg-eva-orange/90",
-  danger: "bg-eva-red/90",
-  inactive: "bg-eva-mid-gray/40",
+  ok: "bg-nerv-green/90",
+  warning: "bg-nerv-orange/90",
+  danger: "bg-nerv-red/90",
+  inactive: "bg-nerv-mid-gray/40",
 };
 
 const statusTextMap: Record<PhaseItem["status"], string> = {
-  ok: "text-eva-black",
-  warning: "text-eva-black",
-  danger: "text-eva-black",
-  inactive: "text-eva-mid-gray",
+  ok: "text-nerv-black",
+  warning: "text-nerv-black",
+  danger: "text-nerv-black",
+  inactive: "text-nerv-mid-gray",
 };
 
 const titleColorMap: Record<NonNullable<PhaseStatusStackProps["color"]>, string> = {
-  orange: "text-eva-orange",
-  green: "text-eva-green",
-  cyan: "text-eva-cyan",
+  orange: "text-nerv-orange",
+  green: "text-nerv-green",
+  cyan: "text-nerv-cyan",
 };
 
 export const PhaseStatusStack = forwardRef<HTMLDivElement, PhaseStatusStackProps>(
@@ -54,7 +54,7 @@ export const PhaseStatusStack = forwardRef<HTMLDivElement, PhaseStatusStackProps
         {title && (
           <div
             className={`mb-1 border-b border-current/25 pb-1 text-[10px] uppercase tracking-[0.22em] font-bold ${titleColorMap[color]}`}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {title}
           </div>
@@ -68,13 +68,13 @@ export const PhaseStatusStack = forwardRef<HTMLDivElement, PhaseStatusStackProps
               style={{ borderColor: "rgba(224,224,224,0.08)" }}
             >
               <span
-                className="text-[9px] uppercase tracking-[0.14em] text-eva-white/62"
-                style={{ fontFamily: "var(--font-eva-mono)" }}
+                className="text-[9px] uppercase tracking-[0.14em] text-nerv-white/62"
+                style={{ fontFamily: "var(--font-nerv-mono)" }}
               >
                 {phase.label}
               </span>
               <div className="relative h-3 overflow-hidden border border-white/10 bg-black/60">
-                <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-eva-orange/60" />
+                <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-nerv-orange/60" />
                 <div
                   className={`absolute left-0 top-0 bottom-0 ${statusColorMap[phase.status]}`}
                   style={{
@@ -93,7 +93,7 @@ export const PhaseStatusStack = forwardRef<HTMLDivElement, PhaseStatusStackProps
               </div>
               <span
                 className={`text-right text-[9px] font-bold uppercase ${statusTextMap[phase.status]}`}
-                style={{ fontFamily: "var(--font-eva-mono)" }}
+                style={{ fontFamily: "var(--font-nerv-mono)" }}
               >
                 {phase.value ?? phase.status}
               </span>

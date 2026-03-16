@@ -20,19 +20,19 @@ export interface CheckboxProps
 
 const colorMap = {
   orange: {
-    text: "text-eva-orange",
-    border: "border-eva-orange",
-    label: "text-eva-orange",
+    text: "text-nerv-orange",
+    border: "border-nerv-orange",
+    label: "text-nerv-orange",
   },
   green: {
-    text: "text-eva-green",
-    border: "border-eva-green",
-    label: "text-eva-green",
+    text: "text-nerv-green",
+    border: "border-nerv-green",
+    label: "text-nerv-green",
   },
   cyan: {
-    text: "text-eva-cyan",
-    border: "border-eva-cyan",
-    label: "text-eva-cyan",
+    text: "text-nerv-cyan",
+    border: "border-nerv-cyan",
+    label: "text-nerv-cyan",
   },
 };
 
@@ -97,7 +97,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             inline-flex items-center font-mono text-sm leading-none
             ${c.text}
           `}
-          style={{ fontFamily: "var(--font-eva-mono)" }}
+          style={{ fontFamily: "var(--font-nerv-mono)" }}
           aria-hidden="true"
         >
           <span className="opacity-70">[</span>
@@ -109,7 +109,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {label && (
           <span
             className={`text-xs uppercase tracking-[0.2em] font-bold ${c.label}`}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             <span className="opacity-50 mr-1">//</span>
             {label}

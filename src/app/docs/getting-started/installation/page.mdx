@@ -2,16 +2,16 @@ import { Callout } from "@/components/docs";
 
 # Installation
 
-EvaUI is a React component library inspired by the NERV/MAGI interfaces from Neon Genesis Evangelion. Built with Tailwind CSS, Framer Motion, and fully typed in TypeScript.
+NERV-UI is a React component library inspired by the NERV/MAGI interfaces from Neon Genesis Evangelion. Built with Tailwind CSS, Framer Motion, and fully typed in TypeScript.
 
 ## Install the Package
 
 ```bash
-npm install @mdrbx/eva-ui
+npm install @mdrbx/nerv-ui
 ```
 
 <Callout type="info" title="PEER DEPENDENCIES">
-  EvaUI requires **React 18+**, **Framer Motion 11+**, and optionally **Tailwind
+  NERV-UI requires **React 18+**, **Framer Motion 11+**, and optionally **Tailwind
   CSS 3.4+** (or 4+). Install any missing peer dependencies:
 </Callout>
 
@@ -22,27 +22,27 @@ npm install -D tailwindcss
 
 ## Setup — Tailwind CSS 4
 
-If you use **Tailwind CSS 4**, add the EvaUI CSS theme tokens directly in your stylesheet:
+If you use **Tailwind CSS 4**, add the NERV-UI CSS theme tokens directly in your stylesheet:
 
 ```css
 @import "tailwindcss";
-@import "@mdrbx/eva-ui/styles.css";
+@import "@mdrbx/nerv-ui/styles.css";
 
 @theme {
   /* Core EVA Colors */
-  --color-eva-black: #000000;
-  --color-eva-red: #ff0000;
-  --color-eva-orange: #ff9900;
-  --color-eva-green: #00ff00;
-  --color-eva-cyan: #00ffff;
-  --color-eva-amber: #ffaa00;
-  --color-eva-white: #e0e0e0;
-  --color-eva-dark-gray: #1a1a1a;
-  --color-eva-mid-gray: #333333;
-  --color-eva-panel: #0a0a0a;
-  --color-eva-purple: #9933ff;
-  --color-eva-magenta: #ff00ff;
-  --color-eva-lcd-green: #39ff14;
+  --color-nerv-black: #000000;
+  --color-nerv-red: #ff0000;
+  --color-nerv-orange: #ff9900;
+  --color-nerv-green: #00ff00;
+  --color-nerv-cyan: #00ffff;
+  --color-nerv-amber: #ffaa00;
+  --color-nerv-white: #e0e0e0;
+  --color-nerv-dark-gray: #1a1a1a;
+  --color-nerv-mid-gray: #333333;
+  --color-nerv-panel: #0a0a0a;
+  --color-nerv-purple: #9933ff;
+  --color-nerv-magenta: #ff00ff;
+  --color-nerv-lcd-green: #39ff14;
 
   /* Semantic Aliases */
   --color-bg-base: #000000;
@@ -54,10 +54,10 @@ If you use **Tailwind CSS 4**, add the EvaUI CSS theme tokens directly in your s
   --color-lcd-green: #39ff14;
 
   /* Typography */
-  --font-eva-display: "Oswald", "Impact", "Arial Narrow", system-ui, sans-serif;
-  --font-eva-mono: "Fira Code", "JetBrains Mono", "Courier New", monospace;
-  --font-eva-body: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
-  --font-eva-title: "Noto Serif JP", "Playfair Display", "Georgia", serif;
+  --font-nerv-display: "Oswald", "Impact", "Arial Narrow", system-ui, sans-serif;
+  --font-nerv-mono: "Fira Code", "JetBrains Mono", "Courier New", monospace;
+  --font-nerv-body: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-nerv-title: "Noto Serif JP", "Playfair Display", "Georgia", serif;
 }
 ```
 
@@ -68,10 +68,10 @@ If you use **Tailwind CSS 3**, use the included preset:
 ```js
 // tailwind.config.js
 module.exports = {
-  presets: [require("@mdrbx/eva-ui/tailwind.preset")],
+  presets: [require("@mdrbx/nerv-ui/tailwind.preset")],
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@mdrbx/eva-ui/dist/**/*.{js,mjs}",
+    "./node_modules/@mdrbx/nerv-ui/dist/**/*.{js,mjs}",
   ],
 };
 ```
@@ -141,11 +141,11 @@ import {
   TerminalDisplay,
   DataGrid,
   Gauge,
-} from "@mdrbx/eva-ui";
+} from "@mdrbx/nerv-ui";
 
 export default function MyPage() {
   return (
-    <div className="bg-eva-black min-h-screen p-8">
+    <div className="bg-nerv-black min-h-screen p-8">
       <EmergencyBanner text="ALERT" severity="warning" visible />
       <Button variant="danger" size="lg">
         INITIATE OVERRIDE
@@ -157,7 +157,7 @@ export default function MyPage() {
 
 ## Available Components
 
-EvaUI ships **32 components** covering layout, data display, forms, overlays, charts, and military-style HUD elements:
+NERV-UI ships **32 components** covering layout, data display, forms, overlays, charts, and military-style HUD elements:
 
 | Category           | Components                                                                                                                    |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -166,7 +166,7 @@ EvaUI ships **32 components** covering layout, data display, forms, overlays, ch
 | **Charts**         | `BarChart`, `Gauge`, `PieChart`                                                                                               |
 | **Navigation**     | `NavigationTabs`, `EmergencyBanner`                                                                                           |
 | **Forms**          | `Button`, `InputField`, `SelectMenu`                                                                                          |
-| **Overlays**       | `SystemDialog`, `ClassifiedOverlay`, `TitleScreen`, `ToastProvider`, `StatusStamp`                                            |
+| **Overlays**       | `SystemDialog`, `ClassifiedOverlay`, `TitleScreen`, `NervToastProvider`, `StatusStamp`                                        |
 | **HUD / Military** | `TargetingReticle`, `SurveillanceGrid`, `PatternAlert`, `PilotCard`                                                           |
 | **Special**        | `MagiSystemPanel`, `CountdownTimer`, `SeeleMonolith`, `WireframeLoader`                                                       |
 
@@ -184,8 +184,8 @@ EvaUI ships **32 components** covering layout, data display, forms, overlays, ch
 
 ## TypeScript
 
-EvaUI is fully typed. All prop interfaces are exported alongside their components:
+NERV-UI is fully typed. All prop interfaces are exported alongside their components:
 
 ```tsx
-import type { ButtonProps, DataGridColumn } from "@mdrbx/eva-ui";
+import type { ButtonProps, DataGridColumn } from "@mdrbx/nerv-ui";
 ```

@@ -163,7 +163,7 @@ export const WireframeLoader = forwardRef<HTMLDivElement, WireframeLoaderProps>(
           <motion.span
             className="text-[10px] uppercase tracking-[0.25em] font-bold"
             style={{
-              fontFamily: "var(--font-eva-mono)",
+              fontFamily: "var(--font-nerv-mono)",
               color: hex,
               textShadow: `0 0 6px ${hex}`,
             }}

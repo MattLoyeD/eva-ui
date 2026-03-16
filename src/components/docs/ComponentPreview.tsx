@@ -28,13 +28,13 @@ export function ComponentPreview({
   ];
 
   return (
-    <div className="docs-component-preview mb-8 border border-eva-mid-gray/80 bg-eva-black">
+    <div className="docs-component-preview mb-8 border border-nerv-mid-gray/80 bg-nerv-black">
       {/* Tab header */}
-      <div className="flex flex-wrap items-center gap-y-1 border-b border-eva-mid-gray/80 bg-[linear-gradient(90deg,rgba(255,153,0,0.16),rgba(255,153,0,0)_35%)]">
+      <div className="flex flex-wrap items-center gap-y-1 border-b border-nerv-mid-gray/80 bg-[linear-gradient(90deg,rgba(255,153,0,0.16),rgba(255,153,0,0)_35%)]">
         {title && (
           <span
-            className="border-r border-eva-mid-gray/80 px-3 py-2 text-[10px] uppercase tracking-[0.26em] text-eva-orange font-bold"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="border-r border-nerv-mid-gray/80 px-3 py-2 text-[10px] uppercase tracking-[0.26em] text-nerv-orange font-bold"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {title}
           </span>
@@ -48,11 +48,11 @@ export function ComponentPreview({
               border-b transition-colors cursor-pointer
               ${
                 activeTab === tab.id
-                  ? "text-eva-orange border-eva-orange bg-eva-black"
-                  : "text-eva-white/60 border-transparent hover:text-eva-orange"
+                  ? "text-nerv-orange border-nerv-orange bg-nerv-black"
+                  : "text-nerv-white/60 border-transparent hover:text-nerv-orange"
               }
             `}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             <span className="opacity-45 mr-1 text-[9px]">
               {String(i + 1).padStart(2, "0")}
@@ -61,8 +61,8 @@ export function ComponentPreview({
           </button>
         ))}
         <span
-          className="ml-auto px-3 py-2 text-[9px] uppercase tracking-[0.22em] text-eva-white/35"
-          style={{ fontFamily: "var(--font-eva-mono)" }}
+          className="ml-auto px-3 py-2 text-[9px] uppercase tracking-[0.22em] text-nerv-white/35"
+          style={{ fontFamily: "var(--font-nerv-mono)" }}
         >
           inspection frame
         </span>
@@ -71,17 +71,17 @@ export function ComponentPreview({
       {/* Tab content */}
       {activeTab === "preview" && (
         <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.015),transparent_28%)] p-3 sm:p-4">
-          <div className="border border-eva-mid-gray/70 bg-eva-black">
-            <div className="flex items-center justify-between border-b border-eva-mid-gray/70 px-3 py-1.5">
+          <div className="border border-nerv-mid-gray/70 bg-nerv-black">
+            <div className="flex items-center justify-between border-b border-nerv-mid-gray/70 px-3 py-1.5">
               <span
-                className="text-[9px] uppercase tracking-[0.22em] text-eva-green"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-[9px] uppercase tracking-[0.22em] text-nerv-green"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 live inspection
               </span>
               <span
-                className="text-[9px] uppercase tracking-[0.18em] text-eva-white/35"
-                style={{ fontFamily: "var(--font-eva-mono)" }}
+                className="text-[9px] uppercase tracking-[0.18em] text-nerv-white/35"
+                style={{ fontFamily: "var(--font-nerv-mono)" }}
               >
                 frame-01
               </span>
@@ -93,7 +93,7 @@ export function ComponentPreview({
         </div>
       )}
       {activeTab === "code" && code && (
-        <div className="bg-eva-panel p-3 sm:p-4">
+        <div className="bg-nerv-panel p-3 sm:p-4">
           <CodeBlock code={code} language={language} />
         </div>
       )}

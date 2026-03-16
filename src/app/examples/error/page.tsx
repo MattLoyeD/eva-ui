@@ -11,7 +11,7 @@ import { Divider } from "@/components/Divider";
 
 export default function Error404Page() {
   return (
-    <div className="relative min-h-screen flex flex-col bg-eva-black overflow-hidden">
+    <div className="relative min-h-screen flex flex-col bg-nerv-black overflow-hidden">
       {/* Hex grid backdrop */}
       <HexGridBackground opacity={0.06} animated className="absolute inset-0 z-0" />
 
@@ -45,12 +45,12 @@ export default function Error404Page() {
           {/* Description text */}
           <div className="flex flex-col items-center gap-3 text-center">
             <p
-              className="text-eva-orange text-sm uppercase tracking-wider font-bold"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-nerv-orange text-sm uppercase tracking-wider font-bold"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               DESIGNATED ROUTE NOT FOUND
             </p>
-            <p className="text-eva-mid-gray text-xs leading-relaxed max-w-sm">
+            <p className="text-nerv-mid-gray text-xs leading-relaxed max-w-sm">
               The requested resource could not be located within NERV systems.
             </p>
           </div>

@@ -29,13 +29,13 @@ export const ToastContext = createContext<ToastContextValue | null>(null);
 
 // ─── Provider ────────────────────────────────────────────
 
-export interface EvaToastProviderProps {
+export interface NervToastProviderProps {
   children: ReactNode;
 }
 
 let counter = 0;
 
-export function EvaToastProvider({ children }: EvaToastProviderProps) {
+export function NervToastProvider({ children }: NervToastProviderProps) {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   const addToast = useCallback((payload: AddToastPayload) => {

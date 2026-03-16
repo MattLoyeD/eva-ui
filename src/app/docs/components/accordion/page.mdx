@@ -9,7 +9,7 @@ import {
 Retractable data panels with terminal-style `[ + ]` / `[ - ]` toggle icons. Uses `AnimatePresence` for fast linear height animation. Supports single or multiple open items.
 
 ```tsx
-import { Accordion, AccordionItem } from "@mdrbx/eva-ui";
+import { Accordion, AccordionItem } from "@mdrbx/nerv-ui";
 ```
 
 ## Basic Usage
@@ -23,17 +23,17 @@ import { Accordion, AccordionItem } from "@mdrbx/eva-ui";
   title="SINGLE MODE"
   code={`<Accordion defaultOpen={["status"]}>
   <AccordionItem id="status" title="SYSTEM STATUS">
-    <div className="text-xs text-eva-green font-mono">
+    <div className="text-xs text-nerv-green font-mono">
       MAGI-01 MELCHIOR .... ONLINE
     </div>
   </AccordionItem>
   <AccordionItem id="logs" title="RECENT LOGS">
-    <div className="text-xs text-eva-white/80 font-mono">
+    <div className="text-xs text-nerv-white/80 font-mono">
       [14:22:01] Telemetry sync complete
     </div>
   </AccordionItem>
   <AccordionItem id="config" title="CONFIGURATION">
-    <div className="text-xs text-eva-orange font-mono">
+    <div className="text-xs text-nerv-orange font-mono">
       Pilot: IKARI, SHINJI — Unit: EVA-01
     </div>
   </AccordionItem>

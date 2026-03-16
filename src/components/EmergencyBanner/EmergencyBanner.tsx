@@ -36,9 +36,9 @@ export interface EmergencyBannerProps extends MotionSafeHTMLAttributes {
 
 const severityConfig = {
   emergency: {
-    bg: "bg-eva-red",
+    bg: "bg-nerv-red",
     subtextColor: "text-black/80",
-    glow: "eva-text-shadow-red",
+    glow: "nerv-text-shadow-red",
     borderColor: "#FF0000",
     stripeColor1: "#000000",
     stripeColor2: "#FF0000",
@@ -47,9 +47,9 @@ const severityConfig = {
     titleColor: "#000000",
   },
   warning: {
-    bg: "bg-eva-orange",
+    bg: "bg-nerv-orange",
     subtextColor: "text-black/80",
-    glow: "eva-text-shadow-orange",
+    glow: "nerv-text-shadow-orange",
     borderColor: "#FF9900",
     stripeColor1: "#000000",
     stripeColor2: "#FF9900",
@@ -58,9 +58,9 @@ const severityConfig = {
     titleColor: "#000000",
   },
   info: {
-    bg: "bg-eva-cyan",
+    bg: "bg-nerv-cyan",
     subtextColor: "text-black/80",
-    glow: "eva-text-shadow-cyan",
+    glow: "nerv-text-shadow-cyan",
     borderColor: "#00FFFF",
     stripeColor1: "#003333",
     stripeColor2: "#00FFFF",
@@ -69,9 +69,9 @@ const severityConfig = {
     titleColor: "#000000",
   },
   success: {
-    bg: "bg-eva-green",
+    bg: "bg-nerv-green",
     subtextColor: "text-black/80",
-    glow: "eva-text-shadow-green",
+    glow: "nerv-text-shadow-green",
     borderColor: "#00FF00",
     stripeColor1: "#003300",
     stripeColor2: "#00FF00",
@@ -80,9 +80,9 @@ const severityConfig = {
     titleColor: "#000000",
   },
   critical: {
-    bg: "bg-eva-red",
+    bg: "bg-nerv-red",
     subtextColor: "text-white/80",
-    glow: "eva-text-shadow-red",
+    glow: "nerv-text-shadow-red",
     borderColor: "#FF0000",
     stripeColor1: "#FF0000",
     stripeColor2: "#330000",
@@ -91,24 +91,24 @@ const severityConfig = {
     titleColor: "#FFFFFF",
   },
   contrast: {
-    bg: "bg-eva-black",
-    subtextColor: "text-eva-white/70",
+    bg: "bg-nerv-black",
+    subtextColor: "text-nerv-white/70",
     glow: "",
     borderColor: "#FFFFFF",
     stripeColor1: "#FFFFFF",
     stripeColor2: "#000000",
-    indicatorColor: "bg-eva-white",
+    indicatorColor: "bg-nerv-white",
     flicker: true,
     titleColor: "#E3DDD4",
   },
   disabled: {
-    bg: "bg-eva-mid-gray",
-    subtextColor: "text-eva-dark-gray/80",
+    bg: "bg-nerv-mid-gray",
+    subtextColor: "text-nerv-dark-gray/80",
     glow: "",
     borderColor: "#555555",
     stripeColor1: "#444444",
     stripeColor2: "#666666",
-    indicatorColor: "bg-eva-dark-gray",
+    indicatorColor: "bg-nerv-dark-gray",
     flicker: false,
     titleColor: "#111111",
   },
@@ -130,7 +130,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
   const stripePanels = {
     topLeft: {
       backgroundImage: `repeating-linear-gradient(
-        135deg,
+        45deg,
         ${config.stripeColor1} 0 18px,
         ${config.stripeColor2} 18px 36px
       )`,
@@ -138,7 +138,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
     },
     topRight: {
       backgroundImage: `repeating-linear-gradient(
-        45deg,
+        135deg,
         ${config.stripeColor1} 0 18px,
         ${config.stripeColor2} 18px 36px
       )`,
@@ -146,7 +146,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
     },
     bottomLeft: {
       backgroundImage: `repeating-linear-gradient(
-        45deg,
+        135deg,
         ${config.stripeColor1} 0 18px,
         ${config.stripeColor2} 18px 36px
       )`,
@@ -154,7 +154,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
     },
     bottomRight: {
       backgroundImage: `repeating-linear-gradient(
-        135deg,
+        45deg,
         ${config.stripeColor1} 0 18px,
         ${config.stripeColor2} 18px 36px
       )`,
@@ -196,7 +196,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
           <div className="relative w-full overflow-hidden">
             <div className="relative h-5 overflow-hidden md:h-7">
               <div
-                className={`eva-banner-stripe absolute inset-y-0 left-0 ${animateStripes ? "eva-banner-stripe-forward" : ""}`}
+                className={`nerv-banner-stripe absolute inset-y-0 left-0 ${animateStripes ? "nerv-banner-stripe-forward" : ""}`}
                 style={{
                   ...stripePanels.topLeft,
                   width: "50%",
@@ -204,7 +204,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                 }}
               />
               <div
-                className={`eva-banner-stripe absolute inset-y-0 right-0 ${animateStripes ? "eva-banner-stripe-reverse" : ""}`}
+                className={`nerv-banner-stripe absolute inset-y-0 right-0 ${animateStripes ? "nerv-banner-stripe-reverse" : ""}`}
                 style={{
                   ...stripePanels.topRight,
                   width: "50%",
@@ -239,7 +239,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                   select-none
                 `}
                 style={{
-                  fontFamily: "var(--font-eva-display)",
+                  fontFamily: "var(--font-nerv-display)",
                   color: config.titleColor,
                   textShadow:
                     severity === "emergency" || severity === "warning"
@@ -256,7 +256,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 }}
                   className={`mx-auto mt-2.5 max-w-[72ch] px-3 text-center text-[8px] leading-[1.36] md:mt-3 md:text-[11px] md:leading-[1.42] uppercase tracking-[0.18em] md:tracking-[0.24em] ${config.subtextColor}`}
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   {subtext}
                 </motion.p>
@@ -276,7 +276,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
 
             <div className="relative h-5 overflow-hidden md:h-7">
               <div
-                className={`eva-banner-stripe absolute inset-y-0 left-0 ${animateStripes ? "eva-banner-stripe-forward" : ""}`}
+                className={`nerv-banner-stripe absolute inset-y-0 left-0 ${animateStripes ? "nerv-banner-stripe-forward" : ""}`}
                 style={{
                   ...stripePanels.bottomLeft,
                   width: "50%",
@@ -284,7 +284,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                 }}
               />
               <div
-                className={`eva-banner-stripe absolute inset-y-0 right-0 ${animateStripes ? "eva-banner-stripe-reverse" : ""}`}
+                className={`nerv-banner-stripe absolute inset-y-0 right-0 ${animateStripes ? "nerv-banner-stripe-reverse" : ""}`}
                 style={{
                   ...stripePanels.bottomRight,
                   width: "50%",

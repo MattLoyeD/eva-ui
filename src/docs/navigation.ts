@@ -135,5 +135,5 @@ export const docsNavigation: NavSection[] = [
 /** Standalone links shown at the bottom of the sidebar */
 export const docsQuickLinks: NavLink[] = [
   { title: "EXAMPLES", href: "/examples" },
-  { title: "GITHUB", href: "https://github.com/mdrbx/eva-ui" },
+  { title: "GITHUB", href: "https://github.com/mdrbx/nerv-ui" },
 ];

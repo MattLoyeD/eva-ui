@@ -40,22 +40,22 @@ export interface DataGridProps
 
 const colorMap = {
   orange: {
-    header: "bg-eva-orange text-eva-black",
-    row: "text-eva-orange",
-    hoverRow: "hover:bg-eva-orange hover:text-eva-black",
-    border: "border-eva-orange/20",
+    header: "bg-nerv-orange text-nerv-black",
+    row: "text-nerv-orange",
+    hoverRow: "hover:bg-nerv-orange hover:text-nerv-black",
+    border: "border-nerv-orange/20",
   },
   green: {
-    header: "bg-eva-green text-eva-black",
-    row: "text-eva-green",
-    hoverRow: "hover:bg-eva-green hover:text-eva-black",
-    border: "border-eva-green/20",
+    header: "bg-nerv-green text-nerv-black",
+    row: "text-nerv-green",
+    hoverRow: "hover:bg-nerv-green hover:text-nerv-black",
+    border: "border-nerv-green/20",
   },
   cyan: {
-    header: "bg-eva-cyan text-eva-black",
-    row: "text-eva-cyan",
-    hoverRow: "hover:bg-eva-cyan hover:text-eva-black",
-    border: "border-eva-cyan/20",
+    header: "bg-nerv-cyan text-nerv-black",
+    row: "text-nerv-cyan",
+    hoverRow: "hover:bg-nerv-cyan hover:text-nerv-black",
+    border: "border-nerv-cyan/20",
   },
 };
 
@@ -182,17 +182,17 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps>(
     }, [autoScroll, scrollSpeed, hovering]);
 
     return (
-      <div ref={ref} className={`bg-eva-black border border-eva-mid-gray overflow-x-auto ${className}`} {...rest}>
+      <div ref={ref} className={`bg-nerv-black border border-nerv-mid-gray overflow-x-auto ${className}`} {...rest}>
         {/* Title bar */}
         {title && (
-          <div className="flex items-center justify-between px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
+          <div className="flex items-center justify-between px-3 py-1.5 border-b border-nerv-mid-gray bg-nerv-dark-gray">
             <span
               className={`text-xs uppercase tracking-[0.2em] font-bold ${c.row}`}
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {title}
             </span>
-            <span className="text-[10px] font-mono text-eva-mid-gray">
+            <span className="text-[10px] font-mono text-nerv-mid-gray">
               {data.length} ENTRIES
             </span>
           </div>
@@ -208,7 +208,7 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps>(
         >
           <table
             className="w-full border-collapse"
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             {/* Header */}
             <thead className="sticky top-0 z-10">
@@ -228,7 +228,7 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps>(
                     style={{
                       width: col.width,
                       textAlign: col.align || "left",
-                      fontFamily: "var(--font-eva-display)",
+                      fontFamily: "var(--font-nerv-display)",
                     }}
                   >
                     {col.header}
@@ -256,12 +256,12 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps>(
                   transition={{ delay: i * 0.02 }}
                   className={`
                     ${c.row} ${c.hoverRow}
-                    border-b border-eva-mid-gray/30
+                    border-b border-nerv-mid-gray/30
                     transition-colors duration-75 cursor-default text-xs
                   `}
                 >
                   {showIndex && (
-                    <td className="px-3 py-1.5 text-eva-mid-gray border-r border-eva-mid-gray/20">
+                    <td className="px-3 py-1.5 text-nerv-mid-gray border-r border-nerv-mid-gray/20">
                       {String(
                         (pageSize ? currentPage * pageSize : 0) + i + 1
                       ).padStart(3, "0")}
@@ -270,7 +270,7 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps>(
                   {columns.map((col) => (
                     <td
                       key={col.key}
-                      className="px-3 py-1.5 border-r border-eva-mid-gray/20 last:border-r-0 whitespace-nowrap"
+                      className="px-3 py-1.5 border-r border-nerv-mid-gray/20 last:border-r-0 whitespace-nowrap"
                       style={{ textAlign: col.align || "left" }}
                     >
                       {row[col.key] ?? "\u2014"}
@@ -283,7 +283,7 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps>(
         </div>
 
         {/* Footer status */}
-        <div className="flex items-center justify-between px-3 py-1 border-t border-eva-mid-gray bg-eva-dark-gray text-[10px] font-mono text-eva-mid-gray">
+        <div className="flex items-center justify-between px-3 py-1 border-t border-nerv-mid-gray bg-nerv-dark-gray text-[10px] font-mono text-nerv-mid-gray">
           <span>ROWS: {data.length}</span>
 
           {pageSize && totalPages > 1 && (
@@ -320,7 +320,7 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps>(
           )}
 
           {autoScroll && (
-            <span className={hovering ? "text-eva-orange" : ""}>
+            <span className={hovering ? "text-nerv-orange" : ""}>
               {hovering ? "SCROLL PAUSED" : "AUTO-SCROLL ACTIVE"}
             </span>
           )}

@@ -27,9 +27,9 @@ export interface SelectMenuProps
 }
 
 const colorMap = {
-  orange: { text: "text-eva-orange", border: "border-eva-orange" },
-  green: { text: "text-eva-green", border: "border-eva-green" },
-  cyan: { text: "text-eva-cyan", border: "border-eva-cyan" },
+  orange: { text: "text-nerv-orange", border: "border-nerv-orange" },
+  green: { text: "text-nerv-green", border: "border-nerv-green" },
+  cyan: { text: "text-nerv-cyan", border: "border-nerv-cyan" },
 };
 
 const sizeMap = {
@@ -66,7 +66,7 @@ export const SelectMenu = forwardRef<HTMLSelectElement, SelectMenuProps>(
           <label
             htmlFor={selectId}
             className={`text-xs uppercase tracking-[0.2em] font-bold ${c.text}`}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             <span className="opacity-50 mr-1">//</span>
             {label}
@@ -95,15 +95,15 @@ export const SelectMenu = forwardRef<HTMLSelectElement, SelectMenuProps>(
                 props.onBlur?.(e);
               }}
               className={`
-                w-full appearance-none bg-eva-black font-mono cursor-pointer
-                border ${focused ? `border-2 ${c.border}` : "border border-eva-mid-gray"}
-                ${error ? "border-eva-red" : ""}
+                w-full appearance-none bg-nerv-black font-mono cursor-pointer
+                border ${focused ? `border-2 ${c.border}` : "border border-nerv-mid-gray"}
+                ${error ? "border-nerv-red" : ""}
                 ${c.text}
                 ${sizeMap[size]}
                 pr-8 outline-none transition-all duration-100
                 ${className}
               `}
-              style={{ fontFamily: "var(--font-eva-mono)" }}
+              style={{ fontFamily: "var(--font-nerv-mono)" }}
               {...props}
             >
               {placeholder && (
@@ -141,7 +141,7 @@ export const SelectMenu = forwardRef<HTMLSelectElement, SelectMenuProps>(
         </div>
 
         {error && (
-          <span className="text-xs text-eva-red font-mono">
+          <span className="text-xs text-nerv-red font-mono">
             <span className="text-[10px]">!</span> {error}
           </span>
         )}

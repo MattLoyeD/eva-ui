@@ -24,28 +24,28 @@ export interface StepperProps
 
 const colorMap = {
   orange: {
-    active: "border-eva-orange text-eva-orange",
-    completed: "border-eva-orange/70 text-eva-orange/70",
-    future: "border-eva-mid-gray/40 text-eva-mid-gray/40",
-    line: "bg-eva-orange/70",
-    lineDashed: "border-eva-mid-gray/30",
-    pulse: "bg-eva-orange",
+    active: "border-nerv-orange text-nerv-orange",
+    completed: "border-nerv-orange/70 text-nerv-orange/70",
+    future: "border-nerv-mid-gray/40 text-nerv-mid-gray/40",
+    line: "bg-nerv-orange/70",
+    lineDashed: "border-nerv-mid-gray/30",
+    pulse: "bg-nerv-orange",
   },
   green: {
-    active: "border-eva-green text-eva-green",
-    completed: "border-eva-green/70 text-eva-green/70",
-    future: "border-eva-mid-gray/40 text-eva-mid-gray/40",
-    line: "bg-eva-green/70",
-    lineDashed: "border-eva-mid-gray/30",
-    pulse: "bg-eva-green",
+    active: "border-nerv-green text-nerv-green",
+    completed: "border-nerv-green/70 text-nerv-green/70",
+    future: "border-nerv-mid-gray/40 text-nerv-mid-gray/40",
+    line: "bg-nerv-green/70",
+    lineDashed: "border-nerv-mid-gray/30",
+    pulse: "bg-nerv-green",
   },
   cyan: {
-    active: "border-eva-cyan text-eva-cyan",
-    completed: "border-eva-cyan/70 text-eva-cyan/70",
-    future: "border-eva-mid-gray/40 text-eva-mid-gray/40",
-    line: "bg-eva-cyan/70",
-    lineDashed: "border-eva-mid-gray/30",
-    pulse: "bg-eva-cyan",
+    active: "border-nerv-cyan text-nerv-cyan",
+    completed: "border-nerv-cyan/70 text-nerv-cyan/70",
+    future: "border-nerv-mid-gray/40 text-nerv-mid-gray/40",
+    line: "bg-nerv-cyan/70",
+    lineDashed: "border-nerv-mid-gray/30",
+    pulse: "bg-nerv-cyan",
   },
 };
 
@@ -97,7 +97,7 @@ export const Stepper = forwardRef<HTMLElement, StepperProps>(
                       border text-[8px] font-bold shrink-0
                       ${stepColor}
                     `}
-                    style={{ fontFamily: "var(--font-eva-display)" }}
+                    style={{ fontFamily: "var(--font-nerv-display)" }}
                     animate={isActive ? { borderColor: ["rgba(255,255,255,0.4)", "rgba(255,255,255,1)", "rgba(255,255,255,0.4)"] } : {}}
                     transition={isActive ? { duration: 2, repeat: Infinity, ease: "easeInOut" } : {}}
                   >
@@ -139,7 +139,7 @@ export const Stepper = forwardRef<HTMLElement, StepperProps>(
                       ${isActive ? "font-bold" : "font-medium"}
                       ${stepColor}
                     `}
-                    style={{ fontFamily: "var(--font-eva-display)" }}
+                    style={{ fontFamily: "var(--font-nerv-display)" }}
                   >
                     {stepNum} // {step.label}
                   </span>
@@ -148,7 +148,7 @@ export const Stepper = forwardRef<HTMLElement, StepperProps>(
                     <p
                       className={`
                         text-[10px] mt-0.5 tracking-wide
-                        ${isFuture ? "text-eva-mid-gray/30" : "text-eva-mid-gray/60"}
+                        ${isFuture ? "text-nerv-mid-gray/30" : "text-nerv-mid-gray/60"}
                       `}
                     >
                       {step.description}
@@ -168,7 +168,7 @@ export const Stepper = forwardRef<HTMLElement, StepperProps>(
                       border text-[8px] font-bold shrink-0
                       ${stepColor}
                     `}
-                    style={{ fontFamily: "var(--font-eva-display)" }}
+                    style={{ fontFamily: "var(--font-nerv-display)" }}
                   >
                     {isCompleted ? (
                       <span className="text-[8px] leading-none">&#x2713;</span>
@@ -184,7 +184,7 @@ export const Stepper = forwardRef<HTMLElement, StepperProps>(
                       ${isActive ? "font-bold" : "font-medium"}
                       ${stepColor}
                     `}
-                    style={{ fontFamily: "var(--font-eva-display)" }}
+                    style={{ fontFamily: "var(--font-nerv-display)" }}
                   >
                     {stepNum} // {step.label}
                   </span>

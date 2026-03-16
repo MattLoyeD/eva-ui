@@ -10,12 +10,12 @@ export function ClassifiedOverlayDemo() {
   return (
     <div className="space-y-3">
       <ClassifiedOverlay text="TOP SECRET" isUnlocked={unlocked} className="min-h-[200px]">
-        <div className="p-6 text-eva-green font-mono text-sm space-y-1">
+        <div className="p-6 text-nerv-green font-mono text-sm space-y-1">
           <div>CLASSIFIED DATA — EYES ONLY</div>
           <div>CLEARANCE: LEVEL 7</div>
           <div>DEAD SEA SCROLLS LOCATION: [REDACTED]</div>
           <div>HUMAN INSTRUMENTALITY PROJECT: [REDACTED]</div>
-          <div className="pt-2 text-eva-cyan text-[10px]">
+          <div className="pt-2 text-nerv-cyan text-[10px]">
             DECRYPTED AT {new Date().toISOString().split("T")[0]}
           </div>
         </div>

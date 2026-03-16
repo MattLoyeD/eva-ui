@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { EvaToastProvider, useToast, Button } from "@/components";
+import { NervToastProvider, useToast, Button } from "@/components";
 import type { ToastVariant } from "@/components";
 
 function ToastTriggers() {
@@ -56,9 +56,9 @@ function ToastTriggers() {
 
 export function ToastDemo() {
   return (
-    <EvaToastProvider>
+    <NervToastProvider>
       <ToastTriggers />
-    </EvaToastProvider>
+    </NervToastProvider>
   );
 }
 
@@ -111,8 +111,8 @@ function ToastDurationTriggers() {
 
 export function ToastDurationDemo() {
   return (
-    <EvaToastProvider>
+    <NervToastProvider>
       <ToastDurationTriggers />
-    </EvaToastProvider>
+    </NervToastProvider>
   );
 }

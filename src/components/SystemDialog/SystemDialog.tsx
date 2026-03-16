@@ -51,16 +51,16 @@ export const SystemDialog = forwardRef<HTMLDivElement, SystemDialogProps>(
   const isDestructive = severity === "critical" || showHazardStripes;
   const borderColor =
     severity === "critical"
-      ? "border-eva-red"
+      ? "border-nerv-red"
       : severity === "warning"
-        ? "border-eva-orange"
-        : "border-eva-mid-gray";
+        ? "border-nerv-orange"
+        : "border-nerv-mid-gray";
   const titleColor =
     severity === "critical"
-      ? "text-eva-red"
+      ? "text-nerv-red"
       : severity === "warning"
-        ? "text-eva-orange"
-        : "text-eva-orange";
+        ? "text-nerv-orange"
+        : "text-nerv-orange";
 
   const content = (
     <AnimatePresence>
@@ -92,7 +92,7 @@ export const SystemDialog = forwardRef<HTMLDivElement, SystemDialogProps>(
             exit={{ scale: 0.9, y: 20 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
             className={`
-              relative w-full max-w-lg bg-eva-black
+              relative w-full max-w-lg bg-nerv-black
               border-2 ${borderColor}
               ${className}
             `}
@@ -102,37 +102,37 @@ export const SystemDialog = forwardRef<HTMLDivElement, SystemDialogProps>(
 
             {/* Title bar */}
             <div
-              className={`flex items-center justify-between px-4 py-2 border-b ${borderColor} bg-eva-dark-gray`}
+              className={`flex items-center justify-between px-4 py-2 border-b ${borderColor} bg-nerv-dark-gray`}
             >
               <div className="flex items-center gap-2">
                 {severity === "critical" && (
                   <motion.span
                     animate={{ opacity: [1, 0, 1] }}
                     transition={{ duration: 0.8, repeat: Infinity }}
-                    className="text-eva-red text-lg leading-none"
+                    className="text-nerv-red text-lg leading-none"
                   >
                     !
                   </motion.span>
                 )}
                 <h2
                   className={`text-sm uppercase tracking-[0.2em] font-bold ${titleColor}`}
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   {title}
                 </h2>
               </div>
-              <span className="text-[10px] font-mono text-eva-mid-gray">
+              <span className="text-[10px] font-mono text-nerv-mid-gray">
                 MAGI.SYS
               </span>
             </div>
 
             {/* Content */}
-            <div className="px-6 py-5 text-sm text-eva-white font-mono leading-relaxed">
+            <div className="px-6 py-5 text-sm text-nerv-white font-mono leading-relaxed">
               {children}
             </div>
 
             {/* Action buttons */}
-            <div className="flex gap-3 px-6 py-4 border-t border-eva-mid-gray bg-eva-dark-gray">
+            <div className="flex gap-3 px-6 py-4 border-t border-nerv-mid-gray bg-nerv-dark-gray">
               {onDecline && (
                 <Button
                   variant="ghost"

@@ -202,26 +202,26 @@ export const SyncRatioChart = forwardRef<HTMLDivElement, SyncRatioChartProps>(
     return (
       <div
         ref={ref}
-        className={`bg-eva-black border border-eva-mid-gray flex flex-col ${className}`}
+        className={`bg-nerv-black border border-nerv-mid-gray flex flex-col ${className}`}
         {...rest}
       >
         {/* Title bar */}
         {title && (
-          <div className="flex items-center justify-between px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
+          <div className="flex items-center justify-between px-3 py-1.5 border-b border-nerv-mid-gray bg-nerv-dark-gray">
             <span
-              className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-xs uppercase tracking-[0.2em] font-bold text-nerv-orange"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {title}
             </span>
             <div className="flex items-center gap-3 text-[10px] font-mono">
               <span className="flex items-center gap-1">
-                <span className="w-3 h-0.5 bg-eva-cyan inline-block" />
-                <span className="text-eva-cyan">WAVE-A</span>
+                <span className="w-3 h-0.5 bg-nerv-cyan inline-block" />
+                <span className="text-nerv-cyan">WAVE-A</span>
               </span>
               <span className="flex items-center gap-1">
-                <span className="w-3 h-0.5 bg-eva-magenta inline-block" />
-                <span className="text-eva-magenta">WAVE-B</span>
+                <span className="w-3 h-0.5 bg-nerv-magenta inline-block" />
+                <span className="text-nerv-magenta">WAVE-B</span>
               </span>
             </div>
           </div>
@@ -330,7 +330,7 @@ export const SyncRatioChart = forwardRef<HTMLDivElement, SyncRatioChartProps>(
               y="12"
               fontSize="8"
               fill="rgba(0, 255, 0, 0.4)"
-              fontFamily="var(--font-eva-mono)"
+              fontFamily="var(--font-nerv-mono)"
             >
               +1.0
             </text>
@@ -339,7 +339,7 @@ export const SyncRatioChart = forwardRef<HTMLDivElement, SyncRatioChartProps>(
               y={centerY + 3}
               fontSize="8"
               fill="rgba(0, 255, 0, 0.4)"
-              fontFamily="var(--font-eva-mono)"
+              fontFamily="var(--font-nerv-mono)"
             >
               0.0
             </text>
@@ -348,7 +348,7 @@ export const SyncRatioChart = forwardRef<HTMLDivElement, SyncRatioChartProps>(
               y={height - 4}
               fontSize="8"
               fill="rgba(0, 255, 0, 0.4)"
-              fontFamily="var(--font-eva-mono)"
+              fontFamily="var(--font-nerv-mono)"
             >
               -1.0
             </text>
@@ -356,7 +356,7 @@ export const SyncRatioChart = forwardRef<HTMLDivElement, SyncRatioChartProps>(
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between px-3 py-1 border-t border-eva-mid-gray bg-eva-dark-gray text-[10px] font-mono text-eva-mid-gray">
+        <div className="flex items-center justify-between px-3 py-1 border-t border-nerv-mid-gray bg-nerv-dark-gray text-[10px] font-mono text-nerv-mid-gray">
           <span>
             FREQ: {frequencyA.toFixed(3)}Hz / {frequencyB.toFixed(3)}Hz
           </span>

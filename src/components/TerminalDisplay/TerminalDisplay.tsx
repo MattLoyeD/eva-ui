@@ -30,17 +30,17 @@ export interface TerminalDisplayProps
 }
 
 const colorMap = {
-  green: "text-eva-green",
-  orange: "text-eva-orange",
-  cyan: "text-eva-cyan",
-  red: "text-eva-red",
+  green: "text-nerv-green",
+  orange: "text-nerv-orange",
+  cyan: "text-nerv-cyan",
+  red: "text-nerv-red",
 };
 
 const glowMap = {
-  green: "eva-text-shadow-green",
-  orange: "eva-text-shadow-orange",
-  cyan: "eva-text-shadow-cyan",
-  red: "eva-text-shadow-red",
+  green: "nerv-text-shadow-green",
+  orange: "nerv-text-shadow-orange",
+  cyan: "nerv-text-shadow-cyan",
+  red: "nerv-text-shadow-red",
 };
 
 export const TerminalDisplay = forwardRef<HTMLDivElement, TerminalDisplayProps>(
@@ -114,22 +114,22 @@ export const TerminalDisplay = forwardRef<HTMLDivElement, TerminalDisplayProps>(
     const glowClass = glowMap[color];
 
     return (
-      <div ref={ref} className={`relative bg-eva-black border border-eva-mid-gray ${className}`} {...rest}>
+      <div ref={ref} className={`relative bg-nerv-black border border-nerv-mid-gray ${className}`} {...rest}>
         {/* Terminal header */}
         {title && (
-          <div className="flex items-center gap-2 px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
+          <div className="flex items-center gap-2 px-3 py-1.5 border-b border-nerv-mid-gray bg-nerv-dark-gray">
             <div className="flex gap-1.5">
-              <div className="w-2 h-2 bg-eva-red" />
-              <div className="w-2 h-2 bg-eva-orange" />
-              <div className="w-2 h-2 bg-eva-green" />
+              <div className="w-2 h-2 bg-nerv-red" />
+              <div className="w-2 h-2 bg-nerv-orange" />
+              <div className="w-2 h-2 bg-nerv-green" />
             </div>
             <span
-              className="text-xs uppercase tracking-[0.2em] text-eva-orange font-bold ml-2"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-xs uppercase tracking-[0.2em] text-nerv-orange font-bold ml-2"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {title}
             </span>
-            <div className="ml-auto text-[10px] text-eva-mid-gray font-mono">
+            <div className="ml-auto text-[10px] text-nerv-mid-gray font-mono">
               MAGI_SYS
             </div>
           </div>
@@ -139,7 +139,7 @@ export const TerminalDisplay = forwardRef<HTMLDivElement, TerminalDisplayProps>(
         <div
           ref={containerRef}
           className="p-4 overflow-y-auto font-mono text-sm leading-relaxed"
-          style={{ maxHeight, fontFamily: "var(--font-eva-mono)" }}
+          style={{ maxHeight, fontFamily: "var(--font-nerv-mono)" }}
         >
           {displayedLines.map((line, i) => (
             <motion.div
@@ -150,14 +150,14 @@ export const TerminalDisplay = forwardRef<HTMLDivElement, TerminalDisplayProps>(
             >
               {showLineNumbers && (
                 <span
-                  className="inline-block w-10 text-right mr-3 text-eva-mid-gray select-none text-xs tabular-nums"
-                  style={{ fontFamily: "var(--font-eva-mono)" }}
+                  className="inline-block w-10 text-right mr-3 text-nerv-mid-gray select-none text-xs tabular-nums"
+                  style={{ fontFamily: "var(--font-nerv-mono)" }}
                 >
                   {String(i + 1).padStart(3, "0")}
                 </span>
               )}
               {prompt && (
-                <span className="text-eva-orange mr-1 select-none">{prompt}</span>
+                <span className="text-nerv-orange mr-1 select-none">{prompt}</span>
               )}
               {line}
               {/* Cursor on current typing line */}
@@ -180,7 +180,7 @@ export const TerminalDisplay = forwardRef<HTMLDivElement, TerminalDisplayProps>(
         </div>
 
         {/* Bottom status bar */}
-        <div className="flex items-center justify-between px-3 py-1 border-t border-eva-mid-gray bg-eva-dark-gray text-[10px] font-mono text-eva-mid-gray">
+        <div className="flex items-center justify-between px-3 py-1 border-t border-nerv-mid-gray bg-nerv-dark-gray text-[10px] font-mono text-nerv-mid-gray">
           <span>LINES: {displayedLines.length}</span>
           <span>{isTyping ? "TRANSMITTING..." : "READY"}</span>
         </div>

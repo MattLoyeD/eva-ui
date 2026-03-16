@@ -57,13 +57,13 @@ export const ClassifiedOverlay = forwardRef<HTMLDivElement, ClassifiedOverlayPro
               />
 
               {/* Dark overlay to increase contrast */}
-              <div className="absolute inset-0 bg-eva-black/80" />
+              <div className="absolute inset-0 bg-nerv-black/80" />
 
               {/* Central text block */}
-              <div className="relative z-10 bg-eva-black/90 border-4 border-eva-red px-10 py-6">
+              <div className="relative z-10 bg-nerv-black/90 border-4 border-nerv-red px-10 py-6">
                 <span
-                  className="text-4xl md:text-6xl font-black uppercase tracking-[0.2em] text-eva-red"
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  className="text-4xl md:text-6xl font-black uppercase tracking-[0.2em] text-nerv-red"
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   {text}
                 </span>

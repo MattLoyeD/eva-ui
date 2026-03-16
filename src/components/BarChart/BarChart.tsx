@@ -38,11 +38,11 @@ export interface BarChartProps {
 }
 
 const colorMap = {
-  cyan: { bar: "#00FFFF", text: "text-eva-cyan", grid: "rgba(0,255,255,0.12)", lane: "rgba(0,255,255,0.06)" },
-  green: { bar: "#00FF00", text: "text-eva-green", grid: "rgba(0,255,0,0.12)", lane: "rgba(0,255,0,0.06)" },
-  orange: { bar: "#FF9900", text: "text-eva-orange", grid: "rgba(255,153,0,0.12)", lane: "rgba(255,153,0,0.06)" },
-  red: { bar: "#FF0000", text: "text-eva-red", grid: "rgba(255,0,0,0.12)", lane: "rgba(255,0,0,0.06)" },
-  magenta: { bar: "#FF00FF", text: "text-eva-magenta", grid: "rgba(255,0,255,0.12)", lane: "rgba(255,0,255,0.06)" },
+  cyan: { bar: "#00FFFF", text: "text-nerv-cyan", grid: "rgba(0,255,255,0.12)", lane: "rgba(0,255,255,0.06)" },
+  green: { bar: "#00FF00", text: "text-nerv-green", grid: "rgba(0,255,0,0.12)", lane: "rgba(0,255,0,0.06)" },
+  orange: { bar: "#FF9900", text: "text-nerv-orange", grid: "rgba(255,153,0,0.12)", lane: "rgba(255,153,0,0.06)" },
+  red: { bar: "#FF0000", text: "text-nerv-red", grid: "rgba(255,0,0,0.12)", lane: "rgba(255,0,0,0.06)" },
+  magenta: { bar: "#FF00FF", text: "text-nerv-magenta", grid: "rgba(255,0,255,0.12)", lane: "rgba(255,0,255,0.06)" },
 } as const;
 
 export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
@@ -73,7 +73,7 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
           {title && (
             <div
               className={`mb-2 border-b border-current/25 pb-1 text-[10px] uppercase tracking-[0.22em] font-bold ${c.text}`}
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {title}
             </div>
@@ -84,7 +84,7 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
               const barColor = bar.color || c.bar;
               return (
                 <div key={bar.label} className="grid grid-cols-[78px_minmax(0,1fr)_44px] items-center gap-2">
-                  <div className="truncate text-[9px] uppercase tracking-[0.15em] text-eva-white/58">
+                  <div className="truncate text-[9px] uppercase tracking-[0.15em] text-nerv-white/58">
                     {bar.label}
                   </div>
                   <div
@@ -143,7 +143,7 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
         {title && (
           <div
             className={`mb-2 border-b border-current/25 pb-1 text-[10px] uppercase tracking-[0.22em] font-bold ${c.text}`}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {title}
           </div>
@@ -156,7 +156,7 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
               return (
                 <div key={gridIndex} className="absolute left-0 right-0" style={{ top: `${y}%` }}>
                   <div className="h-px w-full" style={{ backgroundColor: c.grid }} />
-                  <span className="absolute -left-1 -top-2 -translate-x-full pr-1 text-[8px] text-eva-white/28">
+                  <span className="absolute -left-1 -top-2 -translate-x-full pr-1 text-[8px] text-nerv-white/28">
                     {gridVal}
                   </span>
                 </div>
@@ -195,7 +195,7 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
                       borderColor: `${barColor}40`,
                     }}
                   />
-                  <div className="mt-1 w-full truncate text-center text-[8px] uppercase tracking-[0.1em] text-eva-white/50">
+                  <div className="mt-1 w-full truncate text-center text-[8px] uppercase tracking-[0.1em] text-nerv-white/50">
                     {bar.label}
                   </div>
                 </div>

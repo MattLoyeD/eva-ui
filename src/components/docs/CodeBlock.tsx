@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Highlight, type PrismTheme } from "prism-react-renderer";
 
-const evaTheme: PrismTheme = {
+const nervTheme: PrismTheme = {
   plain: {
     color: "#E0E0E0",
     backgroundColor: "#0A0A0A",
@@ -64,38 +64,38 @@ export function CodeBlock({ code, language, filename }: CodeBlockProps) {
   };
 
   return (
-    <div className="relative border border-eva-mid-gray/80 bg-eva-panel">
+    <div className="relative border border-nerv-mid-gray/80 bg-nerv-panel">
       {/* Header bar */}
-      <div className="flex items-center justify-between gap-3 border-b border-eva-mid-gray/80 bg-[linear-gradient(90deg,rgba(255,153,0,0.14),rgba(255,153,0,0)_45%)] px-2.5 py-1.5 sm:px-3">
+      <div className="flex items-center justify-between gap-3 border-b border-nerv-mid-gray/80 bg-[linear-gradient(90deg,rgba(255,153,0,0.14),rgba(255,153,0,0)_45%)] px-2.5 py-1.5 sm:px-3">
         <div className="flex min-w-0 items-center gap-2">
           <span
-            className="text-[9px] text-eva-orange/70"
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            className="text-[9px] text-nerv-orange/70"
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             [{filename ? "FILE" : "SRC"}]
           </span>
           <span
-            className="truncate text-[10px] uppercase tracking-[0.28em] text-eva-orange font-bold"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="truncate text-[10px] uppercase tracking-[0.28em] text-nerv-orange font-bold"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {filename || language}
           </span>
         </div>
         <button
           onClick={handleCopy}
-          className="shrink-0 border border-eva-mid-gray/80 px-2 py-0.5 text-[9px] uppercase tracking-[0.18em] text-eva-white/55 hover:border-eva-cyan/60 hover:text-eva-cyan transition-colors cursor-pointer"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="shrink-0 border border-nerv-mid-gray/80 px-2 py-0.5 text-[9px] uppercase tracking-[0.18em] text-nerv-white/55 hover:border-nerv-cyan/60 hover:text-nerv-cyan transition-colors cursor-pointer"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           {copied ? "COPIED" : "COPY"}
         </button>
       </div>
 
       {/* Code content */}
-      <Highlight theme={evaTheme} code={code} language={language}>
+      <Highlight theme={nervTheme} code={code} language={language}>
         {({ style, tokens, getLineProps, getTokenProps }) => (
           <pre
             className="overflow-x-auto px-0 py-2 text-[11px] leading-relaxed sm:text-xs"
-            style={{ ...style, fontFamily: "var(--font-eva-mono)" }}
+            style={{ ...style, fontFamily: "var(--font-nerv-mono)" }}
           >
             {tokens.map((line, i) => (
               <div
@@ -103,7 +103,7 @@ export function CodeBlock({ code, language, filename }: CodeBlockProps) {
                 {...getLineProps({ line })}
                 className={`${i % 2 === 0 ? "bg-white/[0.015]" : ""} px-3 sm:px-4`}
               >
-                <span className="inline-block w-6 shrink-0 text-right mr-3 text-eva-white/28 select-none text-[9px] sm:w-8 sm:mr-4 sm:text-[10px]">
+                <span className="inline-block w-6 shrink-0 text-right mr-3 text-nerv-white/28 select-none text-[9px] sm:w-8 sm:mr-4 sm:text-[10px]">
                   {i + 1}
                 </span>
                 {line.map((token, key) => (

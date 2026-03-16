@@ -17,7 +17,7 @@ export interface SeeleMonolithProps
 function EqualizerBar({ delay }: { delay: number }) {
   return (
     <motion.div
-      className="w-[3px] bg-eva-orange"
+      className="w-[3px] bg-nerv-orange"
       animate={{
         height: ["4px", "16px", "6px", "14px", "4px"],
       }}
@@ -57,15 +57,15 @@ export const SeeleMonolith = forwardRef<HTMLDivElement, SeeleMonolithProps>(
       >
         {/* SEELE ID -- top */}
         <span
-          className="absolute top-3 text-[10px] uppercase tracking-[0.25em] font-bold text-eva-mid-gray/50 font-mono"
+          className="absolute top-3 text-[10px] uppercase tracking-[0.25em] font-bold text-nerv-mid-gray/50 font-mono"
         >
           SEELE {id}
         </span>
 
         {/* SOUND ONLY -- center, condensed sans-serif, orange/red */}
         <span
-          className="text-sm font-bold uppercase tracking-[0.15em] text-eva-orange"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-sm font-bold uppercase tracking-[0.15em] text-nerv-orange"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           SOUND ONLY
         </span>
@@ -82,7 +82,7 @@ export const SeeleMonolith = forwardRef<HTMLDivElement, SeeleMonolithProps>(
 
         {/* SEELE ID -- bottom */}
         <span
-          className="absolute bottom-3 text-[9px] font-mono text-eva-mid-gray/30 tracking-wider"
+          className="absolute bottom-3 text-[9px] font-mono text-nerv-mid-gray/30 tracking-wider"
         >
           {id}
         </span>

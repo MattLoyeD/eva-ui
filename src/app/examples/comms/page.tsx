@@ -158,17 +158,17 @@ const initialMessages: Message[] = [
 
 // ─── Sender color map ───
 const senderColorMap: Record<string, string> = {
-  MISATO: "text-eva-red",
-  RITSUKO: "text-eva-cyan",
-  MAYA: "text-eva-green",
-  HYUGA: "text-eva-orange",
+  MISATO: "text-nerv-red",
+  RITSUKO: "text-nerv-cyan",
+  MAYA: "text-nerv-green",
+  HYUGA: "text-nerv-orange",
 };
 
 const classificationStyles: Record<string, string> = {
-  OPEN: "text-eva-green",
-  RESTRICTED: "text-eva-orange",
-  CLASSIFIED: "text-eva-red",
-  EMERGENCY: "text-eva-red animate-pulse",
+  OPEN: "text-nerv-green",
+  RESTRICTED: "text-nerv-orange",
+  CLASSIFIED: "text-nerv-red",
+  EMERGENCY: "text-nerv-red animate-pulse",
 };
 
 export default function CommsExample() {
@@ -224,18 +224,18 @@ export default function CommsExample() {
   };
 
   return (
-    <div className="min-h-screen bg-eva-black">
+    <div className="min-h-screen bg-nerv-black">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="border-b border-eva-orange px-6 py-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="border-b border-nerv-orange px-6 py-3 flex flex-wrap items-center justify-between gap-2">
           <div>
             <h1
-              className="text-2xl uppercase tracking-[0.2em] text-eva-orange font-bold"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-2xl uppercase tracking-[0.2em] text-nerv-orange font-bold"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               NERV COMMS TERMINAL
             </h1>
-            <p className="text-[10px] font-mono text-eva-white/50 mt-1">
+            <p className="text-[10px] font-mono text-nerv-white/50 mt-1">
               SECURE CHANNEL COMMUNICATIONS — AUTHORIZED PERSONNEL ONLY
             </p>
           </div>
@@ -248,11 +248,11 @@ export default function CommsExample() {
         {/* Main grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-0" style={{ minHeight: "600px" }}>
           {/* Left sidebar — channel list */}
-          <div className="col-span-full md:col-span-3 border-r border-eva-orange/30">
-            <div className="p-3 border-b border-eva-orange/20">
+          <div className="col-span-full md:col-span-3 border-r border-nerv-orange/30">
+            <div className="p-3 border-b border-nerv-orange/20">
               <span
-                className="text-[10px] uppercase tracking-[0.2em] text-eva-orange/60 font-bold"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-[10px] uppercase tracking-[0.2em] text-nerv-orange/60 font-bold"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 CHANNELS
               </span>
@@ -270,7 +270,7 @@ export default function CommsExample() {
             />
 
             {/* Channel info */}
-            <div className="p-3 border-t border-eva-orange/20 mt-2">
+            <div className="p-3 border-t border-nerv-orange/20 mt-2">
               <TerminalDisplay
                 lines={[
                   `ACTIVE: ${selectedChannel}`,
@@ -286,17 +286,17 @@ export default function CommsExample() {
           </div>
 
           {/* Center — message area */}
-          <div className="col-span-full md:col-span-6 flex flex-col border-r border-eva-orange/30">
+          <div className="col-span-full md:col-span-6 flex flex-col border-r border-nerv-orange/30">
             {/* Channel header */}
-            <div className="px-4 py-2 border-b border-eva-orange/20 flex items-center justify-between">
+            <div className="px-4 py-2 border-b border-nerv-orange/20 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span
-                  className="text-xs uppercase tracking-[0.15em] text-eva-orange font-bold"
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  className="text-xs uppercase tracking-[0.15em] text-nerv-orange font-bold"
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   {selectedChannel}
                 </span>
-                <span className="text-[9px] font-mono text-eva-white/30">
+                <span className="text-[9px] font-mono text-nerv-white/30">
                   {activeMessages.length} MESSAGES
                 </span>
               </div>
@@ -311,7 +311,7 @@ export default function CommsExample() {
             <div className="flex-1 overflow-y-auto max-h-[60vh] p-3 space-y-1">
               {activeMessages.length === 0 && (
                 <div className="flex items-center justify-center h-full">
-                  <span className="text-eva-white/30 font-mono text-xs">
+                  <span className="text-nerv-white/30 font-mono text-xs">
                     NO MESSAGES IN CHANNEL
                   </span>
                 </div>
@@ -326,27 +326,27 @@ export default function CommsExample() {
                     className={`
                       p-2.5 border-l-2 font-mono text-xs
                       ${isEmergency
-                        ? "border-eva-red bg-eva-red/5"
-                        : "border-eva-white/10 hover:border-eva-white/30 hover:bg-eva-white/[0.02]"
+                        ? "border-nerv-red bg-nerv-red/5"
+                        : "border-nerv-white/10 hover:border-nerv-white/30 hover:bg-nerv-white/[0.02]"
                       }
                       transition-colors
                     `}
                   >
                     {/* Message header */}
                     <div className="flex items-center gap-2 mb-1">
-                      <span className={`font-bold ${senderColorMap[msg.sender] || "text-eva-white"}`}>
+                      <span className={`font-bold ${senderColorMap[msg.sender] || "text-nerv-white"}`}>
                         {msg.sender}
                       </span>
-                      <span className="text-eva-white/20">|</span>
-                      <span className="text-eva-cyan/60 text-[10px]">{msg.timestamp}</span>
-                      <span className="text-eva-white/20">|</span>
+                      <span className="text-nerv-white/20">|</span>
+                      <span className="text-nerv-cyan/60 text-[10px]">{msg.timestamp}</span>
+                      <span className="text-nerv-white/20">|</span>
                       <span className={`text-[9px] uppercase tracking-wider ${classificationStyles[msg.classification]}`}>
                         [{msg.classification}]
                       </span>
                     </div>
 
                     {/* Message body */}
-                    <div className={`${isEmergency ? "text-eva-red font-bold" : "text-eva-white/80"}`}>
+                    <div className={`${isEmergency ? "text-nerv-red font-bold" : "text-nerv-white/80"}`}>
                       {isEmergency && <span className="mr-1">!!</span>}
                       {msg.text}
                     </div>
@@ -357,7 +357,7 @@ export default function CommsExample() {
             </div>
 
             {/* Input area */}
-            <div className="p-3 border-t border-eva-orange/20">
+            <div className="p-3 border-t border-nerv-orange/20">
               <div className="flex items-end gap-2">
                 <div className="flex-1">
                   <InputField
@@ -380,7 +380,7 @@ export default function CommsExample() {
                   TRANSMIT
                 </Button>
               </div>
-              <div className="text-[9px] font-mono text-eva-white/30 mt-1.5">
+              <div className="text-[9px] font-mono text-nerv-white/30 mt-1.5">
                 TRANSMITTING AS: KATSURAGI, MISATO — OPS.DIR — PRESS ENTER TO SEND
               </div>
             </div>
@@ -388,10 +388,10 @@ export default function CommsExample() {
 
           {/* Right sidebar — operator info + stats */}
           <div className="col-span-full md:col-span-3">
-            <div className="p-3 border-b border-eva-orange/20">
+            <div className="p-3 border-b border-nerv-orange/20">
               <span
-                className="text-[10px] uppercase tracking-[0.2em] text-eva-orange/60 font-bold"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-[10px] uppercase tracking-[0.2em] text-nerv-orange/60 font-bold"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 ACTIVE OPERATOR
               </span>
@@ -420,14 +420,14 @@ export default function CommsExample() {
               <Card title="CONNECTION STATS">
                 <div className="space-y-2 py-2">
                   {[
-                    { label: "LATENCY", value: "12ms", color: "text-eva-green" },
-                    { label: "UPTIME", value: "99.97%", color: "text-eva-green" },
-                    { label: "ENCRYPTION", value: "AES-256", color: "text-eva-cyan" },
-                    { label: "OPERATORS", value: `${Object.keys(operators).length} ONLINE`, color: "text-eva-orange" },
-                    { label: "TOTAL MSGS", value: String(messages.length), color: "text-eva-white/70" },
+                    { label: "LATENCY", value: "12ms", color: "text-nerv-green" },
+                    { label: "UPTIME", value: "99.97%", color: "text-nerv-green" },
+                    { label: "ENCRYPTION", value: "AES-256", color: "text-nerv-cyan" },
+                    { label: "OPERATORS", value: `${Object.keys(operators).length} ONLINE`, color: "text-nerv-orange" },
+                    { label: "TOTAL MSGS", value: String(messages.length), color: "text-nerv-white/70" },
                   ].map((stat) => (
                     <div key={stat.label} className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono text-eva-white/40 uppercase tracking-wider">
+                      <span className="text-[10px] font-mono text-nerv-white/40 uppercase tracking-wider">
                         {stat.label}
                       </span>
                       <span className={`text-[10px] font-mono font-bold ${stat.color}`}>
@@ -440,10 +440,10 @@ export default function CommsExample() {
             </div>
 
             {/* Online operators list */}
-            <div className="p-3 border-t border-eva-orange/20">
+            <div className="p-3 border-t border-nerv-orange/20">
               <span
-                className="text-[10px] uppercase tracking-[0.2em] text-eva-orange/60 font-bold block mb-2"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-[10px] uppercase tracking-[0.2em] text-nerv-orange/60 font-bold block mb-2"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 ONLINE OPERATORS
               </span>
@@ -453,8 +453,8 @@ export default function CommsExample() {
                     key={key}
                     className="flex items-center gap-2 text-[10px] font-mono"
                   >
-                    <span className={`w-1.5 h-1.5 rounded-full bg-eva-green`} />
-                    <span className={senderColorMap[key] || "text-eva-white/60"}>
+                    <span className={`w-1.5 h-1.5 rounded-full bg-nerv-green`} />
+                    <span className={senderColorMap[key] || "text-nerv-white/60"}>
                       {op.name}
                     </span>
                   </div>

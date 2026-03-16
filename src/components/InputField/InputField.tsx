@@ -20,22 +20,22 @@ export interface InputFieldProps
 
 const colorMap = {
   orange: {
-    text: "text-eva-orange",
-    border: "border-eva-orange",
-    focusBorder: "focus:border-eva-orange",
-    label: "text-eva-orange",
+    text: "text-nerv-orange",
+    border: "border-nerv-orange",
+    focusBorder: "focus:border-nerv-orange",
+    label: "text-nerv-orange",
   },
   green: {
-    text: "text-eva-green",
-    border: "border-eva-green",
-    focusBorder: "focus:border-eva-green",
-    label: "text-eva-green",
+    text: "text-nerv-green",
+    border: "border-nerv-green",
+    focusBorder: "focus:border-nerv-green",
+    label: "text-nerv-green",
   },
   cyan: {
-    text: "text-eva-cyan",
-    border: "border-eva-cyan",
-    focusBorder: "focus:border-eva-cyan",
-    label: "text-eva-cyan",
+    text: "text-nerv-cyan",
+    border: "border-nerv-cyan",
+    focusBorder: "focus:border-nerv-cyan",
+    label: "text-nerv-cyan",
   },
 };
 
@@ -72,7 +72,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           <label
             htmlFor={inputId}
             className={`text-xs uppercase tracking-[0.2em] font-bold ${c.label}`}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             <span className="opacity-50 mr-1">//</span>
             {label}
@@ -104,15 +104,15 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
               props.onBlur?.(e);
             }}
             className={`
-              flex-1 bg-eva-black font-mono
-              border ${focused ? `border-2 ${c.border}` : "border border-eva-mid-gray"}
-              ${error ? "border-eva-red" : ""}
-              ${c.text} placeholder:text-eva-mid-gray
+              flex-1 bg-nerv-black font-mono
+              border ${focused ? `border-2 ${c.border}` : "border border-nerv-mid-gray"}
+              ${error ? "border-nerv-red" : ""}
+              ${c.text} placeholder:text-nerv-mid-gray
               ${sizeMap[size]}
               outline-none transition-all duration-100
               ${className}
             `}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
             {...props}
           />
 
@@ -129,12 +129,12 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
 
         {/* Error or hint */}
         {error && (
-          <span className="text-xs text-eva-red font-mono flex items-center gap-1">
+          <span className="text-xs text-nerv-red font-mono flex items-center gap-1">
             <span className="text-[10px]">!</span> {error}
           </span>
         )}
         {hint && !error && (
-          <span className="text-xs text-eva-mid-gray font-mono">{hint}</span>
+          <span className="text-xs text-nerv-mid-gray font-mono">{hint}</span>
         )}
       </div>
     );

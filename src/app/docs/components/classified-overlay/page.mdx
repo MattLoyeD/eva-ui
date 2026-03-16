@@ -7,7 +7,7 @@ import { ClassifiedOverlayDemo } from "@/components/docs/ClassifiedOverlayDemo";
 TOP SECRET overlay with diagonal red/black hazard stripes. Slides away violently when unlocked to reveal children content beneath. Used to gate sensitive information.
 
 ```tsx
-import { ClassifiedOverlay } from "@mdrbx/eva-ui";
+import { ClassifiedOverlay } from "@mdrbx/nerv-ui";
 ```
 
 ## Interactive Demo
@@ -19,7 +19,7 @@ import { ClassifiedOverlay } from "@mdrbx/eva-ui";
 <ComponentPreview
   title="TOGGLE DEMO"
   code={`<ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
-  <div className="p-6 text-eva-green font-mono text-sm space-y-1">
+  <div className="p-6 text-nerv-green font-mono text-sm space-y-1">
     <div>CLASSIFIED DATA — EYES ONLY</div>
     <div>CLEARANCE: LEVEL 7</div>
     <div>DEAD SEA SCROLLS LOCATION: [REDACTED]</div>
@@ -35,7 +35,7 @@ import { ClassifiedOverlay } from "@mdrbx/eva-ui";
 <ComponentPreview
   title="LOCKED"
   code={`<ClassifiedOverlay text="TOP SECRET" isUnlocked={false}>
-  <div className="p-6 text-eva-green font-mono text-sm">
+  <div className="p-6 text-nerv-green font-mono text-sm">
     CLASSIFIED DATA — EYES ONLY
   </div>
 </ClassifiedOverlay>`}
@@ -45,7 +45,7 @@ import { ClassifiedOverlay } from "@mdrbx/eva-ui";
     isUnlocked={false}
     className="min-h-[200px]"
   >
-    <div className="p-6 text-eva-green font-mono text-sm">
+    <div className="p-6 text-nerv-green font-mono text-sm">
       CLASSIFIED DATA — EYES ONLY
     </div>
   </ClassifiedOverlay>
@@ -56,7 +56,7 @@ import { ClassifiedOverlay } from "@mdrbx/eva-ui";
 <ComponentPreview
   title="UNLOCKED"
   code={`<ClassifiedOverlay text="TOP SECRET" isUnlocked={true}>
-  <div className="p-6 text-eva-green font-mono text-sm">
+  <div className="p-6 text-nerv-green font-mono text-sm">
     CLASSIFIED DATA — EYES ONLY
     CLEARANCE: LEVEL 7
     DEAD SEA SCROLLS LOCATION: [REDACTED]
@@ -68,7 +68,7 @@ import { ClassifiedOverlay } from "@mdrbx/eva-ui";
     isUnlocked={true}
     className="min-h-[200px]"
   >
-    <div className="p-6 text-eva-green font-mono text-sm space-y-1">
+    <div className="p-6 text-nerv-green font-mono text-sm space-y-1">
       <div>CLASSIFIED DATA — EYES ONLY</div>
       <div>CLEARANCE: LEVEL 7</div>
       <div>DEAD SEA SCROLLS LOCATION: [REDACTED]</div>
@@ -81,7 +81,7 @@ import { ClassifiedOverlay } from "@mdrbx/eva-ui";
 <ComponentPreview
   title="CUSTOM"
   code={`<ClassifiedOverlay text="EYES ONLY" isUnlocked={false}>
-  <div className="p-6 text-eva-orange font-mono text-sm">
+  <div className="p-6 text-nerv-orange font-mono text-sm">
     NERV INTERNAL MEMO — RESTRICTED ACCESS
   </div>
 </ClassifiedOverlay>`}
@@ -91,7 +91,7 @@ import { ClassifiedOverlay } from "@mdrbx/eva-ui";
     isUnlocked={false}
     className="min-h-[200px]"
   >
-    <div className="p-6 text-eva-orange font-mono text-sm">
+    <div className="p-6 text-nerv-orange font-mono text-sm">
       NERV INTERNAL MEMO — RESTRICTED ACCESS
     </div>
   </ClassifiedOverlay>

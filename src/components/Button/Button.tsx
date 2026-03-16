@@ -31,24 +31,24 @@ export interface ButtonProps extends MotionSafeButtonAttributes {
 
 const variants = {
   primary: {
-    base: "border border-eva-orange/60 bg-eva-black text-eva-orange",
-    hover: "hover:border-eva-orange hover:bg-eva-orange/10",
-    active: "active:border-eva-amber active:text-eva-amber",
+    base: "border border-nerv-orange/60 bg-nerv-black text-nerv-orange",
+    hover: "hover:border-nerv-orange hover:bg-nerv-orange/10",
+    active: "active:border-nerv-amber active:text-nerv-amber",
   },
   danger: {
-    base: "border border-eva-red/70 bg-eva-black text-eva-red",
-    hover: "hover:border-eva-red hover:bg-eva-red/10",
-    active: "active:border-eva-red active:text-eva-white",
+    base: "border border-nerv-red/70 bg-nerv-black text-nerv-red",
+    hover: "hover:border-nerv-red hover:bg-nerv-red/10",
+    active: "active:border-nerv-red active:text-nerv-white",
   },
   ghost: {
-    base: "border border-eva-mid-gray/60 bg-transparent text-eva-white/72",
-    hover: "hover:border-eva-orange/40 hover:text-eva-orange hover:bg-eva-orange/8",
-    active: "active:border-eva-orange/60",
+    base: "border border-nerv-mid-gray/60 bg-transparent text-nerv-white/72",
+    hover: "hover:border-nerv-orange/40 hover:text-nerv-orange hover:bg-nerv-orange/8",
+    active: "active:border-nerv-orange/60",
   },
   terminal: {
-    base: "border border-eva-green/70 bg-eva-black text-eva-green",
-    hover: "hover:border-eva-green hover:bg-eva-green/10",
-    active: "active:border-eva-green active:text-eva-white",
+    base: "border border-nerv-green/70 bg-nerv-black text-nerv-green",
+    hover: "hover:border-nerv-green hover:bg-nerv-green/10",
+    active: "active:border-nerv-green active:text-nerv-white",
   },
 };
 
@@ -94,7 +94,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           ${className}
         `}
         style={{
-          fontFamily: "var(--font-eva-display)",
+          fontFamily: "var(--font-nerv-display)",
           boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.02)",
         }}
         disabled={disabled || loading}

@@ -12,7 +12,7 @@ import { SegmentDisplay } from "@/components/SegmentDisplay";
 ## Default Countdown
 
 <ComponentPreview>
-  <div className="bg-eva-black p-6 flex justify-center">
+  <div className="bg-nerv-black p-6 flex justify-center">
     <SegmentDisplay value={3600} countdown label="ACTIVE TIME REMAINING" subLabel="INTERNAL — MAIN ENERGY SUPPLY SYSTEM" />
   </div>
 </ComponentPreview>
@@ -20,7 +20,7 @@ import { SegmentDisplay } from "@/components/SegmentDisplay";
 ## Sizes
 
 <ComponentPreview>
-  <div className="bg-eva-black p-6 flex flex-col items-center gap-6">
+  <div className="bg-nerv-black p-6 flex flex-col items-center gap-6">
     <SegmentDisplay value={599} format="MM:SS" size="sm" label="SMALL" />
     <SegmentDisplay value={599} format="MM:SS" size="md" label="MEDIUM" />
     <SegmentDisplay value={599} format="MM:SS" size="lg" label="LARGE" />
@@ -30,7 +30,7 @@ import { SegmentDisplay } from "@/components/SegmentDisplay";
 ## Color Variants
 
 <ComponentPreview>
-  <div className="bg-eva-black p-6 flex flex-wrap justify-center gap-6">
+  <div className="bg-nerv-black p-6 flex flex-wrap justify-center gap-6">
     <SegmentDisplay value={1234} format="raw" digits={4} color="orange" label="ORANGE" />
     <SegmentDisplay value={5678} format="raw" digits={4} color="green" label="GREEN" />
     <SegmentDisplay value={9012} format="raw" digits={4} color="cyan" label="CYAN" />
@@ -43,7 +43,7 @@ import { SegmentDisplay } from "@/components/SegmentDisplay";
 When countdown reaches the threshold (default 60s), the display automatically turns red:
 
 <ComponentPreview>
-  <div className="bg-eva-black p-6 flex justify-center">
+  <div className="bg-nerv-black p-6 flex justify-center">
     <SegmentDisplay value={30} countdown criticalThreshold={60} label="CRITICAL — BATTERY LOW" format="MM:SS" />
   </div>
 </ComponentPreview>

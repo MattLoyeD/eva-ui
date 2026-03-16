@@ -4,7 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const displayFont = { fontFamily: "var(--font-eva-display)" };
+const displayFont = { fontFamily: "var(--font-nerv-display)" };
 
 const exampleLinks = [
   { href: "/examples", label: "INDEX", code: "00" },
@@ -45,8 +45,8 @@ function ExampleRail({
             onClick={onNavigate}
             className={`group shrink-0 border px-2.5 py-1.5 transition-colors ${
               isActive
-                ? "border-eva-orange bg-eva-orange/10 text-eva-orange"
-                : "border-eva-mid-gray/40 bg-eva-black/70 text-eva-white/50 hover:border-eva-orange/40 hover:text-eva-orange"
+                ? "border-nerv-orange bg-nerv-orange/10 text-nerv-orange"
+                : "border-nerv-mid-gray/40 bg-nerv-black/70 text-nerv-white/50 hover:border-nerv-orange/40 hover:text-nerv-orange"
             }`}
             style={displayFont}
           >
@@ -76,14 +76,14 @@ export default function ExamplesLayout({
   }, [pathname]);
 
   return (
-    <div className="min-h-screen bg-eva-black nerv-page-shell">
+    <div className="min-h-screen bg-nerv-black nerv-page-shell">
       <header className="nerv-topbar">
         <div className="nerv-page-frame">
           <div className="flex min-h-14 items-center justify-between gap-4 py-2">
             <div className="flex min-w-0 items-center gap-3">
               <Link
                 href="/"
-                className="border border-eva-orange/30 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-eva-orange transition-colors hover:border-eva-orange hover:bg-eva-orange/10"
+                className="border border-nerv-orange/30 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-nerv-orange transition-colors hover:border-nerv-orange hover:bg-nerv-orange/10"
                 style={displayFont}
               >
                 Command
@@ -91,13 +91,13 @@ export default function ExamplesLayout({
 
               <div className="min-w-0">
                 <div
-                  className="truncate text-[10px] uppercase tracking-[0.24em] text-eva-white/35"
+                  className="truncate text-[10px] uppercase tracking-[0.24em] text-nerv-white/35"
                   style={displayFont}
                 >
                   NERV Example Network
                 </div>
                 <div
-                  className="truncate text-[13px] font-bold uppercase tracking-[0.18em] text-eva-orange"
+                  className="truncate text-[13px] font-bold uppercase tracking-[0.18em] text-nerv-orange"
                   style={displayFont}
                 >
                   {activeLabel}
@@ -108,14 +108,14 @@ export default function ExamplesLayout({
             <div className="hidden items-center gap-2 md:flex">
               <Link
                 href="/docs"
-                className="border border-eva-cyan/30 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-eva-cyan transition-colors hover:border-eva-cyan hover:bg-eva-cyan/10"
+                className="border border-nerv-cyan/30 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-nerv-cyan transition-colors hover:border-nerv-cyan hover:bg-nerv-cyan/10"
                 style={displayFont}
               >
                 Docs
               </Link>
               <Link
                 href="/examples"
-                className="border border-eva-mid-gray/50 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-eva-white/50 transition-colors hover:border-eva-orange/40 hover:text-eva-orange"
+                className="border border-nerv-mid-gray/50 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-nerv-white/50 transition-colors hover:border-nerv-orange/40 hover:text-nerv-orange"
                 style={displayFont}
               >
                 Catalog
@@ -125,7 +125,7 @@ export default function ExamplesLayout({
             <button
               type="button"
               onClick={() => setMobileOpen((open) => !open)}
-              className="flex h-9 w-9 items-center justify-center border border-eva-orange/30 text-eva-orange transition-colors hover:border-eva-orange hover:bg-eva-orange/10 md:hidden"
+              className="flex h-9 w-9 items-center justify-center border border-nerv-orange/30 text-nerv-orange transition-colors hover:border-nerv-orange hover:bg-nerv-orange/10 md:hidden"
               aria-label="Toggle navigation menu"
             >
               <div className="flex flex-col gap-1">
@@ -136,19 +136,19 @@ export default function ExamplesLayout({
             </button>
           </div>
 
-          <div className="hidden border-t border-eva-orange/10 md:block">
+          <div className="hidden border-t border-nerv-orange/10 md:block">
             <ExampleRail pathname={pathname} />
           </div>
         </div>
 
         {mobileOpen && (
-          <div className="border-t border-eva-orange/10 bg-eva-black/95 md:hidden">
+          <div className="border-t border-nerv-orange/10 bg-nerv-black/95 md:hidden">
             <div className="nerv-page-frame py-3">
               <div className="mb-3 flex items-center gap-2">
                 <Link
                   href="/docs"
                   onClick={() => setMobileOpen(false)}
-                  className="border border-eva-cyan/30 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-eva-cyan"
+                  className="border border-nerv-cyan/30 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-nerv-cyan"
                   style={displayFont}
                 >
                   Docs
@@ -156,7 +156,7 @@ export default function ExamplesLayout({
                 <Link
                   href="/examples"
                   onClick={() => setMobileOpen(false)}
-                  className="border border-eva-mid-gray/50 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-eva-white/55"
+                  className="border border-nerv-mid-gray/50 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-nerv-white/55"
                   style={displayFont}
                 >
                   Catalog

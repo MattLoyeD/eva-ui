@@ -29,9 +29,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Updated README: component count from 17 to 30+, imports use `@mdrbx/eva-ui`, added installation section
+- Updated README: component count from 17 to 30+, imports use `@mdrbx/nerv-ui`, added installation section
 - Updated `docs/COMPONENTS.md` with Phase 3-5 component documentation
-- All code examples use `from "@mdrbx/eva-ui"` instead of `from "@/components"`
+- All code examples use `from "@mdrbx/nerv-ui"` instead of `from "@/components"`
 
 ## [1.0.0] - 2025-06-01
 

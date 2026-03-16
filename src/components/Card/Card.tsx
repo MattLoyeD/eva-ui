@@ -21,14 +21,14 @@ export interface CardProps
 const VARIANT_CONFIG = {
   default: {
     borderColor: "#00FF00",
-    titleColor: "text-eva-green",
+    titleColor: "text-nerv-green",
     panelColor: "rgba(0, 255, 0, 0.08)",
     lineColor: "rgba(0, 255, 0, 0.35)",
     surface: "linear-gradient(180deg, rgba(3, 14, 3, 0.98) 0%, rgba(0, 0, 0, 0.98) 100%)",
   },
   alert: {
     borderColor: "#FF0000",
-    titleColor: "text-eva-red",
+    titleColor: "text-nerv-red",
     panelColor: "rgba(255, 0, 0, 0.08)",
     lineColor: "rgba(255, 0, 0, 0.35)",
     surface: "linear-gradient(180deg, rgba(18, 1, 1, 0.98) 0%, rgba(0, 0, 0, 0.98) 100%)",
@@ -42,7 +42,7 @@ const VARIANT_CONFIG = {
   },
   video: {
     borderColor: "#FF9900",
-    titleColor: "text-eva-orange",
+    titleColor: "text-nerv-orange",
     panelColor: "rgba(255, 153, 0, 0.08)",
     lineColor: "rgba(255, 184, 90, 0.48)",
     surface: "linear-gradient(180deg, rgba(7, 7, 7, 0.92) 0%, rgba(0, 0, 0, 0.82) 100%)",
@@ -140,7 +140,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
           <div className="relative z-10 flex min-h-[26px] items-center gap-3 px-3 pb-2 pt-1.5">
             <span
               className={`text-[9px] uppercase tracking-[0.28em] ${config.titleColor}`}
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               SYS
             </span>
@@ -150,13 +150,13 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
             />
             <span
               className={`text-[11px] uppercase tracking-[0.24em] font-bold ${config.titleColor}`}
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {title}
             </span>
             <span
-              className="ml-auto text-[9px] uppercase tracking-[0.22em] text-eva-white/35"
-              style={{ fontFamily: "var(--font-eva-mono)" }}
+              className="ml-auto text-[9px] uppercase tracking-[0.22em] text-nerv-white/35"
+              style={{ fontFamily: "var(--font-nerv-mono)" }}
             >
               PANEL
             </span>
@@ -168,14 +168,14 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
             <div className="flex flex-col gap-0.5">
               <span
                 className={`text-[9px] uppercase tracking-[0.18em] ${config.titleColor}`}
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 SUBJECT // VIDEO RELAY
               </span>
               <span
                 className={`text-[clamp(1.05rem,2vw,1.55rem)] uppercase leading-[0.88] tracking-[0.03em] ${config.titleColor}`}
                 style={{
-                  fontFamily: "var(--font-eva-display)",
+                  fontFamily: "var(--font-nerv-display)",
                   textShadow: "0 0 10px rgba(255, 153, 0, 0.16)",
                 }}
               >
@@ -183,8 +183,8 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
               </span>
             </div>
             <span
-              className="ml-auto pt-0.5 text-[9px] uppercase tracking-[0.2em] text-eva-orange/70"
-              style={{ fontFamily: "var(--font-eva-mono)" }}
+              className="ml-auto pt-0.5 text-[9px] uppercase tracking-[0.2em] text-nerv-orange/70"
+              style={{ fontFamily: "var(--font-nerv-mono)" }}
             >
               FEED-01
             </span>
@@ -197,8 +197,8 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
 
         {footer && (
           <div
-            className={`relative z-10 flex items-center gap-3 ${isVideo ? "px-4 pb-3" : "px-3 pb-2 pt-1"} text-[9px] uppercase tracking-[0.22em] ${isVideo ? "text-eva-orange/70" : "text-eva-white/55"}`}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            className={`relative z-10 flex items-center gap-3 ${isVideo ? "px-4 pb-3" : "px-3 pb-2 pt-1"} text-[9px] uppercase tracking-[0.22em] ${isVideo ? "text-nerv-orange/70" : "text-nerv-white/55"}`}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             <span className={config.titleColor}>{isVideo ? "CAMERA" : "LOG"}</span>
             <span className="h-px flex-1 bg-current opacity-20" />

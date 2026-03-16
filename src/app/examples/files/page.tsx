@@ -161,15 +161,15 @@ export default function FileManager() {
             onClick={() => setSelectedFolder(node.path)}
             className={`w-full text-left cursor-pointer transition-colors duration-75 group ${
               isActive
-                ? "bg-eva-orange/20 text-eva-orange"
-                : "text-eva-white/60 hover:text-eva-orange hover:bg-eva-orange/5"
+                ? "bg-nerv-orange/20 text-nerv-orange"
+                : "text-nerv-white/60 hover:text-nerv-orange hover:bg-nerv-orange/5"
             }`}
             style={{
               paddingLeft: `${depth * 16 + 8}px`,
               paddingRight: "8px",
               paddingTop: "4px",
               paddingBottom: "4px",
-              fontFamily: "var(--font-eva-mono)",
+              fontFamily: "var(--font-nerv-mono)",
             }}
           >
             <span className="text-xs">
@@ -178,8 +178,8 @@ export default function FileManager() {
             </span>
             {isActive && (
               <span
-                className="ml-2 text-[9px] text-eva-orange/60"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="ml-2 text-[9px] text-nerv-orange/60"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 [ACTIVE]
               </span>
@@ -192,30 +192,30 @@ export default function FileManager() {
   }
 
   return (
-    <div className="min-h-screen bg-eva-black">
+    <div className="min-h-screen bg-nerv-black">
       {/* ═══════ HEADER ═══════ */}
-      <div className="border-b border-eva-orange px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <div className="border-b border-nerv-orange px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div className="flex items-center gap-3">
           <h1
-            className="text-xl sm:text-2xl uppercase tracking-[0.2em] text-eva-orange font-bold"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-xl sm:text-2xl uppercase tracking-[0.2em] text-nerv-orange font-bold"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             MAGI FILE SYSTEM
           </h1>
           <Badge label="MELCHIOR-1" variant="info" size="sm" />
         </div>
-        <p className="text-[10px] font-mono text-eva-white/50">
+        <p className="text-[10px] font-mono text-nerv-white/50">
           NERV CENTRAL DOGMA \u2014 FILE ACCESS TERMINAL \u2014 AUTHORIZED PERSONNEL ONLY
         </p>
       </div>
 
       {/* ═══════ BREADCRUMB ═══════ */}
-      <div className="border-b border-eva-orange/30 px-4 sm:px-6 py-2">
+      <div className="border-b border-nerv-orange/30 px-4 sm:px-6 py-2">
         <Breadcrumb items={breadcrumbItems} separator=">" color="orange" />
       </div>
 
       {/* ═══════ TOOLBAR ═══════ */}
-      <div className="border-b border-eva-orange/30 px-4 sm:px-6 py-3">
+      <div className="border-b border-nerv-orange/30 px-4 sm:px-6 py-3">
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
           <div className="sm:col-span-5">
             <InputField
@@ -243,8 +243,8 @@ export default function FileManager() {
               onClick={() => setViewMode("grid")}
               className={`flex-1 px-3 py-1.5 border text-sm font-mono cursor-pointer transition-colors duration-75 ${
                 viewMode === "grid"
-                  ? "border-eva-orange bg-eva-orange text-eva-black font-bold"
-                  : "border-eva-mid-gray text-eva-mid-gray hover:border-eva-orange hover:text-eva-orange"
+                  ? "border-nerv-orange bg-nerv-orange text-nerv-black font-bold"
+                  : "border-nerv-mid-gray text-nerv-mid-gray hover:border-nerv-orange hover:text-nerv-orange"
               }`}
             >
               \u25EB
@@ -254,8 +254,8 @@ export default function FileManager() {
               onClick={() => setViewMode("list")}
               className={`flex-1 px-3 py-1.5 border text-sm font-mono cursor-pointer transition-colors duration-75 ${
                 viewMode === "list"
-                  ? "border-eva-orange bg-eva-orange text-eva-black font-bold"
-                  : "border-eva-mid-gray text-eva-mid-gray hover:border-eva-orange hover:text-eva-orange"
+                  ? "border-nerv-orange bg-nerv-orange text-nerv-black font-bold"
+                  : "border-nerv-mid-gray text-nerv-mid-gray hover:border-nerv-orange hover:text-nerv-orange"
               }`}
             >
               \u2261
@@ -267,11 +267,11 @@ export default function FileManager() {
       {/* ═══════ MAIN CONTENT ═══════ */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
         {/* ─── Sidebar: Folder tree ─── */}
-        <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-eva-orange/30">
-          <div className="px-3 py-2 border-b border-eva-mid-gray bg-eva-dark-gray">
+        <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-nerv-orange/30">
+          <div className="px-3 py-2 border-b border-nerv-mid-gray bg-nerv-dark-gray">
             <span
-              className="text-[10px] uppercase tracking-[0.2em] font-bold text-eva-orange"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-[10px] uppercase tracking-[0.2em] font-bold text-nerv-orange"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               DIRECTORY TREE
             </span>
@@ -283,21 +283,21 @@ export default function FileManager() {
         <div className="lg:col-span-9 p-4 sm:p-6">
           <div className="flex items-center justify-between mb-4">
             <span
-              className="text-xs uppercase tracking-[0.15em] font-bold text-eva-orange"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-xs uppercase tracking-[0.15em] font-bold text-nerv-orange"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {selectedFolder.split("/").pop()} \u2014 {filteredFiles.length} FILE{filteredFiles.length !== 1 ? "S" : ""}
             </span>
-            <span className="text-[10px] font-mono text-eva-mid-gray">
+            <span className="text-[10px] font-mono text-nerv-mid-gray">
               SORTED BY: {sort.toUpperCase()}
             </span>
           </div>
 
           {filteredFiles.length === 0 ? (
-            <div className="border border-eva-mid-gray/30 p-8 text-center">
+            <div className="border border-nerv-mid-gray/30 p-8 text-center">
               <span
-                className="text-sm text-eva-white/30 uppercase tracking-wider"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-sm text-nerv-white/30 uppercase tracking-wider"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 NO FILES MATCH CURRENT FILTER
               </span>
@@ -308,7 +308,7 @@ export default function FileManager() {
               {filteredFiles.map((file) => (
                 <div
                   key={file.name}
-                  className="border border-eva-mid-gray/30 bg-eva-dark-gray hover:border-eva-orange/60 transition-colors duration-75 cursor-default group"
+                  className="border border-nerv-mid-gray/30 bg-nerv-dark-gray hover:border-nerv-orange/60 transition-colors duration-75 cursor-default group"
                 >
                   <div className="px-3 py-3 flex flex-col gap-2">
                     <div className="flex items-start justify-between gap-2">
@@ -321,14 +321,14 @@ export default function FileManager() {
                     </div>
                     <div>
                       <div
-                        className="text-xs font-bold text-eva-orange group-hover:text-eva-white transition-colors duration-75 truncate"
-                        style={{ fontFamily: "var(--font-eva-mono)" }}
+                        className="text-xs font-bold text-nerv-orange group-hover:text-nerv-white transition-colors duration-75 truncate"
+                        style={{ fontFamily: "var(--font-nerv-mono)" }}
                       >
                         {file.name}
-                        <span className="text-eva-cyan">{file.ext}</span>
+                        <span className="text-nerv-cyan">{file.ext}</span>
                       </div>
                     </div>
-                    <div className="flex items-center justify-between text-[10px] font-mono text-eva-white/40">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-nerv-white/40">
                       <span>{file.size}</span>
                       <span>{file.date}</span>
                     </div>
@@ -338,25 +338,25 @@ export default function FileManager() {
             </div>
           ) : (
             /* ─── List view ─── */
-            <div className="border border-eva-mid-gray/30 bg-eva-dark-gray">
-              <div className="grid grid-cols-12 gap-0 px-3 py-1.5 border-b border-eva-mid-gray bg-eva-orange text-eva-black">
-                <span className="col-span-1 text-[10px] uppercase tracking-wider font-bold" style={{ fontFamily: "var(--font-eva-display)" }}>#</span>
-                <span className="col-span-5 text-[10px] uppercase tracking-wider font-bold" style={{ fontFamily: "var(--font-eva-display)" }}>FILENAME</span>
-                <span className="col-span-2 text-[10px] uppercase tracking-wider font-bold" style={{ fontFamily: "var(--font-eva-display)" }}>TYPE</span>
-                <span className="col-span-2 text-[10px] uppercase tracking-wider font-bold text-right" style={{ fontFamily: "var(--font-eva-display)" }}>SIZE</span>
-                <span className="col-span-2 text-[10px] uppercase tracking-wider font-bold text-right" style={{ fontFamily: "var(--font-eva-display)" }}>DATE</span>
+            <div className="border border-nerv-mid-gray/30 bg-nerv-dark-gray">
+              <div className="grid grid-cols-12 gap-0 px-3 py-1.5 border-b border-nerv-mid-gray bg-nerv-orange text-nerv-black">
+                <span className="col-span-1 text-[10px] uppercase tracking-wider font-bold" style={{ fontFamily: "var(--font-nerv-display)" }}>#</span>
+                <span className="col-span-5 text-[10px] uppercase tracking-wider font-bold" style={{ fontFamily: "var(--font-nerv-display)" }}>FILENAME</span>
+                <span className="col-span-2 text-[10px] uppercase tracking-wider font-bold" style={{ fontFamily: "var(--font-nerv-display)" }}>TYPE</span>
+                <span className="col-span-2 text-[10px] uppercase tracking-wider font-bold text-right" style={{ fontFamily: "var(--font-nerv-display)" }}>SIZE</span>
+                <span className="col-span-2 text-[10px] uppercase tracking-wider font-bold text-right" style={{ fontFamily: "var(--font-nerv-display)" }}>DATE</span>
               </div>
               {filteredFiles.map((file, i) => (
                 <div
                   key={file.name}
-                  className="grid grid-cols-12 gap-0 px-3 py-1.5 border-b border-eva-mid-gray/20 text-xs font-mono text-eva-orange hover:bg-eva-orange hover:text-eva-black transition-colors duration-75 cursor-default items-center"
+                  className="grid grid-cols-12 gap-0 px-3 py-1.5 border-b border-nerv-mid-gray/20 text-xs font-mono text-nerv-orange hover:bg-nerv-orange hover:text-nerv-black transition-colors duration-75 cursor-default items-center"
                 >
-                  <span className="col-span-1 text-eva-mid-gray">
+                  <span className="col-span-1 text-nerv-mid-gray">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="col-span-5 truncate">
                     {file.icon} {file.name}
-                    <span className="text-eva-cyan">{file.ext}</span>
+                    <span className="text-nerv-cyan">{file.ext}</span>
                   </span>
                   <span className="col-span-2">
                     <Badge
@@ -365,8 +365,8 @@ export default function FileManager() {
                       size="sm"
                     />
                   </span>
-                  <span className="col-span-2 text-right text-eva-white/50">{file.size}</span>
-                  <span className="col-span-2 text-right text-eva-white/40">{file.date}</span>
+                  <span className="col-span-2 text-right text-nerv-white/50">{file.size}</span>
+                  <span className="col-span-2 text-right text-nerv-white/40">{file.date}</span>
                 </div>
               ))}
             </div>
@@ -375,11 +375,11 @@ export default function FileManager() {
       </div>
 
       {/* ═══════ STATUS BAR ═══════ */}
-      <div className="border-t border-eva-white/10 px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
-        <span className="text-[9px] font-mono text-eva-white/30">
+      <div className="border-t border-nerv-white/10 px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+        <span className="text-[9px] font-mono text-nerv-white/30">
           {folderFiles.length} FILES \u2014 {totalSize} MB \u2014 LAST SYNC: 2015-06-22 14:30:00
         </span>
-        <span className="text-[9px] font-mono text-eva-white/30">
+        <span className="text-[9px] font-mono text-nerv-white/30">
           MAGI FILE SYSTEM v3.1.0 \u2014 ACCESS LEVEL: RESTRICTED
         </span>
       </div>

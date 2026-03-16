@@ -75,37 +75,37 @@ export default function HelpPage() {
     : currentFaqs;
 
   return (
-    <div className="min-h-screen bg-eva-black px-4 py-6 sm:px-6 sm:py-8">
+    <div className="min-h-screen bg-nerv-black px-4 py-6 sm:px-6 sm:py-8">
       <div className="mx-auto max-w-6xl space-y-6">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_18rem]">
           <div>
             <div className="flex flex-wrap items-center gap-3">
               <h1
-                className="text-2xl font-black uppercase tracking-[0.2em] text-eva-orange sm:text-3xl"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-2xl font-black uppercase tracking-[0.2em] text-nerv-orange sm:text-3xl"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 NERV SUPPORT TERMINAL
               </h1>
               <Badge label="HELP DESK" variant="info" size="sm" />
             </div>
-            <p className="mt-2 font-mono text-xs uppercase tracking-[0.18em] text-eva-white/40">
+            <p className="mt-2 font-mono text-xs uppercase tracking-[0.18em] text-nerv-white/40">
               KNOWLEDGE BASE / INCIDENT PROCEDURES / AUTHORIZED PERSONNEL
             </p>
           </div>
 
           <Card title="QUEUE STATUS">
-            <div className="space-y-2 font-mono text-xs text-eva-white/70">
-              <div className="flex items-center justify-between border-b border-eva-mid-gray/20 pb-2">
+            <div className="space-y-2 font-mono text-xs text-nerv-white/70">
+              <div className="flex items-center justify-between border-b border-nerv-mid-gray/20 pb-2">
                 <span>ACTIVE SECTION</span>
-                <span className="text-eva-cyan">{activeCategory.toUpperCase()}</span>
+                <span className="text-nerv-cyan">{activeCategory.toUpperCase()}</span>
               </div>
-              <div className="flex items-center justify-between border-b border-eva-mid-gray/20 pb-2">
+              <div className="flex items-center justify-between border-b border-nerv-mid-gray/20 pb-2">
                 <span>MATCHES</span>
-                <span className="text-eva-green">{String(filteredFaqs.length).padStart(2, "0")}</span>
+                <span className="text-nerv-green">{String(filteredFaqs.length).padStart(2, "0")}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span>SEARCH FILTER</span>
-                <span className={search.trim() ? "text-eva-orange" : "text-eva-white/40"}>
+                <span className={search.trim() ? "text-nerv-orange" : "text-nerv-white/40"}>
                   {search.trim() ? "ENGAGED" : "CLEAR"}
                 </span>
               </div>
@@ -148,7 +148,7 @@ export default function HelpPage() {
                   {filteredFaqs.map((faq) => (
                     <AccordionItem key={faq.id} id={faq.id} title={faq.question} color="orange">
                       <Card variant="hud" className="mt-1">
-                        <p className="text-eva-white/80 text-xs font-mono leading-relaxed">
+                        <p className="text-nerv-white/80 text-xs font-mono leading-relaxed">
                           {faq.answer}
                         </p>
                       </Card>
@@ -156,8 +156,8 @@ export default function HelpPage() {
                   ))}
                 </Accordion>
               ) : (
-                <div className="border border-eva-mid-gray/30 bg-eva-black/70 p-6 text-center">
-                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-eva-mid-gray">
+                <div className="border border-nerv-mid-gray/30 bg-nerv-black/70 p-6 text-center">
+                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-nerv-mid-gray">
                     NO MATCHING ENTRIES FOUND
                   </p>
                 </div>
@@ -169,8 +169,8 @@ export default function HelpPage() {
             <Card title="ESCALATION CHANNELS">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <p
-                  className="text-xs uppercase tracking-[0.18em] text-eva-white/45"
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  className="text-xs uppercase tracking-[0.18em] text-nerv-white/45"
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   Need more help?
                 </p>

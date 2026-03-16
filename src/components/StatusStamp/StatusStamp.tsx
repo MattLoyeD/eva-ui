@@ -93,7 +93,7 @@ export const StatusStamp = forwardRef<HTMLDivElement, StatusStampProps>(function
   } as CSSProperties;
 
   const containerClass = fullScreen
-    ? "fixed inset-0 z-50 flex items-center justify-center bg-eva-black/90"
+    ? "fixed inset-0 z-50 flex items-center justify-center bg-nerv-black/90"
     : "relative flex items-center justify-center";
 
   return (
@@ -125,7 +125,7 @@ export const StatusStamp = forwardRef<HTMLDivElement, StatusStampProps>(function
                       key={col}
                       className="font-bold uppercase tracking-[0.16em] whitespace-nowrap"
                       style={{
-                        fontFamily: "var(--font-eva-display)",
+                        fontFamily: "var(--font-nerv-display)",
                         fontSize: "clamp(1.4rem, 4.6vw, 3.4rem)",
                         color: colors.text,
                         textShadow: `0 0 8px ${colors.glow}`,
@@ -177,7 +177,7 @@ export const StatusStamp = forwardRef<HTMLDivElement, StatusStampProps>(function
                 <span
                   className="font-bold uppercase tracking-[0.18em] whitespace-nowrap"
                   style={{
-                    fontFamily: "var(--font-eva-display)",
+                    fontFamily: "var(--font-nerv-display)",
                     fontSize: "clamp(2rem, 8vw, 6rem)",
                     color: colors.text,
                     textShadow: `0 0 14px ${colors.glow}`,

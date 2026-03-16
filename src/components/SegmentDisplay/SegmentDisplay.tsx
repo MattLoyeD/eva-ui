@@ -197,7 +197,7 @@ export const SegmentDisplay = forwardRef<HTMLDivElement, SegmentDisplayProps>(
           <div
             className="text-xs font-bold uppercase tracking-[0.2em] mb-2"
             style={{
-              fontFamily: "var(--font-eva-display)",
+              fontFamily: "var(--font-nerv-display)",
               color: colors.on,
               textShadow: `0 0 8px ${colors.glow}`,
             }}

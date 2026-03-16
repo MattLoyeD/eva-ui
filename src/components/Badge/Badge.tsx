@@ -20,24 +20,24 @@ export interface BadgeProps
 
 const variantMap = {
   default: {
-    text: "text-eva-orange",
-    border: "border-eva-orange",
+    text: "text-nerv-orange",
+    border: "border-nerv-orange",
   },
   success: {
-    text: "text-eva-green",
-    border: "border-eva-green",
+    text: "text-nerv-green",
+    border: "border-nerv-green",
   },
   warning: {
-    text: "text-eva-orange",
-    border: "border-eva-orange",
+    text: "text-nerv-orange",
+    border: "border-nerv-orange",
   },
   danger: {
-    text: "text-eva-red",
-    border: "border-eva-red",
+    text: "text-nerv-red",
+    border: "border-nerv-red",
   },
   info: {
-    text: "text-eva-cyan",
-    border: "border-eva-cyan",
+    text: "text-nerv-cyan",
+    border: "border-nerv-cyan",
   },
 };
 
@@ -69,12 +69,12 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
           relative inline-flex items-center gap-1.5
           uppercase tracking-[0.15em] font-bold
           border ${v.border} ${v.text}
-          bg-eva-black
+          bg-nerv-black
           ${sizeMap[size]}
           select-none
           ${className}
         `}
-        style={{ fontFamily: "var(--font-eva-display)" }}
+        style={{ fontFamily: "var(--font-nerv-display)" }}
         {...rest}
       >
         {/* Corner accents */}
@@ -97,7 +97,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
               transition-opacity duration-100
               cursor-pointer text-current leading-none
             `}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
             aria-label={`Remove ${label}`}
           >
             X

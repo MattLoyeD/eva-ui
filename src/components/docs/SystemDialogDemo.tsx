@@ -19,7 +19,7 @@ export function SystemDialogNormalDemo() {
         onDecline={() => setOpen(false)}
         onClose={() => setOpen(false)}
       >
-        <p className="text-eva-white text-sm font-mono">
+        <p className="text-nerv-white text-sm font-mono">
           Routine maintenance scheduled for 0300 hours.
         </p>
       </SystemDialog>
@@ -44,7 +44,7 @@ export function SystemDialogWarningDemo() {
         onDecline={() => setOpen(false)}
         onClose={() => setOpen(false)}
       >
-        <p className="text-eva-white text-sm font-mono">
+        <p className="text-nerv-white text-sm font-mono">
           MAGI authorization required for Unit-01 activation.
         </p>
       </SystemDialog>
@@ -70,7 +70,7 @@ export function SystemDialogCriticalDemo() {
         onDecline={() => setOpen(false)}
         onClose={() => setOpen(false)}
       >
-        <p className="text-eva-white text-sm font-mono">
+        <p className="text-nerv-white text-sm font-mono">
           This action is irreversible. All personnel must evacuate.
         </p>
       </SystemDialog>

@@ -35,14 +35,14 @@ export const TitleScreen = forwardRef<HTMLDivElement, TitleScreenProps>(
     const dominantTitle = subtitle ? subtitle : title;
     const supportTitle = subtitle ? title : undefined;
     const serifStyle = {
-      fontFamily: "var(--font-eva-title)",
+      fontFamily: "var(--font-nerv-title)",
       fontStyle: "italic" as const,
       lineHeight: "0.9",
     };
     const railClass = "absolute h-px bg-white/10";
     const titleColor = "#E7E0D2";
     const metaStyle = {
-      fontFamily: "var(--font-eva-mono)",
+      fontFamily: "var(--font-nerv-mono)",
       letterSpacing: "0.3em",
       textTransform: "uppercase" as const,
     };

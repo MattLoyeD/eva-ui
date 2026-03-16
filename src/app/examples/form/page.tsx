@@ -90,23 +90,23 @@ export default function FormExample() {
   };
 
   return (
-    <div className="min-h-screen bg-eva-black">
+    <div className="min-h-screen bg-nerv-black">
       {/* Header */}
-      <div className="border-b border-eva-orange px-6 py-3">
+      <div className="border-b border-nerv-orange px-6 py-3">
         <h1
-          className="text-2xl uppercase tracking-[0.2em] text-eva-orange font-bold"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-2xl uppercase tracking-[0.2em] text-nerv-orange font-bold"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           DISPATCH ORDER FORM
         </h1>
-        <p className="text-[10px] font-mono text-eva-mid-gray mt-1">
+        <p className="text-[10px] font-mono text-nerv-mid-gray mt-1">
           NERV OPERATIONS DIVISION — UNIT DEPLOYMENT REQUEST
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
         {/* Form */}
-        <div className="col-span-full md:col-span-7 p-6 pt-6 md:pt-10 md:border-r border-eva-orange border-b md:border-b-0">
+        <div className="col-span-full md:col-span-7 p-6 pt-6 md:pt-10 md:border-r border-nerv-orange border-b md:border-b-0">
           <TargetingContainer label="OPERATOR DETAILS" color="orange">
             <div className="p-4 space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -211,7 +211,7 @@ export default function FormExample() {
               </div>
 
               {Object.keys(errors).length > 0 && (
-                <div className="text-eva-red text-[10px] font-mono uppercase tracking-wider">
+                <div className="text-nerv-red text-[10px] font-mono uppercase tracking-wider">
                   ⚠ {Object.values(errors).length} VALIDATION ERROR
                   {Object.values(errors).length > 1 ? "S" : ""} — RESOLVE
                   BEFORE SUBMISSION
@@ -273,10 +273,10 @@ export default function FormExample() {
               </div>
             ) : (
               <div className="p-8 text-center">
-                <div className="text-eva-mid-gray font-mono text-sm uppercase tracking-wider">
+                <div className="text-nerv-mid-gray font-mono text-sm uppercase tracking-wider">
                   AWAITING FORM SUBMISSION...
                 </div>
-                <div className="text-eva-mid-gray/50 font-mono text-[10px] mt-2">
+                <div className="text-nerv-mid-gray/50 font-mono text-[10px] mt-2">
                   DISPATCH OUTPUT WILL APPEAR HERE
                 </div>
               </div>
@@ -311,17 +311,17 @@ export default function FormExample() {
         onDecline={() => setShowConfirm(false)}
         onClose={() => setShowConfirm(false)}
       >
-        <div className="text-eva-white font-mono text-sm space-y-2">
+        <div className="text-nerv-white font-mono text-sm space-y-2">
           <p>
             Deploying{" "}
-            <span className="text-eva-cyan">{formData.unit || "N/A"}</span>{" "}
+            <span className="text-nerv-cyan">{formData.unit || "N/A"}</span>{" "}
             at priority{" "}
-            <span className="text-eva-orange">
+            <span className="text-nerv-orange">
               {formData.priority || "N/A"}
             </span>
             .
           </p>
-          <p className="text-eva-mid-gray text-xs">
+          <p className="text-nerv-mid-gray text-xs">
             This action will be logged and transmitted to Central Dogma.
           </p>
         </div>

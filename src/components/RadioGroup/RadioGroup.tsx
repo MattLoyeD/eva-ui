@@ -28,22 +28,22 @@ export interface RadioGroupProps
 
 const colorMap = {
   orange: {
-    text: "text-eva-orange",
-    selected: "text-eva-orange",
-    unselected: "text-eva-mid-gray",
-    label: "text-eva-orange",
+    text: "text-nerv-orange",
+    selected: "text-nerv-orange",
+    unselected: "text-nerv-mid-gray",
+    label: "text-nerv-orange",
   },
   green: {
-    text: "text-eva-green",
-    selected: "text-eva-green",
-    unselected: "text-eva-mid-gray",
-    label: "text-eva-green",
+    text: "text-nerv-green",
+    selected: "text-nerv-green",
+    unselected: "text-nerv-mid-gray",
+    label: "text-nerv-green",
   },
   cyan: {
-    text: "text-eva-cyan",
-    selected: "text-eva-cyan",
-    unselected: "text-eva-mid-gray",
-    label: "text-eva-cyan",
+    text: "text-nerv-cyan",
+    selected: "text-nerv-cyan",
+    unselected: "text-nerv-mid-gray",
+    label: "text-nerv-cyan",
   },
 };
 
@@ -63,7 +63,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     ref
   ) {
     const generatedId = useId();
-    const groupName = name || `eva-radio-${generatedId}`;
+    const groupName = name || `nerv-radio-${generatedId}`;
     const c = colorMap[color];
 
     return (
@@ -78,7 +78,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
         {label && (
           <div
             className={`text-[10px] uppercase tracking-[0.2em] font-bold ${c.label} mb-2`}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {label}
           </div>
@@ -118,7 +118,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
                 {/* Visual radio indicator */}
                 <span
                   className={`text-sm font-bold ${isSelected ? c.selected : c.unselected}`}
-                  style={{ fontFamily: "var(--font-eva-mono)" }}
+                  style={{ fontFamily: "var(--font-nerv-mono)" }}
                   aria-hidden="true"
                 >
                   {isSelected ? "(*)" : "( )"}
@@ -126,8 +126,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 
                 {/* Label text */}
                 <span
-                  className={`text-xs uppercase tracking-[0.15em] font-bold ${isSelected ? c.text : "text-eva-white"}`}
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  className={`text-xs uppercase tracking-[0.15em] font-bold ${isSelected ? c.text : "text-nerv-white"}`}
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   {option.label}
                 </span>

@@ -20,22 +20,22 @@ export interface BreadcrumbProps
 
 const colorMap = {
   orange: {
-    text: "text-eva-orange",
-    separator: "text-eva-orange/50",
-    current: "text-eva-white",
-    hover: "hover:text-eva-orange hover:underline",
+    text: "text-nerv-orange",
+    separator: "text-nerv-orange/50",
+    current: "text-nerv-white",
+    hover: "hover:text-nerv-orange hover:underline",
   },
   green: {
-    text: "text-eva-green",
-    separator: "text-eva-green/50",
-    current: "text-eva-white",
-    hover: "hover:text-eva-green hover:underline",
+    text: "text-nerv-green",
+    separator: "text-nerv-green/50",
+    current: "text-nerv-white",
+    hover: "hover:text-nerv-green hover:underline",
   },
   cyan: {
-    text: "text-eva-cyan",
-    separator: "text-eva-cyan/50",
-    current: "text-eva-white",
-    hover: "hover:text-eva-cyan hover:underline",
+    text: "text-nerv-cyan",
+    separator: "text-nerv-cyan/50",
+    current: "text-nerv-white",
+    hover: "hover:text-nerv-cyan hover:underline",
   },
 };
 
@@ -55,7 +55,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
       >
         <ol
           className="flex items-center gap-2 list-none m-0 p-0"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           {items.map((item, i) => {
             const isLast = i === items.length - 1;
@@ -65,7 +65,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
                 {i > 0 && (
                   <span
                     className={`text-[10px] ${c.separator} select-none`}
-                    style={{ fontFamily: "var(--font-eva-mono)" }}
+                    style={{ fontFamily: "var(--font-nerv-mono)" }}
                     aria-hidden="true"
                   >
                     {separator}

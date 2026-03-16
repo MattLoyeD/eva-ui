@@ -10,8 +10,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     h1: ({ children }) => (
       <h1
-        className="text-3xl md:text-4xl font-bold uppercase tracking-[0.2em] text-eva-orange mb-8 border-l-4 border-eva-orange pl-5"
-        style={{ fontFamily: "var(--font-eva-display)" }}
+        className="text-3xl md:text-4xl font-bold uppercase tracking-[0.2em] text-nerv-orange mb-8 border-l-4 border-nerv-orange pl-5"
+        style={{ fontFamily: "var(--font-nerv-display)" }}
       >
         {children}
       </h1>
@@ -19,8 +19,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     h2: ({ children }) => (
       <h2
-        className="text-2xl font-bold uppercase tracking-[0.15em] text-eva-orange mb-6 mt-14 border-b border-eva-mid-gray pb-3"
-        style={{ fontFamily: "var(--font-eva-display)" }}
+        className="text-2xl font-bold uppercase tracking-[0.15em] text-nerv-orange mb-6 mt-14 border-b border-nerv-mid-gray pb-3"
+        style={{ fontFamily: "var(--font-nerv-display)" }}
       >
         {children}
       </h2>
@@ -28,18 +28,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     h3: ({ children }) => (
       <h3
-        className="text-lg font-bold uppercase tracking-[0.1em] text-eva-green mb-4 mt-10"
-        style={{ fontFamily: "var(--font-eva-display)" }}
+        className="text-lg font-bold uppercase tracking-[0.1em] text-nerv-green mb-4 mt-10"
+        style={{ fontFamily: "var(--font-nerv-display)" }}
       >
-        <span className="text-eva-orange/40 mr-2">//</span>
+        <span className="text-nerv-orange/40 mr-2">//</span>
         {children}
       </h3>
     ),
 
     p: ({ children }) => (
       <p
-        className="text-eva-white leading-relaxed mb-5 text-sm"
-        style={{ fontFamily: "var(--font-eva-body)" }}
+        className="text-nerv-white leading-relaxed mb-5 text-sm"
+        style={{ fontFamily: "var(--font-nerv-body)" }}
       >
         {children}
       </p>
@@ -48,7 +48,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     a: ({ href, children }) => (
       <a
         href={href}
-        className="text-eva-cyan hover:text-eva-orange underline underline-offset-2 transition-colors"
+        className="text-nerv-cyan hover:text-nerv-orange underline underline-offset-2 transition-colors"
       >
         {children}
       </a>
@@ -65,8 +65,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       // Inline code
       return (
         <code
-          className="bg-eva-dark-gray text-eva-cyan px-1.5 py-0.5 text-xs border border-eva-mid-gray"
-          style={{ fontFamily: "var(--font-eva-mono)" }}
+          className="bg-nerv-dark-gray text-nerv-cyan px-1.5 py-0.5 text-xs border border-nerv-mid-gray"
+          style={{ fontFamily: "var(--font-nerv-mono)" }}
         >
           {children}
         </code>
@@ -80,7 +80,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     table: ({ children }) => (
       <div className="overflow-x-auto mb-8">
-        <table className="w-full text-sm border border-eva-mid-gray">
+        <table className="w-full text-sm border border-nerv-mid-gray">
           {children}
         </table>
       </div>
@@ -88,15 +88,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     th: ({ children }) => (
       <th
-        className="text-left px-4 py-3 bg-eva-dark-gray text-eva-orange uppercase tracking-wider text-xs border-b border-eva-mid-gray font-bold"
-        style={{ fontFamily: "var(--font-eva-display)" }}
+        className="text-left px-4 py-3 bg-nerv-dark-gray text-nerv-orange uppercase tracking-wider text-xs border-b border-nerv-mid-gray font-bold"
+        style={{ fontFamily: "var(--font-nerv-display)" }}
       >
         {children}
       </th>
     ),
 
     td: ({ children }) => (
-      <td className="px-4 py-3 text-white border-b border-eva-mid-gray/40 text-sm font-mono">
+      <td className="px-4 py-3 text-white border-b border-nerv-mid-gray/40 text-sm font-mono">
         {children}
       </td>
     ),
@@ -106,7 +106,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
 
     ol: ({ children }) => (
-      <ol className="mb-6 space-y-2 ml-4 list-decimal list-inside text-eva-orange">
+      <ol className="mb-6 space-y-2 ml-4 list-decimal list-inside text-nerv-orange">
         {children}
       </ol>
     ),
@@ -114,20 +114,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     li: ({ children }) => (
       <li
         className="text-white text-sm flex items-start gap-2"
-        style={{ fontFamily: "var(--font-eva-body)" }}
+        style={{ fontFamily: "var(--font-nerv-body)" }}
       >
-        <span className="text-eva-orange mt-1.5 text-[8px]">&#9654;</span>
+        <span className="text-nerv-orange mt-1.5 text-[8px]">&#9654;</span>
         <span>{children}</span>
       </li>
     ),
 
     blockquote: ({ children }) => (
-      <blockquote className="border-l-2 border-eva-orange bg-eva-dark-gray/50 pl-5 py-3 mb-6 text-white italic">
+      <blockquote className="border-l-2 border-nerv-orange bg-nerv-dark-gray/50 pl-5 py-3 mb-6 text-white italic">
         {children}
       </blockquote>
     ),
 
-    hr: () => <hr className="border-eva-mid-gray my-10" />,
+    hr: () => <hr className="border-nerv-mid-gray my-10" />,
 
     // ─── Custom components available in MDX ───
     ComponentPreview,

@@ -43,62 +43,62 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-eva-black py-8">
+    <div className="relative min-h-screen bg-nerv-black py-8">
       <HexGridBackground className="absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4">
         <div className="grid gap-6 lg:grid-cols-[18rem_minmax(0,1fr)]">
           <div className="space-y-4">
-            <div className="border border-eva-mid-gray/30 bg-eva-dark-gray/70 p-4">
-              <div className="text-[10px] uppercase tracking-[0.24em] text-eva-orange">
+            <div className="border border-nerv-mid-gray/30 bg-nerv-dark-gray/70 p-4">
+              <div className="text-[10px] uppercase tracking-[0.24em] text-nerv-orange">
                 REGISTRATION DIVISION
               </div>
               <h1
-                className="mt-3 text-3xl font-black uppercase tracking-[0.2em] text-eva-white"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="mt-3 text-3xl font-black uppercase tracking-[0.2em] text-nerv-white"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 PERSONNEL INTAKE
               </h1>
-              <p className="mt-3 font-mono text-xs leading-relaxed text-eva-white/65">
+              <p className="mt-3 font-mono text-xs leading-relaxed text-nerv-white/65">
                 New personnel registration is handled like an intake terminal:
                 identity, department, clearance and protocol acknowledgement in one
                 controlled dossier.
               </p>
             </div>
 
-            <div className="border border-eva-mid-gray/30 bg-eva-black/80 p-4">
-              <div className="text-[10px] uppercase tracking-[0.22em] text-eva-cyan">
+            <div className="border border-nerv-mid-gray/30 bg-nerv-black/80 p-4">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-nerv-cyan">
                 DOSSIER CHECKLIST
               </div>
-              <div className="mt-3 space-y-2 font-mono text-xs text-eva-white/70">
-                <div className="flex items-center justify-between border-b border-eva-mid-gray/20 pb-2">
+              <div className="mt-3 space-y-2 font-mono text-xs text-nerv-white/70">
+                <div className="flex items-center justify-between border-b border-nerv-mid-gray/20 pb-2">
                   <span>IDENTITY FIELDS</span>
-                  <span className="text-eva-green">REQUIRED</span>
+                  <span className="text-nerv-green">REQUIRED</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-eva-mid-gray/20 pb-2">
+                <div className="flex items-center justify-between border-b border-nerv-mid-gray/20 pb-2">
                   <span>DEPARTMENT</span>
-                  <span className="text-eva-cyan">MANDATORY</span>
+                  <span className="text-nerv-cyan">MANDATORY</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-eva-mid-gray/20 pb-2">
+                <div className="flex items-center justify-between border-b border-nerv-mid-gray/20 pb-2">
                   <span>CLEARANCE</span>
-                  <span className="text-eva-orange">DECLARED</span>
+                  <span className="text-nerv-orange">DECLARED</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>REVIEW MODE</span>
-                  <span className="text-eva-red">MANUAL</span>
+                  <span className="text-nerv-red">MANUAL</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="border border-eva-orange/30 bg-eva-black/80">
-            <div className="border-b border-eva-orange/30 px-6 py-5 sm:px-8">
-              <div className="text-[10px] uppercase tracking-[0.24em] text-eva-white/35">
+          <div className="border border-nerv-orange/30 bg-nerv-black/80">
+            <div className="border-b border-nerv-orange/30 px-6 py-5 sm:px-8">
+              <div className="text-[10px] uppercase tracking-[0.24em] text-nerv-white/35">
                 NERV HEADQUARTERS / PERSONNEL ONBOARDING
               </div>
               <h2
-                className="mt-2 text-4xl font-black uppercase tracking-[0.22em] text-eva-orange"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="mt-2 text-4xl font-black uppercase tracking-[0.22em] text-nerv-orange"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 REGISTRATION DOSSIER
               </h2>
@@ -179,7 +179,7 @@ export default function RegisterPage() {
                 />
               </div>
 
-              <div className="space-y-3 border border-eva-mid-gray/20 bg-eva-dark-gray/50 px-4 py-4">
+              <div className="space-y-3 border border-nerv-mid-gray/20 bg-nerv-dark-gray/50 px-4 py-4">
                 <Checkbox
                   label="I ACCEPT THE NERV PERSONNEL CODE OF CONDUCT"
                   checked={acceptCode}
@@ -204,9 +204,9 @@ export default function RegisterPage() {
                 REGISTER DOSSIER
               </Button>
 
-              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-eva-white/40">
+              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-nerv-white/40">
                 Already registered?{" "}
-                <Link href="/examples/auth/login" className="text-eva-orange hover:underline">
+                <Link href="/examples/auth/login" className="text-nerv-orange hover:underline">
                   Access terminal
                 </Link>
               </div>
@@ -216,7 +216,7 @@ export default function RegisterPage() {
       </div>
 
       <div className="relative z-10 mt-8 text-center">
-        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-eva-mid-gray/50">
+        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-nerv-mid-gray/50">
           NERV HEADQUARTERS — REGISTRATION DIVISION
         </p>
       </div>

@@ -22,22 +22,22 @@ export interface ToggleProps
 
 const colorMap = {
   orange: {
-    active: "bg-eva-orange",
-    text: "text-eva-orange",
-    border: "border-eva-orange",
-    label: "text-eva-orange",
+    active: "bg-nerv-orange",
+    text: "text-nerv-orange",
+    border: "border-nerv-orange",
+    label: "text-nerv-orange",
   },
   green: {
-    active: "bg-eva-green",
-    text: "text-eva-green",
-    border: "border-eva-green",
-    label: "text-eva-green",
+    active: "bg-nerv-green",
+    text: "text-nerv-green",
+    border: "border-nerv-green",
+    label: "text-nerv-green",
   },
   cyan: {
-    active: "bg-eva-cyan",
-    text: "text-eva-cyan",
-    border: "border-eva-cyan",
-    label: "text-eva-cyan",
+    active: "bg-nerv-cyan",
+    text: "text-nerv-cyan",
+    border: "border-nerv-cyan",
+    label: "text-nerv-cyan",
   },
 };
 
@@ -92,8 +92,8 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(
           onKeyDown={handleKeyDown}
           className={`
             relative ${s.track} border
-            ${checked ? c.border : "border-eva-mid-gray"}
-            bg-eva-black
+            ${checked ? c.border : "border-nerv-mid-gray"}
+            bg-nerv-black
             ${disabled ? "opacity-30 cursor-not-allowed" : "cursor-pointer"}
             transition-all duration-150 select-none
             flex items-center
@@ -103,9 +103,9 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(
           <span
             className={`
               absolute left-1 ${s.text} uppercase font-bold tracking-wider
-              ${checked ? "opacity-20" : "opacity-60"} text-eva-mid-gray
+              ${checked ? "opacity-20" : "opacity-60"} text-nerv-mid-gray
             `}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
             aria-hidden="true"
           >
             OFF
@@ -117,7 +117,7 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(
               absolute right-1 ${s.text} uppercase font-bold tracking-wider
               ${checked ? `${c.text} opacity-100` : "opacity-0"}
             `}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
             aria-hidden="true"
           >
             ON
@@ -128,7 +128,7 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(
             className={`
               absolute top-0.5 ${s.thumb}
               transition-all duration-150
-              ${checked ? `${c.active} right-0.5 left-auto` : "bg-eva-mid-gray left-0.5 right-auto"}
+              ${checked ? `${c.active} right-0.5 left-auto` : "bg-nerv-mid-gray left-0.5 right-auto"}
             `}
             style={{
               boxShadow: checked
@@ -142,7 +142,7 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(
         {label && (
           <span
             className={`text-xs uppercase tracking-[0.2em] font-bold ${c.label}`}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {label}
           </span>

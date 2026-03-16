@@ -24,21 +24,21 @@ export interface DrawerProps
 
 const colorMap = {
   orange: {
-    border: "border-eva-orange",
-    text: "text-eva-orange",
-    hazard: "bg-eva-orange",
+    border: "border-nerv-orange",
+    text: "text-nerv-orange",
+    hazard: "bg-nerv-orange",
     glow: "rgba(255, 153, 0, 0.08)",
   },
   green: {
-    border: "border-eva-green",
-    text: "text-eva-green",
-    hazard: "bg-eva-green",
+    border: "border-nerv-green",
+    text: "text-nerv-green",
+    hazard: "bg-nerv-green",
     glow: "rgba(0, 255, 0, 0.08)",
   },
   cyan: {
-    border: "border-eva-cyan",
-    text: "text-eva-cyan",
-    hazard: "bg-eva-cyan",
+    border: "border-nerv-cyan",
+    text: "text-nerv-cyan",
+    hazard: "bg-nerv-cyan",
     glow: "rgba(0, 255, 255, 0.08)",
   },
 };
@@ -93,7 +93,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
               className={`
                 absolute top-0 bottom-0
                 ${isRight ? "right-0" : "left-0"}
-                bg-eva-black ${c.border}
+                bg-nerv-black ${c.border}
                 ${isRight ? "border-l-2" : "border-r-2"}
                 flex flex-col
                 ${className}
@@ -109,11 +109,11 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
               {/* Title bar */}
               {title && (
                 <div
-                  className={`flex items-center justify-between px-4 py-3 border-b ${c.border} bg-eva-dark-gray flex-shrink-0`}
+                  className={`flex items-center justify-between px-4 py-3 border-b ${c.border} bg-nerv-dark-gray flex-shrink-0`}
                 >
                   <h2
                     className={`text-sm uppercase tracking-[0.2em] font-bold ${c.text}`}
-                    style={{ fontFamily: "var(--font-eva-display)" }}
+                    style={{ fontFamily: "var(--font-nerv-display)" }}
                   >
                     {title}
                   </h2>
@@ -122,11 +122,11 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
                     onClick={onClose}
                     aria-label="Close drawer"
                     className={`
-                      text-xs font-bold ${c.text} bg-transparent border border-eva-mid-gray
+                      text-xs font-bold ${c.text} bg-transparent border border-nerv-mid-gray
                       px-2 py-1 cursor-pointer transition-colors duration-100
-                      hover:border-current hover:bg-current hover:text-eva-black
+                      hover:border-current hover:bg-current hover:text-nerv-black
                     `}
-                    style={{ fontFamily: "var(--font-eva-mono)" }}
+                    style={{ fontFamily: "var(--font-nerv-mono)" }}
                   >
                     [X]
                   </button>

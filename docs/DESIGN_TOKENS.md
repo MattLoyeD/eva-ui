@@ -3,7 +3,7 @@
 ```
 ╔══════════════════════════════════════════════════════════╗
 ║  NERV TECHNICAL DOCUMENTATION — VISUAL SYSTEMS          ║
-║  EvaUI Design Tokens — Color, Typography & Animation     ║
+║  NERV-UI Design Tokens — Color, Typography & Animation     ║
 ╚══════════════════════════════════════════════════════════╝
 ```
 
@@ -17,19 +17,19 @@ All design tokens are defined in `src/app/globals.css` using Tailwind CSS 4's `@
 
 | Token | Hex | Tailwind Class | Usage |
 |-------|-----|----------------|-------|
-| `--color-eva-black` | `#000000` | `bg-eva-black` | Primary background, the void |
-| `--color-eva-red` | `#FF0000` | `text-eva-red` | Emergency alerts, danger states |
-| `--color-eva-orange` | `#FF9900` | `text-eva-orange` | Primary text, UI accents, default |
-| `--color-eva-green` | `#00FF00` | `text-eva-green` | Terminal text, grid lines, nominal |
-| `--color-eva-cyan` | `#00FFFF` | `text-eva-cyan` | Data readouts, information |
-| `--color-eva-amber` | `#FFAA00` | `text-eva-amber` | Warning states |
-| `--color-eva-white` | `#E0E0E0` | `text-eva-white` | High-contrast text |
-| `--color-eva-dark-gray` | `#1A1A1A` | `bg-eva-dark-gray` | Panel backgrounds |
-| `--color-eva-mid-gray` | `#333333` | `border-eva-mid-gray` | Borders, dividers |
-| `--color-eva-panel` | `#0A0A0A` | `bg-eva-panel` | Scrollbar track, panels |
-| `--color-eva-purple` | `#9933FF` | `text-eva-purple` | Special indicators |
-| `--color-eva-magenta` | `#FF00FF` | `text-eva-magenta` | Waveform accents |
-| `--color-eva-lcd-green` | `#39FF14` | `text-eva-lcd-green` | LCD displays, timers |
+| `--color-nerv-black` | `#000000` | `bg-nerv-black` | Primary background, the void |
+| `--color-nerv-red` | `#FF0000` | `text-nerv-red` | Emergency alerts, danger states |
+| `--color-nerv-orange` | `#FF9900` | `text-nerv-orange` | Primary text, UI accents, default |
+| `--color-nerv-green` | `#00FF00` | `text-nerv-green` | Terminal text, grid lines, nominal |
+| `--color-nerv-cyan` | `#00FFFF` | `text-nerv-cyan` | Data readouts, information |
+| `--color-nerv-amber` | `#FFAA00` | `text-nerv-amber` | Warning states |
+| `--color-nerv-white` | `#E0E0E0` | `text-nerv-white` | High-contrast text |
+| `--color-nerv-dark-gray` | `#1A1A1A` | `bg-nerv-dark-gray` | Panel backgrounds |
+| `--color-nerv-mid-gray` | `#333333` | `border-nerv-mid-gray` | Borders, dividers |
+| `--color-nerv-panel` | `#0A0A0A` | `bg-nerv-panel` | Scrollbar track, panels |
+| `--color-nerv-purple` | `#9933FF` | `text-nerv-purple` | Special indicators |
+| `--color-nerv-magenta` | `#FF00FF` | `text-nerv-magenta` | Waveform accents |
+| `--color-nerv-lcd-green` | `#39FF14` | `text-nerv-lcd-green` | LCD displays, timers |
 
 ### Semantic Aliases
 
@@ -53,10 +53,10 @@ These aliases map to specific use cases in the interface:
 
 | Token | Fonts | Tailwind Usage | Role |
 |-------|-------|----------------|------|
-| `--font-eva-display` | Oswald, Impact, Arial Narrow, system-ui | `font-[var(--font-eva-display)]` | Section headers, labels, all-caps display |
-| `--font-eva-mono` | Fira Code, JetBrains Mono, Courier New, monospace | `font-mono` | Terminal output, data readouts, code |
-| `--font-eva-body` | Barlow Condensed, Arial Narrow, system-ui | Default body font | Body text, descriptions |
-| `--font-eva-title` | Noto Serif JP, Playfair Display, Georgia, serif | `font-[var(--font-eva-title)]` | Cinematic title screens |
+| `--font-nerv-display` | Oswald, Impact, Arial Narrow, system-ui | `font-[var(--font-nerv-display)]` | Section headers, labels, all-caps display |
+| `--font-nerv-mono` | Fira Code, JetBrains Mono, Courier New, monospace | `font-mono` | Terminal output, data readouts, code |
+| `--font-nerv-body` | Barlow Condensed, Arial Narrow, system-ui | Default body font | Body text, descriptions |
+| `--font-nerv-title` | Noto Serif JP, Playfair Display, Georgia, serif | `font-[var(--font-nerv-title)]` | Cinematic title screens |
 
 ### Font Loading
 
@@ -80,17 +80,17 @@ Fonts are loaded via Google Fonts CDN in `layout.tsx`:
 ### Text Glow Effects
 
 ```css
-.eva-text-shadow-orange   /* 0 0 4px #FF9900, 0 0 8px rgba(255,153,0,0.3) */
-.eva-text-shadow-red      /* 0 0 4px #FF0000, 0 0 8px rgba(255,0,0,0.3)   */
-.eva-text-shadow-green    /* 0 0 4px #00FF00, 0 0 8px rgba(0,255,0,0.3)   */
-.eva-text-shadow-cyan     /* 0 0 4px #00FFFF, 0 0 8px rgba(0,255,255,0.3) */
+.nerv-text-shadow-orange   /* 0 0 4px #FF9900, 0 0 8px rgba(255,153,0,0.3) */
+.nerv-text-shadow-red      /* 0 0 4px #FF0000, 0 0 8px rgba(255,0,0,0.3)   */
+.nerv-text-shadow-green    /* 0 0 4px #00FF00, 0 0 8px rgba(0,255,0,0.3)   */
+.nerv-text-shadow-cyan     /* 0 0 4px #00FFFF, 0 0 8px rgba(0,255,255,0.3) */
 ```
 
 ### Border Glow Effects
 
 ```css
-.eva-border-glow-orange   /* box-shadow: 0 0 4px rgba(255,153,0,0.3), inset 0 0 4px rgba(255,153,0,0.1) */
-.eva-border-glow-red      /* box-shadow: 0 0 8px rgba(255,0,0,0.4), inset 0 0 4px rgba(255,0,0,0.1)     */
+.nerv-border-glow-orange   /* box-shadow: 0 0 4px rgba(255,153,0,0.3), inset 0 0 4px rgba(255,153,0,0.1) */
+.nerv-border-glow-red      /* box-shadow: 0 0 8px rgba(255,0,0,0.4), inset 0 0 4px rgba(255,0,0,0.1)     */
 ```
 
 ### Hazard Stripes
@@ -110,10 +110,10 @@ Both use `repeating-linear-gradient(-45deg, ...)` with a continuous `hazard-scro
 
 | Animation | Duration | Description |
 |-----------|----------|-------------|
-| `eva-flicker` | Irregular | Rapid opacity flicker (CRT malfunction) |
-| `eva-blink-hard` | Binary | Hard on/off blink (50% duty cycle) |
-| `eva-pulse` | Smooth | Gentle opacity pulse (1 → 0.6 → 1) |
-| `eva-glow` | Smooth | Text shadow intensification pulse |
+| `nerv-flicker` | Irregular | Rapid opacity flicker (CRT malfunction) |
+| `nerv-blink-hard` | Binary | Hard on/off blink (50% duty cycle) |
+| `nerv-pulse` | Smooth | Gentle opacity pulse (1 → 0.6 → 1) |
+| `nerv-glow` | Smooth | Text shadow intensification pulse |
 | `cursor-blink` | Binary | Terminal cursor blink |
 | `typewriter-cursor` | Binary | Typewriter border-color blink |
 | `data-scroll` | Linear | Vertical scroll translate (for data feeds) |

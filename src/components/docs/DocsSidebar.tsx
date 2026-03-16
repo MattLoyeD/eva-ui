@@ -45,57 +45,57 @@ function SidebarContent({
   return (
     <div className="flex h-full flex-col bg-[linear-gradient(180deg,#141414_0%,#0a0a0a_35%,#050505_100%)]">
       {/* Logo / back link */}
-      <div className="border-b border-eva-mid-gray/80 px-4 py-4 shrink-0">
+      <div className="border-b border-nerv-mid-gray/80 px-4 py-4 shrink-0">
         <div className="mb-2 flex items-center justify-between">
           <span
-            className="text-[9px] uppercase tracking-[0.22em] text-eva-green"
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            className="text-[9px] uppercase tracking-[0.22em] text-nerv-green"
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             inspect.mode
           </span>
           <span
-            className="border border-eva-orange/45 px-1.5 py-0.5 text-[8px] uppercase tracking-[0.18em] text-eva-orange"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="border border-nerv-orange/45 px-1.5 py-0.5 text-[8px] uppercase tracking-[0.18em] text-nerv-orange"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             online
           </span>
         </div>
         <Link
           href="/"
-          className="text-eva-orange hover:text-eva-cyan transition-colors text-[10px] uppercase tracking-[0.22em] font-bold"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-nerv-orange hover:text-nerv-cyan transition-colors text-[10px] uppercase tracking-[0.22em] font-bold"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
           onClick={onLinkClick}
         >
           &larr; COMMAND CENTER
         </Link>
         <div
-          className="mt-3 text-lg uppercase tracking-[0.18em] text-eva-orange font-bold"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="mt-3 text-lg uppercase tracking-[0.18em] text-nerv-orange font-bold"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
-          EVA-UI
+          NERV-UI
         </div>
-        <div className="mt-1 text-[10px] font-mono text-eva-white/62">
+        <div className="mt-1 text-[10px] font-mono text-nerv-white/62">
           NERV DOCUMENTATION INSPECTION
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
-          <div className="border border-eva-mid-gray/70 px-2 py-1.5">
-            <div className="text-[8px] uppercase tracking-[0.18em] text-eva-white/35">
+          <div className="border border-nerv-mid-gray/70 px-2 py-1.5">
+            <div className="text-[8px] uppercase tracking-[0.18em] text-nerv-white/35">
               sections
             </div>
             <div
-              className="text-sm uppercase tracking-[0.12em] text-eva-orange"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-sm uppercase tracking-[0.12em] text-nerv-orange"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {String(docsNavigation.length).padStart(2, "0")}
             </div>
           </div>
-          <div className="border border-eva-mid-gray/70 px-2 py-1.5">
-            <div className="text-[8px] uppercase tracking-[0.18em] text-eva-white/35">
+          <div className="border border-nerv-mid-gray/70 px-2 py-1.5">
+            <div className="text-[8px] uppercase tracking-[0.18em] text-nerv-white/35">
               modules
             </div>
             <div
-              className="text-sm uppercase tracking-[0.12em] text-eva-cyan"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-sm uppercase tracking-[0.12em] text-nerv-cyan"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {String(moduleCount).padStart(2, "0")}
             </div>
@@ -117,10 +117,10 @@ function SidebarContent({
                 type="button"
                 onClick={() => toggleSection(si)}
                 className={`
-                  w-full flex items-center justify-between border border-eva-mid-gray/70 px-3 py-2 text-[10px] uppercase tracking-[0.24em] font-bold cursor-pointer transition-colors
-                  ${sectionHasActive ? "text-eva-orange bg-white/[0.02]" : "text-eva-orange/60 hover:text-eva-orange/85"}
+                  w-full flex items-center justify-between border border-nerv-mid-gray/70 px-3 py-2 text-[10px] uppercase tracking-[0.24em] font-bold cursor-pointer transition-colors
+                  ${sectionHasActive ? "text-nerv-orange bg-white/[0.02]" : "text-nerv-orange/60 hover:text-nerv-orange/85"}
                 `}
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 <span className="flex items-center gap-2 text-left">
                   <span className="opacity-45">
@@ -144,7 +144,7 @@ function SidebarContent({
               </button>
 
               {isExpanded && (
-                <ul className="border-x border-b border-eva-mid-gray/70 bg-black/55 py-1">
+                <ul className="border-x border-b border-nerv-mid-gray/70 bg-black/55 py-1">
                   {section.items.map((item) => {
                     const isActive = pathname === item.href;
                     return (
@@ -157,15 +157,15 @@ function SidebarContent({
                             border-l
                             ${
                               isActive
-                                ? "text-eva-orange border-eva-orange bg-white/[0.03] font-bold"
-                                : "text-white/78 border-transparent hover:text-eva-orange hover:border-eva-orange/45"
+                                ? "text-nerv-orange border-nerv-orange bg-white/[0.03] font-bold"
+                                : "text-white/78 border-transparent hover:text-nerv-orange hover:border-nerv-orange/45"
                             }
                           `}
-                          style={{ fontFamily: "var(--font-eva-display)" }}
+                          style={{ fontFamily: "var(--font-nerv-display)" }}
                         >
                           <span
-                            className={`${isActive ? "text-eva-green" : "text-eva-white/25"}`}
-                            style={{ fontFamily: "var(--font-eva-mono)" }}
+                            className={`${isActive ? "text-nerv-green" : "text-nerv-white/25"}`}
+                            style={{ fontFamily: "var(--font-nerv-mono)" }}
                           >
                             //
                           </span>
@@ -181,10 +181,10 @@ function SidebarContent({
         })}
 
         {/* Quick links */}
-        <div className="mt-1 border-t border-eva-mid-gray/70 px-1.5 pt-3 pb-2">
+        <div className="mt-1 border-t border-nerv-mid-gray/70 px-1.5 pt-3 pb-2">
           <div
-            className="px-2 pb-2 text-[9px] uppercase tracking-[0.2em] text-eva-white/35"
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            className="px-2 pb-2 text-[9px] uppercase tracking-[0.2em] text-nerv-white/35"
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             external relays
           </div>
@@ -193,8 +193,8 @@ function SidebarContent({
               key={link.href}
               href={link.href}
               onClick={onLinkClick}
-              className="flex items-center gap-2 border border-eva-mid-gray/70 px-3 py-2 text-[10px] uppercase tracking-[0.22em] font-bold text-eva-cyan/75 hover:text-eva-cyan transition-colors mb-2"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="flex items-center gap-2 border border-nerv-mid-gray/70 px-3 py-2 text-[10px] uppercase tracking-[0.22em] font-bold text-nerv-cyan/75 hover:text-nerv-cyan transition-colors mb-2"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="square" strokeLinejoin="miter" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -206,9 +206,9 @@ function SidebarContent({
       </div>
 
       {/* Footer */}
-      <div className="border-t border-eva-mid-gray/80 px-4 py-3 shrink-0">
-        <div className="space-y-1 text-[9px] font-mono text-eva-white/60">
-          <div>EVA-UI v0.7.0</div>
+      <div className="border-t border-nerv-mid-gray/80 px-4 py-3 shrink-0">
+        <div className="space-y-1 text-[9px] font-mono text-nerv-white/60">
+          <div>NERV-UI v0.7.0</div>
           <div>INSPECTION ROUTER // READY</div>
         </div>
       </div>
@@ -226,11 +226,11 @@ export function DocsSidebar() {
   return (
     <>
       {/* Mobile top bar */}
-      <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between h-14 px-4 bg-[linear-gradient(90deg,#151515_0%,#0b0b0b_70%)] border-b border-eva-mid-gray/80 lg:hidden">
+      <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between h-14 px-4 bg-[linear-gradient(90deg,#151515_0%,#0b0b0b_70%)] border-b border-nerv-mid-gray/80 lg:hidden">
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
-          className="text-eva-orange hover:text-eva-cyan transition-colors p-1 cursor-pointer"
+          className="text-nerv-orange hover:text-nerv-cyan transition-colors p-1 cursor-pointer"
           aria-label="Open navigation menu"
         >
           <svg
@@ -249,28 +249,28 @@ export function DocsSidebar() {
         </button>
         <div className="ml-3 mr-auto">
           <div
-            className="text-sm uppercase tracking-[0.16em] text-eva-orange font-bold"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-sm uppercase tracking-[0.16em] text-nerv-orange font-bold"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
-            EVA-UI DOCS
+            NERV-UI DOCS
           </div>
           <div
-            className="text-[8px] uppercase tracking-[0.18em] text-eva-white/35"
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            className="text-[8px] uppercase tracking-[0.18em] text-nerv-white/35"
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             inspection terminal
           </div>
         </div>
         <span
-          className="border border-eva-green/45 px-1.5 py-0.5 text-[8px] uppercase tracking-[0.18em] text-eva-green"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="border border-nerv-green/45 px-1.5 py-0.5 text-[8px] uppercase tracking-[0.18em] text-nerv-green"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           live
         </span>
       </div>
 
       {/* Desktop sidebar */}
-      <nav className="docs-sidebar-shell hidden lg:block fixed top-0 left-0 h-screen border-r border-eva-mid-gray/80 z-30">
+      <nav className="docs-sidebar-shell hidden lg:block fixed top-0 left-0 h-screen border-r border-nerv-mid-gray/80 z-30">
         <SidebarContent />
       </nav>
 
@@ -285,12 +285,12 @@ export function DocsSidebar() {
           />
 
           {/* Sidebar panel */}
-          <nav className="relative w-[22rem] max-w-[88vw] h-full border-r border-eva-mid-gray/80 shadow-2xl">
+          <nav className="relative w-[22rem] max-w-[88vw] h-full border-r border-nerv-mid-gray/80 shadow-2xl">
             {/* Close button */}
             <button
               type="button"
               onClick={closeMobile}
-              className="absolute top-3 right-3 text-eva-white hover:text-eva-orange transition-colors p-1 cursor-pointer z-10"
+              className="absolute top-3 right-3 text-nerv-white hover:text-nerv-orange transition-colors p-1 cursor-pointer z-10"
               aria-label="Close navigation menu"
             >
               <svg

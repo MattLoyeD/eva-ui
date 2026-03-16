@@ -14,38 +14,38 @@ const VARIANT_CONFIG: Record<
   info: {
     prefix: "[SYS]",
     borderColor: "border-l-data-blue",
-    textColor: "text-eva-cyan",
+    textColor: "text-nerv-cyan",
     glowColor: "rgba(0, 255, 255, 0.15)",
   },
   success: {
     prefix: "[OK]",
     borderColor: "border-l-grid-green",
-    textColor: "text-eva-green",
+    textColor: "text-nerv-green",
     glowColor: "rgba(0, 255, 0, 0.15)",
   },
   warning: {
     prefix: "[WARN]",
     borderColor: "border-l-text-orange",
-    textColor: "text-eva-orange",
+    textColor: "text-nerv-orange",
     glowColor: "rgba(255, 153, 0, 0.15)",
   },
   error: {
     prefix: "[ERR]",
     borderColor: "border-l-alert-red",
-    textColor: "text-eva-red",
+    textColor: "text-nerv-red",
     glowColor: "rgba(255, 0, 0, 0.15)",
   },
   critical: {
     prefix: "[CRITICAL]",
-    borderColor: "border-l-eva-magenta",
-    textColor: "text-eva-magenta",
+    borderColor: "border-l-nerv-magenta",
+    textColor: "text-nerv-magenta",
     glowColor: "rgba(255, 0, 255, 0.2)",
   },
 };
 
 // ─── Single Toast Item ───────────────────────────────────
 
-function EvaToast({ id, message, variant, duration }: Toast) {
+function NervToast({ id, message, variant, duration }: Toast) {
   const ctx = useContext(ToastContext);
   const config = VARIANT_CONFIG[variant];
 
@@ -65,12 +65,12 @@ function EvaToast({ id, message, variant, duration }: Toast) {
       transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
       className={`
         relative w-80 border-l-4 ${config.borderColor}
-        bg-eva-black border border-eva-mid-gray
+        bg-nerv-black border border-nerv-mid-gray
         px-4 py-3 cursor-pointer select-none
       `}
       style={{
         boxShadow: `0 0 12px ${config.glowColor}, inset 0 0 8px rgba(0,0,0,0.5)`,
-        fontFamily: "var(--font-eva-mono)",
+        fontFamily: "var(--font-nerv-mono)",
       }}
       onClick={() => ctx?.removeToast(id)}
     >
@@ -120,7 +120,7 @@ export function ToastContainer() {
       <AnimatePresence mode="popLayout">
         {ctx.toasts.map((toast) => (
           <div key={toast.id} className="pointer-events-auto">
-            <EvaToast {...toast} />
+            <NervToast {...toast} />
           </div>
         ))}
       </AnimatePresence>

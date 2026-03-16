@@ -39,10 +39,10 @@ interface AccordionContextValue {
 const AccordionContext = createContext<AccordionContextValue | null>(null);
 
 const COLOR_MAP: Record<string, string> = {
-  cyan: "text-eva-cyan",
-  white: "text-eva-white",
-  orange: "text-eva-orange",
-  green: "text-eva-green",
+  cyan: "text-nerv-cyan",
+  white: "text-nerv-white",
+  orange: "text-nerv-orange",
+  green: "text-nerv-green",
 };
 
 // --- Accordion Container ---
@@ -80,7 +80,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
       <AccordionContext.Provider value={{ openIds, toggle }}>
         <div
           ref={ref}
-          className={`border border-eva-mid-gray bg-eva-black ${className}`}
+          className={`border border-nerv-mid-gray bg-nerv-black ${className}`}
           {...rest}
         >
           {children}
@@ -105,31 +105,31 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   ) {
     const ctx = useContext(AccordionContext);
     if (!ctx) {
-      throw new Error("[EvaUI] AccordionItem must be used inside Accordion.");
+      throw new Error("[NERV-UI] AccordionItem must be used inside Accordion.");
     }
 
     const isOpen = ctx.openIds.has(id);
     const textColor = COLOR_MAP[color] ?? COLOR_MAP.cyan;
 
     return (
-      <div ref={ref} className="border-b border-eva-mid-gray/40 last:border-b-0" {...rest}>
+      <div ref={ref} className="border-b border-nerv-mid-gray/40 last:border-b-0" {...rest}>
         {/* Header -- clickable */}
         <button
           onClick={() => ctx.toggle(id)}
           className="w-full flex items-center justify-between px-4 py-3 text-left
-            hover:bg-eva-white/[0.03] transition-colors cursor-pointer group"
+            hover:bg-nerv-white/[0.03] transition-colors cursor-pointer group"
         >
           <span
             className={`text-xs uppercase tracking-[0.15em] ${textColor}`}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             {title}
           </span>
 
           {/* Terminal-style toggle icon */}
           <span
-            className="text-[10px] text-eva-white/50 group-hover:text-eva-white/80 transition-colors"
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            className="text-[10px] text-nerv-white/50 group-hover:text-nerv-white/80 transition-colors"
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             {isOpen ? "[ - ]" : "[ + ]"}
           </span>
@@ -146,7 +146,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
               transition={{ duration: 0.15, ease: "linear" }}
               className="overflow-hidden"
             >
-              <div className="px-4 pb-4 pt-1 border-t border-eva-mid-gray/20">
+              <div className="px-4 pb-4 pt-1 border-t border-nerv-mid-gray/20">
                 {children}
               </div>
             </motion.div>

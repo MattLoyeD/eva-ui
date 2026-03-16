@@ -88,12 +88,12 @@ function MagiColumn({ vote, index }: { vote: MagiVote; index: number }) {
 
   const statusColor =
     vote.status === "accepted"
-      ? "text-eva-orange"
+      ? "text-nerv-orange"
       : vote.status === "rejected"
-        ? "text-eva-red"
+        ? "text-nerv-red"
         : vote.status === "computing"
-          ? "text-eva-cyan"
-          : "text-eva-green";
+          ? "text-nerv-cyan"
+          : "text-nerv-green";
 
   const statusLabel =
     vote.status === "accepted"
@@ -105,16 +105,16 @@ function MagiColumn({ vote, index }: { vote: MagiVote; index: number }) {
           : "STANDBY";
 
   return (
-    <div className="flex flex-col md:border-r border-eva-mid-gray last:border-r-0 bg-eva-black overflow-hidden">
+    <div className="flex flex-col md:border-r border-nerv-mid-gray last:border-r-0 bg-nerv-black overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between px-3 py-2 border-b-2 border-eva-mid-gray bg-eva-dark-gray">
+      <div className="flex items-center justify-between px-3 py-2 border-b-2 border-nerv-mid-gray bg-nerv-dark-gray">
         <span
-          className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-xs uppercase tracking-[0.2em] font-bold text-nerv-orange"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           {vote.name}
         </span>
-        <span className="text-[10px] font-mono text-eva-mid-gray">
+        <span className="text-[10px] font-mono text-nerv-mid-gray">
           0{index + 1}
         </span>
       </div>
@@ -125,8 +125,8 @@ function MagiColumn({ vote, index }: { vote: MagiVote; index: number }) {
         {vote.status === "idle" && (
           <div className="flex items-center justify-center h-full p-4">
             <div className="text-center">
-              <div className="text-2xl font-mono text-eva-green/60 mb-2">&mdash;</div>
-              <div className="text-xs font-mono text-eva-green uppercase tracking-wider">
+              <div className="text-2xl font-mono text-nerv-green/60 mb-2">&mdash;</div>
+              <div className="text-xs font-mono text-nerv-green uppercase tracking-wider">
                 STANDBY
               </div>
             </div>
@@ -145,7 +145,7 @@ function MagiColumn({ vote, index }: { vote: MagiVote; index: number }) {
                     opacity: i === scrollLines.length - 1 ? 1 : 0.4,
                     x: 0,
                   }}
-                  className="text-[10px] font-mono text-eva-cyan whitespace-nowrap"
+                  className="text-[10px] font-mono text-nerv-cyan whitespace-nowrap"
                 >
                   {line}
                 </motion.div>
@@ -153,7 +153,7 @@ function MagiColumn({ vote, index }: { vote: MagiVote; index: number }) {
             </div>
             {/* Scanning bar */}
             <motion.div
-              className="absolute bottom-0 left-0 right-0 h-0.5 bg-eva-cyan/50"
+              className="absolute bottom-0 left-0 right-0 h-0.5 bg-nerv-cyan/50"
               animate={{ scaleX: [0, 1, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               style={{ transformOrigin: "left" }}
@@ -166,11 +166,11 @@ function MagiColumn({ vote, index }: { vote: MagiVote; index: number }) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex items-center justify-center h-full bg-eva-orange"
+            className="flex items-center justify-center h-full bg-nerv-orange"
           >
             <span
-              className="text-3xl font-black uppercase tracking-[0.1em] text-eva-black"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-3xl font-black uppercase tracking-[0.1em] text-nerv-black"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               ACCEPTED
             </span>
@@ -182,11 +182,11 @@ function MagiColumn({ vote, index }: { vote: MagiVote; index: number }) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex items-center justify-center h-full bg-eva-red"
+            className="flex items-center justify-center h-full bg-nerv-red"
           >
             <motion.span
-              className="text-3xl font-black uppercase tracking-[0.1em] text-eva-black"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-3xl font-black uppercase tracking-[0.1em] text-nerv-black"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
               animate={{ opacity: [1, 0, 1] }}
               transition={{ duration: 0.6, repeat: Infinity }}
             >
@@ -198,7 +198,7 @@ function MagiColumn({ vote, index }: { vote: MagiVote; index: number }) {
 
       {/* Footer status */}
       <div
-        className={`flex items-center justify-center px-3 py-1.5 border-t-2 border-eva-mid-gray bg-eva-dark-gray ${statusColor}`}
+        className={`flex items-center justify-center px-3 py-1.5 border-t-2 border-nerv-mid-gray bg-nerv-dark-gray ${statusColor}`}
       >
         <motion.span
           className="text-[10px] font-mono font-bold uppercase tracking-wider"
@@ -235,12 +235,12 @@ export const MagiSystemPanel = forwardRef<HTMLDivElement, MagiSystemPanelProps>(
       const melchior = votes[0];
 
       return (
-        <div ref={ref} className={`bg-eva-black ${className}`} {...rest}>
+        <div ref={ref} className={`bg-nerv-black ${className}`} {...rest}>
           {/* Title */}
-          <div className="flex items-center justify-between px-4 py-2 border-2 border-eva-mid-gray border-b-0 bg-eva-dark-gray">
+          <div className="flex items-center justify-between px-4 py-2 border-2 border-nerv-mid-gray border-b-0 bg-nerv-dark-gray">
             <span
-              className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-xs uppercase tracking-[0.2em] font-bold text-nerv-orange"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {title}
             </span>
@@ -250,12 +250,12 @@ export const MagiSystemPanel = forwardRef<HTMLDivElement, MagiSystemPanelProps>(
                   key={i}
                   className={`w-2 h-2 ${
                     v.status === "accepted"
-                      ? "bg-eva-orange"
+                      ? "bg-nerv-orange"
                       : v.status === "rejected"
-                        ? "bg-eva-red"
+                        ? "bg-nerv-red"
                         : v.status === "computing"
-                          ? "bg-eva-cyan"
-                          : "bg-eva-mid-gray"
+                          ? "bg-nerv-cyan"
+                          : "bg-nerv-mid-gray"
                   }`}
                 />
               ))}
@@ -263,7 +263,7 @@ export const MagiSystemPanel = forwardRef<HTMLDivElement, MagiSystemPanelProps>(
           </div>
 
           {/* Trapezoidal MAGI layout */}
-          <div className="border-2 border-eva-mid-gray bg-eva-black p-4">
+          <div className="border-2 border-nerv-mid-gray bg-nerv-black p-4">
             {/* Row 1: BALTHASAR — centered top trapezoid */}
             <div className="flex justify-center mb-[-12px]">
               <div
@@ -304,12 +304,12 @@ export const MagiSystemPanel = forwardRef<HTMLDivElement, MagiSystemPanelProps>(
     }
 
     return (
-      <div ref={ref} className={`bg-eva-black ${className}`} {...rest}>
+      <div ref={ref} className={`bg-nerv-black ${className}`} {...rest}>
         {/* Title */}
-        <div className="flex items-center justify-between px-4 py-2 border-2 border-eva-mid-gray border-b-0 bg-eva-dark-gray">
+        <div className="flex items-center justify-between px-4 py-2 border-2 border-nerv-mid-gray border-b-0 bg-nerv-dark-gray">
           <span
-            className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-xs uppercase tracking-[0.2em] font-bold text-nerv-orange"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {title}
           </span>
@@ -319,12 +319,12 @@ export const MagiSystemPanel = forwardRef<HTMLDivElement, MagiSystemPanelProps>(
                 key={i}
                 className={`w-2 h-2 ${
                   v.status === "accepted"
-                    ? "bg-eva-orange"
+                    ? "bg-nerv-orange"
                     : v.status === "rejected"
-                      ? "bg-eva-red"
+                      ? "bg-nerv-red"
                       : v.status === "computing"
-                        ? "bg-eva-cyan"
-                        : "bg-eva-mid-gray"
+                        ? "bg-nerv-cyan"
+                        : "bg-nerv-mid-gray"
                 }`}
               />
             ))}
@@ -332,7 +332,7 @@ export const MagiSystemPanel = forwardRef<HTMLDivElement, MagiSystemPanelProps>(
         </div>
 
         {/* 3-column grid with thick borders */}
-        <div className="grid grid-cols-1 md:grid-cols-3 border-2 border-eva-mid-gray">
+        <div className="grid grid-cols-1 md:grid-cols-3 border-2 border-nerv-mid-gray">
           {votes.map((vote, i) => (
             <MagiColumn key={vote.name} vote={vote} index={i} />
           ))}

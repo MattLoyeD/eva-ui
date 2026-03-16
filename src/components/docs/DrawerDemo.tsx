@@ -8,7 +8,7 @@ export function DrawerBasicDemo() {
     <div>
       <Button onClick={() => setOpen(true)}>OPEN DRAWER</Button>
       <Drawer open={open} onClose={() => setOpen(false)} title="SYSTEM PANEL">
-        <div className="text-sm font-mono text-eva-white/80 space-y-2">
+        <div className="text-sm font-mono text-nerv-white/80 space-y-2">
           <div>Unit: EVA-01</div>
           <div>Status: ACTIVE</div>
           <div>Sync Rate: 89.2%</div>
@@ -24,7 +24,7 @@ export function DrawerLeftDemo() {
     <div>
       <Button variant="terminal" onClick={() => setOpen(true)}>OPEN LEFT</Button>
       <Drawer open={open} onClose={() => setOpen(false)} title="NAVIGATION" side="left" color="green">
-        <div className="text-sm font-mono text-eva-green/80 space-y-2">
+        <div className="text-sm font-mono text-nerv-green/80 space-y-2">
           <div>// OPERATIONS</div>
           <div>// INTELLIGENCE</div>
           <div>// MAGI SYSTEM</div>

@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable } from "@/components/docs";
 Wrapper component with corner L-brackets and optional crosshair grid background. Gives any content a targeting reticle aesthetic.
 
 ```tsx
-import { TargetingContainer } from "@mdrbx/eva-ui";
+import { TargetingContainer } from "@mdrbx/nerv-ui";
 ```
 
 ## Basic Usage
@@ -14,13 +14,13 @@ import { TargetingContainer } from "@mdrbx/eva-ui";
 <ComponentPreview
   title="DEFAULT"
   code={`<TargetingContainer label="TARGET-A" color="orange">
-  <div className="p-8 text-center text-eva-orange font-mono text-sm">
+  <div className="p-8 text-center text-nerv-orange font-mono text-sm">
     CONTENT AREA — LOCKED ON TARGET
   </div>
 </TargetingContainer>`}
 >
   <TargetingContainer label="TARGET-A" color="orange">
-    <div className="p-8 text-center text-eva-orange font-mono text-sm">
+    <div className="p-8 text-center text-nerv-orange font-mono text-sm">
       CONTENT AREA — LOCKED ON TARGET
     </div>
   </TargetingContainer>
@@ -32,21 +32,21 @@ import { TargetingContainer } from "@mdrbx/eva-ui";
   title="COLORS"
   code={`<div className="grid grid-cols-2 gap-4">
   <TargetingContainer label="GREEN" color="green">
-    <div className="p-6 text-center text-eva-green font-mono text-xs">NOMINAL</div>
+    <div className="p-6 text-center text-nerv-green font-mono text-xs">NOMINAL</div>
   </TargetingContainer>
   <TargetingContainer label="RED" color="red">
-    <div className="p-6 text-center text-eva-red font-mono text-xs">ALERT</div>
+    <div className="p-6 text-center text-nerv-red font-mono text-xs">ALERT</div>
   </TargetingContainer>
 </div>`}
 >
   <div className="grid grid-cols-2 gap-4">
     <TargetingContainer label="GREEN" color="green">
-      <div className="p-6 text-center text-eva-green font-mono text-xs">
+      <div className="p-6 text-center text-nerv-green font-mono text-xs">
         NOMINAL
       </div>
     </TargetingContainer>
     <TargetingContainer label="RED" color="red">
-      <div className="p-6 text-center text-eva-red font-mono text-xs">
+      <div className="p-6 text-center text-nerv-red font-mono text-xs">
         ALERT
       </div>
     </TargetingContainer>

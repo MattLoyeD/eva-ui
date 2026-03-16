@@ -46,40 +46,40 @@ const contaminationZones = [
 
 function MetadataField({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between items-baseline py-1 border-b border-eva-mid-gray/20">
+    <div className="flex justify-between items-baseline py-1 border-b border-nerv-mid-gray/20">
       <span
-        className="text-[10px] uppercase tracking-[0.15em] text-eva-mid-gray font-bold"
-        style={{ fontFamily: "var(--font-eva-display)" }}
+        className="text-[10px] uppercase tracking-[0.15em] text-nerv-mid-gray font-bold"
+        style={{ fontFamily: "var(--font-nerv-display)" }}
       >
         {label}
       </span>
-      <span className="text-sm font-mono text-eva-orange">{value}</span>
+      <span className="text-sm font-mono text-nerv-orange">{value}</span>
     </div>
   );
 }
 
 export default function ReportExample() {
   return (
-    <div className="min-h-screen bg-eva-black nerv-page-shell">
+    <div className="min-h-screen bg-nerv-black nerv-page-shell">
       <div className="nerv-page-frame max-w-5xl py-6 space-y-6">
         {/* Header */}
-        <div className="border-b border-eva-orange/24 pb-4">
+        <div className="border-b border-nerv-orange/24 pb-4">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <span className="nerv-section-label mb-3">After Action</span>
               <h1
-                className="text-2xl uppercase tracking-[0.2em] text-eva-orange font-bold"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-2xl uppercase tracking-[0.2em] text-nerv-orange font-bold"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 AFTER-ACTION REPORT
               </h1>
               <p
-                className="text-lg uppercase tracking-[0.15em] text-eva-cyan mt-1"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-lg uppercase tracking-[0.15em] text-nerv-cyan mt-1"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 OPERATION YASHIMA
               </p>
-              <p className="text-[10px] font-mono text-eva-mid-gray mt-1">
+              <p className="text-[10px] font-mono text-nerv-mid-gray mt-1">
                 NERV TACTICAL OPERATIONS DIVISION — DOCUMENT REF: AAR-2015-006
               </p>
             </div>
@@ -118,7 +118,7 @@ export default function ReportExample() {
         <Divider label="MISSION SUMMARY" color="cyan" />
 
         <Card title="OPERATION YASHIMA — TACTICAL SUMMARY">
-          <div className="px-1 py-1 space-y-4 font-mono text-sm text-eva-white/80 leading-relaxed">
+          <div className="px-1 py-1 space-y-4 font-mono text-sm text-nerv-white/80 leading-relaxed">
             <p>
               At 23:45 JST, 5th Angel RAMIEL was confirmed stationary above the
               GeoFront access shaft, deploying a high-energy particle beam to
@@ -158,17 +158,17 @@ export default function ReportExample() {
           showIndex
         />
 
-        <div className="flex justify-end border-t border-eva-orange/18 pt-3">
+        <div className="flex justify-end border-t border-nerv-orange/18 pt-3">
           <div className="flex items-baseline gap-4">
             <span
-              className="text-[10px] uppercase tracking-[0.2em] text-eva-mid-gray font-bold"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-[10px] uppercase tracking-[0.2em] text-nerv-mid-gray font-bold"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               TOTAL EXPENDITURE
             </span>
             <span
-              className="text-2xl font-bold text-eva-orange"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-2xl font-bold text-nerv-orange"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               ¥{totalCost}M
             </span>
@@ -211,13 +211,13 @@ export default function ReportExample() {
               />
             </div>
             <div className="text-center">
-              <p className="text-[10px] font-mono text-eva-mid-gray uppercase tracking-wider">
+              <p className="text-[10px] font-mono text-nerv-mid-gray uppercase tracking-wider">
                 Tactical Operations Review
               </p>
-              <p className="text-sm font-mono text-eva-orange mt-1">
+              <p className="text-sm font-mono text-nerv-orange mt-1">
                 KATSURAGI, Misato — Capt.
               </p>
-              <p className="text-[10px] font-mono text-eva-mid-gray mt-0.5">
+              <p className="text-[10px] font-mono text-nerv-mid-gray mt-0.5">
                 2015.06.12 — 06:15 JST
               </p>
             </div>
@@ -234,13 +234,13 @@ export default function ReportExample() {
               />
             </div>
             <div className="text-center">
-              <p className="text-[10px] font-mono text-eva-mid-gray uppercase tracking-wider">
+              <p className="text-[10px] font-mono text-nerv-mid-gray uppercase tracking-wider">
                 Commander Authorization
               </p>
-              <p className="text-sm font-mono text-eva-orange mt-1">
+              <p className="text-sm font-mono text-nerv-orange mt-1">
                 IKARI, Gendo — Cmdr.
               </p>
-              <p className="text-[10px] font-mono text-eva-mid-gray mt-0.5">
+              <p className="text-[10px] font-mono text-nerv-mid-gray mt-0.5">
                 2015.06.12 — 08:00 JST
               </p>
             </div>
@@ -248,7 +248,7 @@ export default function ReportExample() {
         </div>
 
         {/* Footer Actions */}
-        <div className="flex gap-3 pt-4 border-t border-eva-mid-gray/30">
+        <div className="flex gap-3 pt-4 border-t border-nerv-mid-gray/30">
           <Button variant="primary" onClick={() => window.print()}>
             PRINT REPORT
           </Button>

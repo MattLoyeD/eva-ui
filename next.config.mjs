@@ -7,8 +7,8 @@ const nextConfig = {
   reactStrictMode: true,
   output: "export",
   trailingSlash: true,
-  basePath: isProd ? "/eva-ui" : "",
-  assetPrefix: isProd ? "/eva-ui/" : "",
+  basePath: isProd ? "/nerv-ui" : "",
+  assetPrefix: isProd ? "/nerv-ui/" : "",
   eslint: {
     ignoreDuringBuilds: true,
   },

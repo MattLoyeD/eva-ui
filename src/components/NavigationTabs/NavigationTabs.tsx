@@ -28,19 +28,19 @@ export interface NavigationTabsProps
 
 const colorMap = {
   orange: {
-    active: "bg-eva-black text-eva-orange border-eva-orange",
-    inactive: "bg-eva-dark-gray text-eva-mid-gray border-eva-mid-gray hover:text-eva-orange hover:border-eva-orange/50",
-    indicator: "bg-eva-orange",
+    active: "bg-nerv-black text-nerv-orange border-nerv-orange",
+    inactive: "bg-nerv-dark-gray text-nerv-mid-gray border-nerv-mid-gray hover:text-nerv-orange hover:border-nerv-orange/50",
+    indicator: "bg-nerv-orange",
   },
   green: {
-    active: "bg-eva-black text-eva-green border-eva-green",
-    inactive: "bg-eva-dark-gray text-eva-mid-gray border-eva-mid-gray hover:text-eva-green hover:border-eva-green/50",
-    indicator: "bg-eva-green",
+    active: "bg-nerv-black text-nerv-green border-nerv-green",
+    inactive: "bg-nerv-dark-gray text-nerv-mid-gray border-nerv-mid-gray hover:text-nerv-green hover:border-nerv-green/50",
+    indicator: "bg-nerv-green",
   },
   cyan: {
-    active: "bg-eva-black text-eva-cyan border-eva-cyan",
-    inactive: "bg-eva-dark-gray text-eva-mid-gray border-eva-mid-gray hover:text-eva-cyan hover:border-eva-cyan/50",
-    indicator: "bg-eva-cyan",
+    active: "bg-nerv-black text-nerv-cyan border-nerv-cyan",
+    inactive: "bg-nerv-dark-gray text-nerv-mid-gray border-nerv-mid-gray hover:text-nerv-cyan hover:border-nerv-cyan/50",
+    indicator: "bg-nerv-cyan",
   },
 };
 
@@ -91,7 +91,7 @@ export const NavigationTabs = forwardRef<HTMLElement, NavigationTabsProps>(
                   : `px-5 py-2.5 border-b-2 ${isActive ? c.active : c.inactive}`
                 }
               `}
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {/* Classification marker */}
               <span className="opacity-40 mr-2 text-[10px] shrink-0">

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NERV — EvaUI Command Center",
+  title: "NERV — NERV-UI Command Center",
   description: "Neon Genesis Evangelion UI Component Library — MAGI System Interface",
 };
 
@@ -24,7 +24,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-eva-black text-eva-orange antialiased">
+      <body className="bg-nerv-black text-nerv-orange antialiased">
         {children}
       </body>
     </html>

@@ -3,14 +3,14 @@
 ```
 ╔══════════════════════════════════════════════════════════╗
 ║  NERV TECHNICAL DOCUMENTATION — CLASSIFIED LEVEL 3      ║
-║  EvaUI Component Library — Full API Reference            ║
+║  NERV-UI Component Library — Full API Reference            ║
 ╚══════════════════════════════════════════════════════════╝
 ```
 
 All components are exported from `@/components` via barrel file. Each component is fully typed with TypeScript interfaces.
 
 ```tsx
-import { EmergencyBanner, Button, MagiSystemPanel } from "@mdrbx/eva-ui";
+import { EmergencyBanner, Button, MagiSystemPanel } from "@mdrbx/nerv-ui";
 ```
 
 ---
@@ -499,17 +499,17 @@ TOP SECRET overlay with diagonal hazard stripes. Slides away violently when unlo
 
 ---
 
-### `ToastProvider`
+### `NervToastProvider`
 
 Context provider for the toast notification system. Wrap your app with this provider, then use the `useToast()` hook to trigger notifications.
 
 ```tsx
-import { ToastProvider, useToast } from "@mdrbx/eva-ui";
+import { NervToastProvider, useToast } from "@mdrbx/nerv-ui";
 
 // Wrap your app
-<ToastProvider>
+<NervToastProvider>
   <App />
-</ToastProvider>;
+</NervToastProvider>;
 
 // Inside any component
 function MyComponent() {
@@ -1006,7 +1006,7 @@ import type {
   SeeleMonolithProps,
   ClassifiedOverlayProps,
   // Phase 3
-  ToastProviderProps,
+  NervToastProviderProps,
   Toast,
   ToastVariant,
   ToastContextValue,
@@ -1047,5 +1047,5 @@ import type {
   RadioGroupProps,
   DrawerProps,
   DividerProps,
-} from "@mdrbx/eva-ui";
+} from "@mdrbx/nerv-ui";
 ```

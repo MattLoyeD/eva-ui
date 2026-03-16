@@ -94,8 +94,8 @@ export const PieChart = forwardRef<HTMLDivElement, PieChartProps>(
       <div ref={ref} className={`inline-flex flex-col items-center font-mono ${className}`}>
         {title && (
           <div
-            className="mb-2 w-full border-b border-eva-orange/25 pb-1 text-left text-[10px] uppercase tracking-[0.22em] font-bold text-eva-orange"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="mb-2 w-full border-b border-nerv-orange/25 pb-1 text-left text-[10px] uppercase tracking-[0.22em] font-bold text-nerv-orange"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {title}
           </div>
@@ -199,10 +199,10 @@ export const PieChart = forwardRef<HTMLDivElement, PieChartProps>(
                   className="grid grid-cols-[8px_minmax(0,1fr)_34px] items-center gap-2 border-b border-white/8 pb-1"
                 >
                   <div className="h-2 w-2 shrink-0" style={{ backgroundColor: arc.sliceColor }} />
-                  <span className="truncate text-[9px] uppercase tracking-[0.12em] text-eva-white/70">
+                  <span className="truncate text-[9px] uppercase tracking-[0.12em] text-nerv-white/70">
                     {arc.label}
                   </span>
-                  <span className="ml-auto text-right text-[9px] text-eva-white/45 tabular-nums">
+                  <span className="ml-auto text-right text-[9px] text-nerv-white/45 tabular-nums">
                     {Math.round(arc.pct * 100)}%
                   </span>
                 </div>

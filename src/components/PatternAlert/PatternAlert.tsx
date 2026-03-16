@@ -124,8 +124,8 @@ export const PatternAlert = forwardRef<HTMLDivElement, PatternAlertProps>(functi
 
           <div className="absolute right-3 top-3 flex flex-col items-end gap-2 sm:right-4 sm:top-4">
             <div
-              className="text-[10px] uppercase tracking-[0.16em] text-eva-white/42"
-              style={{ fontFamily: "var(--font-eva-mono)" }}
+              className="text-[10px] uppercase tracking-[0.16em] text-nerv-white/42"
+              style={{ fontFamily: "var(--font-nerv-mono)" }}
             >
               {unit}
             </div>
@@ -146,7 +146,7 @@ export const PatternAlert = forwardRef<HTMLDivElement, PatternAlertProps>(functi
                   style={{
                     color: theme.main,
                     opacity: mark === 0 ? 1 : 0.6,
-                    fontFamily: "var(--font-eva-mono)",
+                    fontFamily: "var(--font-nerv-mono)",
                   }}
                 >
                   {mark > 0 ? `+${mark}` : `${mark}`}

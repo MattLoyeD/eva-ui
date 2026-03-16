@@ -9,7 +9,7 @@ import { Button } from "@/components/Button";
 
 export default function EmptyStatePage() {
   return (
-    <div className="relative min-h-screen bg-eva-black flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen bg-nerv-black flex items-center justify-center overflow-hidden">
       <HexGridBackground opacity={0.04} animated className="absolute inset-0 z-0" />
 
       <div className="relative z-10 w-full max-w-md mx-auto px-4">
@@ -20,14 +20,14 @@ export default function EmptyStatePage() {
 
             {/* Title */}
             <h1
-              className="text-2xl sm:text-3xl font-black uppercase tracking-[0.2em] text-eva-mid-gray text-center"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-2xl sm:text-3xl font-black uppercase tracking-[0.2em] text-nerv-mid-gray text-center"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               NO DATA AVAILABLE
             </h1>
 
             {/* Subtitle */}
-            <p className="text-eva-mid-gray/60 text-xs font-mono text-center uppercase tracking-wider">
+            <p className="text-nerv-mid-gray/60 text-xs font-mono text-center uppercase tracking-wider">
               The requested dataset contains no entries
             </p>
 

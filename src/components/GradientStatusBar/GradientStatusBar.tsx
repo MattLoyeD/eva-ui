@@ -33,11 +33,11 @@ export interface GradientStatusBarProps {
 }
 
 const labelColorMap: Record<NonNullable<GradientStatusBarProps["color"]>, string> = {
-  cyan: "text-eva-cyan",
-  green: "text-eva-green",
-  orange: "text-eva-orange",
-  red: "text-eva-red",
-  magenta: "text-eva-magenta",
+  cyan: "text-nerv-cyan",
+  green: "text-nerv-green",
+  orange: "text-nerv-orange",
+  red: "text-nerv-red",
+  magenta: "text-nerv-magenta",
 };
 
 export const GradientStatusBar = forwardRef<HTMLDivElement, GradientStatusBarProps>(
@@ -67,15 +67,15 @@ export const GradientStatusBar = forwardRef<HTMLDivElement, GradientStatusBarPro
             {label && (
               <span
                 className={`text-[10px] uppercase tracking-[0.22em] font-bold ${labelColorMap[color]}`}
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 {label}
               </span>
             )}
             {sublabel && (
               <span
-                className="text-[9px] uppercase tracking-[0.1em] text-eva-mid-gray font-mono"
-                style={{ fontFamily: "var(--font-eva-mono)" }}
+                className="text-[9px] uppercase tracking-[0.1em] text-nerv-mid-gray font-mono"
+                style={{ fontFamily: "var(--font-nerv-mono)" }}
               >
                 {sublabel}
               </span>
@@ -90,10 +90,10 @@ export const GradientStatusBar = forwardRef<HTMLDivElement, GradientStatusBarPro
             return (
               <span
                 key={index}
-                className="absolute whitespace-nowrap text-[8px] uppercase tracking-[0.12em] font-mono text-eva-mid-gray"
+                className="absolute whitespace-nowrap text-[8px] uppercase tracking-[0.12em] font-mono text-nerv-mid-gray"
                 style={{
                   left: `${leftPct}%`,
-                  fontFamily: "var(--font-eva-mono)",
+                  fontFamily: "var(--font-nerv-mono)",
                   transform: leftPct > 80 ? "translateX(-100%)" : "none",
                 }}
               >
@@ -104,7 +104,7 @@ export const GradientStatusBar = forwardRef<HTMLDivElement, GradientStatusBarPro
         </div>
 
         <div
-          className="relative h-4 overflow-hidden border border-eva-mid-gray/50 bg-black/70"
+          className="relative h-4 overflow-hidden border border-nerv-mid-gray/50 bg-black/70"
           role="meter"
           aria-valuenow={value}
           aria-valuemin={min}
@@ -132,7 +132,7 @@ export const GradientStatusBar = forwardRef<HTMLDivElement, GradientStatusBarPro
             return (
               <div
                 key={index}
-                className="absolute top-0 bottom-0 w-px bg-eva-mid-gray/60"
+                className="absolute top-0 bottom-0 w-px bg-nerv-mid-gray/60"
                 style={{ left: `${left}%` }}
               />
             );
@@ -192,7 +192,7 @@ export const GradientStatusBar = forwardRef<HTMLDivElement, GradientStatusBarPro
           />
         </div>
 
-        <div className="flex justify-between px-0.5 text-[8px] font-mono text-eva-mid-gray">
+        <div className="flex justify-between px-0.5 text-[8px] font-mono text-nerv-mid-gray">
           <span>{min}</span>
           <span>{Math.round(min + range * 0.25)}</span>
           <span>{Math.round(min + range * 0.5)}</span>

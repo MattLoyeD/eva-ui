@@ -17,20 +17,20 @@ export interface SkeletonProps
 }
 
 const animationKeyframes = `
-@keyframes eva-skeleton-scan {
+@keyframes nerv-skeleton-scan {
   0% { transform: translateX(-135%); opacity: 0; }
   18% { opacity: 0.18; }
   46% { opacity: 0.52; }
   100% { transform: translateX(220%); opacity: 0; }
 }
 
-@keyframes eva-skeleton-flicker {
+@keyframes nerv-skeleton-flicker {
   0%, 100% { opacity: 0.74; }
   45% { opacity: 0.94; }
   70% { opacity: 0.82; }
 }
 
-@keyframes eva-skeleton-line-pulse {
+@keyframes nerv-skeleton-line-pulse {
   0%, 100% {
     opacity: 0.78;
     box-shadow: inset 0 0 0 1px rgba(0,255,102,0.05), 0 0 10px rgba(0,255,102,0.04);
@@ -41,7 +41,7 @@ const animationKeyframes = `
   }
 }
 
-@keyframes eva-skeleton-cell-pulse {
+@keyframes nerv-skeleton-cell-pulse {
   0%, 100% {
     opacity: 0.24;
     transform: scale(0.82);
@@ -52,7 +52,7 @@ const animationKeyframes = `
   }
 }
 
-@keyframes eva-skeleton-grid-drift {
+@keyframes nerv-skeleton-grid-drift {
   0% { transform: translateX(-120%); opacity: 0; }
   22% { opacity: 0.1; }
   58% { opacity: 0.22; }
@@ -61,7 +61,7 @@ const animationKeyframes = `
 `;
 
 const basePanelClasses =
-  "relative overflow-hidden border border-eva-mid-gray/30 bg-black";
+  "relative overflow-hidden border border-nerv-mid-gray/30 bg-black";
 
 function resolveDimension(value?: string | number) {
   if (typeof value === "number") return `${value}px`;
@@ -78,7 +78,7 @@ function renderCrtLine(width: string, height: string, key?: number) {
         height,
         boxShadow:
           "inset 0 0 0 1px rgba(0,255,102,0.05), 0 0 12px rgba(0,255,102,0.05)",
-        animation: "eva-skeleton-line-pulse 1.7s ease-in-out infinite",
+        animation: "nerv-skeleton-line-pulse 1.7s ease-in-out infinite",
       }}
     >
       <span
@@ -95,7 +95,7 @@ function renderCrtLine(width: string, height: string, key?: number) {
               transparent 4px 6px
             )
           `,
-          animation: "eva-skeleton-flicker 2.2s steps(2, end) infinite",
+          animation: "nerv-skeleton-flicker 2.2s steps(2, end) infinite",
         }}
       />
       <span
@@ -104,7 +104,7 @@ function renderCrtLine(width: string, height: string, key?: number) {
         style={{
           background:
             "linear-gradient(90deg, transparent 0%, rgba(178,255,206,0.02) 22%, rgba(130,255,176,0.34) 58%, transparent 100%)",
-          animation: "eva-skeleton-scan 2.4s ease-in-out infinite",
+          animation: "nerv-skeleton-scan 2.4s ease-in-out infinite",
         }}
       />
     </div>
@@ -152,7 +152,7 @@ function renderSquareField(
               style={{
                 opacity: intensity,
                 boxShadow: "0 0 5px rgba(255,255,255,0.12)",
-                animation: "eva-skeleton-cell-pulse 1.4s ease-in-out infinite",
+                animation: "nerv-skeleton-cell-pulse 1.4s ease-in-out infinite",
                 animationDelay: `${((index % columns) * 0.06) + (Math.floor(index / columns) * 0.04)}s`,
               }}
             />
@@ -176,7 +176,7 @@ function renderSquareField(
         style={{
           background:
             "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.02) 26%, rgba(255,255,255,0.14) 58%, transparent 100%)",
-          animation: "eva-skeleton-grid-drift 2.2s ease-in-out infinite",
+          animation: "nerv-skeleton-grid-drift 2.2s ease-in-out infinite",
         }}
       />
     </div>

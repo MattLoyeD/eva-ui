@@ -16,19 +16,19 @@ export interface DividerProps
 
 const colorMap = {
   orange: {
-    line: "border-eva-orange",
-    text: "text-eva-orange",
-    bg: "bg-eva-black",
+    line: "border-nerv-orange",
+    text: "text-nerv-orange",
+    bg: "bg-nerv-black",
   },
   green: {
-    line: "border-eva-green",
-    text: "text-eva-green",
-    bg: "bg-eva-black",
+    line: "border-nerv-green",
+    text: "text-nerv-green",
+    bg: "bg-nerv-black",
   },
   cyan: {
-    line: "border-eva-cyan",
-    text: "text-eva-cyan",
-    bg: "bg-eva-black",
+    line: "border-nerv-cyan",
+    text: "text-nerv-cyan",
+    bg: "bg-nerv-black",
   },
 };
 
@@ -92,7 +92,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
                 px-3 text-[10px] uppercase tracking-[0.2em] font-bold
                 ${c.text} whitespace-nowrap select-none
               `}
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               [ {label} ]
             </span>

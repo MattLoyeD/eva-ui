@@ -128,33 +128,33 @@ export default function EquipmentRequisition() {
 
   const priorityColor = (p: string) => {
     switch (p) {
-      case "S": return "text-eva-red";
-      case "A": return "text-eva-orange";
-      case "B": return "text-eva-cyan";
-      default: return "text-eva-green";
+      case "S": return "text-nerv-red";
+      case "A": return "text-nerv-orange";
+      case "B": return "text-nerv-cyan";
+      default: return "text-nerv-green";
     }
   };
 
   return (
-    <div className="min-h-screen bg-eva-black">
+    <div className="min-h-screen bg-nerv-black">
       {/* ═══════ HEADER ═══════ */}
-      <div className="border-b border-eva-orange px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <div className="border-b border-nerv-orange px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div className="flex items-center gap-3">
           <h1
-            className="text-xl sm:text-2xl uppercase tracking-[0.2em] text-eva-orange font-bold"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-xl sm:text-2xl uppercase tracking-[0.2em] text-nerv-orange font-bold"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             EQUIPMENT REQUISITION SYSTEM
           </h1>
           <Badge label="LEVEL 3 CLEARANCE" variant="warning" size="sm" />
         </div>
-        <p className="text-[10px] font-mono text-eva-white/50">
+        <p className="text-[10px] font-mono text-nerv-white/50">
           NERV LOGISTICS — ARMORY & SUPPLY MANAGEMENT — AUTHORIZED PERSONNEL ONLY
         </p>
       </div>
 
       {/* ═══════ SEARCH / FILTER BAR ═══════ */}
-      <div className="border-b border-eva-orange/30 px-4 sm:px-6 py-4">
+      <div className="border-b border-nerv-orange/30 px-4 sm:px-6 py-4">
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
           <div className="sm:col-span-5">
             <InputField
@@ -190,46 +190,46 @@ export default function EquipmentRequisition() {
       </div>
 
       {/* ═══════ STATS ROW ═══════ */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-b border-eva-orange/30">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-b border-nerv-orange/30">
         {[
-          { label: "TOTAL ITEMS", value: String(equipmentData.length), color: "text-eva-cyan", sub: "REGISTERED EQUIPMENT" },
-          { label: "OPERATIONAL", value: String(equipmentData.filter((e) => e.status === "OPERATIONAL").length), color: "text-eva-green", sub: "READY FOR DEPLOYMENT" },
-          { label: "MAINTENANCE", value: String(equipmentData.filter((e) => e.status === "MAINTENANCE" || e.status === "CRITICAL").length), color: "text-eva-orange", sub: "REQUIRES ATTENTION" },
-          { label: "CRITICAL STOCK", value: String(equipmentData.filter((e) => e.stockLevel < 20).length), color: "text-eva-red", sub: "BELOW THRESHOLD" },
+          { label: "TOTAL ITEMS", value: String(equipmentData.length), color: "text-nerv-cyan", sub: "REGISTERED EQUIPMENT" },
+          { label: "OPERATIONAL", value: String(equipmentData.filter((e) => e.status === "OPERATIONAL").length), color: "text-nerv-green", sub: "READY FOR DEPLOYMENT" },
+          { label: "MAINTENANCE", value: String(equipmentData.filter((e) => e.status === "MAINTENANCE" || e.status === "CRITICAL").length), color: "text-nerv-orange", sub: "REQUIRES ATTENTION" },
+          { label: "CRITICAL STOCK", value: String(equipmentData.filter((e) => e.stockLevel < 20).length), color: "text-nerv-red", sub: "BELOW THRESHOLD" },
         ].map((kpi) => (
           <div
             key={kpi.label}
-            className="px-4 sm:px-6 py-4 border-r border-eva-orange/10 last:border-r-0"
+            className="px-4 sm:px-6 py-4 border-r border-nerv-orange/10 last:border-r-0"
           >
             <div
-              className="text-[10px] uppercase tracking-[0.15em] text-eva-white/40 font-bold mb-1"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-[10px] uppercase tracking-[0.15em] text-nerv-white/40 font-bold mb-1"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {kpi.label}
             </div>
             <div
               className={`text-2xl sm:text-3xl font-bold tabular-nums ${kpi.color}`}
-              style={{ fontFamily: "var(--font-eva-mono)" }}
+              style={{ fontFamily: "var(--font-nerv-mono)" }}
             >
               {kpi.value}
             </div>
-            <div className="text-[9px] font-mono text-eva-white/30 mt-0.5">{kpi.sub}</div>
+            <div className="text-[9px] font-mono text-nerv-white/30 mt-0.5">{kpi.sub}</div>
           </div>
         ))}
       </div>
 
       {/* ═══════ MAIN DATA GRID ═══════ */}
       <div className="p-4 sm:p-6">
-        <div className="bg-eva-black border border-eva-mid-gray">
+        <div className="bg-nerv-black border border-nerv-mid-gray">
           {/* Custom title bar */}
-          <div className="flex items-center justify-between px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
+          <div className="flex items-center justify-between px-3 py-1.5 border-b border-nerv-mid-gray bg-nerv-dark-gray">
             <span
-              className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-xs uppercase tracking-[0.2em] font-bold text-nerv-orange"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               EQUIPMENT INVENTORY
             </span>
-            <span className="text-[10px] font-mono text-eva-mid-gray">
+            <span className="text-[10px] font-mono text-nerv-mid-gray">
               {filteredData.length} / {equipmentData.length} ENTRIES
             </span>
           </div>
@@ -238,46 +238,46 @@ export default function EquipmentRequisition() {
           <div className="overflow-x-auto">
             <table
               className="w-full border-collapse"
-              style={{ fontFamily: "var(--font-eva-mono)" }}
+              style={{ fontFamily: "var(--font-nerv-mono)" }}
             >
               <thead className="sticky top-0 z-10">
-                <tr className="bg-eva-orange text-eva-black">
-                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20 w-12" style={{ fontFamily: "var(--font-eva-display)" }}>#</th>
-                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20" style={{ fontFamily: "var(--font-eva-display)", width: "90px" }}>ID</th>
-                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20" style={{ fontFamily: "var(--font-eva-display)" }}>NAME</th>
-                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20" style={{ fontFamily: "var(--font-eva-display)", width: "100px" }}>CATEGORY</th>
-                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-center border-r border-black/20" style={{ fontFamily: "var(--font-eva-display)", width: "110px" }}>STATUS</th>
-                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20" style={{ fontFamily: "var(--font-eva-display)", width: "200px" }}>STOCK LEVEL</th>
-                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-center border-r border-black/20" style={{ fontFamily: "var(--font-eva-display)", width: "70px" }}>PRIORITY</th>
-                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-center" style={{ fontFamily: "var(--font-eva-display)", width: "90px" }}>ACTIONS</th>
+                <tr className="bg-nerv-orange text-nerv-black">
+                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20 w-12" style={{ fontFamily: "var(--font-nerv-display)" }}>#</th>
+                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20" style={{ fontFamily: "var(--font-nerv-display)", width: "90px" }}>ID</th>
+                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20" style={{ fontFamily: "var(--font-nerv-display)" }}>NAME</th>
+                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20" style={{ fontFamily: "var(--font-nerv-display)", width: "100px" }}>CATEGORY</th>
+                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-center border-r border-black/20" style={{ fontFamily: "var(--font-nerv-display)", width: "110px" }}>STATUS</th>
+                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-left border-r border-black/20" style={{ fontFamily: "var(--font-nerv-display)", width: "200px" }}>STOCK LEVEL</th>
+                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-center border-r border-black/20" style={{ fontFamily: "var(--font-nerv-display)", width: "70px" }}>PRIORITY</th>
+                  <th className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-center" style={{ fontFamily: "var(--font-nerv-display)", width: "90px" }}>ACTIONS</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredData.map((item, i) => (
                   <tr
                     key={item.id}
-                    className="text-eva-orange hover:bg-eva-orange hover:text-eva-black border-b border-eva-mid-gray/30 transition-colors duration-75 cursor-default text-xs"
+                    className="text-nerv-orange hover:bg-nerv-orange hover:text-nerv-black border-b border-nerv-mid-gray/30 transition-colors duration-75 cursor-default text-xs"
                   >
-                    <td className="px-3 py-1.5 text-eva-mid-gray border-r border-eva-mid-gray/20">
+                    <td className="px-3 py-1.5 text-nerv-mid-gray border-r border-nerv-mid-gray/20">
                       {String(i + 1).padStart(3, "0")}
                     </td>
-                    <td className="px-3 py-1.5 border-r border-eva-mid-gray/20 whitespace-nowrap">
+                    <td className="px-3 py-1.5 border-r border-nerv-mid-gray/20 whitespace-nowrap">
                       {item.id}
                     </td>
-                    <td className="px-3 py-1.5 border-r border-eva-mid-gray/20 whitespace-nowrap">
+                    <td className="px-3 py-1.5 border-r border-nerv-mid-gray/20 whitespace-nowrap">
                       {item.name}
                     </td>
-                    <td className="px-3 py-1.5 border-r border-eva-mid-gray/20 whitespace-nowrap">
+                    <td className="px-3 py-1.5 border-r border-nerv-mid-gray/20 whitespace-nowrap">
                       {item.category}
                     </td>
-                    <td className="px-3 py-2 border-r border-eva-mid-gray/20 text-center">
+                    <td className="px-3 py-2 border-r border-nerv-mid-gray/20 text-center">
                       <Badge
                         label={item.status}
                         variant={statusVariantMap[item.status]}
                         size="sm"
                       />
                     </td>
-                    <td className="px-3 py-1.5 border-r border-eva-mid-gray/20">
+                    <td className="px-3 py-1.5 border-r border-nerv-mid-gray/20">
                       <SyncProgressBar
                         value={item.stockLevel}
                         showPercentage
@@ -285,15 +285,15 @@ export default function EquipmentRequisition() {
                         blockHeight={8}
                       />
                     </td>
-                    <td className={`px-3 py-1.5 border-r border-eva-mid-gray/20 text-center font-bold ${priorityColor(item.priority)}`}>
+                    <td className={`px-3 py-1.5 border-r border-nerv-mid-gray/20 text-center font-bold ${priorityColor(item.priority)}`}>
                       {item.priority}
                     </td>
                     <td className="px-3 py-1.5 text-center">
                       <button
                         type="button"
                         onClick={() => handleRowAction(i)}
-                        className="text-eva-cyan hover:text-eva-orange transition-colors text-[10px] uppercase tracking-wider font-bold cursor-pointer"
-                        style={{ fontFamily: "var(--font-eva-display)" }}
+                        className="text-nerv-cyan hover:text-nerv-orange transition-colors text-[10px] uppercase tracking-wider font-bold cursor-pointer"
+                        style={{ fontFamily: "var(--font-nerv-display)" }}
                       >
                         [INSPECT]
                       </button>
@@ -305,7 +305,7 @@ export default function EquipmentRequisition() {
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between px-3 py-1 border-t border-eva-mid-gray bg-eva-dark-gray text-[10px] font-mono text-eva-mid-gray">
+          <div className="flex items-center justify-between px-3 py-1 border-t border-nerv-mid-gray bg-nerv-dark-gray text-[10px] font-mono text-nerv-mid-gray">
             <span>ROWS: {filteredData.length}</span>
             <span>LAST SYNC: {new Date().toISOString().split("T")[0]}</span>
           </div>
@@ -313,11 +313,11 @@ export default function EquipmentRequisition() {
       </div>
 
       {/* ═══════ FOOTER ═══════ */}
-      <div className="border-t border-eva-white/10 px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
-        <span className="text-[9px] font-mono text-eva-white/30">
+      <div className="border-t border-nerv-white/10 px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+        <span className="text-[9px] font-mono text-nerv-white/30">
           NERV LOGISTICS DIVISION — EQUIPMENT REQUISITION SYSTEM v2.4.1
         </span>
-        <span className="text-[9px] font-mono text-eva-white/30">
+        <span className="text-[9px] font-mono text-nerv-white/30">
           MAGI AUTHORIZATION: VALIDATED — CLEARANCE LEVEL: 3
         </span>
       </div>
@@ -334,7 +334,7 @@ export default function EquipmentRequisition() {
         onClose={() => setDialogOpen(false)}
       >
         <div className="flex flex-col gap-5">
-          <p className="text-[10px] text-eva-white/50 uppercase tracking-wider" style={{ fontFamily: "var(--font-eva-display)" }}>
+          <p className="text-[10px] text-nerv-white/50 uppercase tracking-wider" style={{ fontFamily: "var(--font-nerv-display)" }}>
             FILL ALL FIELDS TO SUBMIT A NEW EQUIPMENT REQUISITION ORDER. ALL REQUESTS REQUIRE MAGI AUTHORIZATION.
           </p>
           <InputField
@@ -380,12 +380,12 @@ export default function EquipmentRequisition() {
             <div className="flex items-start justify-between gap-2">
               <div>
                 <div
-                  className="text-lg font-bold text-eva-cyan uppercase tracking-wider"
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  className="text-lg font-bold text-nerv-cyan uppercase tracking-wider"
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   {selectedItem.name}
                 </div>
-                <div className="text-[10px] font-mono text-eva-mid-gray mt-1">
+                <div className="text-[10px] font-mono text-nerv-mid-gray mt-1">
                   {selectedItem.id} — {selectedItem.category}
                 </div>
               </div>
@@ -401,15 +401,15 @@ export default function EquipmentRequisition() {
               <div className="flex flex-col gap-3">
                 {selectedItem.specs.split(" | ").map((spec) => (
                   <div key={spec} className="flex items-start gap-2">
-                    <span className="text-eva-cyan text-[10px] mt-0.5" style={{ fontFamily: "var(--font-eva-mono)" }}>&#9654;</span>
-                    <span className="text-xs font-mono text-eva-white/80">{spec}</span>
+                    <span className="text-nerv-cyan text-[10px] mt-0.5" style={{ fontFamily: "var(--font-nerv-mono)" }}>&#9654;</span>
+                    <span className="text-xs font-mono text-nerv-white/80">{spec}</span>
                   </div>
                 ))}
               </div>
             </Card>
 
             {/* Condition level */}
-            <div className="border border-eva-mid-gray p-4 bg-eva-dark-gray">
+            <div className="border border-nerv-mid-gray p-4 bg-nerv-dark-gray">
               <GradientStatusBar
                 label="EQUIPMENT CONDITION"
                 sublabel={`LAST INSPECTION: ${selectedItem.lastInspection}`}
@@ -422,7 +422,7 @@ export default function EquipmentRequisition() {
             </div>
 
             {/* Stock level */}
-            <div className="border border-eva-mid-gray p-4 bg-eva-dark-gray">
+            <div className="border border-nerv-mid-gray p-4 bg-nerv-dark-gray">
               <SyncProgressBar
                 label="CURRENT STOCK LEVEL"
                 value={selectedItem.stockLevel}
@@ -443,14 +443,14 @@ export default function EquipmentRequisition() {
                 ].map((field) => (
                   <div key={field.label} className="flex flex-col gap-1">
                     <span
-                      className="text-[9px] uppercase tracking-[0.15em] text-eva-white/40 font-bold"
-                      style={{ fontFamily: "var(--font-eva-display)" }}
+                      className="text-[9px] uppercase tracking-[0.15em] text-nerv-white/40 font-bold"
+                      style={{ fontFamily: "var(--font-nerv-display)" }}
                     >
                       {field.label}
                     </span>
                     <span
-                      className="text-xs font-mono text-eva-cyan"
-                      style={{ fontFamily: "var(--font-eva-mono)" }}
+                      className="text-xs font-mono text-nerv-cyan"
+                      style={{ fontFamily: "var(--font-nerv-mono)" }}
                     >
                       {field.value}
                     </span>

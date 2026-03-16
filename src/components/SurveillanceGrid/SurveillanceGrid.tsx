@@ -98,7 +98,7 @@ export const SurveillanceGrid = forwardRef<HTMLDivElement, SurveillanceGridProps
     return (
       <div
         ref={ref}
-        className={`bg-eva-black ${className}`}
+        className={`bg-nerv-black ${className}`}
         style={{ border: `1px solid ${theme.border}` }}
         {...rest}
       >
@@ -114,7 +114,7 @@ export const SurveillanceGrid = forwardRef<HTMLDivElement, SurveillanceGridProps
             {title && (
               <span
                 className="text-[10px] font-bold uppercase tracking-[0.2em]"
-                style={{ fontFamily: "var(--font-eva-display)", color: theme.text }}
+                style={{ fontFamily: "var(--font-nerv-display)", color: theme.text }}
               >
                 {title}
               </span>
@@ -186,7 +186,7 @@ export const SurveillanceGrid = forwardRef<HTMLDivElement, SurveillanceGridProps
                       <span
                         className="text-xs font-bold uppercase tracking-wider"
                         style={{
-                          fontFamily: "var(--font-eva-display)",
+                          fontFamily: "var(--font-nerv-display)",
                           color: status.indicator,
                         }}
                       >
@@ -218,7 +218,7 @@ export const SurveillanceGrid = forwardRef<HTMLDivElement, SurveillanceGridProps
                   <div
                     className="text-[10px] font-bold uppercase truncate"
                     style={{
-                      fontFamily: "var(--font-eva-display)",
+                      fontFamily: "var(--font-nerv-display)",
                       color: "#E0E0E0",
                       textShadow: "0 1px 2px rgba(0,0,0,0.8)",
                     }}

@@ -86,16 +86,16 @@ export default function RealtimeDashboard() {
   }));
 
   return (
-    <div className="min-h-screen bg-eva-black">
+    <div className="min-h-screen bg-nerv-black">
       {/* Header */}
-      <div className="border-b border-eva-green px-6 py-3">
+      <div className="border-b border-nerv-green px-6 py-3">
         <h1
-          className="text-2xl uppercase tracking-[0.2em] text-eva-orange font-bold"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-2xl uppercase tracking-[0.2em] text-nerv-orange font-bold"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           REAL-TIME MONITORING STATION
         </h1>
-        <p className="text-[10px] font-mono text-eva-white/50 mt-1">
+        <p className="text-[10px] font-mono text-nerv-white/50 mt-1">
           LIVE SENSOR FEEDS — NERV GEOFRONT — LEVEL B-06
         </p>
       </div>
@@ -137,19 +137,19 @@ export default function RealtimeDashboard() {
       {viewTab === "overview" && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
           {/* Left: Sensor Bars */}
-          <div className="lg:col-span-3 col-span-full lg:border-r border-eva-green p-4">
+          <div className="lg:col-span-3 col-span-full lg:border-r border-nerv-green p-4">
             <h2
-              className="text-xs uppercase tracking-[0.2em] text-eva-orange font-bold mb-4"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-xs uppercase tracking-[0.2em] text-nerv-orange font-bold mb-4"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               SENSOR ARRAY
             </h2>
             <div className="space-y-4">
               {sensorNames.map((name, i) => (
                 <div key={name} className="space-y-1">
-                  <div className="flex justify-between text-[10px] font-mono text-eva-white/50">
+                  <div className="flex justify-between text-[10px] font-mono text-nerv-white/50">
                     <span>{name}</span>
-                    <span className="text-eva-cyan">
+                    <span className="text-nerv-cyan">
                       {sensorValues[i].toFixed(1)}%
                     </span>
                   </div>
@@ -162,7 +162,7 @@ export default function RealtimeDashboard() {
               ))}
             </div>
 
-            <div className="mt-6 border-t border-eva-white/10 pt-4">
+            <div className="mt-6 border-t border-nerv-white/10 pt-4">
               <SegmentDisplay value={600} countdown format="MM:SS" size="md" label="ACTIVE TIME REMAINING" color="orange" />
             </div>
           </div>
@@ -197,10 +197,10 @@ export default function RealtimeDashboard() {
           </div>
 
           {/* Right: Gauges + mini pie */}
-          <div className="lg:col-span-4 col-span-full lg:border-l border-eva-green p-4 space-y-4">
+          <div className="lg:col-span-4 col-span-full lg:border-l border-nerv-green p-4 space-y-4">
             <h2
-              className="text-xs uppercase tracking-[0.2em] text-eva-orange font-bold"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-xs uppercase tracking-[0.2em] text-nerv-orange font-bold"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               SYSTEM GAUGES
             </h2>
@@ -233,7 +233,7 @@ export default function RealtimeDashboard() {
               />
             </div>
 
-            <div className="border-t border-eva-white/10 pt-3">
+            <div className="border-t border-nerv-white/10 pt-3">
               <PieChart
                 title="EVENT STATUS"
                 slices={pieSlices}
@@ -249,7 +249,7 @@ export default function RealtimeDashboard() {
       {viewTab === "charts" && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
           {/* Left: Vertical bar chart */}
-          <div className="lg:col-span-6 col-span-full p-4 lg:border-r border-eva-green">
+          <div className="lg:col-span-6 col-span-full p-4 lg:border-r border-nerv-green">
             <TargetingContainer label="SENSOR LEVELS — VERTICAL" color="cyan">
               <div className="p-4">
                 <BarChart
@@ -279,7 +279,7 @@ export default function RealtimeDashboard() {
           </div>
 
           {/* Bottom: Gauges row + Pie */}
-          <div className="lg:col-span-8 col-span-full p-4 border-t border-eva-green">
+          <div className="lg:col-span-8 col-span-full p-4 border-t border-nerv-green">
             <TargetingContainer label="GAUGE ARRAY" color="green">
               <div className="flex flex-wrap items-center justify-center gap-4 p-4">
                 {sensorNames.map((name, i) => (
@@ -298,7 +298,7 @@ export default function RealtimeDashboard() {
             </TargetingContainer>
           </div>
 
-          <div className="lg:col-span-4 col-span-full p-4 border-t lg:border-l border-eva-green">
+          <div className="lg:col-span-4 col-span-full p-4 border-t lg:border-l border-nerv-green">
             <TargetingContainer label="STATUS DISTRIBUTION" color="orange">
               <div className="flex justify-center p-4">
                 <PieChart
@@ -328,7 +328,7 @@ export default function RealtimeDashboard() {
           </div>
 
           {/* Waveforms at bottom */}
-          <div className="col-span-full border-t border-eva-green">
+          <div className="col-span-full border-t border-nerv-green">
             <TargetingContainer label="HARMONIC ANALYSIS" color="cyan">
               <div className="h-[160px] sm:h-[200px]">
                 <SyncRatioChart
@@ -343,7 +343,7 @@ export default function RealtimeDashboard() {
           </div>
 
           {/* Targeting + Surveillance row */}
-          <div className="lg:col-span-4 col-span-full p-4 border-t border-eva-green flex items-center justify-center">
+          <div className="lg:col-span-4 col-span-full p-4 border-t border-nerv-green flex items-center justify-center">
             <TargetingReticle
               size={250}
               mode="TRACK:AUTO"
@@ -356,7 +356,7 @@ export default function RealtimeDashboard() {
               ]}
             />
           </div>
-          <div className="lg:col-span-8 col-span-full border-t lg:border-l border-eva-green">
+          <div className="lg:col-span-8 col-span-full border-t lg:border-l border-nerv-green">
             <SurveillanceGrid
               title="GEOFRONT MONITORING"
               color="green"

@@ -11,7 +11,7 @@ describe("Button", () => {
   it("applies variant classes", () => {
     const { container } = render(<Button variant="danger">Danger</Button>);
     const button = container.querySelector("button");
-    expect(button?.className).toContain("border-eva-red");
+    expect(button?.className).toContain("border-nerv-red");
   });
 
   it("calls onClick handler", () => {

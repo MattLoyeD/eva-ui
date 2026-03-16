@@ -5,10 +5,10 @@ import { EmergencyBanner } from "@/components/EmergencyBanner";
 
 # Visual Grammar
 
-This page defines the core visual families of EvaUI so component choices stay coherent. The library should not collapse every screen into one generic “cyber dashboard” language.
+This page defines the core visual families of NERV-UI so component choices stay coherent. The library should not collapse every screen into one generic “cyber dashboard” language.
 
 <Callout type="info" title="FOUR DISTINCT FAMILIES">
-  EvaUI currently operates across four major families: structural panels, camera overlays, emergency broadcast, and EVA title cards. A screen can mix them, but one family should clearly dominate.
+  NERV-UI currently operates across four major families: structural panels, camera overlays, emergency broadcast, and EVA title cards. A screen can mix them, but one family should clearly dominate.
 </Callout>
 
 ## 1. Structural Panels
@@ -22,7 +22,7 @@ Use angular panels for command rooms, data chassis, navigation, logs, forms, and
 <ComponentPreview title="STRUCTURAL PANEL">
   <div className="max-w-sm">
     <Card title="MAGI STATUS">
-      <div className="space-y-1 text-xs text-eva-white/80" style={{ fontFamily: "var(--font-eva-mono)" }}>
+      <div className="space-y-1 text-xs text-nerv-white/80" style={{ fontFamily: "var(--font-nerv-mono)" }}>
         <div>MELCHIOR 1 // ONLINE</div>
         <div>BALTHASAR 2 // ONLINE</div>
         <div>CASPER 3 // COMPUTING</div>
@@ -40,11 +40,11 @@ Use rounded plaques only when a component should feel attached to a signal feed,
 - Titles should feel like broadcast annotation, not panel headers.
 
 <ComponentPreview title="CAMERA OVERLAY">
-  <div className="relative overflow-hidden border border-eva-mid-gray/50 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent_35%),linear-gradient(180deg,#181818_0%,#020202_100%)] p-5">
+  <div className="relative overflow-hidden border border-nerv-mid-gray/50 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent_35%),linear-gradient(180deg,#181818_0%,#020202_100%)] p-5">
     <div className="absolute inset-0 opacity-20 [background:repeating-linear-gradient(0deg,transparent_0_4px,rgba(255,255,255,0.05)_4px_8px)]" />
     <div className="relative ml-auto max-w-sm">
       <Card title="TEST PLUG-02" variant="video" footer="HARMONICS TEST PROCEEDING">
-        <div className="space-y-1 text-[10px] uppercase tracking-[0.12em] text-eva-orange/80" style={{ fontFamily: "var(--font-eva-mono)" }}>
+        <div className="space-y-1 text-[10px] uppercase tracking-[0.12em] text-nerv-orange/80" style={{ fontFamily: "var(--font-nerv-mono)" }}>
           <div>Subject: Fifth C.</div>
           <div>Signal State: Live</div>
         </div>

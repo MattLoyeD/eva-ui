@@ -6,7 +6,7 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Structural panel container for dense monitoring surfaces, plus a specialized rounded `video` variant for subject/video overlays. Use the angular variants for control-room chassis and the rounded one only when a surface should read like captured footage annotation.
 
 ```tsx
-import { Card } from "@mdrbx/eva-ui";
+import { Card } from "@mdrbx/nerv-ui";
 ```
 
 ## Default Variant
@@ -14,7 +14,7 @@ import { Card } from "@mdrbx/eva-ui";
 <ComponentPreview
   title="DEFAULT"
   code={`<Card title="PILOT STATUS">
-  <div className="text-xs font-mono text-eva-white/80 space-y-1">
+  <div className="text-xs font-mono text-nerv-white/80 space-y-1">
     <div>Name: IKARI, SHINJI</div>
     <div>Unit: EVA-01 TEST TYPE</div>
     <div>Sync Rate: 41.3%</div>
@@ -23,7 +23,7 @@ import { Card } from "@mdrbx/eva-ui";
 </Card>`}
 >
   <Card title="PILOT STATUS">
-    <div className="text-xs font-mono text-eva-white/80 space-y-1">
+    <div className="text-xs font-mono text-nerv-white/80 space-y-1">
       <div>Name: IKARI, SHINJI</div>
       <div>Unit: EVA-01 TEST TYPE</div>
       <div>Sync Rate: 41.3%</div>
@@ -38,7 +38,7 @@ import { Card } from "@mdrbx/eva-ui";
   title="ALERT"
   code={`<Card title="CRITICAL ALERT" variant="alert"
   footer="TIMESTAMP: 2015-06-22T14:22:07Z">
-  <div className="text-xs font-mono text-eva-red space-y-1">
+  <div className="text-xs font-mono text-nerv-red space-y-1">
     <div>PATTERN BLUE CONFIRMED</div>
     <div>Target designation: 5th ANGEL</div>
     <div>Codename: RAMIEL</div>
@@ -51,7 +51,7 @@ import { Card } from "@mdrbx/eva-ui";
     variant="alert"
     footer="TIMESTAMP: 2015-06-22T14:22:07Z"
   >
-    <div className="text-xs font-mono text-eva-red space-y-1">
+    <div className="text-xs font-mono text-nerv-red space-y-1">
       <div>PATTERN BLUE CONFIRMED</div>
       <div>Target designation: 5th ANGEL</div>
       <div>Codename: RAMIEL</div>
@@ -89,11 +89,11 @@ Rounded double-line plate for camera feeds, subject callouts, and footage overla
 
 <ComponentPreview
   title="VIDEO"
-  code={`<div className="relative overflow-hidden border border-eva-mid-gray/50 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_38%),linear-gradient(180deg,#121212_0%,#000_100%)] p-5">
+  code={`<div className="relative overflow-hidden border border-nerv-mid-gray/50 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_38%),linear-gradient(180deg,#121212_0%,#000_100%)] p-5">
   <div className="absolute inset-0 opacity-20 [background:repeating-linear-gradient(0deg,transparent_0_4px,rgba(255,255,255,0.06)_4px_8px)]" />
   <div className="relative ml-auto max-w-sm">
     <Card title="KAWORU NAGISA" variant="video" footer="CAMERA NO.012 LEFT">
-      <div className="space-y-1.5 text-[10px] uppercase tracking-[0.12em] text-eva-orange/80" style={{ fontFamily: "var(--font-eva-mono)" }}>
+      <div className="space-y-1.5 text-[10px] uppercase tracking-[0.12em] text-nerv-orange/80" style={{ fontFamily: "var(--font-nerv-mono)" }}>
         <div>Subject: Fifth C.</div>
         <div>Harmonics Test Proceeding</div>
         <div>Signal State: Live</div>
@@ -102,13 +102,13 @@ Rounded double-line plate for camera feeds, subject callouts, and footage overla
   </div>
 </div>`}
 >
-  <div className="relative overflow-hidden border border-eva-mid-gray/50 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_38%),linear-gradient(180deg,#121212_0%,#000_100%)] p-5">
+  <div className="relative overflow-hidden border border-nerv-mid-gray/50 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_38%),linear-gradient(180deg,#121212_0%,#000_100%)] p-5">
     <div className="absolute inset-0 opacity-20 [background:repeating-linear-gradient(0deg,transparent_0_4px,rgba(255,255,255,0.06)_4px_8px)]" />
     <div className="relative ml-auto max-w-sm">
       <Card title="KAWORU NAGISA" variant="video" footer="CAMERA NO.012 LEFT">
         <div
-          className="space-y-1.5 text-[10px] uppercase tracking-[0.12em] text-eva-orange/80"
-          style={{ fontFamily: "var(--font-eva-mono)" }}
+          className="space-y-1.5 text-[10px] uppercase tracking-[0.12em] text-nerv-orange/80"
+          style={{ fontFamily: "var(--font-nerv-mono)" }}
         >
           <div>Subject: Fifth C.</div>
           <div>Harmonics Test Proceeding</div>
@@ -124,13 +124,13 @@ Rounded double-line plate for camera feeds, subject callouts, and footage overla
 <ComponentPreview
   title="NO HEADER"
   code={`<Card>
-  <div className="text-sm text-eva-cyan font-mono">
+  <div className="text-sm text-nerv-cyan font-mono">
     Minimal card — no header, no footer.
   </div>
 </Card>`}
 >
   <Card>
-    <div className="text-sm text-eva-cyan font-mono">
+    <div className="text-sm text-nerv-cyan font-mono">
       Minimal card — no header, no footer.
     </div>
   </Card>

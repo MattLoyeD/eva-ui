@@ -108,19 +108,19 @@ export default function OperationsDashboard() {
     return () => clearInterval(interval);
   }, []);
 
-  const threatColor = threatLevel < 30 ? "text-eva-green" : threatLevel < 60 ? "text-eva-orange" : "text-eva-red";
-  const syncColor = syncRate >= 85 ? "text-eva-green" : syncRate >= 70 ? "text-eva-cyan" : "text-eva-orange";
+  const threatColor = threatLevel < 30 ? "text-nerv-green" : threatLevel < 60 ? "text-nerv-orange" : "text-nerv-red";
+  const syncColor = syncRate >= 85 ? "text-nerv-green" : syncRate >= 70 ? "text-nerv-cyan" : "text-nerv-orange";
 
   return (
-    <div className="min-h-screen bg-eva-black nerv-page-shell">
+    <div className="min-h-screen bg-nerv-black nerv-page-shell">
       {/* ═══════ HEADER ═══════ */}
-      <div className="border-b border-eva-orange/20 py-3">
+      <div className="border-b border-nerv-orange/20 py-3">
         <div className="nerv-page-frame flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="nerv-section-label mb-2">Ops Control</span>
             <h1
-              className="text-2xl uppercase tracking-[0.2em] text-eva-orange font-bold sm:text-3xl"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-2xl uppercase tracking-[0.2em] text-nerv-orange font-bold sm:text-3xl"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               NERV OPERATIONS CENTER
             </h1>
@@ -145,13 +145,13 @@ export default function OperationsDashboard() {
       </div>
 
       {/* ═══════ KPI ROW ═══════ */}
-      <div className="border-b border-eva-orange/12 py-3">
+      <div className="border-b border-nerv-orange/12 py-3">
         <div className="nerv-page-frame grid grid-cols-2 gap-3 lg:grid-cols-4">
           {[
             {
               label: "ACTIVE UNITS",
               value: `${activeUnits}/6`,
-              color: activeUnits >= 4 ? "text-eva-green" : "text-eva-orange",
+              color: activeUnits >= 4 ? "text-nerv-green" : "text-nerv-orange",
               sub: "EVANGELION FLEET",
             },
             {
@@ -169,24 +169,24 @@ export default function OperationsDashboard() {
             {
               label: "PERSONNEL ONLINE",
               value: `${personnelOnline}`,
-              color: "text-eva-cyan",
+              color: "text-nerv-cyan",
               sub: "NERV GEOFRONT",
             },
           ].map((kpi) => (
             <div key={kpi.label} className="nerv-panel px-3 py-3">
               <div
-                className="text-[10px] uppercase tracking-[0.15em] text-eva-white/40 font-bold mb-1"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-[10px] uppercase tracking-[0.15em] text-nerv-white/40 font-bold mb-1"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 {kpi.label}
               </div>
               <div
                 className={`text-2xl sm:text-3xl font-bold tabular-nums ${kpi.color}`}
-                style={{ fontFamily: "var(--font-eva-mono)" }}
+                style={{ fontFamily: "var(--font-nerv-mono)" }}
               >
                 {kpi.value}
               </div>
-              <div className="text-[9px] font-mono text-eva-white/30 mt-0.5">{kpi.sub}</div>
+              <div className="text-[9px] font-mono text-nerv-white/30 mt-0.5">{kpi.sub}</div>
             </div>
           ))}
         </div>
@@ -237,8 +237,8 @@ export default function OperationsDashboard() {
           {/* Sync gauge */}
           <div className="nerv-panel flex flex-col items-center p-3 sm:p-4">
             <div
-              className="text-[10px] uppercase tracking-[0.2em] text-eva-cyan font-bold mb-3 self-start"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-[10px] uppercase tracking-[0.2em] text-nerv-cyan font-bold mb-3 self-start"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               OVERALL SYNC RATE
             </div>
@@ -249,7 +249,7 @@ export default function OperationsDashboard() {
               size={200}
               threshold={90}
             />
-            <div className="mt-2 text-[9px] font-mono text-eva-white/40 text-center">
+            <div className="mt-2 text-[9px] font-mono text-nerv-white/40 text-center">
               THRESHOLD: 90% — CURRENT:{" "}
               <span className={syncColor}>{syncRate.toFixed(1)}%</span>
             </div>
@@ -278,11 +278,11 @@ export default function OperationsDashboard() {
       </div>
 
       {/* ═══════ BOTTOM ROW — THREAT ASSESSMENT ═══════ */}
-      <div className="border-t border-eva-orange/16 py-4">
+      <div className="border-t border-nerv-orange/16 py-4">
         <div className="nerv-page-frame">
         <div
-          className="text-xs uppercase tracking-[0.2em] text-eva-orange font-bold mb-4"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-xs uppercase tracking-[0.2em] text-nerv-orange font-bold mb-4"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           SECTOR THREAT ASSESSMENT
         </div>
@@ -308,12 +308,12 @@ export default function OperationsDashboard() {
       </div>
 
       {/* ═══════ FOOTER ═══════ */}
-      <div className="border-t border-eva-white/10 py-3">
+      <div className="border-t border-nerv-white/10 py-3">
         <div className="nerv-page-frame flex flex-col gap-1 sm:flex-row sm:justify-between">
-          <span className="text-[9px] font-mono text-eva-white/30">
+          <span className="text-[9px] font-mono text-nerv-white/30">
             NERV CENTRAL DOGMA — OPERATIONS DASHBOARD v3.1.0
           </span>
-          <span className="text-[9px] font-mono text-eva-white/30">
+          <span className="text-[9px] font-mono text-nerv-white/30">
             MAGI SYSTEM STATUS: NOMINAL — CLEARANCE LEVEL: A-17
           </span>
         </div>

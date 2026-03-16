@@ -24,9 +24,9 @@ function formatTime(totalMs: number): string {
 
 /** Color class by remaining time */
 function getTimerColor(remainingMs: number): string {
-  if (remainingMs <= 10000) return "text-eva-red";
-  if (remainingMs <= 60000) return "text-eva-orange";
-  return "text-eva-lcd-green";
+  if (remainingMs <= 10000) return "text-nerv-red";
+  if (remainingMs <= 60000) return "text-nerv-orange";
+  return "text-nerv-lcd-green";
 }
 
 export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
@@ -77,12 +77,12 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
     const percentage = totalMs > 0 ? (remaining / totalMs) * 100 : 0;
 
     return (
-      <div ref={ref} className={`bg-eva-black border border-eva-mid-gray ${className}`} {...rest}>
+      <div ref={ref} className={`bg-nerv-black border border-nerv-mid-gray ${className}`} {...rest}>
         {/* Header -- INTERNAL BATTERY */}
-        <div className="flex items-center justify-between px-3 py-1.5 border-b border-eva-mid-gray bg-eva-dark-gray">
+        <div className="flex items-center justify-between px-3 py-1.5 border-b border-nerv-mid-gray bg-nerv-dark-gray">
           <span
-            className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-xs uppercase tracking-[0.2em] font-bold text-nerv-orange"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             INTERNAL BATTERY
           </span>
@@ -95,7 +95,7 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
         <div className="flex items-center justify-center py-6 px-4">
           <motion.div
             className={`text-5xl md:text-6xl font-bold tabular-nums ${color}`}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
             animate={
               isUrgent
                 ? { opacity: [1, 0.2, 1] }
@@ -117,21 +117,21 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
 
         {/* Battery bar */}
         <div className="px-3 pb-3">
-          <div className="h-3 bg-eva-dark-gray border border-eva-mid-gray flex gap-[1px] p-[1px]">
+          <div className="h-3 bg-nerv-dark-gray border border-nerv-mid-gray flex gap-[1px] p-[1px]">
             {Array.from({ length: 20 }, (_, i) => {
               const blockPct = ((i + 1) / 20) * 100;
               const filled = percentage >= blockPct;
               const blockColor =
                 blockPct > 75
-                  ? "bg-eva-lcd-green"
+                  ? "bg-nerv-lcd-green"
                   : blockPct > 25
-                    ? "bg-eva-orange"
-                    : "bg-eva-red";
+                    ? "bg-nerv-orange"
+                    : "bg-nerv-red";
 
               return (
                 <div
                   key={i}
-                  className={`flex-1 ${filled ? blockColor : "bg-eva-black/50"}`}
+                  className={`flex-1 ${filled ? blockColor : "bg-nerv-black/50"}`}
                 />
               );
             })}
@@ -139,7 +139,7 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between px-3 py-1 border-t border-eva-mid-gray bg-eva-dark-gray text-[10px] font-mono text-eva-mid-gray">
+        <div className="flex items-center justify-between px-3 py-1 border-t border-nerv-mid-gray bg-nerv-dark-gray text-[10px] font-mono text-nerv-mid-gray">
           <span>{remaining > 0 ? "ACTIVE" : "EXPIRED"}</span>
           <span>ELAPSED: {formatTime(totalMs - remaining)}</span>
         </div>

@@ -186,14 +186,14 @@ export const PilotCard = forwardRef<HTMLDivElement, PilotCardProps>(function Pil
                 className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-3 border border-white/8 bg-black/46 px-2 py-1.5"
               >
                 <span
-                  className="truncate text-[9px] uppercase tracking-[0.16em] text-eva-white/42"
-                  style={{ fontFamily: "var(--font-eva-mono)" }}
+                  className="truncate text-[9px] uppercase tracking-[0.16em] text-nerv-white/42"
+                  style={{ fontFamily: "var(--font-nerv-mono)" }}
                 >
                   {field.label}
                 </span>
                 <span
                   className="text-[10px] font-bold uppercase tracking-[0.08em]"
-                  style={{ color: fieldColor, fontFamily: "var(--font-eva-mono)" }}
+                  style={{ color: fieldColor, fontFamily: "var(--font-nerv-mono)" }}
                 >
                   {field.value}
                 </span>
@@ -201,7 +201,7 @@ export const PilotCard = forwardRef<HTMLDivElement, PilotCardProps>(function Pil
                   className="px-1.5 py-[2px] text-[9px] uppercase tracking-[0.14em] text-black"
                   style={{
                     backgroundColor: fieldColor,
-                    fontFamily: "var(--font-eva-mono)",
+                    fontFamily: "var(--font-nerv-mono)",
                   }}
                 >
                   {field.status ?? "log"}
@@ -214,16 +214,16 @@ export const PilotCard = forwardRef<HTMLDivElement, PilotCardProps>(function Pil
 
       <div className="flex items-center justify-between gap-3 px-3 py-2 sm:px-4">
         <div
-          className="text-[9px] uppercase tracking-[0.18em] text-eva-white/36"
-          style={{ fontFamily: "var(--font-eva-mono)" }}
+          className="text-[9px] uppercase tracking-[0.18em] text-nerv-white/36"
+          style={{ fontFamily: "var(--font-nerv-mono)" }}
         >
           {imageUrl ? "camera no.012 left" : "subject relay"}
         </div>
 
         <div className="flex items-center gap-2">
           <span
-            className="text-[9px] uppercase tracking-[0.18em] text-eva-white/38"
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            className="text-[9px] uppercase tracking-[0.18em] text-nerv-white/38"
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             check
           </span>
@@ -231,7 +231,7 @@ export const PilotCard = forwardRef<HTMLDivElement, PilotCardProps>(function Pil
             className="px-1.5 py-[2px] text-[10px] font-bold uppercase tracking-[0.16em] text-black"
             style={{
               backgroundColor: checkColor,
-              fontFamily: "var(--font-eva-mono)",
+              fontFamily: "var(--font-nerv-mono)",
             }}
           >
             {checkStatus}

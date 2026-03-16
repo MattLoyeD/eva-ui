@@ -12,31 +12,31 @@ interface PropsTableProps {
 
 export function PropsTable({ props }: PropsTableProps) {
   return (
-    <div className="overflow-x-auto mb-8 border border-eva-mid-gray">
+    <div className="overflow-x-auto mb-8 border border-nerv-mid-gray">
       <table className="w-full text-sm">
         <thead>
-          <tr className="bg-eva-dark-gray">
+          <tr className="bg-nerv-dark-gray">
             <th
-              className="text-left px-4 py-3 text-eva-orange uppercase tracking-wider font-bold border-b border-eva-mid-gray"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-left px-4 py-3 text-nerv-orange uppercase tracking-wider font-bold border-b border-nerv-mid-gray"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               Prop
             </th>
             <th
-              className="text-left px-4 py-3 text-eva-orange uppercase tracking-wider font-bold border-b border-eva-mid-gray"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-left px-4 py-3 text-nerv-orange uppercase tracking-wider font-bold border-b border-nerv-mid-gray"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               Type
             </th>
             <th
-              className="text-left px-4 py-3 text-eva-orange uppercase tracking-wider font-bold border-b border-eva-mid-gray"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-left px-4 py-3 text-nerv-orange uppercase tracking-wider font-bold border-b border-nerv-mid-gray"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               Default
             </th>
             <th
-              className="text-left px-4 py-3 text-eva-orange uppercase tracking-wider font-bold border-b border-eva-mid-gray"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-left px-4 py-3 text-nerv-orange uppercase tracking-wider font-bold border-b border-nerv-mid-gray"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               Description
             </th>
@@ -46,23 +46,23 @@ export function PropsTable({ props }: PropsTableProps) {
           {props.map((prop) => (
             <tr
               key={prop.name}
-              className="border-b border-eva-mid-gray/40 hover:bg-eva-dark-gray/50 transition-colors"
+              className="border-b border-nerv-mid-gray/40 hover:bg-nerv-dark-gray/50 transition-colors"
             >
-              <td className="px-4 py-3 font-mono text-eva-cyan whitespace-nowrap">
+              <td className="px-4 py-3 font-mono text-nerv-cyan whitespace-nowrap">
                 {prop.name}
                 {prop.required && (
-                  <span className="text-eva-red ml-1">*</span>
+                  <span className="text-nerv-red ml-1">*</span>
                 )}
               </td>
-              <td className="px-4 py-3 font-mono text-eva-magenta whitespace-nowrap">
+              <td className="px-4 py-3 font-mono text-nerv-magenta whitespace-nowrap">
                 {prop.type}
               </td>
-              <td className="px-4 py-3 font-mono text-eva-green">
+              <td className="px-4 py-3 font-mono text-nerv-green">
                 {prop.default || "—"}
               </td>
               <td
-                className="px-4 py-3 text-eva-white"
-                style={{ fontFamily: "var(--font-eva-body)" }}
+                className="px-4 py-3 text-nerv-white"
+                style={{ fontFamily: "var(--font-nerv-body)" }}
               >
                 {prop.description}
               </td>

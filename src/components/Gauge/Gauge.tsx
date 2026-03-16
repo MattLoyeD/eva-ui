@@ -33,11 +33,11 @@ export interface GaugeProps {
 }
 
 const colorMap = {
-  cyan: { stroke: "#00FFFF", text: "text-eva-cyan", fill: "rgba(0,255,255,0.06)" },
-  green: { stroke: "#00FF00", text: "text-eva-green", fill: "rgba(0,255,0,0.06)" },
-  orange: { stroke: "#FF9900", text: "text-eva-orange", fill: "rgba(255,153,0,0.06)" },
-  red: { stroke: "#FF0000", text: "text-eva-red", fill: "rgba(255,0,0,0.06)" },
-  magenta: { stroke: "#FF00FF", text: "text-eva-magenta", fill: "rgba(255,0,255,0.06)" },
+  cyan: { stroke: "#00FFFF", text: "text-nerv-cyan", fill: "rgba(0,255,255,0.06)" },
+  green: { stroke: "#00FF00", text: "text-nerv-green", fill: "rgba(0,255,0,0.06)" },
+  orange: { stroke: "#FF9900", text: "text-nerv-orange", fill: "rgba(255,153,0,0.06)" },
+  red: { stroke: "#FF0000", text: "text-nerv-red", fill: "rgba(255,0,0,0.06)" },
+  magenta: { stroke: "#FF00FF", text: "text-nerv-magenta", fill: "rgba(255,0,255,0.06)" },
 } as const;
 
 export const Gauge = forwardRef<HTMLDivElement, GaugeProps>(
@@ -108,7 +108,7 @@ export const Gauge = forwardRef<HTMLDivElement, GaugeProps>(
         {label && (
           <div
             className={`mb-1 border-b border-current/25 pb-1 text-[10px] uppercase tracking-[0.22em] font-bold ${activeColor.text}`}
-            style={{ fontFamily: "var(--font-eva-display)", width: `${Math.max(112, size * 0.62)}px` }}
+            style={{ fontFamily: "var(--font-nerv-display)", width: `${Math.max(112, size * 0.62)}px` }}
           >
             {label}
           </div>

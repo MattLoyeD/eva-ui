@@ -175,8 +175,8 @@ export default function NervCommandCenter() {
   }, [triggerMagiVote, randomSeverity]);
 
   // ─── Derived values ───
-  const majorFrameBorder = isEmergency ? "border-alert-red" : "border-eva-orange/45";
-  const sectionDivider = isEmergency ? "border-alert-red/60" : "border-eva-mid-gray/70";
+  const majorFrameBorder = isEmergency ? "border-alert-red" : "border-nerv-orange/45";
+  const sectionDivider = isEmergency ? "border-alert-red/60" : "border-nerv-mid-gray/70";
   const avgSync = Math.round(syncValues.reduce((a, b) => a + b, 0) / syncValues.length);
 
   return (
@@ -196,8 +196,8 @@ export default function NervCommandCenter() {
         >
           <Link
             href="/docs"
-            className="inline-block text-xs font-mono uppercase tracking-[0.2em] underline underline-offset-4 hover:opacity-80 transition-opacity text-eva-black"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="inline-block text-xs font-mono uppercase tracking-[0.2em] underline underline-offset-4 hover:opacity-80 transition-opacity text-nerv-black"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             VIEW DOCUMENTATION
           </Link>
@@ -213,21 +213,21 @@ export default function NervCommandCenter() {
           <div className="text-center lg:text-left shrink-0">
             <h1
               className="text-white text-3xl sm:text-4xl font-black uppercase leading-none"
-              style={{ fontFamily: "var(--font-eva-display)", letterSpacing: "-0.02em" }}
+              style={{ fontFamily: "var(--font-nerv-display)", letterSpacing: "-0.02em" }}
             >
-              EVA-UI
+              NERV-UI
             </h1>
             <p
-              className="text-eva-mid-gray text-xs uppercase tracking-[0.35em]"
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              className="text-nerv-mid-gray text-xs uppercase tracking-[0.35em]"
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               NERV COMMAND CENTER
             </p>
           </div>
 
           {/* Center — Install snippet */}
-          <code className="text-xs font-mono text-eva-cyan bg-eva-black/60 px-3 py-1.5 border border-eva-cyan/30 select-all whitespace-nowrap">
-            npm install @mdrbx/eva-ui
+          <code className="text-xs font-mono text-nerv-cyan bg-nerv-black/60 px-3 py-1.5 border border-nerv-cyan/30 select-all whitespace-nowrap">
+            npm install @mdrbx/nerv-ui
           </code>
 
           {/* Right — Clock + buttons */}
@@ -244,7 +244,7 @@ export default function NervCommandCenter() {
             <Link href="/examples">
               <Button variant="terminal" size="sm">EXAMPLES</Button>
             </Link>
-            <a href="https://www.npmjs.com/package/@mdrbx/eva-ui" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.npmjs.com/package/@mdrbx/nerv-ui" target="_blank" rel="noopener noreferrer">
               <Button variant="ghost" size="sm">NPM</Button>
             </a>
           </div>
@@ -256,26 +256,26 @@ export default function NervCommandCenter() {
           ═══════════════════════════════════════════ */}
       <div
         className={`flex flex-col sm:flex-row items-center justify-between px-4 py-1.5 border-b ${sectionDivider} gap-2 ${
-          isEmergency ? "bg-eva-red/10" : "bg-eva-dark-gray"
+          isEmergency ? "bg-nerv-red/10" : "bg-nerv-dark-gray"
         }`}
       >
         <div className="flex items-center gap-3">
           <div
-            className={`w-2 h-2 ${isEmergency ? "bg-eva-red animate-pulse" : "bg-eva-orange"}`}
+            className={`w-2 h-2 ${isEmergency ? "bg-nerv-red animate-pulse" : "bg-nerv-orange"}`}
           />
           <span
             className={`text-xs uppercase tracking-[0.2em] font-bold ${
-              isEmergency ? "text-eva-red" : "text-eva-orange"
+              isEmergency ? "text-nerv-red" : "text-nerv-orange"
             }`}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             {isEmergency ? "CONDITION RED" : "COMMAND GRID STABLE"}
           </span>
         </div>
         <div className="flex items-center gap-3 flex-wrap justify-center">
-          <span className="text-xs font-mono text-eva-mid-gray">47 COMPONENTS</span>
-          <span className="text-eva-mid-gray/30">|</span>
-          <span className="text-xs font-mono text-eva-mid-gray">v0.7.0</span>
+          <span className="text-xs font-mono text-nerv-mid-gray">47 COMPONENTS</span>
+          <span className="text-nerv-mid-gray/30">|</span>
+          <span className="text-xs font-mono text-nerv-mid-gray">v0.7.0</span>
           <Button
             variant={isEmergency ? "primary" : "danger"}
             size="sm"
@@ -291,12 +291,12 @@ export default function NervCommandCenter() {
           ═══════════════════════════════════════════ */}
       <section className={`border-b ${sectionDivider} px-4 py-4`}>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          <KpiCard label="ACTIVE UNITS" value="4" color="text-eva-cyan" />
-          <KpiCard label="SYNC RATE" value={`${avgSync}%`} color="text-eva-orange" />
-          <KpiCard label="THREAT LEVEL" value={isEmergency ? "HIGH" : "LOW"} color={isEmergency ? "text-eva-red" : "text-eva-orange"} />
-          <KpiCard label="POWER GRID" value="98%" color="text-eva-orange" />
-          <KpiCard label="PERSONNEL" value="847" color="text-eva-cyan" />
-          <KpiCard label="MAGI CONSENSUS" value="2/3" color="text-eva-magenta" />
+          <KpiCard label="ACTIVE UNITS" value="4" color="text-nerv-cyan" />
+          <KpiCard label="SYNC RATE" value={`${avgSync}%`} color="text-nerv-orange" />
+          <KpiCard label="THREAT LEVEL" value={isEmergency ? "HIGH" : "LOW"} color={isEmergency ? "text-nerv-red" : "text-nerv-orange"} />
+          <KpiCard label="POWER GRID" value="98%" color="text-nerv-orange" />
+          <KpiCard label="PERSONNEL" value="847" color="text-nerv-cyan" />
+          <KpiCard label="MAGI CONSENSUS" value="2/3" color="text-nerv-magenta" />
         </div>
       </section>
 
@@ -307,17 +307,17 @@ export default function NervCommandCenter() {
         {/* ─── LEFT (4 cols): Pilot Sync + Phase Status ─── */}
         <div className={`col-span-full lg:col-span-4 lg:border-r ${sectionDivider} p-3 flex flex-col gap-4`}>
           <h3
-            className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-xs uppercase tracking-[0.2em] font-bold text-nerv-orange"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             PILOT SYNCHRONIZATION
           </h3>
 
           {pilots.map((p, i) => (
             <div key={p.id} className="space-y-1">
-              <div className="flex items-center justify-between text-xs font-mono text-eva-mid-gray">
+              <div className="flex items-center justify-between text-xs font-mono text-nerv-mid-gray">
                 <span>{p.id}</span>
-                <span className="text-eva-cyan">{p.pilot}</span>
+                <span className="text-nerv-cyan">{p.pilot}</span>
               </div>
               <SyncProgressBar
                 value={syncValues[i]}
@@ -349,21 +349,21 @@ export default function NervCommandCenter() {
         <div className={`col-span-full lg:col-span-5 lg:border-r ${sectionDivider} flex flex-col`}>
           {/* Sync Ratio Chart */}
           <div className={`border-b ${sectionDivider} flex flex-col min-h-[200px] lg:min-h-[280px]`}>
-            <div className="flex items-center justify-between px-4 py-1.5 bg-eva-dark-gray border-b border-eva-mid-gray/30">
+            <div className="flex items-center justify-between px-4 py-1.5 bg-nerv-dark-gray border-b border-nerv-mid-gray/30">
               <span
-                className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-                style={{ fontFamily: "var(--font-eva-display)" }}
+                className="text-xs uppercase tracking-[0.2em] font-bold text-nerv-orange"
+                style={{ fontFamily: "var(--font-nerv-display)" }}
               >
                 HARMONIC WAVEFORM
               </span>
               <div className="flex items-center gap-3 text-xs font-mono">
                 <span className="flex items-center gap-1">
-                  <span className="w-3 h-0.5 bg-eva-cyan inline-block" />
-                  <span className="text-eva-cyan">DATA-BLUE</span>
+                  <span className="w-3 h-0.5 bg-nerv-cyan inline-block" />
+                  <span className="text-nerv-cyan">DATA-BLUE</span>
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-3 h-0.5 bg-eva-magenta inline-block" />
-                  <span className="text-eva-magenta">MAGENTA</span>
+                  <span className="w-3 h-0.5 bg-nerv-magenta inline-block" />
+                  <span className="text-nerv-magenta">MAGENTA</span>
                 </span>
               </div>
             </div>
@@ -413,8 +413,8 @@ export default function NervCommandCenter() {
         {/* ─── RIGHT (3 cols): Gauges + PieChart ─── */}
         <div className="col-span-full lg:col-span-3 p-3 flex flex-col gap-4">
           <h3
-            className="text-xs uppercase tracking-[0.2em] font-bold text-eva-orange"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-xs uppercase tracking-[0.2em] font-bold text-nerv-orange"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             SYSTEM GAUGES
           </h3>
@@ -506,7 +506,7 @@ export default function NervCommandCenter() {
                 subtitle="SACHIEL — APPROACHING TOKYO-3"
               />
               {!anomalyVisible && (
-                <div className="text-xs font-mono text-eva-mid-gray/50 text-center py-6 uppercase tracking-wider">
+                <div className="text-xs font-mono text-nerv-mid-gray/50 text-center py-6 uppercase tracking-wider">
                   NO ANOMALY DETECTED — STANDBY
                 </div>
               )}
@@ -538,8 +538,8 @@ export default function NervCommandCenter() {
             <div className="max-w-lg mx-auto">
               <Stepper
                 steps={[
-                  { label: "INSTALL", description: "npm install @mdrbx/eva-ui" },
-                  { label: "IMPORT", description: "import { Button } from 'eva-ui'" },
+                  { label: "INSTALL", description: "npm install @mdrbx/nerv-ui" },
+                  { label: "IMPORT", description: "import { Button } from '@mdrbx/nerv-ui'" },
                   { label: "BUILD", description: "Create your command center" },
                 ]}
                 activeStep={1}
@@ -558,24 +558,24 @@ export default function NervCommandCenter() {
           ═══════════════════════════════════════════ */}
       <footer
         className={`px-4 py-3 border-t-2 ${majorFrameBorder} ${
-          isEmergency ? "bg-eva-red/5" : "bg-eva-dark-gray"
-        } flex flex-col gap-3 text-xs font-mono text-eva-mid-gray`}
+          isEmergency ? "bg-nerv-red/5" : "bg-nerv-dark-gray"
+        } flex flex-col gap-3 text-xs font-mono text-nerv-mid-gray`}
       >
         {/* Links */}
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <Link href="/docs" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
+          <Link href="/docs" className="text-nerv-cyan hover:text-nerv-orange transition-colors uppercase tracking-wider">
             DOCUMENTATION
           </Link>
-          <span className="text-eva-mid-gray/30">|</span>
-          <Link href="/examples" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
+          <span className="text-nerv-mid-gray/30">|</span>
+          <Link href="/examples" className="text-nerv-cyan hover:text-nerv-orange transition-colors uppercase tracking-wider">
             EXAMPLES
           </Link>
-          <span className="text-eva-mid-gray/30">|</span>
-          <a href="https://github.com/mdrbx/eva-ui" target="_blank" rel="noopener noreferrer" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
+          <span className="text-nerv-mid-gray/30">|</span>
+          <a href="https://github.com/mdrbx/nerv-ui" target="_blank" rel="noopener noreferrer" className="text-nerv-cyan hover:text-nerv-orange transition-colors uppercase tracking-wider">
             GITHUB
           </a>
-          <span className="text-eva-mid-gray/30">|</span>
-          <a href="https://www.npmjs.com/package/@mdrbx/eva-ui" target="_blank" rel="noopener noreferrer" className="text-eva-cyan hover:text-eva-orange transition-colors uppercase tracking-wider">
+          <span className="text-nerv-mid-gray/30">|</span>
+          <a href="https://www.npmjs.com/package/@mdrbx/nerv-ui" target="_blank" rel="noopener noreferrer" className="text-nerv-cyan hover:text-nerv-orange transition-colors uppercase tracking-wider">
             NPM
           </a>
         </div>
@@ -584,9 +584,9 @@ export default function NervCommandCenter() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>
             MADE WITH [REDACTED] BY{" "}
-            <span className="text-eva-orange">MATTLOYED</span>
+            <span className="text-nerv-orange">mdrbx</span>
           </span>
-          <span className="text-eva-mid-gray/50 italic">
+          <span className="text-nerv-mid-gray/50 italic">
             &ldquo;GOD&apos;S IN HIS HEAVEN. ALL&apos;S RIGHT WITH THE WORLD.&rdquo;
           </span>
         </div>
@@ -598,12 +598,12 @@ export default function NervCommandCenter() {
 // ─── KPI Card helper component ───
 function KpiCard({ label, value, color }: { label: string; value: string; color: string }) {
   return (
-    <Card variant="hud" className="border-eva-mid-gray/70">
+    <Card variant="hud" className="border-nerv-mid-gray/70">
       <div className="text-center py-2 px-1">
         <div className={`text-xl sm:text-2xl font-black font-mono ${color}`}>{value}</div>
         <div
-          className="text-xs text-eva-mid-gray uppercase tracking-wider mt-1"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-xs text-nerv-mid-gray uppercase tracking-wider mt-1"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           {label}
         </div>

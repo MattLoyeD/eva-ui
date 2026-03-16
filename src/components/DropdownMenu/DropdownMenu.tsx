@@ -34,24 +34,24 @@ export interface DropdownMenuProps {
 
 const colorMap = {
   orange: {
-    border: "border-eva-orange/40",
-    hover: "hover:bg-eva-orange/10",
-    text: "text-eva-orange",
+    border: "border-nerv-orange/40",
+    hover: "hover:bg-nerv-orange/10",
+    text: "text-nerv-orange",
   },
   green: {
-    border: "border-eva-green/40",
-    hover: "hover:bg-eva-green/10",
-    text: "text-eva-green",
+    border: "border-nerv-green/40",
+    hover: "hover:bg-nerv-green/10",
+    text: "text-nerv-green",
   },
   cyan: {
-    border: "border-eva-cyan/40",
-    hover: "hover:bg-eva-cyan/10",
-    text: "text-eva-cyan",
+    border: "border-nerv-cyan/40",
+    hover: "hover:bg-nerv-cyan/10",
+    text: "text-nerv-cyan",
   },
   red: {
-    border: "border-eva-red/40",
-    hover: "hover:bg-eva-red/10",
-    text: "text-eva-red",
+    border: "border-nerv-red/40",
+    hover: "hover:bg-nerv-red/10",
+    text: "text-nerv-red",
   },
 };
 
@@ -133,10 +133,10 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
               className={`
                 absolute z-50 mt-1 min-w-[180px]
                 ${align === "left" ? "left-0" : "right-0"}
-                bg-eva-black border ${c.border}
+                bg-nerv-black border ${c.border}
                 py-1
               `}
-              style={{ fontFamily: "var(--font-eva-mono)" }}
+              style={{ fontFamily: "var(--font-nerv-mono)" }}
               role="menu"
             >
               {/* L-bracket corners */}
@@ -158,7 +158,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
                   return (
                     <hr
                       key={`divider-${i}`}
-                      className="my-1 border-eva-mid-gray"
+                      className="my-1 border-nerv-mid-gray"
                     />
                   );
                 }
@@ -178,7 +178,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
                       flex items-center gap-2
                       transition-colors duration-75
                       ${isDisabled ? "opacity-30 cursor-not-allowed" : "cursor-pointer"}
-                      ${isDanger ? "text-eva-red hover:bg-eva-red/10" : `${c.text} ${c.hover}`}
+                      ${isDanger ? "text-nerv-red hover:bg-nerv-red/10" : `${c.text} ${c.hover}`}
                       ${isDisabled ? "" : ""}
                     `}
                   >

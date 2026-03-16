@@ -1,4 +1,4 @@
-// EvaUI — Neon Genesis Evangelion Design System
+// NERV-UI — Neon Genesis Evangelion Design System
 // All components exported from this barrel file
 
 export { EmergencyBanner } from "./EmergencyBanner";
@@ -54,9 +54,9 @@ export { ClassifiedOverlay } from "./ClassifiedOverlay";
 export type { ClassifiedOverlayProps } from "./ClassifiedOverlay";
 
 // Phase 3 — Toast Notification System
-export { EvaToastProvider, ToastContainer, useToast } from "./Toast";
+export { NervToastProvider, ToastContainer, useToast } from "./Toast";
 export type {
-  EvaToastProviderProps,
+  NervToastProviderProps,
   Toast,
   ToastVariant,
   ToastContextValue,

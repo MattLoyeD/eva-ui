@@ -118,7 +118,7 @@ export const TargetingContainer = forwardRef<HTMLDivElement, TargetingContainerP
 
         <div
           className="absolute right-3 top-[18px] flex items-center gap-2 text-[9px] uppercase tracking-[0.2em] text-white/30 pointer-events-none"
-          style={{ fontFamily: "var(--font-eva-mono)" }}
+          style={{ fontFamily: "var(--font-nerv-mono)" }}
         >
           <span>{color}</span>
           <span className="h-px w-6 bg-current opacity-40" />
@@ -127,7 +127,7 @@ export const TargetingContainer = forwardRef<HTMLDivElement, TargetingContainerP
         {label && (
           <div
             className="absolute left-3 top-0 z-20 -translate-y-1/2 bg-black px-2 text-[10px] uppercase tracking-[0.24em] font-bold"
-            style={{ color: c, fontFamily: "var(--font-eva-display)" }}
+            style={{ color: c, fontFamily: "var(--font-nerv-display)" }}
           >
             {label}
           </div>

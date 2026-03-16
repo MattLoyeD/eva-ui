@@ -1,6 +1,6 @@
-export { EvaToastProvider } from "./ToastContext";
+export { NervToastProvider } from "./ToastContext";
 export type {
-  EvaToastProviderProps,
+  NervToastProviderProps,
   Toast,
   ToastVariant,
   ToastContextValue,

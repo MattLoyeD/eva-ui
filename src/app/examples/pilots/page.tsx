@@ -218,22 +218,22 @@ export default function PilotDossierPage() {
     : null;
 
   return (
-    <div className="min-h-screen bg-eva-black">
+    <div className="min-h-screen bg-nerv-black">
       {/* ═══════ HEADER ═══════ */}
-      <div className="border-b border-eva-orange px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <div className="border-b border-nerv-orange px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
           <h1
-            className="text-xl sm:text-2xl uppercase tracking-[0.2em] text-eva-orange font-bold"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-xl sm:text-2xl uppercase tracking-[0.2em] text-nerv-orange font-bold"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             PILOT DOSSIER DATABASE
           </h1>
-          <p className="text-[10px] font-mono text-eva-white/50 mt-0.5">
+          <p className="text-[10px] font-mono text-nerv-white/50 mt-0.5">
             NERV HEADQUARTERS — PERSONNEL DIVISION — CLASSIFIED LEVEL-7
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-[9px] font-mono text-eva-white/40 uppercase tracking-wider">
+          <span className="text-[9px] font-mono text-nerv-white/40 uppercase tracking-wider">
             REGISTERED PILOTS
           </span>
           <SegmentDisplay
@@ -247,12 +247,12 @@ export default function PilotDossierPage() {
       </div>
 
       {/* ═══════ BREADCRUMB ═══════ */}
-      <div className="px-4 sm:px-6 py-2 border-b border-eva-orange/20">
+      <div className="px-4 sm:px-6 py-2 border-b border-nerv-orange/20">
         <Breadcrumb items={breadcrumbItems} color="orange" />
       </div>
 
       {/* ═══════ NAVIGATION TABS ═══════ */}
-      <div className="border-b border-eva-orange/20">
+      <div className="border-b border-nerv-orange/20">
         <NavigationTabs
           tabs={tabs}
           activeTab={activeTab}
@@ -268,8 +268,8 @@ export default function PilotDossierPage() {
       {/* ═══════ PILOT GRID ═══════ */}
       <div className="p-4 sm:p-6">
         <div
-          className="text-xs uppercase tracking-[0.2em] text-eva-orange font-bold mb-4"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-xs uppercase tracking-[0.2em] text-nerv-orange font-bold mb-4"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           {activeTab === "active" ? "ACTIVE ROSTER" : "ARCHIVED PERSONNEL"} — {filteredPilots.length} RECORDS
         </div>
@@ -280,8 +280,8 @@ export default function PilotDossierPage() {
               key={pilot.id}
               className={`cursor-pointer transition-all duration-150 ${
                 selectedPilot === pilot.id
-                  ? "ring-1 ring-eva-orange shadow-[0_0_12px_rgba(255,153,0,0.2)]"
-                  : "hover:ring-1 hover:ring-eva-white/20"
+                  ? "ring-1 ring-nerv-orange shadow-[0_0_12px_rgba(255,153,0,0.2)]"
+                  : "hover:ring-1 hover:ring-nerv-white/20"
               }`}
               onClick={() => setSelectedPilot(selectedPilot === pilot.id ? null : pilot.id)}
             >
@@ -302,10 +302,10 @@ export default function PilotDossierPage() {
 
       {/* ═══════ PILOT DOSSIER DETAIL ═══════ */}
       {activePilot && (
-        <div className="border-t border-eva-orange/30 p-4 sm:p-6">
+        <div className="border-t border-nerv-orange/30 p-4 sm:p-6">
           <div
-            className="text-xs uppercase tracking-[0.2em] text-eva-cyan font-bold mb-4"
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            className="text-xs uppercase tracking-[0.2em] text-nerv-cyan font-bold mb-4"
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             DOSSIER: {activePilot.name} — {activePilot.unit} — {activePilot.designation}
           </div>
@@ -349,14 +349,14 @@ export default function PilotDossierPage() {
                   }
                 />
                 <Card title="EVALUATOR NOTES">
-                  <p className="text-xs font-mono text-eva-white/70 leading-relaxed">
+                  <p className="text-xs font-mono text-nerv-white/70 leading-relaxed">
                     {activePilot.psychNotes}
                   </p>
-                  <div className="mt-3 pt-2 border-t border-eva-mid-gray/30 flex items-center justify-between">
-                    <span className="text-[9px] font-mono text-eva-white/30">
+                  <div className="mt-3 pt-2 border-t border-nerv-mid-gray/30 flex items-center justify-between">
+                    <span className="text-[9px] font-mono text-nerv-white/30">
                       EVALUATOR: DR. RITSUKO AKAGI
                     </span>
-                    <span className="text-[9px] font-mono text-eva-white/30">
+                    <span className="text-[9px] font-mono text-nerv-white/30">
                       CLASSIFICATION: EYES ONLY
                     </span>
                   </div>
@@ -386,11 +386,11 @@ export default function PilotDossierPage() {
       )}
 
       {/* ═══════ FOOTER ═══════ */}
-      <div className="border-t border-eva-white/10 px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
-        <span className="text-[9px] font-mono text-eva-white/30">
+      <div className="border-t border-nerv-white/10 px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+        <span className="text-[9px] font-mono text-nerv-white/30">
           NERV PERSONNEL DIVISION — PILOT DOSSIER SYSTEM v2.4.1
         </span>
-        <span className="text-[9px] font-mono text-eva-white/30">
+        <span className="text-[9px] font-mono text-nerv-white/30">
           MAGI CLEARANCE: A-17 — DOCUMENT CLASS: CONFIDENTIAL
         </span>
       </div>

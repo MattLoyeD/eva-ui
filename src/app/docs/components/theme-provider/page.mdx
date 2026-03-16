@@ -6,23 +6,23 @@ import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 Wrapper component that injects CSS custom properties onto a `<div>`, allowing descendant components to inherit overridden theme values. Keys without a `--` prefix are automatically prefixed with `--color-`.
 
 ```tsx
-import { ThemeProvider } from "@mdrbx/eva-ui";
+import { ThemeProvider } from "@mdrbx/nerv-ui";
 ```
 
 ## Basic Theme Override
 
 <ComponentPreview
   title="CUSTOM COLORS"
-  code={`import { ThemeProvider, Card, Button } from "@mdrbx/eva-ui";
+  code={`import { ThemeProvider, Card, Button } from "@mdrbx/nerv-ui";
 
 <ThemeProvider
   theme={{
-    "eva-green": "#ff00ff",
-    "eva-orange": "#00ffcc",
+    "nerv-green": "#ff00ff",
+    "nerv-orange": "#00ffcc",
   }}
 >
   <Card title="THEMED PANEL">
-    <div className="text-sm font-mono text-eva-white/80 space-y-2">
+    <div className="text-sm font-mono text-nerv-white/80 space-y-2">
       <div>Custom properties cascade to all children.</div>
       <Button className="mt-2">THEMED BUTTON</Button>
     </div>
@@ -31,12 +31,12 @@ import { ThemeProvider } from "@mdrbx/eva-ui";
 >
   <ThemeProvider
     theme={{
-      "eva-green": "#ff00ff",
-      "eva-orange": "#00ffcc",
+      "nerv-green": "#ff00ff",
+      "nerv-orange": "#00ffcc",
     }}
   >
     <Card title="THEMED PANEL">
-      <div className="text-sm font-mono text-eva-white/80 space-y-2">
+      <div className="text-sm font-mono text-nerv-white/80 space-y-2">
         <div>Custom properties cascade to all children.</div>
         <Button className="mt-2">THEMED BUTTON</Button>
       </div>
@@ -52,12 +52,12 @@ Use the `--` prefix to set arbitrary CSS custom properties directly.
   title="RAW VARIABLES"
   code={`<ThemeProvider
   theme={{
-    "--font-eva-display": "monospace",
+    "--font-nerv-display": "monospace",
     "--custom-glow": "rgba(255, 0, 128, 0.3)",
   }}
 >
   <Card title="RAW OVERRIDES">
-    <div className="text-xs font-mono text-eva-white/60">
+    <div className="text-xs font-mono text-nerv-white/60">
       Keys starting with -- are passed through as-is.
     </div>
   </Card>
@@ -65,12 +65,12 @@ Use the `--` prefix to set arbitrary CSS custom properties directly.
 >
   <ThemeProvider
     theme={{
-      "--font-eva-display": "monospace",
+      "--font-nerv-display": "monospace",
       "--custom-glow": "rgba(255, 0, 128, 0.3)",
     }}
   >
     <Card title="RAW OVERRIDES">
-      <div className="text-xs font-mono text-eva-white/60">
+      <div className="text-xs font-mono text-nerv-white/60">
         Keys starting with -- are passed through as-is.
       </div>
     </Card>
@@ -105,6 +105,6 @@ Use the `--` prefix to set arbitrary CSS custom properties directly.
 
 <Callout type="info" title="KEY PREFIXING">
   Keys without a `--` prefix are automatically converted to `--color-{key}`. For
-  example, `"eva-green": "#ff00ff"` becomes `--color-eva-green: #ff00ff`. Keys
+  example, `"nerv-green": "#ff00ff"` becomes `--color-nerv-green: #ff00ff`. Keys
   that already start with `--` are passed through unchanged.
 </Callout>

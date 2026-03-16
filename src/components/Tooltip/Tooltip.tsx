@@ -27,9 +27,9 @@ export interface TooltipProps
 }
 
 const colorMap = {
-  orange: { border: "border-eva-orange", text: "text-eva-orange" },
-  green: { border: "border-eva-green", text: "text-eva-green" },
-  cyan: { border: "border-eva-cyan", text: "text-eva-cyan" },
+  orange: { border: "border-nerv-orange", text: "text-nerv-orange" },
+  green: { border: "border-nerv-green", text: "text-nerv-green" },
+  cyan: { border: "border-nerv-cyan", text: "text-nerv-cyan" },
 };
 
 const sideStyles: Record<string, string> = {
@@ -89,12 +89,12 @@ export const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
             role="tooltip"
             className={`
               absolute z-50 ${sideStyles[side]}
-              bg-eva-black border ${c.border}
+              bg-nerv-black border ${c.border}
               px-3 py-1.5 text-xs whitespace-nowrap
               ${c.text}
               pointer-events-none
             `}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             {/* L-bracket corners */}
             <span className={`absolute top-0 left-0 w-1.5 h-1.5 border-t border-l ${c.border}`} />

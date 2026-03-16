@@ -26,15 +26,15 @@ function getColorForValue(value: number): {
   blink: boolean;
 } {
   if (value >= 95) {
-    return { filled: "bg-eva-red", glow: "shadow-[0_0_6px_rgba(255,0,0,0.5)]", text: "text-eva-red", blink: true };
+    return { filled: "bg-nerv-red", glow: "shadow-[0_0_6px_rgba(255,0,0,0.5)]", text: "text-nerv-red", blink: true };
   }
   if (value >= 80) {
-    return { filled: "bg-eva-orange", glow: "shadow-[0_0_6px_rgba(255,153,0,0.3)]", text: "text-eva-orange", blink: false };
+    return { filled: "bg-nerv-orange", glow: "shadow-[0_0_6px_rgba(255,153,0,0.3)]", text: "text-nerv-orange", blink: false };
   }
   if (value >= 50) {
-    return { filled: "bg-eva-green", glow: "shadow-[0_0_6px_rgba(0,255,0,0.3)]", text: "text-eva-green", blink: false };
+    return { filled: "bg-nerv-green", glow: "shadow-[0_0_6px_rgba(0,255,0,0.3)]", text: "text-nerv-green", blink: false };
   }
-  return { filled: "bg-eva-cyan", glow: "shadow-[0_0_6px_rgba(0,255,255,0.3)]", text: "text-eva-cyan", blink: false };
+  return { filled: "bg-nerv-cyan", glow: "shadow-[0_0_6px_rgba(0,255,255,0.3)]", text: "text-nerv-cyan", blink: false };
 }
 
 export const SyncProgressBar = forwardRef<HTMLDivElement, SyncProgressBarProps>(
@@ -61,7 +61,7 @@ export const SyncProgressBar = forwardRef<HTMLDivElement, SyncProgressBarProps>(
           {label && (
             <span
               className={`text-xs uppercase tracking-[0.2em] font-bold ${text}`}
-              style={{ fontFamily: "var(--font-eva-display)" }}
+              style={{ fontFamily: "var(--font-nerv-display)" }}
             >
               {label}
             </span>
@@ -69,7 +69,7 @@ export const SyncProgressBar = forwardRef<HTMLDivElement, SyncProgressBarProps>(
           {showPercentage && (
             <motion.span
               className={`text-xs font-mono font-bold ${text}`}
-              style={{ fontFamily: "var(--font-eva-mono)" }}
+              style={{ fontFamily: "var(--font-nerv-mono)" }}
               animate={blink ? { opacity: [1, 0.3, 1] } : {}}
               transition={blink ? { duration: 0.5, repeat: Infinity } : {}}
             >
@@ -80,7 +80,7 @@ export const SyncProgressBar = forwardRef<HTMLDivElement, SyncProgressBarProps>(
 
         {/* Progress blocks */}
         <div
-          className="flex gap-[2px] bg-eva-dark-gray border border-eva-mid-gray p-1"
+          className="flex gap-[2px] bg-nerv-dark-gray border border-nerv-mid-gray p-1"
           role="progressbar"
           aria-valuenow={clamped}
           aria-valuemin={0}
@@ -93,7 +93,7 @@ export const SyncProgressBar = forwardRef<HTMLDivElement, SyncProgressBarProps>(
                 key={i}
                 className={`
                   flex-1
-                  ${isFilled ? `${filled} ${glow}` : "bg-eva-black/50 border border-eva-mid-gray/30"}
+                  ${isFilled ? `${filled} ${glow}` : "bg-nerv-black/50 border border-nerv-mid-gray/30"}
                 `}
                 style={{ height: blockHeight }}
                 initial={false}
@@ -113,7 +113,7 @@ export const SyncProgressBar = forwardRef<HTMLDivElement, SyncProgressBarProps>(
         </div>
 
         {/* Bottom markers */}
-        <div className="flex justify-between text-[9px] font-mono text-eva-mid-gray px-1">
+        <div className="flex justify-between text-[9px] font-mono text-nerv-mid-gray px-1">
           <span>000</span>
           <span>025</span>
           <span>050</span>

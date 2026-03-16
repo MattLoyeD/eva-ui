@@ -18,28 +18,28 @@ export interface PaginationProps
 
 const colorMap = {
   orange: {
-    text: "text-eva-orange",
-    border: "border-eva-orange",
-    bg: "bg-eva-orange",
-    hoverBg: "hover:bg-eva-orange hover:text-eva-black",
-    disabledText: "text-eva-mid-gray",
-    disabledBorder: "border-eva-mid-gray",
+    text: "text-nerv-orange",
+    border: "border-nerv-orange",
+    bg: "bg-nerv-orange",
+    hoverBg: "hover:bg-nerv-orange hover:text-nerv-black",
+    disabledText: "text-nerv-mid-gray",
+    disabledBorder: "border-nerv-mid-gray",
   },
   green: {
-    text: "text-eva-green",
-    border: "border-eva-green",
-    bg: "bg-eva-green",
-    hoverBg: "hover:bg-eva-green hover:text-eva-black",
-    disabledText: "text-eva-mid-gray",
-    disabledBorder: "border-eva-mid-gray",
+    text: "text-nerv-green",
+    border: "border-nerv-green",
+    bg: "bg-nerv-green",
+    hoverBg: "hover:bg-nerv-green hover:text-nerv-black",
+    disabledText: "text-nerv-mid-gray",
+    disabledBorder: "border-nerv-mid-gray",
   },
   cyan: {
-    text: "text-eva-cyan",
-    border: "border-eva-cyan",
-    bg: "bg-eva-cyan",
-    hoverBg: "hover:bg-eva-cyan hover:text-eva-black",
-    disabledText: "text-eva-mid-gray",
-    disabledBorder: "border-eva-mid-gray",
+    text: "text-nerv-cyan",
+    border: "border-nerv-cyan",
+    bg: "bg-nerv-cyan",
+    hoverBg: "hover:bg-nerv-cyan hover:text-nerv-black",
+    disabledText: "text-nerv-mid-gray",
+    disabledBorder: "border-nerv-mid-gray",
   },
 };
 
@@ -80,11 +80,11 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           className={`
             px-3 py-1.5 text-xs uppercase tracking-[0.15em] font-bold
             border transition-colors duration-100 cursor-pointer
-            select-none bg-eva-black
+            select-none bg-nerv-black
             disabled:opacity-30 disabled:cursor-not-allowed
             ${isFirst ? `${c.disabledText} ${c.disabledBorder}` : `${c.text} ${c.border} ${c.hoverBg}`}
           `}
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           &lt;&lt;
         </button>
@@ -92,31 +92,31 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         {/* LCD page display */}
         <div
           className={`
-            px-4 py-1.5 border bg-eva-black ${c.border}
+            px-4 py-1.5 border bg-nerv-black ${c.border}
             flex items-center gap-2
           `}
         >
           <span
             className={`text-[10px] uppercase tracking-[0.15em] ${c.text} opacity-60`}
-            style={{ fontFamily: "var(--font-eva-display)" }}
+            style={{ fontFamily: "var(--font-nerv-display)" }}
           >
             PAGE
           </span>
           <span
             className={`text-sm font-bold ${c.text}`}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             {pageDisplay}
           </span>
           <span
             className={`text-xs ${c.text} opacity-40`}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             /
           </span>
           <span
             className={`text-sm font-bold ${c.text}`}
-            style={{ fontFamily: "var(--font-eva-mono)" }}
+            style={{ fontFamily: "var(--font-nerv-mono)" }}
           >
             {totalDisplay}
           </span>
@@ -131,11 +131,11 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           className={`
             px-3 py-1.5 text-xs uppercase tracking-[0.15em] font-bold
             border transition-colors duration-100 cursor-pointer
-            select-none bg-eva-black
+            select-none bg-nerv-black
             disabled:opacity-30 disabled:cursor-not-allowed
             ${isLast ? `${c.disabledText} ${c.disabledBorder}` : `${c.text} ${c.border} ${c.hoverBg}`}
           `}
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           &gt;&gt;
         </button>

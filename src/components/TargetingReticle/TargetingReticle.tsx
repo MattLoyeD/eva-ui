@@ -195,7 +195,7 @@ export const TargetingReticle = forwardRef<HTMLDivElement, TargetingReticleProps
         <div
           className="absolute top-2 left-2 text-xs font-bold uppercase tracking-wider"
           style={{
-            fontFamily: "var(--font-eva-display)",
+            fontFamily: "var(--font-nerv-display)",
             color: colors.main,
             textShadow: `0 0 6px ${colors.glow}`,
           }}
@@ -225,7 +225,7 @@ export const TargetingReticle = forwardRef<HTMLDivElement, TargetingReticleProps
           <div
             className="absolute right-2 text-xs font-bold uppercase tracking-wider"
             style={{
-              fontFamily: "var(--font-eva-display)",
+              fontFamily: "var(--font-nerv-display)",
               color: locked ? "#FF0000" : colors.main,
               textShadow: `0 0 6px ${locked ? "rgba(255,0,0,0.4)" : colors.glow}`,
               top: "50%",

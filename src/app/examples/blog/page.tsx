@@ -268,7 +268,7 @@ export default function BlogExample() {
   const breakingPost = posts.find((p) => p.breaking);
 
   return (
-    <div className="min-h-screen bg-eva-black">
+    <div className="min-h-screen bg-nerv-black">
       <div className="max-w-7xl mx-auto">
       {/* Breaking news banner */}
       {breakingPost && (
@@ -281,14 +281,14 @@ export default function BlogExample() {
       )}
 
       {/* Header */}
-      <div className="border-b border-eva-orange px-6 py-3">
+      <div className="border-b border-nerv-orange px-6 py-3">
         <h1
-          className="text-2xl uppercase tracking-[0.2em] text-eva-orange font-bold"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-2xl uppercase tracking-[0.2em] text-nerv-orange font-bold"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           NERV INTELLIGENCE BULLETIN
         </h1>
-        <p className="text-[10px] font-mono text-eva-white/50 mt-1">
+        <p className="text-[10px] font-mono text-nerv-white/50 mt-1">
           CLASSIFIED COMMUNICATIONS — {posts.length} BULLETINS — AUTHORIZED PERSONNEL ONLY
         </p>
       </div>
@@ -310,7 +310,7 @@ export default function BlogExample() {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-0" style={{ minHeight: "600px" }}>
         {/* Post list */}
-        <div className="col-span-full md:col-span-4 border-r border-eva-orange overflow-y-auto max-h-[50vh] md:max-h-[700px]">
+        <div className="col-span-full md:col-span-4 border-r border-nerv-orange overflow-y-auto max-h-[50vh] md:max-h-[700px]">
           <div className="p-2 space-y-1">
             {filteredPosts.map((post) => (
               <button
@@ -318,34 +318,34 @@ export default function BlogExample() {
                 onClick={() => setSelectedPost(post)}
                 className={`w-full text-left p-3 transition-colors cursor-pointer border-l-2 ${
                   selectedPost?.id === post.id
-                    ? "bg-eva-orange/10 border-eva-orange"
-                    : "bg-transparent border-transparent hover:bg-eva-white/5 hover:border-eva-white/20"
+                    ? "bg-nerv-orange/10 border-nerv-orange"
+                    : "bg-transparent border-transparent hover:bg-nerv-white/5 hover:border-nerv-white/20"
                 }`}
               >
                 <div className="flex items-start gap-2">
                   {post.classified && (
-                    <span className="text-eva-red text-[10px] mt-0.5">◆</span>
+                    <span className="text-nerv-red text-[10px] mt-0.5">◆</span>
                   )}
                   {post.breaking && (
-                    <span className="text-eva-orange text-[10px] mt-0.5 animate-pulse">⚡</span>
+                    <span className="text-nerv-orange text-[10px] mt-0.5 animate-pulse">⚡</span>
                   )}
                   <div className="flex-1 min-w-0">
                     <div
                       className={`text-xs font-bold uppercase tracking-wider truncate ${
-                        selectedPost?.id === post.id ? "text-eva-orange" : "text-eva-white/80"
+                        selectedPost?.id === post.id ? "text-nerv-orange" : "text-nerv-white/80"
                       }`}
-                      style={{ fontFamily: "var(--font-eva-display)" }}
+                      style={{ fontFamily: "var(--font-nerv-display)" }}
                     >
                       {post.title}
                     </div>
-                    <div className="text-[10px] text-eva-white/40 font-mono mt-1 line-clamp-2">
+                    <div className="text-[10px] text-nerv-white/40 font-mono mt-1 line-clamp-2">
                       {post.excerpt}
                     </div>
                     <div className="flex items-center gap-2 mt-1.5">
-                      <span className="text-[9px] text-eva-cyan font-mono">{post.date}</span>
-                      <span className="text-[9px] text-eva-white/20">|</span>
+                      <span className="text-[9px] text-nerv-cyan font-mono">{post.date}</span>
+                      <span className="text-[9px] text-nerv-white/20">|</span>
                       <span className={`text-[9px] font-mono ${
-                        post.category === "CLASSIFIED" ? "text-eva-red" : "text-eva-white/40"
+                        post.category === "CLASSIFIED" ? "text-nerv-red" : "text-nerv-white/40"
                       }`}>
                         {post.category}
                       </span>
@@ -362,21 +362,21 @@ export default function BlogExample() {
           {selectedPost ? (
             <div className="relative">
               {/* Post header */}
-              <div className="mb-4 pb-3 border-b border-eva-white/10">
+              <div className="mb-4 pb-3 border-b border-nerv-white/10">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[10px] font-mono text-eva-cyan">#{selectedPost.id}</span>
-                  <span className="text-[10px] text-eva-white/20">|</span>
-                  <span className="text-[10px] font-mono text-eva-white/40">{selectedPost.date}</span>
-                  <span className="text-[10px] text-eva-white/20">|</span>
+                  <span className="text-[10px] font-mono text-nerv-cyan">#{selectedPost.id}</span>
+                  <span className="text-[10px] text-nerv-white/20">|</span>
+                  <span className="text-[10px] font-mono text-nerv-white/40">{selectedPost.date}</span>
+                  <span className="text-[10px] text-nerv-white/20">|</span>
                   <span className={`text-[10px] font-mono ${
-                    selectedPost.category === "CLASSIFIED" ? "text-eva-red" : "text-eva-white/40"
+                    selectedPost.category === "CLASSIFIED" ? "text-nerv-red" : "text-nerv-white/40"
                   }`}>
                     {selectedPost.category}
                   </span>
                 </div>
                 <h2
-                  className="text-lg uppercase tracking-[0.15em] text-eva-orange font-bold"
-                  style={{ fontFamily: "var(--font-eva-display)" }}
+                  className="text-lg uppercase tracking-[0.15em] text-nerv-orange font-bold"
+                  style={{ fontFamily: "var(--font-nerv-display)" }}
                 >
                   {selectedPost.title}
                 </h2>
@@ -423,10 +423,10 @@ export default function BlogExample() {
             <div className="flex items-center justify-center h-full">
               <Card title="NO BULLETIN SELECTED">
                 <div className="text-center space-y-2 py-4">
-                  <div className="text-eva-white/60 font-mono text-sm uppercase tracking-wider">
+                  <div className="text-nerv-white/60 font-mono text-sm uppercase tracking-wider">
                     SELECT A BULLETIN TO VIEW
                   </div>
-                  <div className="text-eva-white/30 font-mono text-[10px]">
+                  <div className="text-nerv-white/30 font-mono text-[10px]">
                     {filteredPosts.length} ENTRIES AVAILABLE IN {activeCategory}
                   </div>
                 </div>
@@ -437,10 +437,10 @@ export default function BlogExample() {
       </div>
 
       {/* Pilot Cards Footer */}
-      <div className="border-t border-eva-orange px-6 py-4">
+      <div className="border-t border-nerv-orange px-6 py-4">
         <h2
-          className="text-xs uppercase tracking-[0.2em] text-eva-orange font-bold mb-3"
-          style={{ fontFamily: "var(--font-eva-display)" }}
+          className="text-xs uppercase tracking-[0.2em] text-nerv-orange font-bold mb-3"
+          style={{ fontFamily: "var(--font-nerv-display)" }}
         >
           ACTIVE PILOT ROSTER
         </h2>
