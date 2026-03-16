@@ -15,6 +15,7 @@ const examples = [
   { href: "/examples/files", name: "MAGI File System", description: "File browser with tree navigation", category: "FILES" },
   { href: "/examples/saas", name: "SaaS Landing", description: "Marketing page with pricing tiers", category: "MARKETING" },
   { href: "/examples/landing", name: "Library Landing", description: "NERV-UI component showcase page", category: "SHOWCASE" },
+  { href: "/examples/splash", name: "Ceremonial Splash", description: "Full-page EVA title-card splash screen", category: "SPLASH" },
   { href: "/examples/auth/login", name: "Login", description: "Authentication terminal", category: "AUTH" },
   { href: "/examples/auth/register", name: "Register", description: "Personnel registration portal", category: "AUTH" },
   { href: "/examples/help", name: "Help Center", description: "FAQ & knowledge base", category: "SUPPORT" },
@@ -34,6 +35,7 @@ const categoryColors: Record<string, string> = {
   FILES: "border-nerv-amber text-nerv-amber",
   MARKETING: "border-nerv-red text-nerv-red",
   SHOWCASE: "border-nerv-cyan text-nerv-cyan",
+  SPLASH: "border-nerv-white/45 text-nerv-white/75",
   AUTH: "border-nerv-orange text-nerv-orange",
   SUPPORT: "border-nerv-green text-nerv-green",
   ERROR: "border-nerv-red text-nerv-red",
@@ -83,6 +85,13 @@ export default function ExamplesGalleryPage() {
                 style={displayFont}
               >
                 inspect reports
+              </Link>
+              <Link
+                href="/examples/splash"
+                className="border border-nerv-white/30 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-nerv-white/75 hover:border-nerv-white hover:bg-nerv-white hover:text-black transition-colors"
+                style={displayFont}
+              >
+                launch splash
               </Link>
             </div>
           </div>

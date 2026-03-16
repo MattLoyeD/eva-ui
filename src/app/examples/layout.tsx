@@ -21,9 +21,10 @@ const exampleLinks = [
   { href: "/examples/blog", label: "BRIEFING", code: "11" },
   { href: "/examples/inventory", label: "LOGISTICS", code: "12" },
   { href: "/examples/landing", label: "LIBRARY", code: "13" },
-  { href: "/examples/saas", label: "PROCUREMENT", code: "14" },
-  { href: "/examples/empty", label: "EMPTY", code: "15" },
-  { href: "/examples/error", label: "ERROR", code: "16" },
+  { href: "/examples/splash", label: "SPLASH", code: "14" },
+  { href: "/examples/saas", label: "PROCUREMENT", code: "15" },
+  { href: "/examples/empty", label: "EMPTY", code: "16" },
+  { href: "/examples/error", label: "ERROR", code: "17" },
 ];
 
 function ExampleRail({
@@ -70,10 +71,16 @@ export default function ExamplesLayout({
 }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isFullscreenRoute =
+    pathname === "/examples/splash" || pathname === "/examples/splash/";
 
   const activeLabel = useMemo(() => {
     return exampleLinks.find((link) => link.href === pathname)?.label ?? "SYSTEM";
   }, [pathname]);
+
+  if (isFullscreenRoute) {
+    return children;
+  }
 
   return (
     <div className="min-h-screen bg-nerv-black nerv-page-shell">

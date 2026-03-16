@@ -16,7 +16,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/@mdrbx/nerv-ui"><img src="https://img.shields.io/npm/v/@mdrbx/nerv-ui?style=flat-square&color=FF9900&labelColor=000000" alt="npm version" /></a>
   <img src="https://img.shields.io/badge/components-47-00FF00?style=flat-square&labelColor=000000" />
-  <img src="https://img.shields.io/badge/examples-16_pages-00FFFF?style=flat-square&labelColor=000000" />
+  <img src="https://img.shields.io/badge/examples-17_pages-00FFFF?style=flat-square&labelColor=000000" />
   <img src="https://img.shields.io/badge/border--radius-0px-FF0000?style=flat-square&labelColor=000000" />
   <img src="https://img.shields.io/badge/license-MIT-FF9900?style=flat-square&labelColor=000000" />
 </p>
@@ -113,7 +113,7 @@ NERV-UI is a **47-component React design system** published on npm, built to rep
 
 ## `> EXAMPLE_PAGES`
 
-**16 production-ready example pages** showcasing real-world usage patterns. All responsive.
+**17 production-ready example pages** showcasing real-world usage patterns. All responsive.
 
 | Page                                                                           | Description                               |
 | ------------------------------------------------------------------------------ | ----------------------------------------- |
@@ -129,6 +129,7 @@ NERV-UI is a **47-component React design system** published on npm, built to rep
 | [**MAGI File System**](https://mdrbx.github.io/nerv-ui/examples/files)          | File browser with tree navigation         |
 | [**SaaS Landing**](https://mdrbx.github.io/nerv-ui/examples/saas)               | Marketing page with pricing               |
 | [**Library Landing**](https://mdrbx.github.io/nerv-ui/examples/landing)         | NERV-UI showcase page                       |
+| [**Ceremonial Splash**](https://mdrbx.github.io/nerv-ui/examples/splash)        | Full-page EVA title-card splash screen    |
 | [**Login**](https://mdrbx.github.io/nerv-ui/examples/auth/login)                | Authentication terminal                   |
 | [**Register**](https://mdrbx.github.io/nerv-ui/examples/auth/register)          | Personnel registration                    |
 | [**Help Center**](https://mdrbx.github.io/nerv-ui/examples/help)                | FAQ with knowledge base                   |
