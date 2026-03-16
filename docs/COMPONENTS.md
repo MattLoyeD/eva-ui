@@ -335,28 +335,40 @@ Military-classified folder tabs with animated indicator bar. Supports horizontal
 
 ### `TitleScreen`
 
-Cinematic title card with serif typography and staggered motion animation. Three alignment modes for different visual effects.
+Cinematic EVA title-card renderer built around a 4:3 stage. Uses ordered text blocks, template presets, and restrained motion instead of the old `align` prop.
 
 ```tsx
 <TitleScreen
-  title="NEON GENESIS EVANGELION"
-  subtitle="Episode 01 — Angel Attack"
-  align="split"
+  template="finale"
+  blocks={[
+    { role: "masthead", text: ["NEON", "GENESIS"] },
+    { role: "hero", text: "EVANGELION" },
+    { role: "label", text: "FINALE:", font: "display" },
+    { role: "quote", text: "Take care of yourself." },
+  ]}
 />
 ```
 
-| Prop        | Type                              | Default      | Description            |
-| ----------- | --------------------------------- | ------------ | ---------------------- |
-| `title`     | `string`                          | **required** | Main title text        |
-| `subtitle`  | `string`                          | —            | Subtitle text          |
-| `align`     | `"center" \| "split" \| "random"` | `"center"`   | Layout mode            |
-| `className` | `string`                          | `""`         | Additional CSS classes |
+| Prop         | Type                                              | Default       | Description                                |
+| ------------ | ------------------------------------------------- | ------------- | ------------------------------------------ |
+| `blocks`     | `TitleScreenBlock[]`                              | **required**  | Ordered blocks rendered on the title stage |
+| `template`   | `"stacked" \| "episode" \| "finale" \| "freeform"` | `"stacked"` | Composition preset                         |
+| `appearance` | `"plain" \| "glow"`                               | `"plain"`     | Clean or warm-glow treatment               |
+| `reveal`     | `"none" \| "minimal"`                             | `"minimal"`   | Block-level reveal intensity               |
+| `className`  | `string`                                          | `""`          | Additional CSS classes                     |
 
-**Alignment modes:**
+**Templates:**
 
-- `center` — Title and subtitle stacked vertically, centered
-- `split` — Title top-left, subtitle bottom-right (cinematic split)
-- `random` — Characters scattered with deterministic offsets
+- `stacked` — Masthead top-left, dominant hero across the stage, optional support below
+- `episode` — Label and lead block top-left with dominant hero/subtitle lower-right
+- `finale` — Hero across the middle with label lower-left and quote lower-right
+- `freeform` — No injected layout; each block uses its own `anchor`
+
+**Migration:**
+
+- Old `center` -> `stacked`
+- Old `split` -> `episode`
+- Old `random` -> `freeform` or `reveal="minimal"`
 
 ---
 
@@ -997,7 +1009,17 @@ import type {
   NavigationTabsProps,
   NavigationTab,
   // Phase 2
+  TitleScreenAnchor,
+  TitleScreenAppearance,
+  TitleScreenBlock,
+  TitleScreenFont,
   TitleScreenProps,
+  TitleScreenReveal,
+  TitleScreenRole,
+  TitleScreenSize,
+  TitleScreenTemplate,
+  TitleScreenTone,
+  TitleScreenWidth,
   MagiSystemPanelProps,
   MagiVote,
   MagiStatus,

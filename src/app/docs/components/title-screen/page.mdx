@@ -1,78 +1,158 @@
 import { TitleScreen } from "@/components";
 import { ComponentPreview, PropsTable, Callout } from "@/components/docs";
 
+export const finaleBlocks = [
+  { role: "masthead", text: ["NEON", "GENESIS"], width: "narrow" },
+  { role: "hero", text: "EVANGELION", size: "display", width: "full" },
+  { role: "label", text: "FINALE:", font: "display", size: "md" },
+  { role: "quote", text: "Take care of yourself.", size: "lg", width: "full" },
+];
+
+export const episodeBlocks = [
+  { role: "label", text: "EPISODE:01", font: "display", size: "sm" },
+  { role: "lead", text: "ANGEL", size: "xl", width: "medium" },
+  { role: "hero", text: "ATTACK", size: "display", width: "wide" },
+];
+
+export const bannerBlocks = [
+  {
+    role: "masthead",
+    text: "UI",
+    anchor: "top-left",
+    size: "lg",
+    width: "content",
+    offsetY: "-5cqh",
+  },
+  { role: "lead", text: "LIBRARY", anchor: "top-left", size: "xl", width: "medium" },
+  { role: "hero", text: "NERV-UI", anchor: "middle-left", size: "display", width: "full" },
+  {
+    role: "footer",
+    text: "MDRBX/NERV-UI",
+    anchor: "bottom-left",
+    font: "display",
+    tone: "primary",
+    size: "md",
+    width: "medium",
+    offsetY: "-5cqh",
+  },
+  {
+    role: "support",
+    text: "世界の中心でアイを叫んだけもの",
+    anchor: "bottom-center",
+    tone: "primary",
+    size: "md",
+    width: "wide",
+    offsetY: "3.5cqh",
+  },
+];
+
+export const finaleCode = `<div className="h-[400px] relative overflow-hidden">
+  <TitleScreen
+    template="finale"
+    blocks={[
+      { role: "masthead", text: ["NEON", "GENESIS"], width: "narrow" },
+      { role: "hero", text: "EVANGELION", size: "display", width: "full" },
+      { role: "label", text: "FINALE:", font: "display", size: "md" },
+      { role: "quote", text: "Take care of yourself.", size: "lg", width: "full" },
+    ]}
+    className="!min-h-0 !h-full"
+  />
+</div>`;
+
+export const episodeCode = `<div className="h-[400px] relative overflow-hidden">
+  <TitleScreen
+    template="episode"
+    blocks={[
+      { role: "label", text: "EPISODE:01", font: "display", size: "sm" },
+      { role: "lead", text: "ANGEL", size: "xl", width: "medium" },
+      { role: "hero", text: "ATTACK", size: "display", width: "wide" },
+    ]}
+    className="!min-h-0 !h-full"
+  />
+</div>`;
+
+export const freeformCode = `<div className="h-[400px] relative overflow-hidden">
+  <TitleScreen
+    template="freeform"
+    appearance="glow"
+    blocks={[
+      {
+        role: "masthead",
+        text: "UI",
+        anchor: "top-left",
+        size: "lg",
+        width: "content",
+        offsetY: "-5cqh",
+      },
+      { role: "lead", text: "LIBRARY", anchor: "top-left", size: "xl", width: "medium" },
+      { role: "hero", text: "NERV-UI", anchor: "middle-left", size: "display", width: "full" },
+      {
+        role: "footer",
+        text: "MDRBX/NERV-UI",
+        anchor: "bottom-left",
+        font: "display",
+        tone: "primary",
+        size: "md",
+        width: "medium",
+        offsetY: "-5cqh",
+      },
+      {
+        role: "support",
+        text: "世界の中心でアイを叫んだけもの",
+        anchor: "bottom-center",
+        tone: "primary",
+        size: "md",
+        width: "wide",
+        offsetY: "3.5cqh",
+      },
+    ]}
+    className="!min-h-0 !h-full"
+  />
+</div>`;
+
 # Title Screen
 
-Stark title card component for the EVA side of the visual language. It uses sparse framing, serif-led typography, and restrained motion so it reads like an anime title card rather than a NERV HUD panel.
+EVA title-card renderer for the ceremonial side of the visual language. `TitleScreen`
+now uses a staged 4:3 composition model instead of the old `align` prop, so it can
+recreate finale cards, episode cards, and custom freeform layouts without drifting
+back into HUD styling.
 
 ```tsx
 import { TitleScreen } from "@mdrbx/nerv-ui";
 ```
 
-## Center Alignment
+## Finale Template
 
-<ComponentPreview
-  title="CENTER"
-  code={`<div className="h-[400px] relative overflow-hidden">
-  <TitleScreen
-    title="NEON GENESIS"
-    subtitle="EVANGELION"
-    align="center"
-    className="!min-h-0 !h-full"
-  />
-</div>`}
->
+<ComponentPreview title="FINALE" code={finaleCode}>
   <div className="h-[400px] relative overflow-hidden">
     <TitleScreen
-      title="NEON GENESIS"
-      subtitle="EVANGELION"
-      align="center"
+      template="finale"
+      blocks={finaleBlocks}
       className="!min-h-0 !h-full"
     />
   </div>
 </ComponentPreview>
 
-## Split Alignment
+## Episode Template
 
-<ComponentPreview
-  title="SPLIT"
-  code={`<div className="h-[400px] relative overflow-hidden">
-  <TitleScreen
-    title="Episode 01"
-    subtitle="Angel Attack"
-    align="split"
-    className="!min-h-0 !h-full"
-  />
-</div>`}
->
+<ComponentPreview title="EPISODE" code={episodeCode}>
   <div className="h-[400px] relative overflow-hidden">
     <TitleScreen
-      title="Episode 01"
-      subtitle="Angel Attack"
-      align="split"
+      template="episode"
+      blocks={episodeBlocks}
       className="!min-h-0 !h-full"
     />
   </div>
 </ComponentPreview>
 
-## Random Alignment
+## Freeform Glow
 
-<ComponentPreview
-  title="RANDOM"
-  code={`<div className="h-[400px] relative overflow-hidden">
-  <TitleScreen
-    title="NERV"
-    subtitle="God is in his heaven"
-    align="random"
-    className="!min-h-0 !h-full"
-  />
-</div>`}
->
+<ComponentPreview title="FREEFORM" code={freeformCode}>
   <div className="h-[400px] relative overflow-hidden">
     <TitleScreen
-      title="NERV"
-      subtitle="God is in his heaven"
-      align="random"
+      template="freeform"
+      appearance="glow"
+      blocks={bannerBlocks}
       className="!min-h-0 !h-full"
     />
   </div>
@@ -83,17 +163,28 @@ import { TitleScreen } from "@mdrbx/nerv-ui";
 <PropsTable
   props={[
     {
-      name: "title",
-      type: "string",
+      name: "blocks",
+      type: "TitleScreenBlock[]",
       required: true,
-      description: "Main title text",
+      description: "Ordered text blocks rendered on the 4:3 stage",
     },
-    { name: "subtitle", type: "string", description: "Subtitle text" },
     {
-      name: "align",
-      type: '"center" | "split" | "random"',
-      default: '"center"',
-      description: "Layout alignment mode",
+      name: "template",
+      type: '"stacked" | "episode" | "finale" | "freeform"',
+      default: '"stacked"',
+      description: "Composition preset used to position blocks",
+    },
+    {
+      name: "appearance",
+      type: '"plain" | "glow"',
+      default: '"plain"',
+      description: "Overall treatment for text rendering",
+    },
+    {
+      name: "reveal",
+      type: '"none" | "minimal"',
+      default: '"minimal"',
+      description: "Block-level reveal intensity",
     },
     {
       name: "className",
@@ -104,14 +195,21 @@ import { TitleScreen } from "@mdrbx/nerv-ui";
   ]}
 />
 
-<Callout type="info" title="ALIGNMENT MODES">
-  **center** — Formal stacked title card. **split** — Episode-card layout with
-  top-left lead and bottom-right dominant title. **random** — Controlled
-  staggered assembly, still typographic rather than HUD-like.
+<Callout type="info" title="BLOCK MODEL">
+  Each block defines `role`, `text`, and optional layout overrides such as `anchor`,
+  `offsetX`, `offsetY`, `width`, `font`, `tone`, `size`, `italic`, and
+  `uppercase`. Use `template` presets for canonical EVA cards, or
+  `template="freeform"` when you need anchored custom compositions.
+</Callout>
+
+<Callout type="warning" title="BREAKING CHANGE">
+  The old `title`, `subtitle`, and `align` props are removed. Migrate `center` to
+  `stacked`, `split` to `episode`, and `random` to `freeform` or `reveal="minimal"`
+  depending on whether you need fixed placement or a softer staged reveal.
 </Callout>
 
 <Callout type="warning" title="NOT A CONTROL-ROOM PANEL">
-  `TitleScreen` is one of the few NERV-UI components that should lean toward EVA’s
-  ceremonial title-card language instead of the stricter NERV monitoring
-  grammar.
+  `TitleScreen` should stay sparse, serif-led, and quiet. Do not add rails, labels,
+  or utility copy inside the component itself. Those belong to documentation frames
+  or NERV monitoring surfaces, not EVA title cards.
 </Callout>

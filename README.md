@@ -86,6 +86,7 @@ NERV-UI is a **47-component React design system** published on npm, built to rep
 - **NERV color palette** — black void, alert red, text orange, grid green, data cyan, magenta wave
 - **Condensed uppercase typography** — Oswald, Barlow Condensed, Noto Serif JP
 - **Monospace terminal text** — Fira Code for all data readouts
+- **EVA title-card compositions** — staged 4:3 layouts for ceremonial episode/finale screens
 - **CRT scanline overlay** — persistent retro phosphor effect
 - **Animated hazard chevrons** — V-shaped stripe patterns for danger states
 - **`prefers-reduced-motion`** — all animations respect accessibility settings

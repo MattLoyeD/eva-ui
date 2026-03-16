@@ -36,7 +36,19 @@ export type { NavigationTabsProps, NavigationTab } from "./NavigationTabs";
 
 // Phase 2 — Advanced Components
 export { TitleScreen } from "./TitleScreen";
-export type { TitleScreenProps } from "./TitleScreen";
+export type {
+  TitleScreenAnchor,
+  TitleScreenAppearance,
+  TitleScreenBlock,
+  TitleScreenFont,
+  TitleScreenProps,
+  TitleScreenReveal,
+  TitleScreenRole,
+  TitleScreenSize,
+  TitleScreenTemplate,
+  TitleScreenTone,
+  TitleScreenWidth,
+} from "./TitleScreen";
 
 export { MagiSystemPanel } from "./MagiSystemPanel";
 export type { MagiSystemPanelProps, MagiVote, MagiStatus } from "./MagiSystemPanel";
