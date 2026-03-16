@@ -116,11 +116,11 @@ const severityConfig = {
 
 export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(function EmergencyBanner({
   text = "EMERGENCY",
-  subtext,
+  subtext = "",
   visible = true,
   severity = "emergency",
   fullScreen = false,
-  children,
+  children = null,
   animateStripes = true,
   className = "",
   ...rest
@@ -249,7 +249,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                 {text}
               </motion.h1>
 
-              {subtext && (
+              
                 <motion.p
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -259,7 +259,7 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                 >
                   {subtext}
                 </motion.p>
-              )}
+              
 
               {children && (
                 <motion.div
