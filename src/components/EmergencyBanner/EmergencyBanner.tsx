@@ -127,36 +127,39 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
 }, ref) {
   const config = severityConfig[severity];
 
+  const stripeFirstSize = 14;
+  const stripeSecondSize = 25;
+
   const stripePanels = {
     topLeft: {
       backgroundImage: `repeating-linear-gradient(
         45deg,
-        ${config.stripeColor1} 0 18px,
-        ${config.stripeColor2} 18px 36px
+        ${config.stripeColor1} 0 ${stripeFirstSize}px,
+        ${config.stripeColor2} ${stripeFirstSize}px ${stripeSecondSize}px
       )`,
       backgroundPosition: "0 0",
     },
     topRight: {
       backgroundImage: `repeating-linear-gradient(
         135deg,
-        ${config.stripeColor1} 0 18px,
-        ${config.stripeColor2} 18px 36px
+        ${config.stripeColor1} 0 ${stripeFirstSize}px,
+        ${config.stripeColor2} ${stripeFirstSize}px ${stripeSecondSize}px
       )`,
       backgroundPosition: "0 0",
     },
     bottomLeft: {
       backgroundImage: `repeating-linear-gradient(
-        135deg,
-        ${config.stripeColor1} 0 18px,
-        ${config.stripeColor2} 18px 36px
+        45deg,
+        ${config.stripeColor1} 0 ${stripeFirstSize}px,
+        ${config.stripeColor2} ${stripeFirstSize}px ${stripeSecondSize}px
       )`,
       backgroundPosition: "0 0",
     },
     bottomRight: {
       backgroundImage: `repeating-linear-gradient(
-        45deg,
-        ${config.stripeColor1} 0 18px,
-        ${config.stripeColor2} 18px 36px
+        135deg,
+        ${config.stripeColor1} 0 ${stripeFirstSize}px,
+        ${config.stripeColor2} ${stripeFirstSize}px ${stripeSecondSize}px
       )`,
       backgroundPosition: "0 0",
     },
@@ -200,7 +203,6 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                 style={{
                   ...stripePanels.topLeft,
                   width: "50%",
-                  clipPath: "polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%)",
                 }}
               />
               <div
@@ -208,20 +210,17 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                 style={{
                   ...stripePanels.topRight,
                   width: "50%",
-                  clipPath: "polygon(0 0, 100% 0, 100% 100%, 18px 100%)",
                 }}
               />
             </div>
 
             <div
-              className="relative border-y-[3px] px-4 pb-5 pt-4 md:px-8 md:pb-6 md:pt-5"
+              className="relative  px-4 pb-5 pt-4 md:px-8 md:pb-6 md:pt-5"
               style={{ borderColor: "rgba(0,0,0,0.52)" }}
             >
-              <div className="absolute inset-y-0 left-2 w-px bg-black/45 md:left-3" />
-              <div className="absolute inset-y-0 right-2 w-px bg-black/45 md:right-3" />
-              <div className="absolute left-4 right-4 top-2 h-[2px] bg-black/42 md:left-8 md:right-8" />
-              <div className="absolute left-4 right-4 bottom-2 h-[2px] bg-black/42 md:left-8 md:right-8" />
-
+              <div className="absolute left-0 right-0 top-0.5 h-1 bg-black md:left-0 md:right-0" />
+              <div className="absolute left-0 right-0 bottom-0.5 h-1 bg-black md:left-0 md:right-0" />
+                
               <motion.h1
                 animate={
                   config.flicker
@@ -280,7 +279,6 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                 style={{
                   ...stripePanels.bottomLeft,
                   width: "50%",
-                  clipPath: "polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%)",
                 }}
               />
               <div
@@ -288,7 +286,6 @@ export const EmergencyBanner = forwardRef<HTMLDivElement, EmergencyBannerProps>(
                 style={{
                   ...stripePanels.bottomRight,
                   width: "50%",
-                  clipPath: "polygon(18px 0, 100% 0, 100% 100%, 0 100%)",
                 }}
               />
             </div>
