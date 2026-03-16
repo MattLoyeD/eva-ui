@@ -8,8 +8,10 @@ export interface StepItem {
   description?: string;
 }
 
-export interface StepperProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "color" | "direction"> {
+export interface StepperProps extends Omit<
+  React.HTMLAttributes<HTMLElement>,
+  "className" | "color" | "direction"
+> {
   /** Step definitions */
   steps: StepItem[];
   /** Currently active step (0-based index) */
@@ -49,173 +51,194 @@ const colorMap = {
   },
 };
 
-export const Stepper = forwardRef<HTMLElement, StepperProps>(
-  function Stepper(
-    {
-      steps,
-      activeStep,
-      color = "orange",
-      direction = "horizontal",
-      className = "",
-      ...rest
-    },
-    ref
-  ) {
-    const c = colorMap[color];
-    const isVertical = direction === "vertical";
+export const Stepper = forwardRef<HTMLElement, StepperProps>(function Stepper(
+  {
+    steps,
+    activeStep,
+    color = "orange",
+    direction = "horizontal",
+    className = "",
+    ...rest
+  },
+  ref,
+) {
+  const c = colorMap[color];
+  const isVertical = direction === "vertical";
 
-    return (
-      <nav
-        ref={ref}
-        className={`
+  return (
+    <nav
+      ref={ref}
+      className={`
           flex ${isVertical ? "flex-col" : "flex-row items-center"}
           ${className}
         `}
-        aria-label="Progress"
-        {...rest}
-      >
-        {steps.map((step, i) => {
-          const isActive = i === activeStep;
-          const isCompleted = i < activeStep;
-          const isFuture = i > activeStep;
-          const stepNum = String(i + 1).padStart(2, "0");
-          const stepColor = isActive
-            ? c.active
-            : isCompleted
-              ? c.completed
-              : c.future;
+      aria-label="Progress"
+      {...rest}
+    >
+      {steps.map((step, i) => {
+        const isActive = i === activeStep;
+        const isCompleted = i < activeStep;
+        const isFuture = i > activeStep;
+        const stepNum = String(i + 1).padStart(2, "0");
+        const stepColor = isActive
+          ? c.active
+          : isCompleted
+            ? c.completed
+            : c.future;
 
-          return isVertical
-            ? (
-              <div key={i} className="flex items-start gap-3">
-                {/* Left column: number + connector */}
-                <div className="flex w-4 shrink-0 flex-col items-center">
-                  {/* Step number square */}
-                  <motion.div
-                    className={`
+        return isVertical ? (
+          <div key={i} className="flex items-start gap-3">
+            {/* Left column: number + connector */}
+            <div className="flex w-4 shrink-0 flex-col items-center">
+              {/* Step number square */}
+              <motion.div
+                className={`
                       relative flex h-4 w-4 shrink-0 items-center justify-center
                       border text-[8px] font-bold leading-none
                       ${stepColor}
                     `}
-                    style={{ fontFamily: "var(--font-nerv-display)" }}
-                    animate={isActive ? { borderColor: ["rgba(255,255,255,0.4)", "rgba(255,255,255,1)", "rgba(255,255,255,0.4)"] } : {}}
-                    transition={isActive ? { duration: 2, repeat: Infinity, ease: "easeInOut" } : {}}
-                  >
-                    {isCompleted ? (
-                      <span className="text-[8px] leading-none">&#x2713;</span>
-                    ) : (
-                      <span className="leading-none">{stepNum}</span>
-                    )}
+                style={{ fontFamily: "var(--font-nerv-display)" }}
+                animate={
+                  isActive
+                    ? {
+                        borderColor: [
+                          "rgba(255,255,255,0.4)",
+                          "rgba(255,255,255,1)",
+                          "rgba(255,255,255,0.4)",
+                        ],
+                      }
+                    : {}
+                }
+                transition={
+                  isActive
+                    ? { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                    : {}
+                }
+              >
+                {isCompleted ? (
+                  <span className="text-[8px] leading-none">&#x2713;</span>
+                ) : (
+                  <span className="leading-none">{stepNum}</span>
+                )}
 
-                    {/* Pulsing dot for active */}
-                    {isActive && (
-                      <motion.span
-                        className={`absolute right-0 top-0 h-1.5 w-1.5 translate-x-1/2 -translate-y-1/2 ${c.pulse}`}
-                        animate={{ opacity: [1, 0.3, 1] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    )}
-                  </motion.div>
+                {/* Pulsing dot for active */}
+                {isActive && (
+                  <motion.span
+                    className={`absolute right-0 top-0 h-1.5 w-1.5 translate-x-1/2 -translate-y-1/2 ${c.pulse}`}
+                    animate={{ opacity: [1, 0.3, 1] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                )}
+              </motion.div>
 
-                  {/* Vertical connector line */}
-                  {i < steps.length - 1 && (
-                    <div className="my-1 flex min-h-6 flex-1 justify-center">
-                      {isCompleted ? (
-                        <div className={`h-full w-px ${c.line}`} />
-                      ) : (
-                        <div
-                          className={`h-full w-0 border-l border-dashed ${c.lineDashed}`}
-                        />
-                      )}
-                    </div>
+              {/* Vertical connector line */}
+              {i < steps.length - 1 && (
+                <div className="my-1 flex min-h-6 flex-1 justify-center">
+                  {isCompleted ? (
+                    <div className={`h-full w-px ${c.line}`} />
+                  ) : (
+                    <div
+                      className={`h-full w-0 border-l border-dashed ${c.lineDashed}`}
+                    />
                   )}
                 </div>
+              )}
+            </div>
 
-                {/* Right column: label + description */}
-                <div>
-                  <span
-                    className={`
-                      uppercase tracking-[0.15em] text-xs
+            {/* Right column: label + description */}
+            <div>
+              <span
+                className={`
+                      uppercase tracking-[0.15em] text-xs block
                       ${isActive ? "font-bold" : "font-medium"}
                       ${stepColor}
                     `}
-                    style={{ fontFamily: "var(--font-nerv-display)" }}
-                  >
-                    {stepNum} // {step.label}
-                  </span>
+                style={{ fontFamily: "var(--font-nerv-display)" }}
+              >
+                {stepNum} // {step.label}
+              </span>
 
-                  {step.description && (
-                    <p
-                      className={`
+              {step.description && (
+                <p
+                  className={`
                         text-[10px] mt-0.5 tracking-wide
                         ${isFuture ? "text-nerv-mid-gray/30" : "text-nerv-mid-gray/60"}
                       `}
-                    >
-                      {step.description}
-                    </p>
-                  )}
-                </div>
-              </div>
-            )
-            : (
-              <div key={i} className="flex items-center">
-                {/* Step */}
-                <div className="flex items-center">
-                  {/* Step number square */}
-                  <motion.div
-                    className={`
+                >
+                  {step.description}
+                </p>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div key={i} className="flex items-center">
+            {/* Step */}
+            <div className="flex items-center">
+              {/* Step number square */}
+              <motion.div
+                className={`
                       relative w-4 h-4 flex items-center justify-center
                       border text-[8px] font-bold shrink-0
                       ${stepColor}
                     `}
-                    style={{ fontFamily: "var(--font-nerv-display)" }}
-                  >
-                    {isCompleted ? (
-                      <span className="text-[8px] leading-none">&#x2713;</span>
-                    ) : (
-                      <span className="leading-none">{stepNum}</span>
-                    )}
-                  </motion.div>
+                style={{ fontFamily: "var(--font-nerv-display)" }}
+              >
+                {isCompleted ? (
+                  <span className="text-[8px] leading-none">&#x2713;</span>
+                ) : (
+                  <span className="leading-none">{stepNum}</span>
+                )}
+              </motion.div>
 
-                  {/* Label */}
-                  <span
-                    className={`
+              {/* Label */}
+              <span
+                className={`
                       ml-2 uppercase tracking-[0.15em] text-xs whitespace-nowrap
                       ${isActive ? "font-bold" : "font-medium"}
                       ${stepColor}
                     `}
-                    style={{ fontFamily: "var(--font-nerv-display)" }}
-                  >
-                    {stepNum} // {step.label}
-                  </span>
+                style={{ fontFamily: "var(--font-nerv-display)" }}
+              >
+                {stepNum} // {step.label}
+              </span>
 
-                  {/* Active indicator dot */}
-                  {isActive && (
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1, opacity: [1, 0.4, 1] }}
-                      transition={{ scale: { type: "spring", stiffness: 500, damping: 30 }, opacity: { duration: 1.5, repeat: Infinity, ease: "easeInOut" } }}
-                      className={`ml-2 w-1.5 h-1.5 shrink-0 ${c.pulse}`}
-                    />
-                  )}
-                </div>
+              {/* Active indicator dot */}
+              {isActive && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1, opacity: [1, 0.4, 1] }}
+                  transition={{
+                    scale: { type: "spring", stiffness: 500, damping: 30 },
+                    opacity: {
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  className={`ml-2 w-1.5 h-1.5 shrink-0 ${c.pulse}`}
+                />
+              )}
+            </div>
 
-                {/* Horizontal connector */}
-                {i < steps.length - 1 && (
-                  <div className="mx-3 w-8 h-px shrink-0">
-                    {isCompleted ? (
-                      <div className={`w-full h-full ${c.line}`} />
-                    ) : (
-                      <div
-                        className={`w-full h-px border-t border-dashed ${c.lineDashed}`}
-                      />
-                    )}
-                  </div>
+            {/* Horizontal connector */}
+            {i < steps.length - 1 && (
+              <div className="mx-3 w-8 h-px shrink-0">
+                {isCompleted ? (
+                  <div className={`w-full h-full ${c.line}`} />
+                ) : (
+                  <div
+                    className={`w-full h-px border-t border-dashed ${c.lineDashed}`}
+                  />
                 )}
               </div>
-            );
-        })}
-      </nav>
-    );
-  }
-);
+            )}
+          </div>
+        );
+      })}
+    </nav>
+  );
+});
