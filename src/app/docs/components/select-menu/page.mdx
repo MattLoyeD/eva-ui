@@ -3,7 +3,7 @@ import { ComponentPreview, PropsTable } from "@/components/docs";
 
 # Select Menu
 
-Styled dropdown with angle brackets `< >` on focus. Custom arrow indicator. Extends standard HTML select attributes.
+Styled select control with a native single-select path and a custom popup path for searchable and multi-select modes.
 
 ```tsx
 import { SelectMenu } from "@mdrbx/nerv-ui";
@@ -36,42 +36,99 @@ import { SelectMenu } from "@mdrbx/nerv-ui";
   />
 </ComponentPreview>
 
-## Color Variants
+## Searchable Single Select
 
 <ComponentPreview
-  title="COLORS"
-  code={`<div className="space-y-4">
-  <SelectMenu label="ORANGE" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="orange" />
-  <SelectMenu label="GREEN" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="green" />
-  <SelectMenu label="CYAN" options={[{ value: "1", label: "OPTION A" }, { value: "2", label: "OPTION B" }]} color="cyan" />
-</div>`}
+  title="FILTER"
+  code={`<SelectMenu
+  label="TARGET PROFILE"
+  options={[
+    { value: "rei", label: "REI AYANAMI" },
+    { value: "asuka", label: "ASUKA LANGLEY" },
+    { value: "shinji", label: "SHINJI IKARI" },
+    { value: "kaworu", label: "KAWORU NAGISA" },
+  ]}
+  filter
+  placeholder="FILTER OPERATORS..."
+  color="cyan"
+/>`}
 >
-  <div className="space-y-4">
-    <SelectMenu
-      label="ORANGE"
-      options={[
-        { value: "1", label: "OPTION A" },
-        { value: "2", label: "OPTION B" },
-      ]}
-      color="orange"
-    />
-    <SelectMenu
-      label="GREEN"
-      options={[
-        { value: "1", label: "OPTION A" },
-        { value: "2", label: "OPTION B" },
-      ]}
-      color="green"
-    />
-    <SelectMenu
-      label="CYAN"
-      options={[
-        { value: "1", label: "OPTION A" },
-        { value: "2", label: "OPTION B" },
-      ]}
-      color="cyan"
-    />
-  </div>
+  <SelectMenu
+    label="TARGET PROFILE"
+    options={[
+      { value: "rei", label: "REI AYANAMI" },
+      { value: "asuka", label: "ASUKA LANGLEY" },
+      { value: "shinji", label: "SHINJI IKARI" },
+      { value: "kaworu", label: "KAWORU NAGISA" },
+    ]}
+    filter
+    placeholder="FILTER OPERATORS..."
+    color="cyan"
+  />
+</ComponentPreview>
+
+## Multi Select
+
+<ComponentPreview
+  title="MULTIPLE"
+  code={`<SelectMenu
+  label="ACTIVE PILOTS"
+  options={[
+    { value: "rei", label: "REI AYANAMI" },
+    { value: "asuka", label: "ASUKA LANGLEY" },
+    { value: "shinji", label: "SHINJI IKARI" },
+    { value: "kaworu", label: "KAWORU NAGISA" },
+  ]}
+  multiple
+  defaultValue={["rei", "shinji"]}
+  color="green"
+/>`}
+>
+  <SelectMenu
+    label="ACTIVE PILOTS"
+    options={[
+      { value: "rei", label: "REI AYANAMI" },
+      { value: "asuka", label: "ASUKA LANGLEY" },
+      { value: "shinji", label: "SHINJI IKARI" },
+      { value: "kaworu", label: "KAWORU NAGISA" },
+    ]}
+    multiple
+    defaultValue={["rei", "shinji"]}
+    color="green"
+  />
+</ComponentPreview>
+
+## Searchable Multi Select
+
+<ComponentPreview
+  title="FILTER + MULTIPLE"
+  code={`<SelectMenu
+  label="SYNC NETWORK"
+  options={[
+    { value: "rei", label: "REI AYANAMI" },
+    { value: "asuka", label: "ASUKA LANGLEY" },
+    { value: "shinji", label: "SHINJI IKARI" },
+    { value: "kaworu", label: "KAWORU NAGISA" },
+  ]}
+  multiple
+  filter
+  defaultValue={["asuka", "shinji"]}
+  color="orange"
+/>`}
+>
+  <SelectMenu
+    label="SYNC NETWORK"
+    options={[
+      { value: "rei", label: "REI AYANAMI" },
+      { value: "asuka", label: "ASUKA LANGLEY" },
+      { value: "shinji", label: "SHINJI IKARI" },
+      { value: "kaworu", label: "KAWORU NAGISA" },
+    ]}
+    multiple
+    filter
+    defaultValue={["asuka", "shinji"]}
+    color="orange"
+  />
 </ComponentPreview>
 
 ## Props
@@ -101,7 +158,34 @@ import { SelectMenu } from "@mdrbx/nerv-ui";
       name: "placeholder",
       type: "string",
       default: '"SELECT..."',
-      description: "Default placeholder text",
+      description: "Empty-state text for native and custom modes",
+    },
+    {
+      name: "multiple",
+      type: "boolean",
+      default: "false",
+      description: "Enable multi-select mode with inline selected tags",
+    },
+    {
+      name: "filter",
+      type: "boolean",
+      default: "false",
+      description: "Enable local option filtering inside the popup",
+    },
+    {
+      name: "value",
+      type: "string | string[]",
+      description: "Controlled value for single or multiple mode",
+    },
+    {
+      name: "defaultValue",
+      type: "string | string[]",
+      description: "Initial value for uncontrolled single or multiple mode",
+    },
+    {
+      name: "onValueChange",
+      type: "(value: string | string[]) => void",
+      description: "Normalized value callback; native onChange remains supported",
     },
     { name: "error", type: "string", description: "Error message" },
     {
