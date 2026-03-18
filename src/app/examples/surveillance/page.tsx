@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import {
   Card,
   EmergencyBanner,
-  MagiSystemPanel,
   MonitorOverlay,
   PatternAlert,
   SegmentDisplay,
@@ -16,6 +15,8 @@ import type { MagiVote, SurveillanceFeed } from "@/components";
 
 const displayFont = { fontFamily: "var(--font-nerv-display)" };
 const monoFont = { fontFamily: "var(--font-nerv-mono)" };
+const assetBasePath = process.env.NODE_ENV === "production" ? "/nerv-ui" : "";
+const surveillanceVideoSrc = `${assetBasePath}/media/ui.mp4`;
 
 type ChannelTheme = {
   accent: string;
@@ -100,6 +101,204 @@ const logLines = [
   "MOTION CLUSTER :: sector 7G bias trending upward",
 ];
 
+function getMagiStatusMeta(status: MagiVote["status"]) {
+  switch (status) {
+    case "accepted":
+      return {
+        label: "accepted",
+        text: "#000000",
+        accent: "#FF9900",
+        soft: "rgba(255, 153, 0, 0.18)",
+        border: "rgba(255, 153, 0, 0.4)",
+      };
+    case "rejected":
+      return {
+        label: "rejected",
+        text: "#000000",
+        accent: "#FF2B1D",
+        soft: "rgba(255, 43, 29, 0.18)",
+        border: "rgba(255, 43, 29, 0.4)",
+      };
+    case "computing":
+      return {
+        label: "computing",
+        text: "#00F6FF",
+        accent: "#00F6FF",
+        soft: "rgba(0, 246, 255, 0.16)",
+        border: "rgba(0, 246, 255, 0.34)",
+      };
+    default:
+      return {
+        label: "standby",
+        text: "#7FFF9F",
+        accent: "#7FFF9F",
+        soft: "rgba(127, 255, 159, 0.12)",
+        border: "rgba(127, 255, 159, 0.24)",
+      };
+  }
+}
+
+function MagiNode({
+  vote,
+  slot,
+  index,
+  tick,
+}: {
+  vote: MagiVote;
+  slot: "top" | "left" | "right";
+  index: number;
+  tick: number;
+}) {
+  const meta = getMagiStatusMeta(vote.status);
+  const telemetry =
+    vote.status === "accepted"
+      ? ["decision lane held", "camera offset stable", "approval relay armed"]
+      : vote.status === "rejected"
+        ? ["dissent pattern raised", "manual review required", "priority bus marked"]
+        : vote.status === "computing"
+          ? [
+              `vector sweep ${String((tick % 8) + 1).padStart(2, "0")}`,
+              "bias harmonics resolving",
+              "verdict compile running",
+            ]
+          : ["observer lane quiet", "relay pressure nominal", "standby bus idle"];
+
+  return (
+    <div
+      className="relative overflow-hidden border bg-black px-4 py-3"
+      style={{
+        borderColor: meta.border,
+        backgroundImage: `linear-gradient(180deg, ${meta.soft}, rgba(0,0,0,0.94) 68%)`,
+        boxShadow: `inset 0 0 0 1px ${meta.soft}, 0 0 18px ${meta.soft}`,
+      }}
+    >
+      <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
+
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <div
+            className="text-[10px] uppercase tracking-[0.22em] text-nerv-white/42"
+            style={monoFont}
+          >
+            {slot === "top" ? "central arbiter" : "verdict rail"}
+          </div>
+          <div
+            className="mt-1 text-[1.05rem] uppercase tracking-[0.12em]"
+            style={{ ...displayFont, color: slot === "top" ? "#EDE7DB" : meta.accent }}
+          >
+            {vote.name}
+          </div>
+        </div>
+        <div
+          className="border px-2 py-1 text-[10px] uppercase tracking-[0.18em]"
+          style={{
+            ...monoFont,
+            color: vote.status === "accepted" || vote.status === "rejected" ? meta.text : meta.accent,
+            borderColor: meta.border,
+            backgroundColor: vote.status === "accepted" || vote.status === "rejected" ? meta.accent : "rgba(0,0,0,0.45)",
+          }}
+        >
+          0{index}
+        </div>
+      </div>
+
+      <div className="mt-5">
+        <div
+          className={`inline-flex min-w-[10rem] items-center justify-center border px-3 py-2 text-center text-[1.55rem] uppercase tracking-[0.08em] ${
+            vote.status === "accepted" || vote.status === "rejected" ? "" : "bg-black/45"
+          }`}
+          style={{
+            ...displayFont,
+            color: vote.status === "accepted" || vote.status === "rejected" ? meta.text : meta.accent,
+            borderColor: meta.border,
+            backgroundColor:
+              vote.status === "accepted" || vote.status === "rejected" ? meta.accent : "rgba(0,0,0,0.42)",
+          }}
+        >
+          {meta.label}
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-1.5">
+        {telemetry.map((line) => (
+          <div
+            key={`${vote.name}-${line}`}
+            className="border px-2 py-1 text-[9px] uppercase tracking-[0.14em] text-nerv-white/58"
+            style={{ ...monoFont, borderColor: "rgba(255,255,255,0.08)" }}
+          >
+            {line}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MagiConsensusMap({
+  votes,
+  tick,
+}: {
+  votes: MagiVote[];
+  tick: number;
+}) {
+  const melchior = votes.find((vote) => vote.name.startsWith("MELCHIOR")) ?? votes[0];
+  const balthasar = votes.find((vote) => vote.name.startsWith("BALTHASAR")) ?? votes[1] ?? votes[0];
+  const casper = votes.find((vote) => vote.name.startsWith("CASPER")) ?? votes[2] ?? votes[0];
+
+  return (
+    <div className="relative overflow-hidden border border-nerv-orange/28 bg-black px-4 py-5 sm:px-5">
+      <div className="absolute left-1/2 top-[28%] h-[14%] w-px -translate-x-1/2 bg-nerv-orange/45" />
+      <div className="absolute left-[26%] top-[42%] h-px w-[48%] bg-nerv-orange/45" />
+      <div className="absolute left-[26%] top-[42%] h-[16%] w-px bg-nerv-orange/45" />
+      <div className="absolute right-[26%] top-[42%] h-[16%] w-px bg-nerv-orange/45" />
+
+      <div className="mb-3 flex items-center justify-between gap-3 border-b border-nerv-orange/18 pb-3">
+        <div>
+          <div
+            className="text-[10px] uppercase tracking-[0.24em] text-nerv-white/34"
+            style={monoFont}
+          >
+            magi / camera consensus
+          </div>
+          <div
+            className="mt-1 text-[1.1rem] uppercase tracking-[0.12em] text-nerv-orange"
+            style={displayFont}
+          >
+            Decision braid
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-1.5">
+          {votes.map((vote) => {
+            const meta = getMagiStatusMeta(vote.status);
+
+            return (
+              <div
+                key={vote.name}
+                className="h-2.5 w-2.5"
+                style={{
+                  backgroundColor: meta.accent,
+                  boxShadow: `0 0 10px ${meta.soft}`,
+                }}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="relative grid gap-4">
+        <div className="mx-auto w-full max-w-[19rem]">
+          <MagiNode vote={balthasar} slot="top" index={2} tick={tick} />
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          <MagiNode vote={casper} slot="left" index={3} tick={tick} />
+          <MagiNode vote={melchior} slot="right" index={1} tick={tick} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function SubjectChannel({
   channel,
   tick,
@@ -124,7 +323,7 @@ function SubjectChannel({
         muted
         playsInline
         className="absolute inset-0 h-full w-full object-cover opacity-55"
-        src="/media/ui.mp4"
+        src={surveillanceVideoSrc}
         style={{ objectPosition: channel.theme.videoPosition, filter: "contrast(1.08) saturate(0.78) brightness(0.5)" }}
       />
 
@@ -288,7 +487,7 @@ function FeedTexture({
         muted
         playsInline
         className="absolute inset-0 h-full w-full object-cover opacity-60"
-        src="/media/ui.mp4"
+        src={surveillanceVideoSrc}
         style={{ objectPosition: position, filter: "contrast(1.12) saturate(0.75) brightness(0.46)" }}
       />
       <div className="absolute inset-0" style={{ background: tint }} />
@@ -403,7 +602,7 @@ export default function SurveillanceDeckPage() {
                 style={monoFont}
               >
                 Nervous, high-density monitoring surface with stacked pilot feeds, MAGI arbitration,
-                and sidebar phase rails. Built to feel like a live command deck rather than a static demo page.
+                and sidebar phase rails.
               </p>
             </div>
 
@@ -468,11 +667,7 @@ export default function SurveillanceDeckPage() {
                   subtitle="consensus pressure shifting across surveillance bus"
                   className="min-h-[0] h-[14rem]"
                 />
-                <MagiSystemPanel
-                  votes={magiVotes}
-                  trapezoidal
-                  title="MAGI / CAMERA CONSENSUS"
-                />
+                <MagiConsensusMap votes={magiVotes} tick={tick} />
               </div>
             </Card>
 
