@@ -25,6 +25,7 @@ const exampleLinks = [
   { href: "/examples/saas", label: "PROCUREMENT", code: "15" },
   { href: "/examples/empty", label: "EMPTY", code: "16" },
   { href: "/examples/error", label: "ERROR", code: "17" },
+  { href: "/examples/surveillance", label: "WATCHGRID", code: "18" },
 ];
 
 function ExampleRail({
@@ -70,13 +71,15 @@ export default function ExamplesLayout({
   children: ReactNode;
 }) {
   const pathname = usePathname();
+  const normalizedPathname =
+    pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
   const [mobileOpen, setMobileOpen] = useState(false);
   const isFullscreenRoute =
-    pathname === "/examples/splash" || pathname === "/examples/splash/";
+    normalizedPathname === "/examples/splash";
 
   const activeLabel = useMemo(() => {
-    return exampleLinks.find((link) => link.href === pathname)?.label ?? "SYSTEM";
-  }, [pathname]);
+    return exampleLinks.find((link) => link.href === normalizedPathname)?.label ?? "SYSTEM";
+  }, [normalizedPathname]);
 
   if (isFullscreenRoute) {
     return children;
@@ -144,7 +147,7 @@ export default function ExamplesLayout({
           </div>
 
           <div className="hidden border-t border-nerv-orange/10 md:block">
-            <ExampleRail pathname={pathname} />
+            <ExampleRail pathname={normalizedPathname} />
           </div>
         </div>
 
@@ -169,7 +172,7 @@ export default function ExamplesLayout({
                   Catalog
                 </Link>
               </div>
-              <ExampleRail pathname={pathname} onNavigate={() => setMobileOpen(false)} />
+              <ExampleRail pathname={normalizedPathname} onNavigate={() => setMobileOpen(false)} />
             </div>
           </div>
         )}

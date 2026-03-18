@@ -9,6 +9,10 @@
 </p>
 
 <p align="center">
+  <img src="docs/references/readme-surveillance-preview.gif" alt="NERV-UI live surveillance preview" width="100%" />
+</p>
+
+<p align="center">
   <strong>Brutalist. Industrial. Zero border-radius. Maximum impact.</strong><br/>
   <sub>A React component library that faithfully recreates the NERV headquarters interfaces from Neon Genesis Evangelion.</sub>
 </p>
@@ -16,7 +20,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/@mdrbx/nerv-ui"><img src="https://img.shields.io/npm/v/@mdrbx/nerv-ui?style=flat-square&color=FF9900&labelColor=000000" alt="npm version" /></a>
   <img src="https://img.shields.io/badge/components-48-00FF00?style=flat-square&labelColor=000000" />
-  <img src="https://img.shields.io/badge/examples-17_pages-00FFFF?style=flat-square&labelColor=000000" />
+  <img src="https://img.shields.io/badge/examples-18_pages-00FFFF?style=flat-square&labelColor=000000" />
   <img src="https://img.shields.io/badge/border--radius-0px-FF0000?style=flat-square&labelColor=000000" />
   <img src="https://img.shields.io/badge/license-MIT-FF9900?style=flat-square&labelColor=000000" />
 </p>
@@ -131,7 +135,7 @@ NERV-UI is a **48-component React design system** published on npm, built to rep
 
 ## `> EXAMPLE_PAGES`
 
-**17 production-ready example pages** showcasing real-world usage patterns. All responsive.
+**18 production-ready example pages** showcasing real-world usage patterns. All responsive.
 
 | Page                                                                           | Description                               |
 | ------------------------------------------------------------------------------ | ----------------------------------------- |
@@ -141,6 +145,7 @@ NERV-UI is a **48-component React design system** published on npm, built to rep
 | [**Dispatch Form**](https://mdrbx.github.io/nerv-ui/examples/form)              | Multi-field form with validation          |
 | [**Intelligence Bulletin**](https://mdrbx.github.io/nerv-ui/examples/blog)      | Classified content feed with filtering    |
 | [**Monitoring Station**](https://mdrbx.github.io/nerv-ui/examples/realtime)     | Real-time sensor data & charts            |
+| [**Video Intercept Deck**](https://mdrbx.github.io/nerv-ui/examples/surveillance) | Aggressive surveillance wall with pilot channels, MAGI, and phase rails |
 | [**Equipment Requisition**](https://mdrbx.github.io/nerv-ui/examples/inventory) | CRUD inventory management                 |
 | [**Pilot Dossier**](https://mdrbx.github.io/nerv-ui/examples/pilots)            | Personnel profiles with sync history      |
 | [**Mission Report**](https://mdrbx.github.io/nerv-ui/examples/report)           | After-action document template            |

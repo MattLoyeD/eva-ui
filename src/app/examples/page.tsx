@@ -147,6 +147,12 @@ const examples = [
     category: "ERROR",
   },
   {
+    href: "/examples/surveillance",
+    name: "Video Intercept Deck",
+    description: "Aggressive surveillance wall with pilot channels, MAGI verdicts, and phase rails",
+    category: "SURVEILLANCE",
+  },
+  {
     href: "/examples/empty",
     name: "Empty State",
     description: "No data placeholder",
@@ -170,6 +176,7 @@ const categoryColors: Record<string, string> = {
   AUTH: "border-nerv-orange text-nerv-orange",
   SUPPORT: "border-nerv-green text-nerv-green",
   ERROR: "border-nerv-red text-nerv-red",
+  SURVEILLANCE: "border-nerv-red text-nerv-red",
   UTILITY: "border-nerv-amber text-nerv-amber",
 };
 
