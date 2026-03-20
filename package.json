@@ -1,13 +1,13 @@
 {
   "name": "@mdrbx/nerv-ui",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "NERV-UI: React component library inspired by NERV/MAGI interfaces from Neon Genesis Evangelion",
   "private": false,
   "license": "MIT",
   "author": "mdrbx",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdrbx/nerv-ui.git"
+    "url": "git+https://github.com/mdrbx/nerv-ui.git"
   },
   "homepage": "https://mdrbx.github.io/nerv-ui",
   "keywords": [

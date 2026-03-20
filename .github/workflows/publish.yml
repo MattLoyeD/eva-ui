@@ -9,7 +9,36 @@ permissions:
   packages: write
 
 jobs:
+  verify-release-version:
+    runs-on: ubuntu-latest
+    outputs:
+      package_version: ${{ steps.validate-release.outputs.package_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate release tag matches package version
+        id: validate-release
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          PACKAGE_LOCK_VERSION=$(node -p "require('./package-lock.json').version")
+
+          echo "package_version=$PACKAGE_VERSION" >> "$GITHUB_OUTPUT"
+
+          if [ "$PACKAGE_VERSION" != "$PACKAGE_LOCK_VERSION" ]; then
+            echo "ERROR: package.json version ($PACKAGE_VERSION) does not match package-lock.json version ($PACKAGE_LOCK_VERSION)."
+            exit 1
+          fi
+
+          if [ "v$PACKAGE_VERSION" != "$RELEASE_TAG" ]; then
+            echo "ERROR: release tag $RELEASE_TAG does not match package.json version v$PACKAGE_VERSION."
+            exit 1
+          fi
+
   publish-npm:
+    needs: verify-release-version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -41,6 +70,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-github-packages:
+    needs: verify-release-version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
