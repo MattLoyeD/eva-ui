@@ -8,24 +8,25 @@ const displayFont = { fontFamily: "var(--font-nerv-display)" };
 
 const exampleLinks = [
   { href: "/examples", label: "INDEX", code: "00" },
-  { href: "/examples/dashboard", label: "OPS GRID", code: "01" },
-  { href: "/examples/realtime", label: "MONITOR", code: "02" },
-  { href: "/examples/comms", label: "COMMS", code: "03" },
-  { href: "/examples/report", label: "REPORT", code: "04" },
-  { href: "/examples/pilots", label: "PERSONNEL", code: "05" },
-  { href: "/examples/files", label: "FILES", code: "06" },
-  { href: "/examples/form", label: "DISPATCH", code: "07" },
-  { href: "/examples/help", label: "HELPDESK", code: "08" },
-  { href: "/examples/auth/login", label: "LOGIN", code: "09" },
-  { href: "/examples/auth/register", label: "REGISTER", code: "10" },
-  { href: "/examples/blog", label: "BRIEFING", code: "11" },
-  { href: "/examples/inventory", label: "LOGISTICS", code: "12" },
-  { href: "/examples/landing", label: "LIBRARY", code: "13" },
-  { href: "/examples/splash", label: "SPLASH", code: "14" },
-  { href: "/examples/saas", label: "PROCUREMENT", code: "15" },
-  { href: "/examples/empty", label: "EMPTY", code: "16" },
-  { href: "/examples/error", label: "ERROR", code: "17" },
-  { href: "/examples/surveillance", label: "WATCHGRID", code: "18" },
+  { href: "/examples/command-center", label: "COMMAND", code: "01" },
+  { href: "/examples/dashboard", label: "OPS GRID", code: "02" },
+  { href: "/examples/realtime", label: "MONITOR", code: "03" },
+  { href: "/examples/comms", label: "COMMS", code: "04" },
+  { href: "/examples/report", label: "REPORT", code: "05" },
+  { href: "/examples/pilots", label: "PERSONNEL", code: "06" },
+  { href: "/examples/files", label: "FILES", code: "07" },
+  { href: "/examples/form", label: "DISPATCH", code: "08" },
+  { href: "/examples/help", label: "HELPDESK", code: "09" },
+  { href: "/examples/auth/login", label: "LOGIN", code: "10" },
+  { href: "/examples/auth/register", label: "REGISTER", code: "11" },
+  { href: "/examples/blog", label: "BRIEFING", code: "12" },
+  { href: "/examples/inventory", label: "LOGISTICS", code: "13" },
+  { href: "/examples/landing", label: "LIBRARY", code: "14" },
+  { href: "/examples/splash", label: "SPLASH", code: "15" },
+  { href: "/examples/saas", label: "PROCUREMENT", code: "16" },
+  { href: "/examples/empty", label: "EMPTY", code: "17" },
+  { href: "/examples/error", label: "ERROR", code: "18" },
+  { href: "/examples/surveillance", label: "WATCHGRID", code: "19" },
 ];
 
 function ExampleRail({
@@ -92,7 +93,7 @@ export default function ExamplesLayout({
           <div className="flex min-h-14 items-center justify-between gap-4 py-2">
             <div className="flex min-w-0 items-center gap-3">
               <Link
-                href="/"
+                href="/examples/command-center"
                 className="border border-nerv-orange/30 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-nerv-orange transition-colors hover:border-nerv-orange hover:bg-nerv-orange/10"
                 style={displayFont}
               >

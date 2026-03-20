@@ -51,6 +51,12 @@ const glowHeroBlocks: TitleScreenBlock[] = [
 
 const examples = [
   {
+    href: "/examples/command-center",
+    name: "Command Center",
+    description: "Original NERV control-room homepage with launch telemetry, MAGI routing, and system exercises",
+    category: "SHOWCASE",
+  },
+  {
     href: "/examples/dashboard",
     name: "Dashboard",
     description: "Operations monitoring center",
@@ -233,18 +239,18 @@ export default function ExamplesGalleryPage() {
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <Link
-                href="/examples/dashboard"
+                href="/examples/command-center"
                 className="border border-nerv-orange px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-nerv-orange hover:bg-nerv-orange hover:text-black transition-colors"
                 style={displayFont}
               >
-                open operations
+                open command
               </Link>
               <Link
-                href="/examples/report"
+                href="/examples/surveillance"
                 className="border border-nerv-cyan px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-nerv-cyan hover:bg-nerv-cyan hover:text-black transition-colors"
                 style={displayFont}
               >
-                inspect reports
+                watch intercept
               </Link>
               <Link
                 href="/examples/splash"
